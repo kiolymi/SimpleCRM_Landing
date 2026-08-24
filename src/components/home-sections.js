@@ -23,8 +23,15 @@ function createHero(hero) {
   section.setAttribute('aria-labelledby', 'page-title');
   const title = escapeHtml(hero.title).replace(' — ', ' —<br />');
   section.innerHTML = `
+    <div class="hero-ambient" aria-hidden="true">
+      <span class="hero-ambient__orb hero-ambient__orb--one"></span>
+      <span class="hero-ambient__orb hero-ambient__orb--two"></span>
+      <span class="hero-ambient__beam"></span>
+      ${Array.from({ length: 10 }, (_, index) => `<span class="hero-ambient__spark hero-ambient__spark--${index + 1}"></span>`).join('')}
+    </div>
     <div class="container home-hero__grid">
       <div class="home-hero__copy" data-reveal="slide-left">
+        <p class="home-hero__kicker"><span></span>CRM для тех, кто работает с людьми</p>
         <h1 id="page-title">${title}</h1>
         <p class="home-hero__lead">${escapeHtml(hero.lead)}</p>
         <a class="app-store-badge" href="https://apps.apple.com/" target="_blank" rel="noopener noreferrer" aria-label="Скачать Simple CRM с App Store">
@@ -32,7 +39,9 @@ function createHero(hero) {
           <span><small>Скачайте с</small><strong>App Store</strong></span>
         </a>
       </div>
-      <div class="home-hero__visual" data-reveal="slide-right" data-delay="120"></div>
+      <div class="home-hero__visual" data-reveal="slide-right" data-delay="120">
+        <div class="hero-device-aura" aria-hidden="true"><span></span><span></span></div>
+      </div>
     </div>`;
   const mockup = createProductDeviceMockup({ mode: hero.mockup.image ? 'image' : 'demo', ...hero.mockup });
   mockup.classList.add('hero-device', 'hero-device--main');
