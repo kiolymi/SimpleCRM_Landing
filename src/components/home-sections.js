@@ -56,7 +56,7 @@ function createFeatureGrid(features) {
   section.id = 'features';
   section.className = 'section home-features';
   section.setAttribute('aria-labelledby', 'features-title');
-  section.innerHTML = `<div class="container"><div class="section-heading section-heading--center" data-reveal><h2 id="features-title">Вся история клиента — в одном месте</h2><p>От первого сообщения до оплаты: встречи, задачи и документы остаются в единой рабочей истории.</p></div><div class="feature-grid"></div></div>`;
+  section.innerHTML = `<div class="container"><div class="section-heading section-heading--center" data-reveal><h2 id="features-title">Вся история клиента&nbsp;—<br />в одном месте</h2><p>От первого сообщения до оплаты: встречи, задачи и документы остаются в единой рабочей истории.</p></div><div class="feature-grid"></div></div>`;
   const grid = section.querySelector('.feature-grid');
   features.forEach((feature, index) => grid.append(createFeatureCard(feature, index)));
   return section;
