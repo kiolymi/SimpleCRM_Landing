@@ -176,7 +176,7 @@ export function createAboutPage() {
       title: 'Откройте нужного клиента за несколько секунд',
       copy: 'Поиск сразу показывает подходящие карточки. Менеджер видит имя, контактные данные и статус, не перебирая таблицы и переписки.',
       points: ['Быстрый поиск по имени и контактам', 'Понятный статус клиента до открытия карточки'],
-      image: '/simple-crm-landing-screens/14-client-search.png',
+      image: '/SimpleCRM_Landing/simple-crm-landing-screens/14-client-search.png',
       alt: 'Поиск клиента в Simple CRM',
     },
     {
@@ -186,7 +186,7 @@ export function createAboutPage() {
       title: 'В карточке уже есть всё, что нужно перед разговором',
       copy: 'Контакты, ближайшая встреча, открытые задачи и сумма к оплате собраны на одном экране. Новый сотрудник понимает ситуацию без пересказов коллег.',
       points: ['Встречи и задачи связаны с конкретным клиентом', 'Сообщения, файлы и оплаты остаются в общей истории'],
-      image: '/simple-crm-landing-screens/15-client-overview.png',
+      image: '/SimpleCRM_Landing/simple-crm-landing-screens/15-client-overview.png',
       alt: 'Полная карточка клиента в Simple CRM',
     },
     {
@@ -196,7 +196,7 @@ export function createAboutPage() {
       title: 'Запланируйте встречу, пока договорённость свежая',
       copy: 'Выберите клиента, дату, время, формат, локацию и услугу. Встреча сразу появляется в расписании, поэтому следующий контакт не потеряется.',
       points: ['Онлайн, в офисе или на выезде', 'Все параметры встречи сохраняются одним действием'],
-      image: '/simple-crm-landing-screens/11-create-meeting.png',
+      image: '/SimpleCRM_Landing/simple-crm-landing-screens/11-create-meeting.png',
       alt: 'Форма создания встречи в Simple CRM',
     },
     {
@@ -206,7 +206,7 @@ export function createAboutPage() {
       title: 'Начните день с готового расписания',
       copy: 'Экран «Сегодня» показывает порядок встреч и свободные окна. Менеджер понимает, к кому готовиться сейчас и что запланировано дальше.',
       points: ['Расписание дня без переключения между календарями', 'Быстрый переход к клиенту и деталям встречи'],
-      image: '/simple-crm-landing-screens/01-today-schedule.png',
+      image: '/SimpleCRM_Landing/simple-crm-landing-screens/01-today-schedule.png',
       alt: 'Расписание рабочего дня в Simple CRM',
     },
     {
@@ -216,7 +216,7 @@ export function createAboutPage() {
       title: 'Каждая договорённость становится понятной задачей',
       copy: 'После разговора создайте следующий шаг, назначьте срок и ответственного. Доска показывает, что новое, что уже в работе и что завершено.',
       points: ['Задачи не отделены от истории клиента', 'Команда видит приоритеты и прогресс без отдельного отчёта'],
-      image: '/simple-crm-landing-screens/20-task-board.png',
+      image: '/SimpleCRM_Landing/simple-crm-landing-screens/20-task-board.png',
       alt: 'Доска задач в Simple CRM',
     },
     {
@@ -226,7 +226,7 @@ export function createAboutPage() {
       title: 'Продолжайте диалог с полным контекстом под рукой',
       copy: 'Сообщения остаются рядом с клиентом, встречами и задачами. Любой сотрудник видит, что уже обсудили и какой ответ ждёт клиент.',
       points: ['Переписка доступна из рабочего пространства клиента', 'Контекст не зависит от личного мессенджера менеджера'],
-      image: '/simple-crm-landing-screens/19-client-conversation.png',
+      image: '/SimpleCRM_Landing/simple-crm-landing-screens/19-client-conversation.png',
       alt: 'Диалог с клиентом в Simple CRM',
     },
   ];
@@ -427,7 +427,7 @@ function createArticleBlock(block) {
   if (block.type === 'mockup') {
     const wrapper = document.createElement('div');
     wrapper.className = 'article-body__mockup';
-    const image = /задач/i.test(block.label) ? '/simple-crm-landing-screens/20-task-board.png' : /календар|встреч/i.test(block.label) ? '/simple-crm-landing-screens/11-create-meeting.png' : '/simple-crm-landing-screens/15-client-overview.png';
+    const image = /задач/i.test(block.label) ? '/SimpleCRM_Landing/simple-crm-landing-screens/20-task-board.png' : /календар|встреч/i.test(block.label) ? '/SimpleCRM_Landing/simple-crm-landing-screens/11-create-meeting.png' : '/SimpleCRM_Landing/simple-crm-landing-screens/15-client-overview.png';
     wrapper.append(createProductDeviceMockup({ mode: 'image', device: 'phone', image: { src: image }, alt: `${block.label} в Simple CRM` }));
     return wrapper;
   }
