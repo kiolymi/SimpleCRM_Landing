@@ -106,7 +106,7 @@ export function createPricingPage() {
           <p class="pricing-plan__description">${escapeHtml(plan.description)}</p>
           <p class="pricing-plan__users">${escapeHtml(plan.users)}</p>
           <ul>${plan.features.map(feature => `<li>${iconSvg('check')}<span>${escapeHtml(feature)}</span></li>`).join('')}</ul>
-          <a class="button ${plan.featured ? 'button--primary' : 'button--outline'}" href="/#demo">Начать бесплатно</a>
+          <a class="button ${plan.featured ? 'button--primary' : 'button--outline'}" href="/SimpleCRM_Landing/#demo">Начать бесплатно</a>
         </article>
       `).join('')}
     </div>
@@ -131,7 +131,7 @@ export function createPricingPage() {
         </div>
       </div>
     </section>
-    <div class="container"><section class="pricing-final" data-reveal="scale"><div><h2>Подберите тариф на живой демонстрации</h2><p>Покажем продукт, оценим размер команды и поможем выбрать вариант без лишних функций.</p></div><a class="button button--primary" href="/#demo">Запросить демонстрацию ${iconSvg('arrow-right')}</a></section></div>`;
+    <div class="container"><section class="pricing-final" data-reveal="scale"><div><h2>Подберите тариф на живой демонстрации</h2><p>Покажем продукт, оценим размер команды и поможем выбрать вариант без лишних функций.</p></div><a class="button button--primary" href="/SimpleCRM_Landing/#demo">Запросить демонстрацию ${iconSvg('arrow-right')}</a></section></div>`;
   return section;
 }
 
@@ -163,7 +163,7 @@ export function createFaqPage() {
     <div class="container faq-groups">
       ${groups.map((group, groupIndex) => `<section class="faq-group" data-faq-group data-reveal="${groupIndex % 2 ? 'slide-left' : 'slide-right'}"><h2>${escapeHtml(group.title)}</h2><div>${group.questions.map(([question, answer], questionIndex) => `<details class="faq-rich-item" data-faq-item data-search="${escapeAttribute(`${question} ${answer}`.toLowerCase())}"${groupIndex === 0 && questionIndex === 0 ? ' open' : ''}><summary>${escapeHtml(question)}${iconSvg('chevron-down')}</summary><p>${escapeHtml(answer)}</p></details>`).join('')}</div></section>`).join('')}
     </div>
-    <div class="container"><section class="faq-help" data-reveal="scale"><div><h2>Не нашли свой вопрос?</h2><p>Опишите рабочий сценарий, и мы ответим по существу: настройка, импорт, тариф или работа конкретного раздела.</p></div><a class="button button--primary" href="/support/">Написать в поддержку ${iconSvg('arrow-right')}</a></section></div>`;
+    <div class="container"><section class="faq-help" data-reveal="scale"><div><h2>Не нашли свой вопрос?</h2><p>Опишите рабочий сценарий, и мы ответим по существу: настройка, импорт, тариф или работа конкретного раздела.</p></div><a class="button button--primary" href="/SimpleCRM_Landing/support/">Написать в поддержку ${iconSvg('arrow-right')}</a></section></div>`;
   return section;
 }
 
@@ -240,7 +240,7 @@ export function createAboutPage() {
         <p>Simple CRM помогает небольшой команде вести клиента от первого контакта до следующей встречи, задачи и оплаты. Ничего не нужно восстанавливать по памяти.</p>
         <div class="about-hero__actions">
           <a class="button button--primary" href="#product-guide">Посмотреть, как это работает ${iconSvg('arrow-down')}</a>
-          <a class="text-link" href="/#demo">Запросить демонстрацию ${iconSvg('arrow-right')}</a>
+          <a class="text-link" href="/SimpleCRM_Landing/#demo">Запросить демонстрацию ${iconSvg('arrow-right')}</a>
         </div>
       </div>
       <div class="about-hero__visual" data-reveal="device"></div>
@@ -277,14 +277,14 @@ export function createAboutPage() {
       <section class="about-final" data-reveal="scale">
         <h2>Покажем Simple CRM на процессах вашей команды</h2>
         <p>Разберём путь клиента, настроим первый рабочий сценарий и ответим на вопросы сотрудников.</p>
-        <a class="button button--primary" href="/#demo">Запросить демонстрацию ${iconSvg('arrow-right')}</a>
+        <a class="button button--primary" href="/SimpleCRM_Landing/#demo">Запросить демонстрацию ${iconSvg('arrow-right')}</a>
       </section>
     </div>`;
 
   const heroVisual = section.querySelector('.about-hero__visual');
   heroVisual.append(
-    createProductDeviceMockup({ mode: 'image', device: 'phone', image: { src: '/simple-crm-landing-screens/16-client-activity.png' }, alt: 'Единая история клиента в Simple CRM' }),
-    createProductDeviceMockup({ mode: 'image', device: 'phone', image: { src: '/simple-crm-landing-screens/21-task-list.png' }, alt: 'Список задач в Simple CRM' }),
+    createProductDeviceMockup({ mode: 'image', device: 'phone', image: { src: '/SimpleCRM_Landing/simple-crm-landing-screens/16-client-activity.png' }, alt: 'Единая история клиента в Simple CRM' }),
+    createProductDeviceMockup({ mode: 'image', device: 'phone', image: { src: '/SimpleCRM_Landing/simple-crm-landing-screens/21-task-list.png' }, alt: 'Список задач в Simple CRM' }),
   );
   guide.forEach((item, index) => {
     section.querySelector(`[data-guide-image="${index}"]`).append(
@@ -303,7 +303,7 @@ export function createSupportPage() {
     <div class="container support-layout">
       <aside class="support-aside" data-reveal="slide-left">
         <div class="support-aside__intro"><h2>До обращения</h2><p>Готовые ответы и пошаговые инструкции часто помогают решить вопрос сразу.</p></div>
-        <nav aria-label="Разделы помощи"><a href="/faq/"><span>${iconSvg('message-square')}</span><div><strong>Вопросы и ответы</strong><p>Запуск, ежедневная работа, тарифы и доступы</p></div>${iconSvg('arrow-right')}</a><a href="/how-to/"><span>${iconSvg('task-list')}</span><div><strong>Инструкции</strong><p>Пошаговая работа с клиентами, встречами и задачами</p></div>${iconSvg('arrow-right')}</a><a href="/releases/"><span>${iconSvg('document')}</span><div><strong>История версий</strong><p>Новые возможности, улучшения и исправления</p></div>${iconSvg('arrow-right')}</a></nav>
+        <nav aria-label="Разделы помощи"><a href="/SimpleCRM_Landing/faq/"><span>${iconSvg('message-square')}</span><div><strong>Вопросы и ответы</strong><p>Запуск, ежедневная работа, тарифы и доступы</p></div>${iconSvg('arrow-right')}</a><a href="/SimpleCRM_Landing/how-to/"><span>${iconSvg('task-list')}</span><div><strong>Инструкции</strong><p>Пошаговая работа с клиентами, встречами и задачами</p></div>${iconSvg('arrow-right')}</a><a href="/SimpleCRM_Landing/releases/"><span>${iconSvg('document')}</span><div><strong>История версий</strong><p>Новые возможности, улучшения и исправления</p></div>${iconSvg('arrow-right')}</a></nav>
         <div class="support-contact"><p>Рабочая почта</p><a href="mailto:support@simplecrm.ru">support@simplecrm.ru</a><span>Отвечаем по будням с 9:00 до 19:00 по Москве</span></div>
       </aside>
       <form class="support-request demo-form" data-demo-form novalidate data-reveal="slide-right">
@@ -372,7 +372,7 @@ export function createPrivacyPage() {
   section.className = 'inner-page section document-page privacy-page';
   section.dataset.reveal = 'scale';
   section.setAttribute('aria-labelledby', 'privacy-title');
-  section.innerHTML = `<div class="container document-layout"><article class="document-main"><header class="document-header"><h1 id="privacy-title">Политика конфиденциальности</h1></header><div class="document-body">${chapters.map(chapter => `<section id="${escapeAttribute(chapter.id)}"><h2>${escapeHtml(chapter.title)}</h2>${chapter.paragraphs.map(paragraph => `<p>${escapeHtml(paragraph)}</p>`).join('')}${chapter.items ? `<ul>${chapter.items.map(item => `<li>${escapeHtml(item)}</li>`).join('')}</ul>` : ''}</section>`).join('')}</div></article><aside class="document-sidebar"><div class="document-toc"><p>На этой странице</p><nav aria-label="Оглавление политики"><ol>${chapters.map(chapter => `<li><a href="#${escapeAttribute(chapter.id)}">${escapeHtml(chapter.title.replace(/^\d+\.\s*/, ''))}</a></li>`).join('')}</ol></nav></div><a class="button button--outline document-sidebar__cta" href="/support/">Задать вопрос</a></aside></div>`;
+  section.innerHTML = `<div class="container document-layout"><article class="document-main"><header class="document-header"><h1 id="privacy-title">Политика конфиденциальности</h1></header><div class="document-body">${chapters.map(chapter => `<section id="${escapeAttribute(chapter.id)}"><h2>${escapeHtml(chapter.title)}</h2>${chapter.paragraphs.map(paragraph => `<p>${escapeHtml(paragraph)}</p>`).join('')}${chapter.items ? `<ul>${chapter.items.map(item => `<li>${escapeHtml(item)}</li>`).join('')}</ul>` : ''}</section>`).join('')}</div></article><aside class="document-sidebar"><div class="document-toc"><p>На этой странице</p><nav aria-label="Оглавление политики"><ol>${chapters.map(chapter => `<li><a href="#${escapeAttribute(chapter.id)}">${escapeHtml(chapter.title.replace(/^\d+\.\s*/, ''))}</a></li>`).join('')}</ol></nav></div><a class="button button--outline document-sidebar__cta" href="/SimpleCRM_Landing/support/">Задать вопрос</a></aside></div>`;
   return section;
 }
 
@@ -405,7 +405,7 @@ export function createReleasesPage() {
   section.className = 'inner-page section document-page releases-page';
   section.dataset.reveal = 'scale';
   section.setAttribute('aria-labelledby', 'releases-title');
-  section.innerHTML = `<div class="container document-layout"><article class="document-main"><header class="document-header"><p class="eyebrow">Развитие продукта</p><h1 id="releases-title">История версий Simple CRM</h1><p class="document-lead">Публикуем все заметные изменения продукта — новые возможности, улучшения интерфейса и исправления.</p></header><div class="release-list">${releases.map((release, index) => `<section class="release-entry" id="release-${escapeAttribute(release.version.replaceAll('.', '-'))}"><div class="release-entry__heading"><div><h2>${escapeHtml(release.version)}</h2><p>${escapeHtml(release.date)}</p></div>${release.label ? `<span>${escapeHtml(release.label)}</span>` : ''}</div>${release.groups.map(([title, items]) => `<section class="release-group"><h3>${escapeHtml(title)}</h3><ul>${items.map(item => `<li>${iconSvg('check')}<span>${escapeHtml(item)}</span></li>`).join('')}</ul></section>`).join('')}${index === 0 ? '<p><a class="text-link" href="/announcements/">Подробнее об обновлениях ' + iconSvg('arrow-right') + '</a></p>' : ''}</section>`).join('')}</div></article><aside class="document-sidebar"><div class="document-toc"><p>Версии</p><nav aria-label="Навигация по версиям"><ol>${releases.map(release => `<li><a href="#release-${escapeAttribute(release.version.replaceAll('.', '-'))}">${escapeHtml(release.version)} <span>${escapeHtml(release.date)}</span></a></li>`).join('')}</ol></nav></div><a class="button button--outline document-sidebar__cta" href="/support/">Сообщить о проблеме</a></aside></div>`;
+  section.innerHTML = `<div class="container document-layout"><article class="document-main"><header class="document-header"><p class="eyebrow">Развитие продукта</p><h1 id="releases-title">История версий Simple CRM</h1><p class="document-lead">Публикуем все заметные изменения продукта — новые возможности, улучшения интерфейса и исправления.</p></header><div class="release-list">${releases.map((release, index) => `<section class="release-entry" id="release-${escapeAttribute(release.version.replaceAll('.', '-'))}"><div class="release-entry__heading"><div><h2>${escapeHtml(release.version)}</h2><p>${escapeHtml(release.date)}</p></div>${release.label ? `<span>${escapeHtml(release.label)}</span>` : ''}</div>${release.groups.map(([title, items]) => `<section class="release-group"><h3>${escapeHtml(title)}</h3><ul>${items.map(item => `<li>${iconSvg('check')}<span>${escapeHtml(item)}</span></li>`).join('')}</ul></section>`).join('')}${index === 0 ? '<p><a class="text-link" href="/SimpleCRM_Landing/announcements/">Подробнее об обновлениях ' + iconSvg('arrow-right') + '</a></p>' : ''}</section>`).join('')}</div></article><aside class="document-sidebar"><div class="document-toc"><p>Версии</p><nav aria-label="Навигация по версиям"><ol>${releases.map(release => `<li><a href="#release-${escapeAttribute(release.version.replaceAll('.', '-'))}">${escapeHtml(release.version)} <span>${escapeHtml(release.date)}</span></a></li>`).join('')}</ol></nav></div><a class="button button--outline document-sidebar__cta" href="/SimpleCRM_Landing/support/">Сообщить о проблеме</a></aside></div>`;
   return section;
 }
 
@@ -461,7 +461,7 @@ function createNotFoundPage() {
   const section = document.createElement('section');
   section.className = 'inner-page section';
   section.dataset.reveal = 'scale';
-  section.innerHTML = `<div class="container"><header class="inner-page-header"><h1>Материал не найден</h1><p>Проверьте ссылку или вернитесь к списку материалов.</p><a class="button button--primary" href="/learn/">Открыть материалы</a></header></div>`;
+  section.innerHTML = `<div class="container"><header class="inner-page-header"><h1>Материал не найден</h1><p>Проверьте ссылку или вернитесь к списку материалов.</p><a class="button button--primary" href="/SimpleCRM_Landing/learn/">Открыть материалы</a></header></div>`;
   return section;
 }
 

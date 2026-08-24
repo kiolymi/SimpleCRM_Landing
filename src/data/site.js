@@ -1,7 +1,7 @@
 export const siteConfig = {
   name: 'Simple CRM',
   logo: {
-    src: '/simple-crm-logo-refined.png',
+    src: '/SimpleCRM_Landing/simple-crm-logo-refined.png',
     alt: 'Логотип Simple CRM',
     width: 36,
     height: 36,
@@ -9,35 +9,35 @@ export const siteConfig = {
   announcement: {
     text: 'Вышла Simple CRM 1.4: новая доска задач и единая история клиента',
     linkLabel: 'Что нового',
-    href: '/releases/',
+    href: '/SimpleCRM_Landing/releases/',
   },
-  primaryCta: { label: 'Попробовать бесплатно', href: '/#demo' },
+  primaryCta: { label: 'Попробовать бесплатно', href: '/SimpleCRM_Landing/#demo' },
 };
 
 export const primaryNavigation = [
-  { label: 'О продукте', href: '/about/' },
-  { label: 'Тарифы', href: '/pricing/' },
-  { label: 'Вопросы', href: '/faq/' },
-  { label: 'Версии', href: '/releases/' },
-  { label: 'Поддержка', href: '/support/' },
+  { label: 'О продукте', href: '/SimpleCRM_Landing/about/' },
+  { label: 'Тарифы', href: '/SimpleCRM_Landing/pricing/' },
+  { label: 'Вопросы', href: '/SimpleCRM_Landing/faq/' },
+  { label: 'Версии', href: '/SimpleCRM_Landing/releases/' },
+  { label: 'Поддержка', href: '/SimpleCRM_Landing/support/' },
 ];
 
 export const resourceNavigation = [
-  { label: 'Материалы', href: '/learn/' },
-  { label: 'Инструкции', href: '/how-to/' },
-  { label: 'Обновления', href: '/announcements/' },
+  { label: 'Материалы', href: '/SimpleCRM_Landing/learn/' },
+  { label: 'Инструкции', href: '/SimpleCRM_Landing/how-to/' },
+  { label: 'Обновления', href: '/SimpleCRM_Landing/announcements/' },
 ];
 
 export const footerNavigation = [
-  { label: 'Материалы', href: '/learn/' },
-  { label: 'Инструкции', href: '/how-to/' },
-  { label: 'Обновления', href: '/announcements/' },
-  { label: 'О продукте', href: '/about/' },
-  { label: 'Тарифы', href: '/pricing/' },
-  { label: 'Вопросы', href: '/faq/' },
-  { label: 'Конфиденциальность', href: '/privacy/' },
-  { label: 'История версий', href: '/releases/' },
-  { label: 'Поддержка', href: '/support/' },
+  { label: 'Материалы', href: '/SimpleCRM_Landing/learn/' },
+  { label: 'Инструкции', href: '/SimpleCRM_Landing/how-to/' },
+  { label: 'Обновления', href: '/SimpleCRM_Landing/announcements/' },
+  { label: 'О продукте', href: '/SimpleCRM_Landing/about/' },
+  { label: 'Тарифы', href: '/SimpleCRM_Landing/pricing/' },
+  { label: 'Вопросы', href: '/SimpleCRM_Landing/faq/' },
+  { label: 'Конфиденциальность', href: '/SimpleCRM_Landing/privacy/' },
+  { label: 'История версий', href: '/SimpleCRM_Landing/releases/' },
+  { label: 'Поддержка', href: '/SimpleCRM_Landing/support/' },
 ];
 
 export const pageMeta = {

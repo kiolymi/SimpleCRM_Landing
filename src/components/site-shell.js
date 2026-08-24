@@ -35,7 +35,7 @@ function createHeader() {
 
 function brandMarkup() {
   const { logo, name } = siteConfig;
-  return `<a class="brand" href="/" aria-label="${escapeAttribute(name)}, на главную"><img class="brand__logo" src="${escapeAttribute(logo.src)}" alt="${escapeAttribute(logo.alt)}" width="${logo.width}" height="${logo.height}" /><span>${escapeHtml(name)}</span></a>`;
+  return `<a class="brand" href="/SimpleCRM_Landing/" aria-label="${escapeAttribute(name)}, на главную"><img class="brand__logo" src="${escapeAttribute(logo.src)}" alt="${escapeAttribute(logo.alt)}" width="${logo.width}" height="${logo.height}" /><span>${escapeHtml(name)}</span></a>`;
 }
 
 function navLinkMarkup({ label, href }) {
@@ -43,7 +43,7 @@ function navLinkMarkup({ label, href }) {
 }
 
 function resourceMenuMarkup() {
-  return `<div class="resource-menu"><a class="desktop-nav__trigger" href="/learn/" aria-expanded="false" aria-haspopup="true">Материалы ${iconSvg('chevron-down')}</a><div class="resource-menu__panel" role="menu"><a role="menuitem" href="/learn/"><strong>Все материалы</strong><span>Статьи о работе с клиентами</span></a>${resourceNavigation.filter(item => item.href !== '/learn/').map(({ label, href }) => `<a role="menuitem" href="${escapeAttribute(href)}">${escapeHtml(label)}</a>`).join('')}</div></div>`;
+  return `<div class="resource-menu"><a class="desktop-nav__trigger" href="/SimpleCRM_Landing/learn/" aria-expanded="false" aria-haspopup="true">Материалы ${iconSvg('chevron-down')}</a><div class="resource-menu__panel" role="menu"><a role="menuitem" href="/SimpleCRM_Landing/learn/"><strong>Все материалы</strong><span>Статьи о работе с клиентами</span></a>${resourceNavigation.filter(item => item.href !== '/learn/').map(({ label, href }) => `<a role="menuitem" href="${escapeAttribute(href)}">${escapeHtml(label)}</a>`).join('')}</div></div>`;
 }
 
 function createMobileMenu() {
@@ -55,7 +55,7 @@ function createMobileMenu() {
     <div class="mobile-menu__inner">
       <div class="mobile-menu__top">${brandMarkup()}<button class="icon-button" type="button" aria-label="Закрыть меню">${iconSvg('x')}</button></div>
       <nav class="mobile-menu__nav" aria-label="Мобильная навигация">
-        <div class="mobile-menu__resources"><p>Материалы</p>${resourceNavigation.map(navLinkMarkup).join('')}<a href="/search/">Поиск по материалам</a></div>
+        <div class="mobile-menu__resources"><p>Материалы</p>${resourceNavigation.map(navLinkMarkup).join('')}<a href="/SimpleCRM_Landing/search/">Поиск по материалам</a></div>
         ${primaryNavigation.map(navLinkMarkup).join('')}
       </nav>
       <a class="button button--primary mobile-menu__cta" href="${siteConfig.primaryCta.href}">${siteConfig.primaryCta.label}</a>
@@ -138,7 +138,7 @@ function createFooter() {
   const footer = document.createElement('footer');
   footer.className = 'site-footer';
   footer.dataset.reveal = 'fade';
-  footer.innerHTML = `<div class="container site-footer__inner"><nav class="site-footer__nav" aria-label="Навигация в подвале"><a href="/about/">О продукте</a><a href="/pricing/">Тарифы</a><a href="/learn/">Материалы</a><a href="/announcements/">Обновления</a><a href="/faq/">Вопросы</a><a href="/privacy/">Конфиденциальность</a><a href="/releases/">Версии</a><a href="/support/">Поддержка</a></nav><div class="site-footer__brand">${brandMarkup()}</div><p class="site-footer__legal">© ${new Date().getFullYear()} Simple CRM. Все права защищены.</p></div>`;
+  footer.innerHTML = `<div class="container site-footer__inner"><nav class="site-footer__nav" aria-label="Навигация в подвале"><a href="/SimpleCRM_Landing/about/">О продукте</a><a href="/SimpleCRM_Landing/pricing/">Тарифы</a><a href="/SimpleCRM_Landing/learn/">Материалы</a><a href="/SimpleCRM_Landing/announcements/">Обновления</a><a href="/SimpleCRM_Landing/faq/">Вопросы</a><a href="/SimpleCRM_Landing/privacy/">Конфиденциальность</a><a href="/SimpleCRM_Landing/releases/">Версии</a><a href="/SimpleCRM_Landing/support/">Поддержка</a></nav><div class="site-footer__brand">${brandMarkup()}</div><p class="site-footer__legal">© ${new Date().getFullYear()} Simple CRM. Все права защищены.</p></div>`;
   return footer;
 }
 

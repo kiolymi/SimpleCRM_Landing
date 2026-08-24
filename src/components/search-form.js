@@ -4,7 +4,7 @@ export function createSearchForm({ query = '', label = 'Поиск по мате
   const form = document.createElement('form');
   form.className = `search-form${compact ? ' search-form--compact' : ''}`;
   form.method = 'get';
-  form.action = '/search/';
+  form.action = '/SimpleCRM_Landing/search/';
   form.setAttribute('role', 'search');
   form.innerHTML = `<label class="visually-hidden" for="site-search">${escapeHtml(label)}</label><input id="site-search" name="q" type="search" value="${escapeAttribute(query)}" placeholder="Найти материал" autocomplete="off" /><button class="icon-button" type="submit" aria-label="Искать">${iconSvg('search')}</button>`;
   return form;

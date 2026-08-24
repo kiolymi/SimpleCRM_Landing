@@ -167,7 +167,7 @@ function createArticles(articles) {
   section.id = 'materials';
   section.className = 'section home-articles';
   section.setAttribute('aria-labelledby', 'articles-title');
-  section.innerHTML = `<div class="container"><div class="section-heading section-heading--center" data-reveal><p class="eyebrow">Материалы</p><h2 id="articles-title">Практика работы с клиентами</h2><p>Как подготовить встречу, зафиксировать договорённость и не потерять <span class="text-nowrap">продолжение разговора</span>.</p></div><div class="article-grid"></div><p class="home-articles__more"><a class="button button--outline" href="/learn/">Все материалы ${iconSvg('arrow-right')}</a></p></div>`;
+  section.innerHTML = `<div class="container"><div class="section-heading section-heading--center" data-reveal><p class="eyebrow">Материалы</p><h2 id="articles-title">Практика работы с клиентами</h2><p>Как подготовить встречу, зафиксировать договорённость и не потерять <span class="text-nowrap">продолжение разговора</span>.</p></div><div class="article-grid"></div><p class="home-articles__more"><a class="button button--outline" href="/SimpleCRM_Landing/learn/">Все материалы ${iconSvg('arrow-right')}</a></p></div>`;
   const grid = section.querySelector('.article-grid');
   articles.forEach(article => { const card = createArticleCard(article); card.dataset.reveal = 'scale'; grid.append(card); });
   return section;
