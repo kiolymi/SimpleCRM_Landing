@@ -1352,3 +1352,24 @@ body {
   .demo-form__fields,
   .demo-form__success { transition: none !important; }
 }
+
+/* Единая овальная маска для всех растровых экранов приложения.
+   Убирает прямоугольные углы PNG и сохраняет форму корпуса телефона. */
+.device-mockup--image .device-mockup__frame,
+.device-mockup--image:hover .device-mockup__frame,
+.device-mockup--image:focus-within .device-mockup__frame {
+  overflow: hidden !important;
+  border-radius: 10.5% / 4.9% !important;
+  isolation: isolate;
+}
+
+.device-mockup--image .device-mockup__image {
+  border-radius: inherit;
+}
+
+.article-card__cover-media img {
+  width: auto;
+  max-width: 100%;
+  aspect-ratio: 390 / 844;
+  border-radius: 10.5% / 4.9%;
+}
