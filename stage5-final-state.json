@@ -1,0 +1,41 @@
+{
+  "stage": 5,
+  "status": "complete",
+  "fileKey": "CHi07sT4Waf6uIkl14hYjN",
+  "pageId": "0:1",
+  "sections": {
+    "coverage": "45:3",
+    "foundations": "45:4",
+    "components": "45:5",
+    "iphone": "45:6",
+    "ipad": "45:7",
+    "prototype": "45:8",
+    "handoff": "45:9",
+    "landing": "45:10",
+    "qa": "45:11",
+    "reference": "45:2"
+  },
+  "metrics": {
+    "productScreens": 198,
+    "iphoneScreens": 159,
+    "ipadScreens": 39,
+    "componentSets": 24,
+    "prototypeFlows": 9,
+    "prototypeFrames": 66,
+    "prototypeLinks": 75,
+    "handoffFrames": 10,
+    "qaCards": 9,
+    "landingMockups": 6,
+    "landingStandaloneExports": 6,
+    "coverageQAPassed": 91,
+    "coverageNeedsReference": 29,
+    "zeroSizeText": 0,
+    "missingFonts": 0,
+    "sfProRemaining": 0,
+    "overlaps": 0
+  },
+  "knownGaps": [
+    "Tap to Pay system UI requires exact Apple/Stripe reference screens before pixel-perfect reconstruction.",
+    "A small subset of wide iPad states remains marked Needs reference where source material is incomplete."
+  ]
+}

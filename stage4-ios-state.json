@@ -1,0 +1,54 @@
+{
+  "runId": "stage4-ios-2026-08-13",
+  "figmaFileKey": "CHi07sT4Waf6uIkl14hYjN",
+  "status": "complete",
+  "sourceOfTruth": "Original screenshots in 25:* frames; old 19:* Russian analogues are not a visual reference",
+  "screenCount": 198,
+  "iphoneGroups": {
+    "messages": "130:707",
+    "notesDocumentsFiles": "137:707",
+    "payments": "140:707",
+    "tasksNotifications": "141:707",
+    "profileSettingsHelp": "142:707"
+  },
+  "ipadGroups": {
+    "coreNavigationCalendarClients": "145:707",
+    "messages": "147:707",
+    "notesFilesPayments": "149:707",
+    "tasksNotificationsProfileHelp": "150:707",
+    "layoutChangingStates": "151:707"
+  },
+  "newComponents": {
+    "button": "122:725",
+    "switch": "123:707",
+    "searchField": "123:720",
+    "segmentedControl": "123:736",
+    "listRow": "125:803",
+    "statusBar": "127:707",
+    "tabBar": "127:793",
+    "messageComposer": "127:818"
+  },
+  "coverageIndex": "166:1442",
+  "validation": {
+    "screenOverlapCount": 0,
+    "groupOverlapCount": 0,
+    "freeTextOverflowCount": 0,
+    "badFontCount": 0,
+    "badDeviceSizeCount": 0,
+    "statusBarInstances": 93,
+    "tabBarInstances": 18,
+    "linkedScreenIndexCount": 198
+  },
+  "referenceGaps": [
+    "Tap to Pay detailed visual states",
+    "Several iPad wide-layout states",
+    "Generic loading, disabled, and network-error visual states",
+    "Unsaved-changes confirmation"
+  ],
+  "outOfScope": [
+    "Stage 5 final prototype",
+    "Developer handoff",
+    "Landing assets",
+    "Stage 5 final QA"
+  ]
+}

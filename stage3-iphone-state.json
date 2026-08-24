@@ -1,0 +1,42 @@
+{
+  "runId": "simple-crm-stage3-2026-08-13",
+  "status": "complete",
+  "fileKey": "CHi07sT4Waf6uIkl14hYjN",
+  "sectionId": "45:6",
+  "groups": {
+    "appShell": {"id": "105:65", "screens": 4},
+    "calendar": {"id": "106:65", "screens": 33},
+    "clients": {"id": "108:372", "screens": 24}
+  },
+  "totals": {
+    "screens": 61,
+    "componentInstances": 209,
+    "autoLayoutContainers": 522
+  },
+  "primaryFlows": {
+    "shell": "105:67",
+    "calendarDay": "106:67",
+    "calendarMonth": "106:172",
+    "createAppointment": "107:148",
+    "appointmentDetail": "107:563",
+    "requestDetail": "107:754",
+    "clientsList": "108:374",
+    "createClient": "108:648",
+    "clientOverview": "108:915",
+    "contacts": "108:968"
+  },
+  "qa": {
+    "screenSize": "passed",
+    "textBounds": "passed",
+    "textOverlap": "passed",
+    "requirements": "passed",
+    "missingRequirements": [],
+    "needsReference": []
+  },
+  "scope": {
+    "changedSections": ["45:6"],
+    "coverageMapStatusLinksUpdated": true,
+    "stage4AreasCreated": false,
+    "iPadCreated": false
+  }
+}
