@@ -2759,7 +2759,7 @@ body { font-weight: 400; }
 
 .home-hero__visual {
   position: relative;
-  right: 50px;
+  right: 150px;
   min-height: 0;
   align-self: start;
   justify-items: end;
