@@ -1869,7 +1869,7 @@ body { font-weight: 400; }
 .support-hero p { max-width: 720px; margin: 29px 0 0; color: #596579; font-size: 19px; line-height: 1.65; }
 .support-layout { display: grid; gap: 38px; padding-block: 105px; }
 .support-aside { align-self: start; }
-.support-aside__intro h2, .support-request h2, .support-promise h2 { margin: 0; color: var(--color-ink); font-family: var(--font-display); font-weight: 700; letter-spacing: -.06em; line-height: 1; }
+.support-aside__intro h2, .support-request h2 { margin: 0; color: var(--color-ink); font-family: var(--font-display); font-weight: 700; letter-spacing: -.06em; line-height: 1; }
 .support-aside__intro h2 { font-size: clamp(36px, 4vw, 50px); }
 .support-aside__intro > p { margin: 21px 0 0; color: #5d6879; line-height: 1.65; }
 .support-aside nav { display: grid; gap: 12px; margin-top: 34px; }
@@ -1889,18 +1889,10 @@ body { font-weight: 400; }
 .support-request h2 { font-size: clamp(38px, 4.5vw, 56px); }
 .support-request__heading p { margin: 14px 0 0; color: #667386; }
 .support-request .button { width: 100%; min-height: 54px; }
-.support-promise { padding: clamp(38px, 6vw, 72px); border-radius: 30px; background: radial-gradient(circle at 96% 0, rgb(8 125 241 / 28%), transparent 36%), #0d1c31; color: #fff; box-shadow: 0 30px 68px rgb(15 23 42 / 17%); }
-.support-promise h2 { color: #fff; font-size: clamp(38px, 4.8vw, 58px); }
-.support-promise ol { display: grid; gap: 13px; margin: 38px 0 0; padding: 0; list-style: none; }
-.support-promise li { display: grid; grid-template-columns: 42px 1fr; gap: 15px; padding: 20px; border-radius: 18px; background: rgb(255 255 255 / 7%); }
-.support-promise li > span { display: grid; width: 42px; height: 42px; place-items: center; border-radius: 13px; background: #087df1; font-family: var(--font-display); font-weight: 800; }
-.support-promise strong { font-family: var(--font-display); font-size: 16px; }
-.support-promise li p { margin: 7px 0 0; color: #aebed0; font-size: 14px; line-height: 1.5; }
 
 @media (min-width: 900px) {
   .support-layout { grid-template-columns: minmax(300px, .75fr) minmax(520px, 1.25fr); align-items: start; }
   .support-aside { position: sticky; top: 112px; }
-  .support-promise ol { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 }
 
 @media (max-width: 520px) {
@@ -1911,7 +1903,6 @@ body { font-weight: 400; }
   .support-layout { padding-block: 78px; }
   .support-request { padding: 25px 20px; border-radius: 22px; }
   .support-request .form-row { grid-template-columns: 1fr; }
-  .support-promise { border-radius: 24px; }
 }
 
 /* Библиотека материалов: единая структура для статей, инструкций и обновлений */
