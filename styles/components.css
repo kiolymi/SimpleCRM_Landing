@@ -2758,6 +2758,8 @@ body { font-weight: 400; }
 }
 
 .home-hero__visual {
+  position: relative;
+  right: 50px;
   min-height: 0;
   align-self: start;
   justify-items: end;
@@ -2775,6 +2777,8 @@ body { font-weight: 400; }
 }
 
 @media (max-width: 1023px) {
+  .home-hero__visual { right: auto; }
+
   .home-hero__grid {
     min-height: 0;
     grid-template-columns: 1fr;
