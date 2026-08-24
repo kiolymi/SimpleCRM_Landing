@@ -1,4 +1,4 @@
-import { primaryNavigation, resourceNavigation, siteConfig } from '../data/site.js?v=20260824-28';
+import { primaryNavigation, resourceNavigation, siteConfig } from '../data/site.js?v=20260824-29';
 import { iconSvg } from './icons.js?v=20260824-28';
 
 export function createSiteShell(mainContent) {
