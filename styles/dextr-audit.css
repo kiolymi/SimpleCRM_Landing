@@ -860,13 +860,7 @@ body[data-page='home'] .header-app-store {
 }
 
 .home-hero::after {
-  top: 4%;
-  right: -13%;
-  width: min(64vw, 940px);
-  background: radial-gradient(circle, rgb(22 75 139 / 18%), rgb(10 40 79 / 7%) 42%, transparent 70%);
-  filter: blur(42px);
-  opacity: .72;
-  animation: none;
+  display: none;
 }
 
 .hero-ambient,
@@ -908,7 +902,7 @@ body[data-page='home'] .header-app-store {
 .home-hero__lead,
 .home-hero__intro {
   max-width: 650px;
-  color: #c4ceda;
+  color: #fff;
   font-size: clamp(19px, 1.45vw, 23px);
   line-height: 1.62;
 }
@@ -924,24 +918,15 @@ body[data-page='home'] .header-app-store {
 
 .home-hero + .home-features {
   margin-top: 0;
-  overflow: visible;
+  overflow: hidden;
   background:
     radial-gradient(circle at 12% 18%, rgb(107 176 230 / 12%), transparent 30%),
     radial-gradient(circle at 88% 34%, rgb(143 127 224 / 8%), transparent 27%),
-    linear-gradient(180deg, #edf4f9 0, #eaf2f8 38%, #edf4f9 100%);
+    #edf4f9;
 }
 
 .home-hero + .home-features::before {
-  position: absolute;
-  z-index: 0;
-  top: -260px;
-  left: 50%;
-  width: 100vw;
-  height: 262px;
-  background: linear-gradient(180deg, #071426 0%, #10233a 28%, #54718d 64%, #b8cad9 84%, #edf4f9 100%);
-  content: '';
-  pointer-events: none;
-  transform: translateX(-50%);
+  display: none;
 }
 
 body {
