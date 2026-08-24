@@ -45,11 +45,13 @@ const app = document.querySelector('#app');
 app.append(createSiteShell(main));
 protectProductName(app);
 markCurrentNavigation(app);
+prepareRevealSequences(app);
 wireScrollReveals(app);
 wireScrollMotion(app);
 wireInteractiveComponents(app);
 wireScrollProgress();
 wireSectionNavigation(app);
+wireSmoothAnchorNavigation(app);
 wireStablePageNavigation(app);
 
 requestAnimationFrame(() => {
@@ -111,6 +113,97 @@ function wireScrollReveals(root) {
     element.style.setProperty('--reveal-delay', `${delay}ms`);
     observer.observe(element);
   });
+}
+
+function prepareRevealSequences(root) {
+  const groupSelectors = [
+    '.feature-grid',
+    '.testimonials-grid',
+    '.product-panorama__screens',
+    '.product-panorama__benefits',
+    '.article-grid',
+    '.trust-benefits',
+    '.demo-section__copy ul',
+    '.support-promise ol',
+    '.pricing-questions__list',
+    '.about-journey',
+  ];
+
+  root.querySelectorAll(groupSelectors.join(',')).forEach(group => {
+    [...group.children].forEach((element, index) => {
+      if (!element.hasAttribute('data-reveal')) element.dataset.reveal = 'rise';
+      element.dataset.delay = String(Math.min(index * 90, 450));
+    });
+  });
+}
+
+function wireSmoothAnchorNavigation(root) {
+  let scrollFrame = 0;
+  let arrivalTimer = 0;
+
+  const cancelScroll = () => {
+    if (!scrollFrame) return;
+    window.cancelAnimationFrame(scrollFrame);
+    scrollFrame = 0;
+  };
+
+  const animateTo = target => {
+    cancelScroll();
+    const header = root.querySelector('.site-header');
+    const headerOffset = (header?.getBoundingClientRect().height || 0) + 24;
+    const destination = Math.max(0, target.getBoundingClientRect().top + window.scrollY - headerOffset);
+    const start = window.scrollY;
+    const distance = destination - start;
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (reduceMotion || Math.abs(distance) < 2) {
+      window.scrollTo(0, destination);
+    } else {
+      const startedAt = performance.now();
+      const duration = Math.min(1050, Math.max(620, Math.abs(distance) * 0.34));
+      const render = now => {
+        const progress = Math.min(1, (now - startedAt) / duration);
+        const eased = progress < .5
+          ? 4 * progress * progress * progress
+          : 1 - Math.pow(-2 * progress + 2, 3) / 2;
+        window.scrollTo(0, start + distance * eased);
+        if (progress < 1) {
+          scrollFrame = window.requestAnimationFrame(render);
+          return;
+        }
+        scrollFrame = 0;
+      };
+      scrollFrame = window.requestAnimationFrame(render);
+    }
+
+    window.clearTimeout(arrivalTimer);
+    target.classList.remove('is-scroll-arrival');
+    requestAnimationFrame(() => target.classList.add('is-scroll-arrival'));
+    arrivalTimer = window.setTimeout(() => target.classList.remove('is-scroll-arrival'), 1050);
+  };
+
+  ['wheel', 'touchstart'].forEach(type => window.addEventListener(type, cancelScroll, { passive: true }));
+  window.addEventListener('keydown', event => {
+    if (['ArrowDown', 'ArrowUp', 'PageDown', 'PageUp', 'Home', 'End', ' '].includes(event.key)) cancelScroll();
+  });
+
+  root.addEventListener('click', event => {
+    if (event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+    const link = event.target.closest('a[href]');
+    if (!link || link.hasAttribute('download') || (link.target && link.target !== '_self')) return;
+
+    const targetUrl = new URL(link.href, window.location.href);
+    const currentUrl = new URL(window.location.href);
+    if (targetUrl.origin !== currentUrl.origin || targetUrl.pathname !== currentUrl.pathname || targetUrl.search !== currentUrl.search || !targetUrl.hash) return;
+
+    const target = document.getElementById(decodeURIComponent(targetUrl.hash.slice(1)));
+    if (!target) return;
+
+    event.preventDefault();
+    if (currentUrl.hash !== targetUrl.hash) window.history.pushState(null, '', targetUrl.hash);
+    const mobileMenu = root.querySelector('#mobile-menu');
+    window.setTimeout(() => animateTo(target), mobileMenu?.open ? 160 : 0);
+  }, { capture: true });
 }
 
 function wireStablePageNavigation(root) {
