@@ -1,6 +1,6 @@
 import { createSiteShell } from './components/site-shell.js?v=20260824-29';
 import { createHomePage } from './components/home-sections.js?v=20260824-32';
-import { createAboutPage, createArticleLayout, createContentHubPage, createFaqPage, createPricingPage, createPrivacyPage, createReleasesPage, createSearchPage, createSupportPage } from './components/content-pages.js?v=20260824-31';
+import { createAboutPage, createArticleLayout, createContentHubPage, createFaqPage, createPricingPage, createPrivacyPage, createReleasesPage, createSearchPage, createSupportPage } from './components/content-pages.js?v=20260824-32';
 import { pageMeta } from './data/site.js?v=20260824-29';
 import { createProductDeviceMockup } from './components/product-device-mockup.js';
 
@@ -124,7 +124,6 @@ function prepareRevealSequences(root) {
     '.article-grid',
     '.trust-benefits',
     '.demo-section__copy ul',
-    '.support-promise ol',
     '.pricing-questions__list',
     '.about-journey',
   ];

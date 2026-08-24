@@ -317,7 +317,7 @@ export function createSupportPage() {
         <p class="form-status" data-form-status aria-live="polite"></p>
       </form>
     </div>
-    <div class="container"><section class="support-promise" data-reveal="scale"><h2>Что будет после отправки</h2><ol><li><span>1</span><div><strong>Прочитаем весь контекст</strong><p>Не попросим повторять то, что уже указано в обращении.</p></div></li><li><span>2</span><div><strong>Подключим нужного специалиста</strong><p>Вопрос попадёт к человеку, который отвечает за нужный раздел.</p></div></li><li><span>3</span><div><strong>Дадим понятный следующий шаг</strong><p>Пришлём решение, инструкцию или согласуем короткий созвон.</p></div></li></ol></section></div>`;
+    `;
   return section;
 }
 
