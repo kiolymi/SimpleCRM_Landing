@@ -996,6 +996,36 @@ body {
     width: min(100%, 292px);
     max-width: 292px;
   }
+
+  .home-hero__visual::before {
+    position: absolute;
+    z-index: 0;
+    top: 48%;
+    left: 50%;
+    display: block;
+    width: min(49vw, 760px);
+    height: min(72vh, 700px);
+    border: 1px solid rgb(119 181 238 / 10%);
+    border-radius: 42px;
+    background:
+      linear-gradient(rgb(119 181 238 / 5.5%) 1px, transparent 1px),
+      linear-gradient(90deg, rgb(119 181 238 / 5.5%) 1px, transparent 1px),
+      linear-gradient(135deg, transparent 0 34%, rgb(40 117 194 / 8%) 34.2% 34.8%, transparent 35% 64%, rgb(101 86 202 / 6%) 64.2% 64.8%, transparent 65%),
+      radial-gradient(circle at 48% 46%, rgb(23 102 184 / 12%), transparent 62%);
+    background-size: 58px 58px, 58px 58px, auto, auto;
+    box-shadow: inset 0 0 90px rgb(38 113 190 / 5%);
+    content: '';
+    filter: none;
+    opacity: .72;
+    pointer-events: none;
+    transform: translate(-50%, -50%) rotate(-3deg);
+    animation: hero-blueprint-drift 12s ease-in-out infinite alternate;
+  }
+}
+
+@keyframes hero-blueprint-drift {
+  from { opacity: .58; transform: translate(-51%, -49%) rotate(-3.5deg); }
+  to { opacity: .76; transform: translate(-49%, -51%) rotate(-2deg); }
 }
 
 @media (max-width: 1023px) {
