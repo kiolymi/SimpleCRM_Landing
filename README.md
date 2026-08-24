@@ -67,8 +67,7 @@ npx serve .
 │   └── data/                       # тексты и данные страниц
 ├── styles/                         # токены, компоненты и стили аудита Dextr
 ├── assets/fonts/                   # локальные шрифты Onest и Manrope
-├── simple-crm-landing-screens/     # 25 продуктовых экранов из Figma
-└── docs/                            # план сборки и QA-материалы
+└── simple-crm-landing-screens/     # 25 продуктовых экранов из Figma
 ```
 
 ## Технологии
