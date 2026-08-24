@@ -7,6 +7,7 @@ import { createProductDeviceMockup } from './components/product-device-mockup.js
 const pageKey = document.body.dataset.page || 'home';
 const page = pageMeta[pageKey] || pageMeta.home;
 document.documentElement.classList.add('has-js');
+document.documentElement.classList.remove('is-navigating');
 
 if (pageMeta[pageKey]) {
   document.title = pageKey === 'home' ? 'Simple CRM' : `${page.title} — Simple CRM`;
@@ -49,6 +50,11 @@ wireScrollMotion(app);
 wireInteractiveComponents(app);
 wireScrollProgress();
 wireSectionNavigation(app);
+wireStablePageNavigation(app);
+
+requestAnimationFrame(() => {
+  document.documentElement.classList.add('is-page-ready');
+});
 
 function protectProductName(root) {
   [root, ...root.querySelectorAll('*')].forEach(element => {
@@ -105,6 +111,48 @@ function wireScrollReveals(root) {
     element.style.setProperty('--reveal-delay', `${delay}ms`);
     observer.observe(element);
   });
+}
+
+function wireStablePageNavigation(root) {
+  let navigationLocked = false;
+  let navigationTimer = 0;
+
+  const resetNavigationState = () => {
+    navigationLocked = false;
+    window.clearTimeout(navigationTimer);
+    document.documentElement.classList.remove('is-navigating');
+    document.documentElement.classList.add('is-page-ready');
+    root.removeAttribute('aria-busy');
+  };
+
+  window.addEventListener('pageshow', resetNavigationState);
+  window.addEventListener('pagehide', () => window.clearTimeout(navigationTimer));
+
+  root.addEventListener('click', event => {
+    if (event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+
+    const link = event.target.closest('a[href]');
+    if (!link || link.hasAttribute('download') || (link.target && link.target !== '_self')) return;
+
+    const target = new URL(link.href, window.location.href);
+    if (!['http:', 'https:'].includes(target.protocol) || target.origin !== window.location.origin) return;
+
+    const current = new URL(window.location.href);
+    const isSameDocument = target.pathname === current.pathname && target.search === current.search;
+    if (isSameDocument) return;
+
+    event.preventDefault();
+    if (navigationLocked) return;
+
+    navigationLocked = true;
+    root.setAttribute('aria-busy', 'true');
+    document.documentElement.classList.add('is-navigating');
+    document.documentElement.classList.remove('is-page-ready');
+
+    navigationTimer = window.setTimeout(() => {
+      window.location.assign(target.href);
+    }, window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 120);
+  }, { capture: true });
 }
 
 function wireScrollMotion(root) {
