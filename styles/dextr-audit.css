@@ -920,9 +920,9 @@ body[data-page='home'] .header-app-store {
   margin-top: 0;
   overflow: hidden;
   background:
-    radial-gradient(circle at 12% 18%, rgb(107 176 230 / 12%), transparent 30%),
-    radial-gradient(circle at 88% 34%, rgb(143 127 224 / 8%), transparent 27%),
-    #edf4f9;
+    radial-gradient(circle at 12% 18%, rgb(118 190 239 / 13%), transparent 31%),
+    radial-gradient(circle at 88% 34%, rgb(158 145 227 / 8%), transparent 28%),
+    #f0f8fd;
 }
 
 .home-hero + .home-features::before {
@@ -931,9 +931,10 @@ body[data-page='home'] .header-app-store {
 
 body {
   background:
-    radial-gradient(circle at 12% 24%, rgb(96 170 225 / 13%), transparent 29%),
-    radial-gradient(circle at 88% 42%, rgb(126 111 218 / 8%), transparent 28%),
-    linear-gradient(135deg, #edf4f9 0%, #e8f1f8 48%, #edf3f8 100%);
+    radial-gradient(circle at 11% 21%, rgb(115 189 239 / 14%), transparent 30%),
+    radial-gradient(circle at 89% 39%, rgb(155 141 224 / 8%), transparent 29%),
+    radial-gradient(circle at 48% 74%, rgb(255 255 255 / 78%), transparent 31%),
+    linear-gradient(135deg, #f5fbff 0%, #ebf6fc 47%, #f2f9fd 100%);
   background-attachment: fixed;
 }
 
@@ -987,14 +988,15 @@ body {
   .home-hero__visual {
     left: auto;
     margin-top: 0;
-    justify-items: center;
-    place-content: start center;
+    justify-items: end;
+    place-content: start end;
   }
 
   .home-hero__visual .hero-device--main,
   .home-hero__visual:hover .hero-device--main {
     width: min(100%, 292px);
     max-width: 292px;
+    margin-right: -12px;
   }
 
   .home-hero__visual::before {
@@ -1359,7 +1361,10 @@ body {
 .device-mockup--image:hover .device-mockup__frame,
 .device-mockup--image:focus-within .device-mockup__frame {
   overflow: hidden !important;
+  border: 5px solid #596779 !important;
   border-radius: 10.5% / 4.9% !important;
+  background: #596779 !important;
+  box-sizing: border-box;
   isolation: isolate;
 }
 
@@ -1371,5 +1376,7 @@ body {
   width: auto;
   max-width: 100%;
   aspect-ratio: 390 / 844;
+  border: 2px solid #596779;
   border-radius: 10.5% / 4.9%;
+  box-sizing: border-box;
 }
