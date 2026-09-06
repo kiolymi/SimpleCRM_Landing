@@ -46,7 +46,7 @@ export function createArticleLayout(slug) {
   const article = getArticleBySlug(slug);
   if (!article) return createNotFoundPage();
   const section = document.createElement('section');
-  section.className = 'article-page section';
+  section.className = 'article-page article-page--editorial';
   section.dataset.reveal = 'scale';
   section.setAttribute('aria-labelledby', 'article-title');
   const headings = article.content.filter(block => block.type === 'h2').map(block => ({ ...block, id: slugify(block.text) }));
@@ -55,7 +55,9 @@ export function createArticleLayout(slug) {
   const position = siblings.findIndex(item => item.slug === article.slug);
   const previous = siblings[position - 1];
   const next = siblings[position + 1];
-  section.innerHTML = `<div class="container article-layout article-layout--single"><article class="article-main"><header class="article-header"><p class="eyebrow">${escapeHtml(categoryMeta[article.category].title)}</p><h1 id="article-title">${escapeHtml(article.title)}</h1>${article.publishedAt ? `<p class="article-meta">${escapeHtml(article.publishedAt)}${article.author ? ` — ${escapeHtml(article.author)}` : ''}</p>` : ''}</header><div class="article-body"></div><nav class="article-pagination" aria-label="Навигация по материалам"></nav><section class="article-tags" aria-label="Теги материала"><span>Теги:</span>${article.tags.map(tag => `<span>${escapeHtml(tag)}</span>`).join('')}</section>${related.length ? '<section class="article-related-inline"><h2>Читайте также</h2><div></div></section>' : ''}</article></div>`;
+  section.innerHTML = `<div class="container editorial-layout"><article class="editorial-main"><header class="article-header"><p class="eyebrow">${escapeHtml(categoryMeta[article.category].title)}</p><h1 id="article-title">${escapeHtml(article.title)}</h1>${article.publishedAt ? `<p class="article-meta">${escapeHtml(article.publishedAt)}${article.author ? ` — ${escapeHtml(article.author)}` : ''}</p>` : ''}</header><div class="article-body"></div><nav class="article-pagination" aria-label="Навигация по материалам"></nav><section class="article-tags" aria-label="Теги материала"><span>Теги:</span>${article.tags.map(tag => `<span>${escapeHtml(tag)}</span>`).join('')}</section>${related.length ? '<section class="article-related-inline"><h2>Читайте также</h2><div></div></section>' : ''}</article><aside class="editorial-sidebar" aria-label="Навигация по статье"><details class="editorial-toc" open><summary>На этой странице</summary><nav aria-label="Оглавление">${headings.map(h => `<a href="#${escapeAttribute(h.id)}">${escapeHtml(h.text)}</a>`).join('')}</nav></details><div class="editorial-search"></div></aside></div>`;
+  section.querySelector('.editorial-search').append(createSearchForm());
+  if (window.matchMedia('(max-width: 900px)').matches) section.querySelector('.editorial-toc').open = false;
   const body = section.querySelector('.article-body');
   article.content.forEach(block => body.append(createArticleBlock(block)));
   const pagination = section.querySelector('.article-pagination');
