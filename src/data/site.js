@@ -18,6 +18,7 @@ export const primaryNavigation = [
   { label: 'О продукте', href: '/about/' },
   { label: 'Тарифы', href: '/pricing/' },
   { label: 'Вопросы', href: '/faq/' },
+  { label: 'Конфиденциальность', href: '/privacy/' },
   { label: 'Версии', href: '/releases/' },
   { label: 'Поддержка', href: '/support/' },
 ];

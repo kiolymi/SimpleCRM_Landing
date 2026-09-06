@@ -1,7 +1,7 @@
 import { createArticleCard } from './article-card.js?v=20260824-28';
 import { iconSvg } from './icons.js?v=20260824-28';
 import { createProductDeviceMockup } from './product-device-mockup.js';
-import { homeContent } from '../data/home.js?v=20260824-30';
+import { homeContent } from '../data/home.js?v=20260824-31';
 
 export function createHomePage() {
   const fragment = document.createDocumentFragment();
@@ -12,7 +12,7 @@ export function createHomePage() {
     createTestimonials(homeContent.testimonials),
     createProductPanorama(homeContent.panorama),
     createArticles(homeContent.articles),
-    createDemoForm(homeContent.demo),
+    createNewsletter(homeContent.newsletter),
   );
   return fragment;
 }
@@ -31,10 +31,10 @@ function createHero(hero) {
     </div>
     <div class="container home-hero__grid">
       <div class="home-hero__copy" data-reveal="slide-left">
-        <p class="home-hero__kicker"><span></span>CRM для тех, кто работает с людьми</p>
+        <a class="home-hero__kicker" href="/releases/"><span></span>Обновления Simple CRM <i></i> Последний релиз ${iconSvg('arrow-right')}</a>
         <h1 id="page-title">${title}</h1>
         <p class="home-hero__lead">${escapeHtml(hero.lead)}</p>
-        <p class="home-hero__intro">Simple CRM — единое рабочее пространство для современной команды: клиенты, встречи и следующие шаги всегда остаются рядом.</p>
+        <p class="home-hero__intro">Познакомьтесь с Simple CRM — переосмысленным приложением для современных отношений с клиентами.</p>
         <a class="app-store-badge" href="https://apps.apple.com/" target="_blank" rel="noopener noreferrer" aria-label="Скачать Simple CRM с App Store">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15.4 3.2c-.9.1-2 .7-2.6 1.4-.6.7-1.1 1.8-.9 2.8 1 .1 2-.5 2.6-1.2.6-.8 1-1.8.9-3Zm3.4 9.1c0-2.5 2-3.7 2.1-3.8-1.1-1.7-2.9-1.9-3.6-1.9-1.5-.2-3 .9-3.8.9-.8 0-2-.9-3.3-.9-1.7 0-3.3 1-4.2 2.6-1.8 3.1-.5 7.7 1.3 10.2.9 1.2 1.9 2.6 3.3 2.6 1.3-.1 1.8-.8 3.4-.8s2 .8 3.4.8c1.4 0 2.3-1.3 3.1-2.5 1.1-1.6 1.6-3.2 1.6-3.3-.1 0-3.1-1.2-3.1-4.7Z" /></svg>
           <span><small>Скачайте с</small><strong>App Store</strong></span>
@@ -56,7 +56,7 @@ function createFeatureGrid(features) {
   section.id = 'features';
   section.className = 'section home-features';
   section.setAttribute('aria-labelledby', 'features-title');
-  section.innerHTML = `<div class="container"><div class="section-heading section-heading--center" data-reveal><h2 id="features-title">Вся история клиента&nbsp;—<br />в одном месте</h2><p>От первого сообщения до оплаты: встречи, задачи и документы остаются в единой рабочей истории.</p></div><div class="feature-grid"></div></div>`;
+  section.innerHTML = `<div class="container"><div class="section-heading section-heading--center" data-reveal><h2 id="features-title">Помните каждую деталь</h2><p>Simple CRM помогает помнить всё важное о клиентах: маленькие детали, историю встреч, документы, задачи и общий контекст отношений.</p></div><div class="feature-grid"></div></div>`;
   const grid = section.querySelector('.feature-grid');
   features.forEach((feature, index) => grid.append(createFeatureCard(feature, index)));
   return section;
@@ -177,9 +177,32 @@ function createArticles(articles) {
   section.id = 'materials';
   section.className = 'section home-articles';
   section.setAttribute('aria-labelledby', 'articles-title');
-  section.innerHTML = `<div class="container"><div class="section-heading section-heading--center" data-reveal><p class="eyebrow">Материалы</p><h2 id="articles-title">Практика работы с клиентами</h2><p>Как подготовить встречу, зафиксировать договорённость и не потерять <span class="text-nowrap">продолжение разговора</span>.</p></div><div class="article-grid"></div><p class="home-articles__more"><a class="button button--outline" href="/learn/">Все материалы ${iconSvg('arrow-right')}</a></p></div>`;
+  section.innerHTML = `<div class="container"><div class="section-heading section-heading--center" data-reveal><p class="eyebrow">Свежие статьи</p><h2 id="articles-title">Практика работы с клиентами</h2><p>Как подготовить встречу, зафиксировать договорённость и не потерять <span class="text-nowrap">продолжение разговора</span>.</p></div><div class="article-grid"></div><p class="home-articles__more"><a class="button button--outline" href="/learn/">Читать материалы ${iconSvg('arrow-right')}</a></p></div>`;
   const grid = section.querySelector('.article-grid');
   articles.forEach(article => { const card = createArticleCard(article); card.dataset.reveal = 'scale'; grid.append(card); });
+  return section;
+}
+
+function createNewsletter(newsletter) {
+  const section = document.createElement('section');
+  section.id = 'updates';
+  section.className = 'section newsletter-section';
+  section.setAttribute('aria-labelledby', 'newsletter-title');
+  section.innerHTML = `
+    <div class="container">
+      <form class="newsletter-card" data-newsletter-form data-reveal="scale" novalidate>
+        <div>
+          <h2 id="newsletter-title">${escapeHtml(newsletter.title)}</h2>
+          <p>${escapeHtml(newsletter.copy)}</p>
+        </div>
+        <label>
+          <span>Email</span>
+          <input name="email" type="email" autocomplete="email" placeholder="you@company.ru" required />
+        </label>
+        <button class="button button--primary" type="submit">Подписаться ${iconSvg('arrow-right')}</button>
+        <p class="form-status" data-form-status aria-live="polite"></p>
+      </form>
+    </div>`;
   return section;
 }
 

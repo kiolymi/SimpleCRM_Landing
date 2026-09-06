@@ -1,7 +1,7 @@
-import { createSiteShell } from './components/site-shell.js?v=20260824-29';
-import { createHomePage } from './components/home-sections.js?v=20260824-32';
+import { createSiteShell } from './components/site-shell.js?v=20260824-30';
+import { createHomePage } from './components/home-sections.js?v=20260824-33';
 import { createAboutPage, createArticleLayout, createContentHubPage, createFaqPage, createPricingPage, createPrivacyPage, createReleasesPage, createSearchPage, createSupportPage } from './components/content-pages.js?v=20260824-33';
-import { pageMeta } from './data/site.js?v=20260824-29';
+import { pageMeta } from './data/site.js?v=20260824-30';
 import { createProductDeviceMockup } from './components/product-device-mockup.js';
 
 const pageKey = document.body.dataset.page || 'home';
@@ -500,6 +500,28 @@ function wireWorkflow(root) {
 }
 
 function wireForms(root) {
+  root.querySelectorAll('[data-newsletter-form]').forEach(form => {
+    form.addEventListener('submit', event => {
+      event.preventDefault();
+      const status = form.querySelector('[data-form-status]');
+      const invalid = [...form.elements].find(field => typeof field.checkValidity === 'function' && !field.checkValidity());
+      form.querySelectorAll('.is-invalid').forEach(field => field.classList.remove('is-invalid'));
+      if (invalid) {
+        invalid.classList.add('is-invalid');
+        invalid.focus();
+        status.textContent = 'Введите рабочую почту — отправим только новости о продукте.';
+        status.className = 'form-status is-error';
+        return;
+      }
+      const button = form.querySelector('button[type="submit"]');
+      button.disabled = true;
+      button.textContent = 'Вы подписаны';
+      status.textContent = 'Готово! Будем присылать важные обновления Simple CRM.';
+      status.className = 'form-status is-success';
+      form.classList.add('is-sent');
+    });
+  });
+
   root.querySelectorAll('[data-demo-form]').forEach(form => {
     form.addEventListener('submit', event => {
       event.preventDefault();
