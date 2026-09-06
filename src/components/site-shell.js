@@ -1,4 +1,4 @@
-import { primaryNavigation, resourceNavigation, siteConfig } from '../data/site.js?v=20260824-30';
+import { primaryNavigation, resourceNavigation, siteConfig } from '../data/site.js?v=20260906-30';
 import { iconSvg } from './icons.js?v=20260824-28';
 import { createSearchForm } from './search-form.js';
 

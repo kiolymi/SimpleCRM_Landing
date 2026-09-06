@@ -11,7 +11,7 @@ export const siteConfig = {
     linkLabel: 'Что нового',
     href: '/releases/',
   },
-  primaryCta: { label: 'Попробовать бесплатно', href: '/#demo' },
+  primaryCta: { label: 'Обсудить запуск', href: '/support/' },
 };
 
 export const primaryNavigation = [
