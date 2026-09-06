@@ -1684,3 +1684,45 @@ body:is([data-page="about"],[data-page="pricing"],[data-page="support"]) .header
 .button.button--primary { background-color: #086acb; }
 .button.button--primary:hover { background-color: #075bb0; }
 .pricing-page--dextr .pricing-plan .button { background: #a6c9e1; color: #102235; }
+
+/* Keep the desktop composition within the same reading width as the reference. */
+@media (min-width: 1024px) {
+  .home-hero > .container.home-hero__grid {
+    width: min(calc(100% - 96px), 1216px);
+    grid-template-columns: minmax(0, 1.7fr) minmax(300px, 1fr);
+    gap: 64px;
+  }
+  .home-hero .home-hero__visual { justify-self: center; }
+  .home-hero .hero-device--main { max-width: 336px; }
+}
+.newsletter-section > .container { max-width: 1216px; }
+.newsletter-section .newsletter-card {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 290px) 150px minmax(0, 1fr);
+  justify-content: center;
+  align-content: center;
+  gap: 20px 16px;
+  max-width: none;
+  min-height: 440px;
+  padding: 64px 32px;
+  border: 1px solid #303d51;
+  border-radius: 24px;
+  background: radial-gradient(ellipse at 50% 120%, #203e59 0, transparent 58%), #10192d;
+  text-align: center;
+}
+.newsletter-section .newsletter-card > div,
+.newsletter-section .newsletter-card > .form-status { grid-column: 1 / -1; }
+.newsletter-section .newsletter-card > div { width: 100%; max-width: 850px; margin: 0 auto 12px; }
+.newsletter-section .newsletter-card h2 { font-size: clamp(28px, 3.4vw, 44px); }
+.newsletter-section .newsletter-card p { max-width: 640px; margin-inline: auto; }
+.newsletter-section .newsletter-card label { grid-column: 2; position: relative; margin: 0; }
+.newsletter-section .newsletter-card label > span { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+.newsletter-section .newsletter-card input { height: 46px; border-radius: 6px; font-weight: 400; }
+.newsletter-section .newsletter-card input::placeholder { color: #aebdd0; }
+.newsletter-section .newsletter-card .button { grid-column: 3; min-width: 150px; min-height: 46px; border-radius: 6px; box-shadow: none; }
+.newsletter-section .newsletter-card .form-status:empty { display: none; }
+@media (max-width: 600px) {
+  .newsletter-section .newsletter-card { grid-template-columns: minmax(0, 1fr); min-height: 0; padding: 40px 20px; }
+  .newsletter-section .newsletter-card .button { width: 100%; }
+  .newsletter-section .newsletter-card label, .newsletter-section .newsletter-card .button { grid-column: 1; }
+}
