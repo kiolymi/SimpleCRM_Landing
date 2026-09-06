@@ -137,6 +137,11 @@ function wireScrollReveals(root) {
 }
 
 function prepareRevealSequences(root) {
+  // Long reading pages reveal individual blocks, not one oversized container.
+  root.querySelectorAll('.article-header, .article-body > *, .article-pagination, .article-related-inline, .document-header, .document-body > section').forEach(element => {
+    if (!element.hasAttribute('data-reveal')) element.dataset.reveal = 'rise';
+    element.dataset.delay = '0';
+  });
   const groupSelectors = [
     '.feature-grid',
     '.testimonials-grid',
