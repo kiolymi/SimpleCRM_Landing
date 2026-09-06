@@ -1686,6 +1686,26 @@ body:is([data-page="about"],[data-page="pricing"],[data-page="support"]) .header
 .pricing-page--dextr .pricing-plan .button { background: #a6c9e1; color: #102235; }
 
 /* Keep the desktop composition within the same reading width as the reference. */
+.releases-page--dextr-notes .releases-layout {
+  width: min(calc(100% - 64px), 1120px);
+  gap: 48px;
+  padding-top: 48px;
+  grid-template-columns: minmax(0, 1fr) 260px;
+}
+.releases-page--dextr-notes .releases-header h1 {
+  font-size: clamp(32px, 4vw, 48px);
+  line-height: 1.15;
+  letter-spacing: -.025em;
+  margin-bottom: 48px;
+}
+@media (max-width: 1023px) {
+  .releases-page--dextr-notes .releases-layout {
+    width: calc(100% - 48px);
+    grid-template-columns: minmax(0, 1fr);
+    padding-top: 32px;
+    gap: 28px;
+  }
+}
 .site-main .support-newsletter { padding-block: 64px; }
 .site-main .support-newsletter .newsletter-card { padding-block: 24px; }
 .site-main .support-newsletter .newsletter-card h2 {
