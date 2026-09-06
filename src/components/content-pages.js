@@ -377,85 +377,119 @@ export function createPrivacyPage() {
       id: 'data-we-do-not-collect',
       title: '1. Какие данные мы не собираем',
       paragraphs: [
-        'Simple CRM не продаёт клиентские базы, не использует содержимое карточек для рекламы и не передаёт рабочую переписку сторонним рекламным платформам.',
-        'Мы не запрашиваем доступ к личным контактам устройства, если вы не запускаете импорт самостоятельно.',
+        'Simple CRM не передаёт личную информацию клиентов, содержимое карточек, переписку, документы или другие рабочие материалы рекламным платформам, аналитическим сервисам или сторонним поставщикам, которым эти данные не нужны для работы продукта.',
+        'Мы не используем клиентскую базу для рекламы и не запрашиваем доступ к контактам устройства без действия пользователя.',
       ],
     },
     {
       id: 'data-we-collect',
       title: '2. Какие данные нужны сервису',
-      paragraphs: ['Для работы аккаунта мы храним имя, рабочую почту, настройки команды, созданные вами записи и технические события, необходимые для стабильности сервиса.'],
-      items: ['Данные профиля и состава команды', 'Клиенты, встречи, задачи, сообщения, документы и счета, которые вы добавляете', 'Технические журналы входа, ошибок и производительности'],
+      paragraphs: ['Simple CRM собирает ограниченные данные, необходимые для работы сервиса, поддержки команды, диагностики ошибок и понимания того, какие функции помогают пользователям.'],
+      items: ['Данные аккаунта: имя, рабочая почта, компания и состав команды', 'Рабочие записи, которые вы создаёте: клиенты, встречи, задачи, сообщения, документы и счета', 'Технические события: версия приложения, тип устройства, ошибки, скорость загрузки и состояние разрешений', 'Информация о подписке: тариф, статус оплаты, дата покупки и регион магазина приложений, если оплата подключена'],
     },
     {
       id: 'how-we-use-data',
       title: '3. Как используются данные',
-      paragraphs: ['Данные используются только для предоставления функций Simple CRM: синхронизации, совместной работы, уведомлений, поддержки и улучшения качества продукта.'],
+      paragraphs: ['Мы используем данные, чтобы предоставлять функции Simple CRM, синхронизировать рабочее пространство, показывать встречи и задачи, помогать службе поддержки, улучшать стабильность и развивать продукт.'],
+      items: ['Поддерживать работу приложения и аккаунта', 'Понимать использование функций и качество интерфейса', 'Диагностировать ошибки, сбои и проблемы производительности', 'Обрабатывать подписки, платежи и доступ к Pro-возможностям', 'Отвечать на обращения поддержки'],
     },
     {
-      id: 'storage-security',
-      title: '4. Хранение и безопасность',
-      paragraphs: ['Передача данных защищена шифрованием. Доступ сотрудников ограничен ролями и предоставляется только для решения обращений или обеспечения работы сервиса.', 'Резервные копии создаются регулярно и хранятся отдельно от основной рабочей среды.'],
+      id: 'data-sharing',
+      title: '4. Передача данных',
+      paragraphs: ['Мы не продаём и не сдаём в аренду персональную информацию. Ограниченные данные могут передаваться сервисным поставщикам, которые помогают нам поддерживать работу Simple CRM: аналитика продукта, диагностика, хостинг, почтовые уведомления и платёжная инфраструктура.', 'Мы также можем раскрыть информацию, если этого требует закон, судебный процесс или защита прав, безопасности и надёжности Simple CRM, наших пользователей или других лиц.'],
+    },
+    {
+      id: 'consent-permissions',
+      title: '5. Согласия и разрешения',
+      paragraphs: ['Если функция требует доступ к контактам, уведомлениям, файлам или другим системным возможностям, вы предоставляете или отклоняете доступ через системные настройки устройства или браузера.', 'Вы можете изменить разрешения в настройках устройства, браузера или рабочего пространства Simple CRM.'],
     },
     {
       id: 'team-access',
-      title: '5. Доступ внутри команды',
-      paragraphs: ['Владелец рабочего пространства управляет сотрудниками и ролями. Пользователи видят только те разделы и данные, которые доступны их роли.'],
+      title: '6. Права пользователя и контроль',
+      paragraphs: ['Вы можете управлять данными внутри Simple CRM: добавлять, исправлять, экспортировать и удалять записи, если это разрешено вашей ролью. Владелец рабочего пространства управляет составом команды и доступами сотрудников.', 'Подпиской можно управлять через выбранный способ оплаты или магазин приложений, если оплата оформлена через него.'],
+    },
+    {
+      id: 'data-security',
+      title: '7. Безопасность данных',
+      paragraphs: ['Мы используем разумные технические и организационные меры защиты: шифрование передачи данных, разграничение доступа, контроль ролей и ограниченный доступ сотрудников к рабочей информации.', 'Доступ к данным предоставляется только тогда, когда это необходимо для работы сервиса, диагностики проблемы или ответа на обращение.'],
     },
     {
       id: 'retention',
-      title: '6. Срок хранения',
-      paragraphs: ['Данные хранятся, пока активен аккаунт. После запроса на удаление рабочее пространство блокируется, а данные удаляются из активных систем и резервных копий в пределах установленного технического срока.'],
+      title: '8. Срок хранения',
+      paragraphs: ['Мы храним данные столько, сколько это разумно необходимо для предоставления сервиса, поддержки аккаунта, анализа производительности, обработки подписок, выполнения юридических обязанностей и разрешения споров.', 'Рабочий контент остаётся под контролем владельца пространства и может быть удалён по запросу в пределах технически необходимого срока.'],
     },
     {
-      id: 'user-rights',
-      title: '7. Ваши права',
-      paragraphs: ['Вы можете запросить копию данных, исправление информации, перенос или удаление аккаунта. Для подтверждения запроса мы используем рабочую почту владельца пространства.'],
+      id: 'international-transfers',
+      title: '9. Международная обработка',
+      paragraphs: ['Simple CRM и наши сервисные поставщики могут обрабатывать информацию на серверах, расположенных за пределами вашей страны. В таких случаях мы используем договорные, технические и организационные меры защиты данных.'],
+    },
+    {
+      id: 'changes',
+      title: '10. Изменения политики',
+      paragraphs: ['Мы можем время от времени обновлять эту политику. Если изменения будут существенными, мы опубликуем обновлённую версию на сайте или внутри продукта и изменим дату последнего обновления.'],
     },
     {
       id: 'contact-us',
-      title: '8. Как связаться с нами',
-      paragraphs: ['По вопросам обработки данных отправьте обращение через страницу поддержки. Мы подтвердим получение запроса и сообщим о дальнейших действиях.'],
+      title: '11. Как связаться с нами',
+      paragraphs: ['Если у вас есть вопросы о конфиденциальности, аналитике, подписках или удалении данных, напишите нам через страницу поддержки. Мы подтвердим получение запроса и сообщим дальнейшие шаги.'],
     },
   ];
   const section = document.createElement('section');
-  section.className = 'inner-page section document-page privacy-page';
+  section.className = 'inner-page section document-page document-page--dextr privacy-page';
   section.dataset.reveal = 'scale';
   section.setAttribute('aria-labelledby', 'privacy-title');
-  section.innerHTML = `<div class="container document-layout"><article class="document-main"><header class="document-header"><h1 id="privacy-title">Политика конфиденциальности</h1></header><div class="document-body">${chapters.map(chapter => `<section id="${escapeAttribute(chapter.id)}"><h2>${escapeHtml(chapter.title)}</h2>${chapter.paragraphs.map(paragraph => `<p>${escapeHtml(paragraph)}</p>`).join('')}${chapter.items ? `<ul>${chapter.items.map(item => `<li>${escapeHtml(item)}</li>`).join('')}</ul>` : ''}</section>`).join('')}</div></article><aside class="document-sidebar"><div class="document-toc"><p>На этой странице</p><nav aria-label="Оглавление политики"><ol>${chapters.map(chapter => `<li><a href="#${escapeAttribute(chapter.id)}">${escapeHtml(chapter.title.replace(/^\d+\.\s*/, ''))}</a></li>`).join('')}</ol></nav></div><a class="button button--outline document-sidebar__cta" href="/support/">Задать вопрос</a></aside></div>`;
+  section.innerHTML = `<div class="container document-single"><article class="document-main"><header class="document-header"><h1 id="privacy-title">Политика конфиденциальности</h1><p class="document-updated">Последнее обновление: 29 мая 2026</p><p class="document-lead">Ваша приватность важна для нас. Эта политика простым языком объясняет, какие данные Simple CRM собирает и не собирает, как мы их используем и когда они могут быть переданы сервисным поставщикам.</p></header><div class="document-body">${chapters.map(chapter => `<section id="${escapeAttribute(chapter.id)}"><h2>${escapeHtml(chapter.title)}</h2>${chapter.paragraphs.map(paragraph => `<p>${escapeHtml(paragraph)}</p>`).join('')}${chapter.items ? `<ul>${chapter.items.map(item => `<li>${escapeHtml(item)}</li>`).join('')}</ul>` : ''}</section>`).join('')}</div></article></div><section class="support-newsletter section" aria-labelledby="privacy-newsletter-title"><div class="container"><form class="newsletter-card" data-newsletter-form data-reveal="scale" novalidate><div><p class="eyebrow">Newsletter Signup</p><h2 id="privacy-newsletter-title">Получайте новости о новых возможностях</h2><p>Подпишитесь, чтобы узнавать о релизах Simple CRM и важных изменениях продукта.</p></div><label><span class="visually-hidden">Email</span><input name="email" type="email" autocomplete="email" placeholder="Получать обновления" required /></label><button class="button button--primary" type="submit">Подписаться</button><p class="form-status" data-form-status aria-live="polite"></p></form></div></section>`;
   return section;
 }
 
 export function createReleasesPage() {
   const releases = [
     {
-      version: '1.4.0', date: '21 августа 2026', label: 'Актуальная версия',
+      version: '2.2.3', date: '14 апреля 2026', label: 'Актуальная версия',
       groups: [
-        ['Новое', ['Доска задач с колонками «Новые», «В работе» и «Готово»', 'Единая хронология встреч, задач, сообщений, документов и оплат в карточке клиента', 'Быстрые действия из Client 360: сообщение, встреча и задача']],
-        ['Улучшения', ['Более заметные статусы просроченных задач', 'Ускоренная загрузка карточек клиентов с длинной историей']],
+        ['Новое', ['Добавили массовую привязку клиентов к месту встречи, офису или выбранной локации прямо из экрана деталей.']],
       ],
     },
     {
-      version: '1.3.0', date: '9 августа 2026',
+      version: '2.2.0', date: '9 апреля 2026',
       groups: [
-        ['Новое', ['Фильтры задач по сроку, приоритету и исполнителю', 'Предпросмотр документов и счетов внутри карточки клиента']],
-        ['Исправления', ['Стабильная отправка сообщений при медленном соединении', 'Корректное сохранение часового пояса встречи']],
+        ['Новое', ['Обновили главный экран со статистикой: встречи, задачи, клиенты, документы и оплаты теперь видны быстрее.', 'Добавили компактный блок быстрых действий для создания клиента, встречи, задачи и сообщения.', 'Раздел задач стал плотнее и показывает общий прогресс по договорённостям.']],
+        ['Изменения', ['Заголовки разделов стали ближе к iOS-паттернам и лучше читаются на светлом фоне.']],
       ],
     },
     {
-      version: '1.2.2', date: '30 июля 2026',
-      groups: [['Улучшения', ['Быстрее открывается календарь команды', 'Состояние фильтров сохраняется между рабочими сессиями']], ['Исправления', ['Исправлено дублирование уведомлений о встрече']]],
+      version: '2.1.0', date: '1 апреля 2026',
+      groups: [
+        ['Новое', ['Даты клиента теперь можно редактировать из карточки и видеть рядом с расписанием.', 'Напоминания по важным датам можно быстро создать из карточки клиента.']],
+        ['Улучшения', ['Встречу можно завершить вручную из меню действий.', 'Действия на главном экране стали быстрее и понятнее.']],
+      ],
     },
     {
-      version: '1.2.0', date: '14 июля 2026',
-      groups: [['Новое', ['Роли сотрудников и разграничение разделов', 'Командная аналитика по встречам и задачам', 'Импорт клиентской базы из таблицы']]],
+      version: '2.0.4', date: '26 марта 2026',
+      groups: [
+        ['Улучшения', ['Настройки синхронизации теперь показывают подсказки, если часть клиентов не была импортирована из-за неполных данных.', 'Поиск стал возвращать более релевантные результаты и лучше работает с длинной клиентской базой.']],
+      ],
+    },
+    {
+      version: '2.0.1', date: '8 марта 2026',
+      groups: [
+        ['Новое', ['Добавили быстрый просмотр материалов и документов, связанных с клиентом, прямо из карточки.', 'При открытии документа сохраняется связь с клиентом и задачей, чтобы команда не теряла контекст.']],
+        ['Примечание', ['Simple CRM может запросить доступ к файлам только после вашего действия и не читает документы без необходимости.']],
+      ],
+    },
+    {
+      version: '2.0.0', date: '6 марта 2026',
+      groups: [
+        ['Новое', ['Обновили рабочую модель Simple CRM: клиенты, встречи, задачи, сообщения и документы теперь собираются в одну связанную историю.', 'Добавили большой экран для ежедневной работы с клиентами и быстрых действий.', 'Сделали удобнее работу с событиями, локациями и следующим шагом после встречи.']],
+        ['Доступность', ['Возможности постепенно открываются всем командам; часть функций может требовать Pro-доступ.']],
+      ],
     },
   ];
   const section = document.createElement('section');
-  section.className = 'inner-page section document-page releases-page';
+  section.className = 'inner-page section document-page document-page--dextr releases-page releases-page--notes';
   section.dataset.reveal = 'scale';
   section.setAttribute('aria-labelledby', 'releases-title');
-  section.innerHTML = `<div class="container document-layout"><article class="document-main"><header class="document-header"><p class="eyebrow">Развитие продукта</p><h1 id="releases-title">История версий Simple CRM</h1><p class="document-lead">Публикуем все заметные изменения продукта — новые возможности, улучшения интерфейса и исправления.</p></header><div class="release-list">${releases.map((release, index) => `<section class="release-entry" id="release-${escapeAttribute(release.version.replaceAll('.', '-'))}"><div class="release-entry__heading"><div><h2>${escapeHtml(release.version)}</h2><p>${escapeHtml(release.date)}</p></div>${release.label ? `<span>${escapeHtml(release.label)}</span>` : ''}</div>${release.groups.map(([title, items]) => `<section class="release-group"><h3>${escapeHtml(title)}</h3><ul>${items.map(item => `<li>${iconSvg('check')}<span>${escapeHtml(item)}</span></li>`).join('')}</ul></section>`).join('')}${index === 0 ? '<p><a class="text-link" href="/announcements/">Подробнее об обновлениях ' + iconSvg('arrow-right') + '</a></p>' : ''}</section>`).join('')}</div></article><aside class="document-sidebar"><div class="document-toc"><p>Версии</p><nav aria-label="Навигация по версиям"><ol>${releases.map(release => `<li><a href="#release-${escapeAttribute(release.version.replaceAll('.', '-'))}">${escapeHtml(release.version)} <span>${escapeHtml(release.date)}</span></a></li>`).join('')}</ol></nav></div><a class="button button--outline document-sidebar__cta" href="/support/">Сообщить о проблеме</a></aside></div>`;
+  section.innerHTML = `<div class="container document-single"><article class="document-main"><header class="document-header"><p class="eyebrow">Release Notes</p><h1 id="releases-title">Заметки о релизах Simple CRM</h1><p class="document-lead">Следите за обновлениями Simple CRM: новые возможности, улучшения интерфейса, исправления и изменения, которые помогают лучше помнить клиентов.</p></header><div class="release-list">${releases.map((release, index) => `<section class="release-entry" id="release-${escapeAttribute(release.version.replaceAll('.', '-'))}" data-reveal="slide-up"><div class="release-entry__heading"><div><h2>${escapeHtml(release.version)}</h2><p>${escapeHtml(release.date)}</p></div>${release.label ? `<span>${escapeHtml(release.label)}</span>` : ''}</div>${release.groups.map(([title, items]) => `<section class="release-group"><h3>${escapeHtml(title)}</h3><ul>${items.map(item => `<li>${iconSvg('check')}<span>${escapeHtml(item)}</span></li>`).join('')}</ul></section>`).join('')}${index === 0 ? '<p><a class="text-link" href="/announcements/">Открыть объявления ' + iconSvg('arrow-right') + '</a></p>' : ''}</section>`).join('')}</div></article></div><section class="support-newsletter section" aria-labelledby="releases-newsletter-title"><div class="container"><form class="newsletter-card" data-newsletter-form data-reveal="scale" novalidate><div><p class="eyebrow">Newsletter Signup</p><h2 id="releases-newsletter-title">Получайте новости о новых возможностях</h2><p>Подпишитесь, чтобы узнавать о новых релизах Simple CRM сразу после публикации.</p></div><label><span class="visually-hidden">Email</span><input name="email" type="email" autocomplete="email" placeholder="Получать обновления" required /></label><button class="button button--primary" type="submit">Подписаться</button><p class="form-status" data-form-status aria-live="polite"></p></form></div></section>`;
   return section;
 }
 
