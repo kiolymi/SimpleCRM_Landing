@@ -935,16 +935,16 @@ body[data-page='home'] .header-app-store {
   display: none;
 }
 
-/* Feature gallery continues the hero canvas without a contrasting seam. */
+/* Light product gallery keeps the supplied interface screenshots prominent. */
 .home-hero + .home-features {
-  background: #071426;
-  color: #e8eef5;
+  background: radial-gradient(ellipse at 15% 20%, #dcecf9, transparent 48%), linear-gradient(135deg, #f3f8fc, #eaf3fb 65%, #f1f6fb);
+  color: #172d47;
 }
 .home-features .section-heading h2,
-.home-features .feature-card h3 { color: #f2f5fa; }
+.home-features .feature-card h3 { color: #172d47; }
 .home-features .section-heading p,
-.home-features .feature-card p { color: #c4cfdd; }
-.home-features .feature-card__symbol { color: #a6c9e1; }
+.home-features .feature-card p { color: #4a6078; }
+.home-features .feature-card__symbol { color: #245b87; }
 
 body {
   background:
@@ -1685,7 +1685,7 @@ body:is([data-page="about"],[data-page="pricing"],[data-page="support"]) .header
 .support-page--contact .support-message > summary { color: #245b87; }
 
 /* Explicit surface contrast; legacy component colors must not cross themes. */
-.home-features .feature-card .feature-card__description { color: #c4cfdd; }
+.home-features .feature-card .feature-card__description { color: #4a6078; }
 .search-page .inner-page-header p,.search-page .article-card .article-card__body p,.search-page .empty-state p { color: #c4cfdd; }
 .pricing-page--dextr .pricing-pledge__card p:not(.eyebrow) { color: #4a5f77; }
 .support-page--contact .support-message > details > summary { color: #245b87; }
