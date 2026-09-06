@@ -1,6 +1,6 @@
 import { createSiteShell } from './components/site-shell.js?v=20260906-16';
 import { createHomePage } from './components/home-sections.js?v=20260906-28';
-import { createAboutPage, createArticleLayout, createContentHubPage, createFaqPage, createPricingPage, createPrivacyPage, createReleasesPage, createSearchPage, createSupportPage } from './components/content-pages.js?v=20260906-28';
+import { createAboutPage, createArticleLayout, createContentHubPage, createFaqPage, createPricingPage, createPrivacyPage, createReleasesPage, createSearchPage, createSupportPage } from './components/content-pages.js?v=20260906-29';
 import { pageMeta } from './data/site.js?v=20260824-30';
 import { createProductDeviceMockup } from './components/product-device-mockup.js?v=20260906-1';
 
@@ -203,7 +203,6 @@ function prepareRevealSequences(root) {
     '.pricing-questions__list',
     '.about-journey',
     '.faq-list',
-    '.pricing-page__cards',
   ];
 
   root.querySelectorAll(groupSelectors.join(',')).forEach(group => {
@@ -221,6 +220,16 @@ function prepareRevealSequences(root) {
     [...card.children].forEach(element => {
       element.dataset.reveal = 'rise';
       element.dataset.delay = String((index % 3) * 120);
+    });
+  });
+
+  // Reveal long pricing lists where they enter the viewport, not off-screen
+  // when the top of the card first becomes visible.
+  root.querySelectorAll('.pricing-plan').forEach((card, index) => {
+    card.removeAttribute('data-reveal');
+    card.querySelectorAll(':scope > :not(.pricing-plan__timeline):not(.pricing-plan__badge), .pricing-plan__timeline > div').forEach(element => {
+      element.dataset.reveal = 'rise';
+      element.dataset.delay = String(index * 100);
     });
   });
 }

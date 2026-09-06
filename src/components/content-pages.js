@@ -137,6 +137,7 @@ export function createPricingPage() {
           <div class="pricing-plan__timeline">
             ${plan.features.map(([label, text]) => `<div><span>${iconSvg('check')}</span><p><strong>${escapeHtml(label)}</strong>${escapeHtml(text)}</p></div>`).join('')}
           </div>
+          <a class="button pricing-plan__bottom-action ${plan.featured ? 'button--primary' : 'button--outline'}" href="/support/" aria-label="${escapeAttribute(plan.cta)} — тариф ${escapeAttribute(plan.name)}">${escapeHtml(plan.cta)}</a>
         </article>
       `).join('')}
     </div>
