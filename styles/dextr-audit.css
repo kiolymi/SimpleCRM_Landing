@@ -1715,6 +1715,19 @@ body:is([data-page="article"],[data-page="learn"],[data-page="how-to"],[data-pag
 .article-page--editorial .editorial-search .search-form :is(input,button),.content-hub--archive .search-form :is(input,button) { color: #245b87; }
 .article-page--editorial .editorial-search .search-form input::placeholder,.content-hub--archive :is(.search-form input,.archive-newsletter input)::placeholder { color: #536b83; }
 
+/* Dialog colors are isolated from the page header theme. */
+body[data-page] .site-header .mobile-menu { background: #edf4fa; color: #172d47; }
+body[data-page] .site-header .mobile-menu :is(.brand,.brand > span,.icon-button),
+body[data-page] .mobile-menu .mobile-menu__nav a { color: #172d47; }
+body[data-page] .mobile-menu .mobile-menu__resources p { color: #526b83; }
+body[data-page] .mobile-menu .mobile-menu__nav a.is-current { color: #0865bb; }
+body[data-page] .mobile-menu .mobile-menu__resources { border-color: #c5d5e4; }
+body[data-page] .mobile-menu .mobile-menu__cta { color: #fff; }
+.mobile-menu__search { margin-top: 24px; }
+.mobile-menu__search .search-form { min-height: 48px; padding: 4px 8px 4px 14px; border: 1px solid #c5d5e4; border-radius: 24px; background: #fafdff; box-shadow: none; }
+.mobile-menu__search .search-form input { min-width: 0; color: #172d47; background: transparent; }
+.mobile-menu__search .search-form input::placeholder { color: #526b83; }
+
 /* Soft, non-interactive background motion stays behind the reading surface. */
 .page-ambient-host { position: relative; isolation: isolate; }
 .page-ambient {

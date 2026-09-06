@@ -1,5 +1,6 @@
 import { primaryNavigation, resourceNavigation, siteConfig } from '../data/site.js?v=20260824-30';
 import { iconSvg } from './icons.js?v=20260824-28';
+import { createSearchForm } from './search-form.js';
 
 export function createSiteShell(mainContent) {
   const shell = document.createElement('div');
@@ -54,6 +55,7 @@ function createMobileMenu() {
   dialog.innerHTML = `
     <div class="mobile-menu__inner">
       <div class="mobile-menu__top">${brandMarkup()}<button class="icon-button" type="button" aria-label="Закрыть меню">${iconSvg('x')}</button></div>
+      <div class="mobile-menu__search"></div>
       <nav class="mobile-menu__nav" aria-label="Мобильная навигация">
         <div class="mobile-menu__resources"><p>Материалы</p>${resourceNavigation.map(navLinkMarkup).join('')}<a href="/search/">Поиск по материалам</a></div>
         ${primaryNavigation.map(navLinkMarkup).join('')}
@@ -61,6 +63,10 @@ function createMobileMenu() {
       <a class="button button--primary mobile-menu__cta" href="${siteConfig.primaryCta.href}">${siteConfig.primaryCta.label}</a>
     </div>
   `;
+  const search = createSearchForm();
+  search.querySelector('input').id = 'mobile-site-search';
+  search.querySelector('label').htmlFor = 'mobile-site-search';
+  dialog.querySelector('.mobile-menu__search').append(search);
   return dialog;
 }
 
@@ -109,15 +115,19 @@ function wireMobileMenu(header, dialog) {
     dialog.classList.remove('is-visible');
     dialog.classList.add('is-closing');
     let finished = false;
+    let timeout;
     const finish = () => {
       if (finished) return;
       finished = true;
+      window.clearTimeout(timeout);
+      dialog.removeEventListener('transitionend', onTransitionEnd);
       dialog.close();
     };
-    dialog.addEventListener('transitionend', (event) => {
+    const onTransitionEnd = (event) => {
       if (event.target === dialog && event.propertyName === 'transform') finish();
-    });
-    window.setTimeout(finish, 560);
+    };
+    dialog.addEventListener('transitionend', onTransitionEnd);
+    timeout = window.setTimeout(finish, 560);
   };
   trigger.addEventListener('click', () => {
     trigger.setAttribute('aria-expanded', 'true');
@@ -146,7 +156,7 @@ function wireMobileMenu(header, dialog) {
 
 function trapDialogFocus(event, dialog) {
   if (event.key !== 'Tab') return;
-  const focusable = [...dialog.querySelectorAll('a[href], button:not([disabled])')];
+  const focusable = [...dialog.querySelectorAll('a[href], button:not([disabled]), input:not([disabled])')];
   const first = focusable[0];
   const last = focusable.at(-1);
   if (!first || !last) return;
