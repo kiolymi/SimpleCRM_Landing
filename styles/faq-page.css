@@ -8,7 +8,7 @@ body[data-page="faq"] .header-app-store { background: #14243a; color: #fff; }
 .faq-page--dextr .faq-page__hero > .container { text-align: center; }
 .faq-page--dextr .faq-page__hero h1 { color: #19324e; margin: 0 auto 20px; font-size: clamp(36px,4.6vw,56px); }
 .faq-page--dextr .faq-page__hero > .container > p { max-width: 610px; margin: 0 auto; color: #51657d; }
-.faq-page--dextr .faq-search { display: block; max-width: 660px; min-height: 0; margin: 32px auto 0; padding: 0; background: transparent; border: 0; box-shadow: none; text-align: left; }
+.faq-page--dextr .faq-search { display: block; width: 100%; max-width: 900px; min-height: 0; margin: 32px auto 0; padding: 0; background: transparent; border: 0; box-shadow: none; text-align: left; }
 .faq-page--dextr .faq-search:focus-within { transform: none; box-shadow: none; }
 .faq-search__field { display: flex; align-items: center; gap: 14px; padding: 8px 14px 8px 20px; background: #fff; border: 1px solid #bdcfe2; border-radius: 18px; box-shadow: 0 8px 28px rgb(30 66 109 / 5%); transition: border-color 220ms,box-shadow 220ms; }
 .faq-search__field:focus-within { border-color: #227ad2; box-shadow: 0 0 0 4px rgb(34 122 210 / 12%); }
