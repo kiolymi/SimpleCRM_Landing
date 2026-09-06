@@ -295,19 +295,70 @@ export function createAboutPage() {
 }
 
 export function createSupportPage() {
+  const supportFeatures = [
+    {
+      icon: 'contact',
+      title: 'Связи',
+      text: 'Вся история клиента собрана в одной карточке: контакты, встречи, задачи, переписка, документы и оплаты. Чем больше команда работает в Simple CRM, тем богаче и понятнее становится контекст отношений.',
+      image: '/simple-crm-landing-screens/15-client-overview.png',
+      alt: 'Карточка клиента в Simple CRM',
+    },
+    {
+      icon: 'task-list',
+      title: 'Следующий шаг',
+      text: 'Договорённости после встреч сразу превращаются в задачи. Ответственный, срок, важность и прогресс видны без дополнительных таблиц, заметок и долгих уточнений в переписке.',
+      image: '/simple-crm-landing-screens/20-task-board.png',
+      alt: 'Доска задач в Simple CRM',
+    },
+    {
+      icon: 'location',
+      title: 'Места',
+      text: 'Онлайн, офис или выбранная локация остаются рядом с встречей и клиентом. Команда быстро вспоминает, где и когда был контакт, и возвращается к разговору без потери деталей.',
+      image: '/simple-crm-landing-screens/11-create-meeting.png',
+      alt: 'Создание встречи с локацией в Simple CRM',
+    },
+  ];
   const section = document.createElement('section');
   section.className = 'inner-page support-page support-page--rich';
   section.setAttribute('aria-labelledby', 'support-title');
   section.innerHTML = `
-    <div class="support-hero"><div class="container" data-reveal="scale"><h1 id="support-title">Поможем запустить и настроить Simple CRM</h1><p>Опишите задачу своими словами. Ответим по существу, подключим нужного специалиста и не заставим повторять контекст несколько раз.</p></div></div>
+    <div class="support-hero support-hero--dextr">
+      <div class="container support-hero__inner">
+        <div class="support-hero__copy" data-reveal="slide-left">
+          <a class="support-hero__pill" href="/releases/">Обновления Simple CRM <span></span> Последний релиз ${iconSvg('arrow-right')}</a>
+          <h1 id="support-title">Умный способ помнить каждого клиента</h1>
+          <p>Представьте, что у вашей команды есть идеальная память о клиентах: имена, встречи, переписка, договорённости, документы и следующий шаг всегда перед глазами.</p>
+          <p>Simple CRM переосмысливает работу с клиентами для современных команд: помогает быстрее возвращаться к контексту, помнить важные детали и не терять отношения после первой встречи.</p>
+          <a class="app-store-badge app-store-badge--light" href="#" aria-label="Скачать Simple CRM в App Store">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15.4 3.2c-.9.1-2 .7-2.6 1.4-.6.7-1.1 1.8-.9 2.8 1 .1 2-.5 2.6-1.2.6-.8 1-1.8.9-3Zm3.4 9.1c0-2.5 2-3.7 2.1-3.8-1.1-1.7-2.9-1.9-3.6-1.9-1.5-.2-3 .9-3.8.9-.8 0-2-.9-3.3-.9-1.7 0-3.3 1-4.2 2.6-1.8 3.1-.5 7.7 1.3 10.2.9 1.2 1.9 2.6 3.3 2.6 1.3-.1 1.8-.8 3.4-.8s2 .8 3.4.8c1.4 0 2.3-1.3 3.1-2.5 1.1-1.6 1.6-3.2 1.6-3.3-.1 0-3.1-1.2-3.1-4.7Z" /></svg>
+            <span><small>Скачайте с</small><strong>App Store</strong></span>
+          </a>
+        </div>
+        <div class="support-hero__visual" data-support-hero-visual data-reveal="slide-right"></div>
+      </div>
+    </div>
+    <div class="support-feature-band">
+      <div class="container support-feature-grid">
+        ${supportFeatures.map((item, index) => `
+          <article class="support-feature" data-reveal="scale">
+            <header>
+              <span>${iconSvg(item.icon)}</span>
+              <h2>${item.title}</h2>
+            </header>
+            <div class="support-feature__mockup" data-support-feature-image="${index}"></div>
+            <p>${item.text}</p>
+          </article>
+        `).join('')}
+      </div>
+    </div>
     <div class="container support-layout">
       <aside class="support-aside" data-reveal="slide-left">
-        <div class="support-aside__intro"><h2>До обращения</h2><p>Готовые ответы и пошаговые инструкции часто помогают решить вопрос сразу.</p></div>
+        <div class="support-aside__intro"><h2>Поддержка без повторов</h2><p>Напишите, что хотите настроить или исправить. Мы прочитаем контекст, подскажем следующий шаг и направим вопрос к нужному специалисту.</p></div>
         <nav aria-label="Разделы помощи"><a href="/faq/"><span>${iconSvg('message-square')}</span><div><strong>Вопросы и ответы</strong><p>Запуск, ежедневная работа, тарифы и доступы</p></div>${iconSvg('arrow-right')}</a><a href="/how-to/"><span>${iconSvg('task-list')}</span><div><strong>Инструкции</strong><p>Пошаговая работа с клиентами, встречами и задачами</p></div>${iconSvg('arrow-right')}</a><a href="/releases/"><span>${iconSvg('document')}</span><div><strong>История версий</strong><p>Новые возможности, улучшения и исправления</p></div>${iconSvg('arrow-right')}</a></nav>
         <div class="support-contact"><p>Рабочая почта</p><a href="mailto:support@simplecrm.ru">support@simplecrm.ru</a><span>Отвечаем по будням с 9:00 до 19:00 по Москве</span></div>
       </aside>
       <form class="support-request demo-form" data-demo-form novalidate data-reveal="slide-right">
-        <div class="support-request__heading"><h2>Написать команде</h2><p>Обычно отвечаем в течение рабочего дня.</p></div>
+        <div class="support-request__heading"><h2>Написать команде</h2><p>Коротко опишите ситуацию — без лишней подготовки и сложных формулировок.</p></div>
         <div class="form-row"><label>Ваше имя<input name="name" type="text" autocomplete="name" placeholder="Анна Петрова" required /></label><label>Рабочая почта<input name="email" type="email" autocomplete="email" placeholder="anna@company.ru" required /></label></div>
         <label>Компания<input name="company" type="text" autocomplete="organization" placeholder="Название компании" /></label>
         <label>Тема обращения<select name="topic" required><option value="">Выберите тему</option><option>Знакомство с продуктом</option><option>Настройка команды</option><option>Импорт клиентской базы</option><option>Тарифы и оплата</option><option>Техническая проблема</option></select></label>
@@ -318,6 +369,14 @@ export function createSupportPage() {
       </form>
     </div>
     `;
+  section.querySelector('[data-support-hero-visual]').append(
+    createProductDeviceMockup({ mode: 'image', device: 'phone', image: { src: '/simple-crm-landing-screens/01-today-schedule.png' }, alt: 'Главный экран Simple CRM с расписанием встреч' }),
+  );
+  supportFeatures.forEach((item, index) => {
+    section.querySelector(`[data-support-feature-image="${index}"]`).append(
+      createProductDeviceMockup({ mode: 'image', device: 'phone', image: { src: item.image }, alt: item.alt }),
+    );
+  });
   return section;
 }
 
