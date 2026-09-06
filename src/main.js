@@ -113,15 +113,18 @@ function protectProductName(root) {
 
 function markCurrentNavigation(root) {
   const currentPath = normalizePath(window.location.pathname);
-  root.querySelectorAll('a[href]').forEach(link => {
+  const homeLink = root.querySelector('.brand[href]');
+  const homePath = normalizePath(new URL(homeLink?.href || '/', window.location.origin).pathname);
+  root.querySelectorAll('.desktop-nav a[href], .mobile-menu__nav a[href], .site-footer__nav a[href], .brand[href]').forEach(link => {
     const target = new URL(link.href, window.location.origin);
     if (target.origin !== window.location.origin) return;
     if (target.hash) return;
     const targetPath = normalizePath(target.pathname);
-    const isActive = targetPath === '/' ? currentPath === '/' : currentPath === targetPath || currentPath.startsWith(`${targetPath}/`);
+    const isExact = currentPath === targetPath;
+    const isActive = isExact || (targetPath !== homePath && currentPath.startsWith(`${targetPath}/`));
     if (!isActive) return;
     link.classList.add('is-current');
-    link.setAttribute('aria-current', 'page');
+    link.setAttribute('aria-current', isExact ? 'page' : 'location');
   });
   root.querySelectorAll('.resource-menu').forEach(menu => {
     menu.querySelector('.desktop-nav__trigger')?.classList.toggle('is-current', Boolean(menu.querySelector('a.is-current')));
