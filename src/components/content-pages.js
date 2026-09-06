@@ -151,34 +151,40 @@ export function createPricingPage() {
 }
 
 export function createFaqPage() {
-  const groups = [
-    { title: 'Начало работы', questions: [
-      ['Сколько времени занимает запуск?', 'Небольшая команда может создать рабочее пространство, добавить сотрудников и начать работу с реальными клиентами в течение одного рабочего дня.'],
-      ['Можно ли перенести существующую базу?', 'Да. Поможем подготовить файл импорта, проверить контактные данные и перенести клиентов без ручного создания каждой карточки.'],
-      ['Нужно ли устанавливать приложение?', 'Нет. Simple CRM работает в браузере. Мобильная версия адаптирована для встреч, задач и быстрого доступа к клиентской истории.'],
-    ] },
-    { title: 'Ежедневная работа', questions: [
-      ['Что видно в карточке клиента?', 'Контакты, ближайшая встреча, открытые задачи, сообщения, документы и состояние оплаты собраны в одной истории.'],
-      ['Как планируются встречи?', 'Выберите клиента, дату, время, формат, локацию и услугу. После сохранения встреча появится в расписании дня.'],
-      ['Что происходит после встречи?', 'Менеджер фиксирует итог, создаёт следующий шаг, назначает срок и ответственного. Задача остаётся связанной с клиентом.'],
-      ['Может ли команда видеть общую переписку?', 'Да. В командных тарифах сообщения сохраняются в рабочем пространстве клиента и не зависят от личного мессенджера сотрудника.'],
-    ] },
-    { title: 'Тарифы и доступы', questions: [
-      ['Есть ли бесплатный период?', 'Да. Все возможности выбранного тарифа доступны 14 дней без привязки банковской карты.'],
-      ['Можно ли сменить тариф?', 'Да. Тариф можно изменить, когда команда растёт или ей требуется другой набор возможностей.'],
-      ['Как устроены роли сотрудников?', 'Владелец пространства управляет составом команды и доступными разделами. Расширенные роли доступны на тарифе «Бизнес».'],
-      ['Как обратиться в поддержку?', 'Оставьте обращение на странице поддержки. Ответим по рабочей почте и поможем с настройкой, импортом или первым запуском.'],
-    ] },
+  const questions = [
+    ['Что такое Simple CRM?', 'Simple CRM — приложение для команд, которым нужно помнить клиентов, встречи, задачи, документы, оплаты и следующий шаг в одном месте. Оно помогает быстро вернуться к контексту и не терять важные детали после разговора.'],
+    ['Simple CRM бесплатная?', 'Базовый режим можно использовать бесплатно. Pro открывает больше возможностей для команды: роли, общую историю, документы, расширенные сценарии и приоритетную поддержку.'],
+    ['Как добавить клиента?', 'Создайте карточку клиента вручную или импортируйте базу. После этого к клиенту можно привязывать встречи, задачи, сообщения, документы и счета.'],
+    ['Можно ли отмечать, где мы познакомились с клиентом?', 'Да. Встречи можно связывать с форматом, офисом или другой локацией, чтобы команда понимала, где и когда произошёл контакт.'],
+    ['Можно ли объединять клиентов по группам и тегам?', 'Да. Используйте статусы, теги и рабочие признаки, чтобы быстро находить нужных клиентов и видеть, кому пора написать.'],
+    ['Есть ли приложение для большого экрана?', 'Интерфейс Simple CRM раскрывается на большом рабочем экране: больше клиентов, задач и деталей видно одновременно, а основные действия остаются рядом.'],
+    ['Можно ли перенести данные?', 'Да. Подготовьте таблицу с клиентами — мы подскажем формат, поможем проверить данные и аккуратно перенести базу в Simple CRM.'],
+    ['Как Simple CRM относится к приватности?', 'Данные клиентов остаются внутри вашего рабочего пространства. Мы не продаём клиентскую базу и не используем содержимое карточек для рекламы. Подробнее об этом написано в политике конфиденциальности.'],
   ];
   const section = document.createElement('section');
-  section.className = 'inner-page faq-page faq-page--rich';
+  section.className = 'inner-page faq-page faq-page--dextr';
   section.setAttribute('aria-labelledby', 'faq-title');
   section.innerHTML = `
-    <div class="faq-page__hero"><div class="container" data-reveal="scale"><h1 id="faq-title">Ответы о запуске и работе Simple CRM</h1><p>Найдите нужный вопрос или просмотрите ответы по темам. Если вашей ситуации здесь нет, команда поддержки поможет лично.</p><label class="faq-search"><span class="visually-hidden">Поиск по вопросам</span>${iconSvg('search')}<input type="search" placeholder="Найти ответ" autocomplete="off" data-faq-search /></label><p class="faq-search__status" data-faq-status aria-live="polite"></p></div></div>
-    <div class="container faq-groups">
-      ${groups.map((group, groupIndex) => `<section class="faq-group" data-faq-group data-reveal="${groupIndex % 2 ? 'slide-left' : 'slide-right'}"><h2>${escapeHtml(group.title)}</h2><div>${group.questions.map(([question, answer], questionIndex) => `<details class="faq-rich-item" data-faq-item data-search="${escapeAttribute(`${question} ${answer}`.toLowerCase())}"${groupIndex === 0 && questionIndex === 0 ? ' open' : ''}><summary>${escapeHtml(question)}${iconSvg('chevron-down')}</summary><p>${escapeHtml(answer)}</p></details>`).join('')}</div></section>`).join('')}
+    <div class="faq-page__hero"><div class="container" data-reveal="scale"><h1 id="faq-title">Частые вопросы</h1><p>Здесь собраны ответы о Simple CRM, возможностях продукта, приватности и запуске команды.</p></div></div>
+    <div class="container faq-list-wrap">
+      <div class="faq-list" data-reveal="scale">
+        ${questions.map(([question, answer], index) => `<details class="faq-rich-item" data-reveal="slide-up"${index === 0 ? ' open' : ''}><summary>${escapeHtml(question)}${iconSvg('chevron-down')}</summary><p>${escapeHtml(answer)}</p></details>`).join('')}
+      </div>
     </div>
-    <div class="container"><section class="faq-help" data-reveal="scale"><div><h2>Не нашли свой вопрос?</h2><p>Опишите рабочий сценарий, и мы ответим по существу: настройка, импорт, тариф или работа конкретного раздела.</p></div><a class="button button--primary" href="/support/">Написать в поддержку ${iconSvg('arrow-right')}</a></section></div>`;
+    <section class="support-newsletter section" aria-labelledby="faq-newsletter-title">
+      <div class="container">
+        <form class="newsletter-card" data-newsletter-form data-reveal="scale" novalidate>
+          <div>
+            <p class="eyebrow">Newsletter Signup</p>
+            <h2 id="faq-newsletter-title">Получайте новости о новых возможностях</h2>
+            <p>Узнавайте о релизах Simple CRM, полезных сценариях и улучшениях интерфейса.</p>
+          </div>
+          <label><span class="visually-hidden">Email</span><input name="email" type="email" autocomplete="email" placeholder="Получать обновления" required /></label>
+          <button class="button button--primary" type="submit">Подписаться</button>
+          <p class="form-status" data-form-status aria-live="polite"></p>
+        </form>
+      </div>
+    </section>`;
   return section;
 }
 

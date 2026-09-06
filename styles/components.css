@@ -2601,6 +2601,54 @@ body { font-weight: 400; }
   margin-top: 26px;
 }
 
+.faq-page--dextr {
+  padding-bottom: 32px;
+  background:
+    radial-gradient(circle at 82% 12%, rgb(32 139 255 / 15%), transparent 34%),
+    radial-gradient(circle at 14% 70%, rgb(255 233 180 / 20%), transparent 30%),
+    var(--color-surface);
+}
+
+.faq-page--dextr .faq-page__hero {
+  padding: clamp(96px, 10vw, 148px) 0 42px;
+  background: transparent;
+}
+
+.faq-page--dextr .faq-page__hero h1 {
+  max-width: 760px;
+  font-size: clamp(58px, 8vw, 112px);
+}
+
+.faq-page--dextr .faq-page__hero > .container > p {
+  max-width: 690px;
+}
+
+.faq-list-wrap {
+  max-width: 1040px;
+  padding-block: 20px 64px;
+}
+
+.faq-list {
+  border-top: 1px solid rgb(112 140 170 / 24%);
+}
+
+.faq-page--dextr .faq-rich-item {
+  border-bottom: 1px solid rgb(112 140 170 / 24%);
+}
+
+.faq-page--dextr .faq-rich-item summary {
+  padding: 31px 0;
+  font-size: clamp(20px, 2.2vw, 28px);
+  letter-spacing: -.04em;
+}
+
+.faq-page--dextr .faq-rich-item > p {
+  max-width: 870px;
+  padding-bottom: 34px;
+  color: #5f6d80;
+  font-size: 18px;
+}
+
 @media (max-width: 980px) {
   .support-contact-hero__inner,
   .support-layout--compact {
