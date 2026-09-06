@@ -1456,7 +1456,11 @@ body:is([data-page="about"], [data-page="privacy"], [data-page="pricing"]) .head
 .company-page .newsletter-card :is(h2,p,label), .document-page--dextr .newsletter-card :is(h2,p,label), .pricing-page--dextr .newsletter-card :is(h2,p,label) { color: #d7e2ed; }
 .company-page .support-newsletter, .document-page--dextr .support-newsletter, .pricing-page--dextr .support-newsletter { background: transparent; }
 .company-page .newsletter-card input, .document-page--dextr .newsletter-card input, .pricing-page--dextr .newsletter-card input { background: #182232; border-color: #3c4b60; color: #edf2f8; }
+.document-page--dextr { padding-top: 0; }
 .document-page--dextr .document-single { padding-block: 48px 32px; }
+@media (max-width: 900px) {
+  .document-page--dextr .document-single { padding-top: 24px; }
+}
 .document-page--dextr .document-main { min-width: 0; max-width: none; padding: 0; border: 0; border-radius: 0; background: transparent; box-shadow: none; backdrop-filter: none; }
 .document-page--dextr .document-header h1 { color: #f2f5f9; font-size: clamp(32px, 4vw, 48px); line-height: 1.15; }
 .document-page--dextr .document-updated, .document-page--dextr .document-lead { color: #c6d0dc; font-size: 17px; line-height: 1.7; }
