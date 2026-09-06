@@ -143,7 +143,6 @@ function prepareRevealSequences(root) {
     element.dataset.delay = '0';
   });
   const groupSelectors = [
-    '.feature-grid',
     '.testimonials-grid',
     '.product-panorama__screens',
     '.product-panorama__benefits',
@@ -160,6 +159,17 @@ function prepareRevealSequences(root) {
     [...group.children].forEach((element, index) => {
       if (!element.hasAttribute('data-reveal')) element.dataset.reveal = 'rise';
       element.dataset.delay = String(Math.min(index * 90, 450));
+    });
+  });
+
+  // A phone card can be taller than the viewport: its caption must wait
+  // for its own entrance instead of animating off-screen with the heading.
+  root.querySelectorAll('.feature-card').forEach((card, index) => {
+    card.removeAttribute('data-reveal');
+    card.removeAttribute('data-delay');
+    [...card.children].forEach(element => {
+      element.dataset.reveal = 'rise';
+      element.dataset.delay = String((index % 3) * 120);
     });
   });
 }
