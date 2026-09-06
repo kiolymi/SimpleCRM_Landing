@@ -1737,6 +1737,8 @@ body[data-page] .mobile-menu .mobile-menu__cta { color: #fff; }
   overflow: hidden;
   pointer-events: none;
   z-index: -1;
+  -webkit-mask-image: linear-gradient(#000 65%, transparent);
+  mask-image: linear-gradient(#000 65%, transparent);
 }
 .page-ambient::before {
   content: '';
@@ -1823,7 +1825,8 @@ button:is(.header-app-store, .app-store-badge) { font: inherit; cursor: pointer;
     grid-template-columns: minmax(0, 1.7fr) minmax(300px, 1fr);
     gap: 64px;
   }
-  .home-hero .home-hero__visual { justify-self: center; }
+  .home-hero .home-hero__visual { justify-self: start; }
+  .home-hero .home-hero__copy { margin-top: 48px; }
   .home-hero .hero-device--main { max-width: 336px; }
 }
 .newsletter-section > .container { max-width: 1216px; }
