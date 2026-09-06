@@ -1919,3 +1919,9 @@ body[data-page] .site-header .mobile-menu__nav a.is-current {
   text-decoration: underline;
   text-underline-offset: 5px;
 }
+
+html:has(#mobile-menu[open], .download-placeholder[open]),
+body:has(#mobile-menu[open], .download-placeholder[open]) {
+  overflow: hidden;
+}
+.mobile-menu, .download-placeholder { overscroll-behavior: contain; }

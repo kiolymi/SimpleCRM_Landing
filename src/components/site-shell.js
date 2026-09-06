@@ -106,6 +106,7 @@ function wireResourceMenu(header) {
 function wireMobileMenu(header, dialog) {
   const trigger = header.querySelector('.menu-toggle');
   const closeButton = dialog.querySelector('button');
+  let openingScrollY = 0;
   const close = () => {
     if (!dialog.open || dialog.classList.contains('is-closing')) return;
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
@@ -130,6 +131,7 @@ function wireMobileMenu(header, dialog) {
     timeout = window.setTimeout(finish, 560);
   };
   trigger.addEventListener('click', () => {
+    openingScrollY = window.scrollY;
     trigger.setAttribute('aria-expanded', 'true');
     dialog.showModal();
     requestAnimationFrame(() => dialog.classList.add('is-visible'));
@@ -141,7 +143,8 @@ function wireMobileMenu(header, dialog) {
   dialog.addEventListener('close', () => {
     dialog.classList.remove('is-visible', 'is-closing');
     trigger.setAttribute('aria-expanded', 'false');
-    trigger.focus();
+    trigger.focus({ preventScroll: true });
+    window.scrollTo({ top: openingScrollY, behavior: 'instant' });
   });
   dialog.addEventListener('cancel', (event) => { event.preventDefault(); close(); });
   dialog.addEventListener('keydown', (event) => {
