@@ -1686,6 +1686,16 @@ body:is([data-page="about"],[data-page="pricing"],[data-page="support"]) .header
 .pricing-page--dextr .pricing-plan .button { background: #a6c9e1; color: #102235; }
 
 /* Keep the desktop composition within the same reading width as the reference. */
+.site-main .support-newsletter { padding-block: 64px; }
+.site-main .support-newsletter .newsletter-card { padding-block: 24px; }
+.site-main .support-newsletter .newsletter-card h2 {
+  max-width: none;
+  font-size: clamp(28px, 3vw, 36px);
+  line-height: 1.2;
+  letter-spacing: -.025em;
+}
+.site-main .support-newsletter .newsletter-card .eyebrow { margin: 0 0 12px; }
+.site-main .support-newsletter .newsletter-card input { font-weight: 400; }
 @media (min-width: 1024px) {
   .home-hero > .container.home-hero__grid {
     width: min(calc(100% - 96px), 1216px);
