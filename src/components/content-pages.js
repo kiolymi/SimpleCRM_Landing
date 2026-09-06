@@ -272,14 +272,14 @@ export function createSupportPage() {
           <h1 id="support-title">Мы здесь, чтобы помочь</h1>
           <p>Если у вас есть вопрос, идея или нужна помощь с Simple CRM, напишите нам. Мы читаем обращение целиком, не просим повторять контекст и отвечаем по существу.</p>
           <div class="support-contact-links" aria-label="Способы связи">
-            <a href="mailto:support@simplecrm.ru"><span>${iconSvg('message-square')}</span><strong>support@simplecrm.ru</strong><small>Для вопросов о продукте, настройке и запуске</small></a>
+            <a href="#support-message" aria-controls="support-message-form"><span>${iconSvg('message-square')}</span><strong>Написать команде</strong><small>Для вопросов о продукте, настройке и запуске</small></a>
             <a href="/faq/"><span>${iconSvg('task-list')}</span><strong>Ответы на вопросы</strong><small>Быстрые подсказки по тарифам, данным и ежедневной работе</small></a>
           </div>
         </div>
         <div class="support-contact-hero__visual" data-support-hero-visual data-reveal="slide-right"></div>
       </div>
     </div>
-    <div class="container support-message"><details><summary>Написать сообщение</summary>
+    <div class="container support-message" id="support-message"><details id="support-message-form"><summary>Написать сообщение</summary>
       <form class="support-request demo-form" data-demo-form novalidate data-reveal="slide-right">
         <div class="support-request__heading"><h2>Написать команде</h2><p>Расскажите, что нужно решить — ответим по рабочей почте.</p></div>
         <div class="form-row"><label>Ваше имя<input name="name" type="text" autocomplete="name" placeholder="Анна Петрова" required /></label><label>Рабочая почта<input name="email" type="email" autocomplete="email" placeholder="anna@company.ru" required /></label></div>
@@ -308,6 +308,9 @@ export function createSupportPage() {
   section.querySelector('[data-support-hero-visual]').append(
     createProductDeviceMockup({ mode: 'image', device: 'phone', image: { src: '/simple-crm-landing-screens/19-client-conversation.png' }, alt: 'Диалог с клиентом в Simple CRM' }),
   );
+  section.querySelector('a[href="#support-message"]').addEventListener('click', () => {
+    section.querySelector('#support-message-form').open = true;
+  });
   return section;
 }
 
