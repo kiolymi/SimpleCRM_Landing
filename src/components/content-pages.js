@@ -70,68 +70,83 @@ export function createSearchPage(searchParams) {
 
 export function createPricingPage() {
   const plans = [
-    { name: 'Старт', monthly: 990, yearly: 790, description: 'Для самостоятельной работы с клиентами.', users: '1 пользователь', features: ['До 500 клиентов', 'Встречи и задачи', 'Единая история клиента', 'Импорт клиентской базы'] },
-    { name: 'Команда', monthly: 2990, yearly: 2390, description: 'Для небольшого отдела с общим контекстом.', users: 'До 5 пользователей', featured: true, badge: 'Выбирают чаще', features: ['Всё из тарифа «Старт»', 'Сообщения и документы', 'Счета и оплаты', 'Роли сотрудников'] },
-    { name: 'Бизнес', monthly: 6990, yearly: 5590, description: 'Для нескольких процессов и расширенного контроля.', users: 'До 15 пользователей', features: ['Всё из тарифа «Команда»', 'Расширенные роли', 'Командная аналитика', 'Приоритетная поддержка'] },
-  ];
-  const comparison = [
-    ['Клиенты и единая история', true, true, true],
-    ['Встречи и задачи', true, true, true],
-    ['Сообщения и документы', false, true, true],
-    ['Счета и оплаты', false, true, true],
-    ['Роли сотрудников', false, true, true],
-    ['Командная аналитика', false, false, true],
-    ['Приоритетная поддержка', false, false, true],
+    {
+      name: 'Бесплатно',
+      price: '0 ₽',
+      period: 'Всегда бесплатно',
+      description: 'Самые полезные возможности Simple CRM доступны сразу — можно собрать клиентов, встречи и задачи без подписки.',
+      cta: 'Начать',
+      features: [
+        ['Доступно сразу', 'Соберите всех клиентов в одном месте — без лимитов на знакомство с продуктом.'],
+        ['Сегодня', 'Откройте расписание и быстро увидьте, с кем нужно связаться.'],
+        ['Когда база растёт', 'Добавляйте контекст: статусы, встречи, задачи и документы.'],
+        ['Не теряйте связь', 'Фиксируйте следующий шаг, пока договорённость ещё свежая.'],
+      ],
+    },
+    {
+      name: 'Pro',
+      price: '1 490 ₽ / месяц',
+      period: 'Оплата помесячно',
+      description: 'Для команд, которым нужно вывести работу с клиентами на следующий уровень: история, роли, документы и приоритетная поддержка.',
+      cta: 'Попробовать Pro',
+      featured: true,
+      badge: 'Популярно',
+      features: [
+        ['Всё из бесплатного, плюс…', 'Командный контекст, роли сотрудников и общая история клиента.'],
+        ['После каждого разговора', 'Сохраняйте важные итоги, чтобы помнить, о чём договорились.'],
+        ['Когда появляется новый клиент', 'Создавайте карточку, встречу и задачу за несколько касаний.'],
+        ['Когда нужен обзор', 'Смотрите клиентов, задачи, документы и оплаты на большом рабочем экране.'],
+      ],
+    },
   ];
   const section = document.createElement('section');
-  section.className = 'inner-page pricing-page pricing-page--rich';
+  section.className = 'inner-page pricing-page pricing-page--dextr';
   section.setAttribute('aria-labelledby', 'pricing-title');
   section.innerHTML = `
     <div class="pricing-page__hero">
       <div class="container" data-reveal="scale">
-        <h1 id="pricing-title">Цена зависит только от размера вашей команды</h1>
-        <p>Выберите формат для своей команды и меняйте тариф по мере роста — без сложной настройки и скрытых условий.</p>
-        <div class="billing-toggle" role="group" aria-label="Период оплаты" data-billing-toggle>
-          <button class="is-active" type="button" data-period="monthly">Ежемесячно</button>
-          <button type="button" data-period="yearly">За год <span>экономия 20%</span></button>
-        </div>
+        <h1 id="pricing-title">Начните работать с Simple CRM</h1>
+        <p>Попробуйте все возможности Pro бесплатно 14 дней — без обязательств и сложного выбора на старте.</p>
       </div>
     </div>
-    <div class="container pricing-page__cards">
+    <div class="container pricing-page__cards pricing-page__cards--two">
       ${plans.map(plan => `
         <article class="pricing-plan${plan.featured ? ' pricing-plan--featured' : ''}" data-reveal="scale">
           ${plan.badge ? `<p class="pricing-plan__badge">${escapeHtml(plan.badge)}</p>` : ''}
           <p class="pricing-plan__name">${escapeHtml(plan.name)}</p>
-          <h2><span data-price data-monthly="${plan.monthly}" data-yearly="${plan.yearly}">${new Intl.NumberFormat('ru-RU').format(plan.monthly)}</span> ₽<small>в месяц</small></h2>
+          <h2>${escapeHtml(plan.price)}<small>${escapeHtml(plan.period)}</small></h2>
           <p class="pricing-plan__description">${escapeHtml(plan.description)}</p>
-          <p class="pricing-plan__users">${escapeHtml(plan.users)}</p>
-          <ul>${plan.features.map(feature => `<li>${iconSvg('check')}<span>${escapeHtml(feature)}</span></li>`).join('')}</ul>
-          <a class="button ${plan.featured ? 'button--primary' : 'button--outline'}" href="/#demo">Начать бесплатно</a>
+          <a class="button ${plan.featured ? 'button--primary' : 'button--outline'}" href="#">${escapeHtml(plan.cta)}</a>
+          <div class="pricing-plan__timeline">
+            ${plan.features.map(([label, text]) => `<div><span>${iconSvg('check')}</span><p><strong>${escapeHtml(label)}</strong>${escapeHtml(text)}</p></div>`).join('')}
+          </div>
         </article>
       `).join('')}
     </div>
-    <p class="container pricing-page__note">Стоимость указана за месяц, НДС включён. Годовой тариф оплачивается одним платежом.</p>
-    <section class="pricing-compare">
+    <section class="pricing-pledge">
       <div class="container">
-        <header data-reveal="slide-left"><h2>Сравните возможности без мелкого шрифта</h2><p>Основные инструменты доступны сразу. Расширенные функции подключаются вместе с ростом команды.</p></header>
-        <div class="pricing-compare__table" role="table" aria-label="Сравнение тарифов" data-reveal="scale">
-          <div class="pricing-compare__row pricing-compare__row--head" role="row"><strong role="columnheader">Возможность</strong><strong role="columnheader">Старт</strong><strong role="columnheader">Команда</strong><strong role="columnheader">Бизнес</strong></div>
-          ${comparison.map(row => `<div class="pricing-compare__row" role="row"><span role="cell">${escapeHtml(row[0])}</span>${row.slice(1).map((value, index) => `<span role="cell" data-plan="${['Старт', 'Команда', 'Бизнес'][index]}" aria-label="${value ? 'Доступно' : 'Недоступно'}">${value ? iconSvg('check') : '<span class="pricing-compare__empty">Нет</span>'}</span>`).join('')}</div>`).join('')}
+        <div class="pricing-pledge__card" data-reveal="scale">
+          <p class="eyebrow">Обещание по безопасности данных</p>
+          <h2>Ваши данные остаются вашими</h2>
+          <p>Клиенты, встречи, задачи, документы и вся связанная информация хранятся внутри вашего рабочего пространства. Мы не продаём данные, не передаём клиентскую базу рекламным платформам и используем техническую аналитику только для улучшения продукта.</p>
+          <a class="text-link" href="/privacy/">Подробнее о конфиденциальности ${iconSvg('arrow-right')}</a>
         </div>
       </div>
     </section>
-    <section class="pricing-questions">
+    <section class="support-newsletter section" aria-labelledby="pricing-newsletter-title">
       <div class="container">
-        <header data-reveal="slide-left"><h2>Перед подключением</h2></header>
-        <div class="pricing-questions__list" data-reveal="scale">
-          <details open><summary>Что произойдёт после бесплатного периода?${iconSvg('chevron-down')}</summary><p>Вы выберете подходящий тариф и способ оплаты. Без вашего подтверждения платная подписка не включится.</p></details>
-          <details><summary>Можно ли сменить тариф позже?${iconSvg('chevron-down')}</summary><p>Да. Перейти на другой тариф можно при изменении размера команды или набора нужных функций.</p></details>
-          <details><summary>Поможете перенести клиентскую базу?${iconSvg('chevron-down')}</summary><p>Да. Подскажем формат импорта, проверим данные и поможем команде начать работу в новом пространстве.</p></details>
-          <details><summary>Можно сначала посмотреть продукт?${iconSvg('chevron-down')}</summary><p>Да. На демонстрации разберём ваш рабочий сценарий и покажем его на готовых экранах Simple CRM.</p></details>
-        </div>
+        <form class="newsletter-card" data-newsletter-form data-reveal="scale" novalidate>
+          <div>
+            <p class="eyebrow">Newsletter Signup</p>
+            <h2 id="pricing-newsletter-title">Получайте новости о новых возможностях</h2>
+            <p>Оставьте почту, чтобы узнавать о релизах, сценариях и полезных улучшениях Simple CRM.</p>
+          </div>
+          <label><span class="visually-hidden">Email</span><input name="email" type="email" autocomplete="email" placeholder="Получать обновления" required /></label>
+          <button class="button button--primary" type="submit">Подписаться</button>
+          <p class="form-status" data-form-status aria-live="polite"></p>
+        </form>
       </div>
-    </section>
-    <div class="container"><section class="pricing-final" data-reveal="scale"><div><h2>Подберите тариф на живой демонстрации</h2><p>Покажем продукт, оценим размер команды и поможем выбрать вариант без лишних функций.</p></div><a class="button button--primary" href="/#demo">Запросить демонстрацию ${iconSvg('arrow-right')}</a></section></div>`;
+    </section>`;
   return section;
 }
 
