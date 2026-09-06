@@ -1,5 +1,5 @@
 import { createSiteShell } from './components/site-shell.js?v=20260906-30';
-import { createHomePage } from './components/home-sections.js?v=20260906-28';
+import { createHomePage } from './components/home-sections.js?v=20260906-32';
 import { createAboutPage, createArticleLayout, createContentHubPage, createFaqPage, createPricingPage, createPrivacyPage, createReleasesPage, createSearchPage, createSupportPage } from './components/content-pages.js?v=20260906-29';
 import { pageMeta } from './data/site.js?v=20260906-30';
 import { createProductDeviceMockup } from './components/product-device-mockup.js?v=20260906-1';
