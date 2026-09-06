@@ -295,88 +295,58 @@ export function createAboutPage() {
 }
 
 export function createSupportPage() {
-  const supportFeatures = [
-    {
-      icon: 'contact',
-      title: 'Связи',
-      text: 'Вся история клиента собрана в одной карточке: контакты, встречи, задачи, переписка, документы и оплаты. Чем больше команда работает в Simple CRM, тем богаче и понятнее становится контекст отношений.',
-      image: '/simple-crm-landing-screens/15-client-overview.png',
-      alt: 'Карточка клиента в Simple CRM',
-    },
-    {
-      icon: 'task-list',
-      title: 'Следующий шаг',
-      text: 'Договорённости после встреч сразу превращаются в задачи. Ответственный, срок, важность и прогресс видны без дополнительных таблиц, заметок и долгих уточнений в переписке.',
-      image: '/simple-crm-landing-screens/20-task-board.png',
-      alt: 'Доска задач в Simple CRM',
-    },
-    {
-      icon: 'location',
-      title: 'Места',
-      text: 'Онлайн, офис или выбранная локация остаются рядом с встречей и клиентом. Команда быстро вспоминает, где и когда был контакт, и возвращается к разговору без потери деталей.',
-      image: '/simple-crm-landing-screens/11-create-meeting.png',
-      alt: 'Создание встречи с локацией в Simple CRM',
-    },
-  ];
   const section = document.createElement('section');
-  section.className = 'inner-page support-page support-page--rich';
+  section.className = 'inner-page support-page support-page--contact';
   section.setAttribute('aria-labelledby', 'support-title');
   section.innerHTML = `
-    <div class="support-hero support-hero--dextr">
-      <div class="container support-hero__inner">
-        <div class="support-hero__copy" data-reveal="slide-left">
-          <a class="support-hero__pill" href="/releases/">Обновления Simple CRM <span></span> Последний релиз ${iconSvg('arrow-right')}</a>
-          <h1 id="support-title">Умный способ помнить каждого клиента</h1>
-          <p>Представьте, что у вашей команды есть идеальная память о клиентах: имена, встречи, переписка, договорённости, документы и следующий шаг всегда перед глазами.</p>
-          <p>Simple CRM переосмысливает работу с клиентами для современных команд: помогает быстрее возвращаться к контексту, помнить важные детали и не терять отношения после первой встречи.</p>
-          <a class="app-store-badge app-store-badge--light" href="#" aria-label="Скачать Simple CRM в App Store">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15.4 3.2c-.9.1-2 .7-2.6 1.4-.6.7-1.1 1.8-.9 2.8 1 .1 2-.5 2.6-1.2.6-.8 1-1.8.9-3Zm3.4 9.1c0-2.5 2-3.7 2.1-3.8-1.1-1.7-2.9-1.9-3.6-1.9-1.5-.2-3 .9-3.8.9-.8 0-2-.9-3.3-.9-1.7 0-3.3 1-4.2 2.6-1.8 3.1-.5 7.7 1.3 10.2.9 1.2 1.9 2.6 3.3 2.6 1.3-.1 1.8-.8 3.4-.8s2 .8 3.4.8c1.4 0 2.3-1.3 3.1-2.5 1.1-1.6 1.6-3.2 1.6-3.3-.1 0-3.1-1.2-3.1-4.7Z" /></svg>
-            <span><small>Скачайте с</small><strong>App Store</strong></span>
-          </a>
+    <div class="support-contact-hero">
+      <div class="container support-contact-hero__inner">
+        <div class="support-contact-hero__copy" data-reveal="slide-left">
+          <p class="eyebrow">Поддержка</p>
+          <h1 id="support-title">Мы здесь, чтобы помочь</h1>
+          <p>Если у вас есть вопрос, идея или нужна помощь с Simple CRM, напишите нам. Мы читаем обращение целиком, не просим повторять контекст и отвечаем по существу.</p>
+          <div class="support-contact-links" aria-label="Способы связи">
+            <a href="mailto:support@simplecrm.ru"><span>${iconSvg('message-square')}</span><strong>support@simplecrm.ru</strong><small>Для вопросов о продукте, настройке и запуске</small></a>
+            <a href="/faq/"><span>${iconSvg('task-list')}</span><strong>Ответы на вопросы</strong><small>Быстрые подсказки по тарифам, данным и ежедневной работе</small></a>
+          </div>
         </div>
-        <div class="support-hero__visual" data-support-hero-visual data-reveal="slide-right"></div>
+        <div class="support-contact-hero__visual" data-support-hero-visual data-reveal="slide-right"></div>
       </div>
     </div>
-    <div class="support-feature-band">
-      <div class="container support-feature-grid">
-        ${supportFeatures.map((item, index) => `
-          <article class="support-feature" data-reveal="scale">
-            <header>
-              <span>${iconSvg(item.icon)}</span>
-              <h2>${item.title}</h2>
-            </header>
-            <div class="support-feature__mockup" data-support-feature-image="${index}"></div>
-            <p>${item.text}</p>
-          </article>
-        `).join('')}
-      </div>
-    </div>
-    <div class="container support-layout">
+    <div class="container support-layout support-layout--compact">
       <aside class="support-aside" data-reveal="slide-left">
-        <div class="support-aside__intro"><h2>Поддержка без повторов</h2><p>Напишите, что хотите настроить или исправить. Мы прочитаем контекст, подскажем следующий шаг и направим вопрос к нужному специалисту.</p></div>
-        <nav aria-label="Разделы помощи"><a href="/faq/"><span>${iconSvg('message-square')}</span><div><strong>Вопросы и ответы</strong><p>Запуск, ежедневная работа, тарифы и доступы</p></div>${iconSvg('arrow-right')}</a><a href="/how-to/"><span>${iconSvg('task-list')}</span><div><strong>Инструкции</strong><p>Пошаговая работа с клиентами, встречами и задачами</p></div>${iconSvg('arrow-right')}</a><a href="/releases/"><span>${iconSvg('document')}</span><div><strong>История версий</strong><p>Новые возможности, улучшения и исправления</p></div>${iconSvg('arrow-right')}</a></nav>
-        <div class="support-contact"><p>Рабочая почта</p><a href="mailto:support@simplecrm.ru">support@simplecrm.ru</a><span>Отвечаем по будням с 9:00 до 19:00 по Москве</span></div>
+        <div class="support-aside__intro"><h2>Перед обращением</h2><p>Чтобы мы быстрее помогли, опишите, что хотели сделать, что увидели на экране и какой результат ожидали.</p></div>
+        <nav aria-label="Разделы помощи"><a href="/learn/"><span>${iconSvg('document')}</span><div><strong>Материалы</strong><p>Сценарии работы с клиентами и встречами</p></div>${iconSvg('arrow-right')}</a><a href="/releases/"><span>${iconSvg('calendar')}</span><div><strong>Версии</strong><p>Что изменилось в последних обновлениях</p></div>${iconSvg('arrow-right')}</a></nav>
+        <div class="support-contact"><p>Время ответа</p><strong>Будние дни, 9:00–19:00</strong><span>По Москве. Срочные вопросы помечайте в теме обращения.</span></div>
       </aside>
       <form class="support-request demo-form" data-demo-form novalidate data-reveal="slide-right">
-        <div class="support-request__heading"><h2>Написать команде</h2><p>Коротко опишите ситуацию — без лишней подготовки и сложных формулировок.</p></div>
+        <div class="support-request__heading"><h2>Написать команде</h2><p>Расскажите, что нужно решить — ответим по рабочей почте.</p></div>
         <div class="form-row"><label>Ваше имя<input name="name" type="text" autocomplete="name" placeholder="Анна Петрова" required /></label><label>Рабочая почта<input name="email" type="email" autocomplete="email" placeholder="anna@company.ru" required /></label></div>
-        <label>Компания<input name="company" type="text" autocomplete="organization" placeholder="Название компании" /></label>
-        <label>Тема обращения<select name="topic" required><option value="">Выберите тему</option><option>Знакомство с продуктом</option><option>Настройка команды</option><option>Импорт клиентской базы</option><option>Тарифы и оплата</option><option>Техническая проблема</option></select></label>
-        <label>Что нужно решить<textarea name="message" rows="5" placeholder="Опишите, что делали, что ожидали увидеть и что произошло" required></textarea></label>
+        <label>Тема<select name="topic" required><option value="">Выберите тему</option><option>Вопрос по продукту</option><option>Настройка Simple CRM</option><option>Импорт клиентов</option><option>Тарифы и оплата</option><option>Ошибка или техническая проблема</option></select></label>
+        <label>Сообщение<textarea name="message" rows="5" placeholder="Например: хочу перенести базу клиентов и настроить встречи для команды из 5 человек" required></textarea></label>
         <label class="form-consent"><input name="consent" type="checkbox" required /><span>Согласен на обработку данных для ответа на обращение</span></label>
-        <button class="button button--primary" type="submit">Отправить обращение ${iconSvg('arrow-right')}</button>
+        <button class="button button--primary" type="submit">Отправить ${iconSvg('arrow-right')}</button>
         <p class="form-status" data-form-status aria-live="polite"></p>
       </form>
     </div>
+    <section class="support-newsletter section" aria-labelledby="support-newsletter-title">
+      <div class="container">
+        <form class="newsletter-card newsletter-card--support" data-newsletter-form data-reveal="scale" novalidate>
+          <div>
+            <p class="eyebrow">Новости продукта</p>
+            <h2 id="support-newsletter-title">Получайте новости о новых возможностях</h2>
+            <p>Пришлём заметные релизы, полезные сценарии и улучшения Simple CRM. Только продуктовые обновления — без шума.</p>
+          </div>
+          <label><span class="visually-hidden">Email</span><input name="email" type="email" autocomplete="email" placeholder="you@company.ru" required /></label>
+          <button class="button button--primary" type="submit">Подписаться</button>
+          <p class="form-status" data-form-status aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
     `;
   section.querySelector('[data-support-hero-visual]').append(
-    createProductDeviceMockup({ mode: 'image', device: 'phone', image: { src: '/simple-crm-landing-screens/01-today-schedule.png' }, alt: 'Главный экран Simple CRM с расписанием встреч' }),
+    createProductDeviceMockup({ mode: 'image', device: 'phone', image: { src: '/simple-crm-landing-screens/19-client-conversation.png' }, alt: 'Диалог с клиентом в Simple CRM' }),
   );
-  supportFeatures.forEach((item, index) => {
-    section.querySelector(`[data-support-feature-image="${index}"]`).append(
-      createProductDeviceMockup({ mode: 'image', device: 'phone', image: { src: item.image }, alt: item.alt }),
-    );
-  });
   return section;
 }
 
