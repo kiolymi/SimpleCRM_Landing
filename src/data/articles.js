@@ -1,7 +1,7 @@
 export const categoryMeta = {
-  learn: { title: 'Материалы', description: 'Коротко о том, как не терять нить в работе с клиентами', href: '/learn/' },
-  'how-to': { title: 'Инструкции', description: 'Пошаговые сценарии по возможностям, которые уже есть в продукте', href: '/how-to/' },
-  announcements: { title: 'Обновления', description: 'Новые возможности Simple CRM и заметки команды продукта', href: '/announcements/' },
+  learn: { title: 'Материалы', description: 'Идеи и практики о том, как помнить клиентов, видеть контекст и возвращаться к нужным людям вовремя.', href: '/learn/' },
+  'how-to': { title: 'Инструкции', description: 'Пошаговые подсказки по Simple CRM: клиенты, встречи, задачи, документы и ежедневная работа команды.', href: '/how-to/' },
+  announcements: { title: 'Объявления', description: 'Новые возможности, улучшения интерфейса и заметки команды Simple CRM о развитии продукта.', href: '/announcements/' },
 };
 
 export const articles = [

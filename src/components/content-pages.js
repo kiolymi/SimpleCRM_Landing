@@ -2,7 +2,7 @@ import { createArticleCard } from './article-card.js?v=20260824-28';
 import { iconSvg } from './icons.js?v=20260824-28';
 import { createProductDeviceMockup } from './product-device-mockup.js';
 import { createSearchForm } from './search-form.js';
-import { articles, categoryMeta, findArticles, getArticleBySlug, getArticlesByCategory } from '../data/articles.js?v=20260824-28';
+import { articles, categoryMeta, findArticles, getArticleBySlug, getArticlesByCategory } from '../data/articles.js?v=20260824-29';
 
 export function createContentHubPage(category) {
   const meta = categoryMeta[category];
@@ -14,8 +14,20 @@ export function createContentHubPage(category) {
     <div class="content-hub__hero"><div class="container" data-reveal="scale"><h1 id="hub-title">${escapeHtml(meta.title)}</h1><p>${escapeHtml(meta.description)}</p><div class="content-hub__search"></div></div></div>
     <div class="container">
       <nav class="content-hub__tabs" aria-label="Разделы материалов" data-reveal="scale">${Object.entries(categoryMeta).map(([key, item]) => `<a href="${escapeAttribute(item.href)}"${key === category ? ' class="is-current" aria-current="page"' : ''}>${escapeHtml(item.title)}</a>`).join('')}</nav>
-      <section class="content-hub__articles"><header data-reveal="slide-left"><h2>${category === 'learn' ? 'Рабочие сценарии' : category === 'how-to' ? 'Пошаговые инструкции' : 'Последние обновления'}</h2><p>${category === 'learn' ? 'Практические материалы о клиентах, встречах и следующем шаге.' : category === 'how-to' ? 'Короткие последовательности действий внутри продукта.' : 'Что изменилось в продукте и как использовать новые возможности.'}</p></header><div class="article-grid article-grid--hub"></div></section>
+      <section class="content-hub__articles"><header data-reveal="slide-left"><h2>${category === 'learn' ? 'Учитесь работать с клиентами спокойнее' : category === 'how-to' ? 'Как использовать Simple CRM' : 'Что нового в Simple CRM'}</h2><p>${category === 'learn' ? 'Практические материалы о клиентах, встречах, отношениях и следующем шаге.' : category === 'how-to' ? 'Короткие инструкции по возможностям, которые помогают помнить детали и быстро действовать.' : 'Новые функции, улучшения и продуктовые заметки команды.'}</p></header><div class="article-grid article-grid--hub"></div></section>
       <section class="content-hub__other" data-reveal="scale"><h2>Другие разделы</h2><div class="cross-promo-grid"></div></section>
+      <section class="support-newsletter section content-hub__newsletter" aria-labelledby="hub-newsletter-title">
+        <form class="newsletter-card" data-newsletter-form data-reveal="scale" novalidate>
+          <div>
+            <p class="eyebrow">Newsletter Signup</p>
+            <h2 id="hub-newsletter-title">Получайте новости о новых возможностях</h2>
+            <p>Подпишитесь на обновления Simple CRM: релизы, полезные сценарии и спокойные подсказки по работе с клиентами.</p>
+          </div>
+          <label><span class="visually-hidden">Email</span><input name="email" type="email" autocomplete="email" placeholder="Получать обновления" required /></label>
+          <button class="button button--primary" type="submit">Подписаться</button>
+          <p class="form-status" data-form-status aria-live="polite"></p>
+        </form>
+      </section>
     </div>`;
   section.querySelector('.content-hub__search').append(createSearchForm());
   const promos = Object.entries(categoryMeta).filter(([key]) => key !== category).map(([key, item]) => ({ key, ...item }));
@@ -39,14 +51,13 @@ export function createArticleLayout(slug) {
   const position = siblings.findIndex(item => item.slug === article.slug);
   const previous = siblings[position - 1];
   const next = siblings[position + 1];
-  section.innerHTML = `<div class="container article-layout"><article class="article-main"><header class="article-header"><p class="eyebrow">${escapeHtml(categoryMeta[article.category].title)}</p><h1 id="article-title">${escapeHtml(article.title)}</h1>${article.publishedAt ? `<p class="article-meta">${escapeHtml(article.publishedAt)}${article.author ? ` — ${escapeHtml(article.author)}` : ''}</p>` : ''}</header><div class="article-body"></div><nav class="article-pagination" aria-label="Навигация по материалам"></nav><section class="article-tags" aria-label="Теги материала"><span>Теги:</span>${article.tags.map(tag => `<span>${escapeHtml(tag)}</span>`).join('')}</section></article><aside class="article-sidebar"><div class="article-toc"><h2>На этой странице</h2><nav aria-label="Оглавление"><ol>${headings.map(item => `<li><a href="#${escapeAttribute(item.id)}">${escapeHtml(item.text)}</a></li>`).join('')}</ol></nav></div><div class="article-sidebar__search"></div>${related.length ? '<section class="article-sidebar__related"><h2>Читайте также</h2><div></div></section>' : ''}</aside></div>`;
+  section.innerHTML = `<div class="container article-layout article-layout--single"><article class="article-main"><header class="article-header"><p class="eyebrow">${escapeHtml(categoryMeta[article.category].title)}</p><h1 id="article-title">${escapeHtml(article.title)}</h1>${article.publishedAt ? `<p class="article-meta">${escapeHtml(article.publishedAt)}${article.author ? ` — ${escapeHtml(article.author)}` : ''}</p>` : ''}</header><div class="article-body"></div><nav class="article-pagination" aria-label="Навигация по материалам"></nav><section class="article-tags" aria-label="Теги материала"><span>Теги:</span>${article.tags.map(tag => `<span>${escapeHtml(tag)}</span>`).join('')}</section>${related.length ? '<section class="article-related-inline"><h2>Читайте также</h2><div></div></section>' : ''}</article></div>`;
   const body = section.querySelector('.article-body');
   article.content.forEach(block => body.append(createArticleBlock(block)));
   const pagination = section.querySelector('.article-pagination');
   if (previous) pagination.append(createPaginationLink('Предыдущий материал', previous, 'arrow-left'));
   if (next) pagination.append(createPaginationLink('Следующий материал', next, 'arrow-right'));
-  section.querySelector('.article-sidebar__search').append(createSearchForm({ compact: true }));
-  const relatedContainer = section.querySelector('.article-sidebar__related > div');
+  const relatedContainer = section.querySelector('.article-related-inline > div');
   if (relatedContainer) related.forEach(item => relatedContainer.append(createRelatedLink(item)));
   return section;
 }
@@ -486,10 +497,10 @@ export function createReleasesPage() {
     },
   ];
   const section = document.createElement('section');
-  section.className = 'inner-page section document-page document-page--dextr releases-page releases-page--notes';
+  section.className = 'inner-page section releases-page releases-page--dextr-notes';
   section.dataset.reveal = 'scale';
   section.setAttribute('aria-labelledby', 'releases-title');
-  section.innerHTML = `<div class="container document-single"><article class="document-main"><header class="document-header"><p class="eyebrow">Release Notes</p><h1 id="releases-title">Заметки о релизах Simple CRM</h1><p class="document-lead">Следите за обновлениями Simple CRM: новые возможности, улучшения интерфейса, исправления и изменения, которые помогают лучше помнить клиентов.</p></header><div class="release-list">${releases.map((release, index) => `<section class="release-entry" id="release-${escapeAttribute(release.version.replaceAll('.', '-'))}" data-reveal="slide-up"><div class="release-entry__heading"><div><h2>${escapeHtml(release.version)}</h2><p>${escapeHtml(release.date)}</p></div>${release.label ? `<span>${escapeHtml(release.label)}</span>` : ''}</div>${release.groups.map(([title, items]) => `<section class="release-group"><h3>${escapeHtml(title)}</h3><ul>${items.map(item => `<li>${iconSvg('check')}<span>${escapeHtml(item)}</span></li>`).join('')}</ul></section>`).join('')}${index === 0 ? '<p><a class="text-link" href="/announcements/">Открыть объявления ' + iconSvg('arrow-right') + '</a></p>' : ''}</section>`).join('')}</div></article></div><section class="support-newsletter section" aria-labelledby="releases-newsletter-title"><div class="container"><form class="newsletter-card" data-newsletter-form data-reveal="scale" novalidate><div><p class="eyebrow">Newsletter Signup</p><h2 id="releases-newsletter-title">Получайте новости о новых возможностях</h2><p>Подпишитесь, чтобы узнавать о новых релизах Simple CRM сразу после публикации.</p></div><label><span class="visually-hidden">Email</span><input name="email" type="email" autocomplete="email" placeholder="Получать обновления" required /></label><button class="button button--primary" type="submit">Подписаться</button><p class="form-status" data-form-status aria-live="polite"></p></form></div></section>`;
+  section.innerHTML = `<div class="container releases-layout"><article class="releases-main"><header class="releases-header"><h1 id="releases-title">Заметки о релизах Simple CRM</h1></header><div class="release-list">${releases.map((release, index) => `<section class="release-entry" id="release-${escapeAttribute(release.version.replaceAll('.', '-'))}" data-reveal="slide-up"><div class="release-entry__heading"><div><h2>${escapeHtml(release.version)}</h2><p>${escapeHtml(release.date)}</p></div>${release.label ? `<span>${escapeHtml(release.label)}</span>` : ''}</div>${release.groups.map(([title, items]) => `<section class="release-group" id="release-${escapeAttribute(release.version.replaceAll('.', '-'))}-${slugify(title)}"><h3>${escapeHtml(title)}</h3><ul>${items.map(item => `<li><span>${escapeHtml(item)}</span></li>`).join('')}</ul></section>`).join('')}${index === 0 ? '<p><a class="text-link" href="/announcements/">Открыть объявления ' + iconSvg('arrow-right') + '</a></p>' : ''}</section>`).join('')}</div></article><aside class="releases-toc" data-reveal="slide-right"><p>На этой странице</p><nav aria-label="Оглавление релизов">${releases.map(release => `<a class="releases-toc__version" href="#release-${escapeAttribute(release.version.replaceAll('.', '-'))}">${escapeHtml(release.version)}</a>${release.groups.map(([title]) => `<a class="releases-toc__child" href="#release-${escapeAttribute(release.version.replaceAll('.', '-'))}-${slugify(title)}">${escapeHtml(title)}</a>`).join('')}`).join('')}</nav></aside></div>`;
   return section;
 }
 
