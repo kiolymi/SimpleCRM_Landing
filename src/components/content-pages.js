@@ -214,7 +214,7 @@ export function createAboutPage() {
     <div class="container company-page__inner">
       <header class="company-page__hero">
         <div class="company-page__hero-copy" data-reveal="slide-left">
-        <h1 id="about-title">Помогаем сохранять главное в отношениях с клиентами</h1>
+        <h1 id="about-title">Помогаем строить отношения с клиентами</h1>
         <p>За каждым контактом — разговоры, встречи и договорённости. Simple CRM собирает их в одну историю, чтобы вы могли уделять больше внимания людям и быстрее возвращаться к сути разговора.</p>
         </div>
         <div class="company-page__hero-screens" aria-label="Возможности Simple CRM"></div>

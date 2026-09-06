@@ -1815,17 +1815,19 @@ button:is(.header-app-store, .app-store-badge):focus-visible {
 @media (prefers-reduced-motion: no-preference) {
   .download-placeholder[open] { animation: crm-reveal 260ms ease-out backwards; }
 }
+.container.company-page__inner { max-width: 1280px; }
 .company-page .company-page__hero {
   display: grid;
-  grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+  max-width: none;
+  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
   align-items: center;
   gap: 48px;
 }
-.company-page__hero-screens { display: flex; align-items: center; gap: 20px; padding-block: 32px; min-width: 0; }
+.company-page__hero-screens { display: flex; align-items: center; gap: 20px; padding-block: 32px; min-width: 0; width: 100%; max-width: 420px; justify-self: end; }
 .company-page__hero-screens > .device-mockup { width: calc((100% - 20px) / 2); min-width: 0; margin: 0; }
 .company-page__hero-screens > .device-mockup:first-child { margin-top: 64px; }
 .company-page__hero-screens > .device-mockup:last-child { margin-bottom: 64px; }
-.company-page .company-page__mission { text-align: center; }
+.company-page .company-page__mission { margin-inline: auto; text-align: center; }
 .company-page .company-page__mission p { margin-inline: auto; }
 @media (max-width: 760px) {
   .company-page .company-page__hero { grid-template-columns: minmax(0, 1fr); gap: 16px; }
