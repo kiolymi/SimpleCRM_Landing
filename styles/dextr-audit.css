@@ -1385,6 +1385,50 @@ body {
 }
 
 /* Чистый, плотно обрезанный логотип без встроенной PNG-сетки. */
+body:is([data-page="about"], [data-page="privacy"], [data-page="pricing"]) .site-header { background: #0a1424; border-color: #253043; }
+body:is([data-page="about"], [data-page="privacy"], [data-page="pricing"]) .site-header :is(.brand, .desktop-nav > a, .desktop-nav__trigger, .menu-toggle) { color: #edf1f6; }
+body:is([data-page="about"], [data-page="privacy"], [data-page="pricing"]) .header-app-store { background: #fff; color: #080b10; }
+.company-page, .document-page--dextr, .pricing-page--dextr { background: #0a1424; color: #edf2f8; }
+.company-page :is(h1,h2,h3) { color: #f2f5f9; }
+.company-page p { color: #c4cfdd; }
+.company-page .article-card { background: #182436; border: 1px solid #2c3b50; box-shadow: none; }
+.company-page .article-card__cover { min-height: 0; height: 280px; aspect-ratio: auto; }
+.company-page .article-card__body { background: #182436; }
+.company-page .article-card__body p { color: #c4cfdd; }
+.company-page .article-card__category, .company-page .article-card__body a { color: #a6c9e1; }
+.company-page .newsletter-card, .document-page--dextr .newsletter-card, .pricing-page--dextr .newsletter-card { min-height: 0; background: transparent; border: 0; box-shadow: none; }
+.company-page .newsletter-card :is(h2,p,label), .document-page--dextr .newsletter-card :is(h2,p,label), .pricing-page--dextr .newsletter-card :is(h2,p,label) { color: #d7e2ed; }
+.company-page .support-newsletter, .document-page--dextr .support-newsletter, .pricing-page--dextr .support-newsletter { background: transparent; }
+.company-page .newsletter-card input, .document-page--dextr .newsletter-card input, .pricing-page--dextr .newsletter-card input { background: #182232; border-color: #3c4b60; color: #edf2f8; }
+.document-page--dextr .document-single { padding-block: 48px 32px; }
+.document-page--dextr .document-main { min-width: 0; max-width: none; padding: 0; border: 0; border-radius: 0; background: transparent; box-shadow: none; backdrop-filter: none; }
+.document-page--dextr .document-header h1 { color: #f2f5f9; font-size: clamp(32px, 4vw, 48px); line-height: 1.15; }
+.document-page--dextr .document-updated, .document-page--dextr .document-lead { color: #c6d0dc; font-size: 17px; line-height: 1.7; }
+.document-page--dextr .document-body h2 { color: #f2f5f9; font-size: 25px; line-height: 1.3; }
+.document-page--dextr .document-body :is(p,li) { color: #c6d0dc; }
+.document-page--dextr .document-body section { border: 0; padding-block: 16px; scroll-margin-top: 32px; }
+.pricing-page--dextr .pricing-page__hero { padding: 38px 0 24px; background: transparent; }
+.pricing-page--dextr .pricing-page__hero h1 { color: #f2f5f9; font-size: clamp(36px, 4.5vw, 60px); line-height: 1.15; }
+.pricing-page--dextr .pricing-page__hero p { color: #c6d0dc; font-size: 17px; }
+.pricing-page--dextr .pricing-page__cards { max-width: 1200px; gap: 30px; }
+.pricing-page--dextr .pricing-plan { padding: 38px; background: #1e2c3d; border: 1px solid #2d3c4f; border-radius: 16px; box-shadow: none; }
+.pricing-page--dextr .pricing-plan--featured { border: 2px solid #a6c9e1; }
+.pricing-page--dextr .pricing-plan__name { color: #f2f5f9; font-size: 34px; }
+.pricing-page--dextr .pricing-plan__description { min-height: 76px; margin: 14px 0 20px; }
+.pricing-page--dextr .pricing-plan__badge { top: -15px; right: 50%; transform: translateX(50%); border-radius: 24px; }
+.pricing-page--dextr .pricing-plan h2 { color: #edf2f8; font-size: 34px; }
+.pricing-page--dextr .pricing-plan h2 small, .pricing-page--dextr .pricing-plan__description, .pricing-page--dextr .pricing-plan__timeline p { color: #c6d0dc; }
+.pricing-page--dextr .pricing-plan__timeline strong { color: #e4edf5; }
+.pricing-page--dextr .pricing-plan__timeline > div { background: transparent; box-shadow: none; border: 0; }
+.pricing-page--dextr .pricing-plan .button { background: #a6c9e1; color: #102235; border: 0; border-radius: 28px; box-shadow: none; }
+.pricing-page--dextr .pricing-plan__badge { background: #a6c9e1; color: #102235; }
+.pricing-page--dextr .pricing-pledge__card { background: transparent; box-shadow: none; border-color: #2d3c4f; }
+.pricing-page--dextr .pricing-pledge__card h2 { color: #edf2f8; }
+.pricing-page--dextr .pricing-pledge__card p:not(.eyebrow) { color: #c6d0dc; }
+@media (max-width: 767px) {
+  .pricing-page--dextr .pricing-page__cards { grid-template-columns: 1fr; }
+  .pricing-page--dextr .pricing-plan { padding: 26px; }
+}
 .support-page--contact { background: #0a1424; color: #e7edf5; }
 .support-page--contact .support-contact-hero { padding: 90px 0 64px; background: radial-gradient(ellipse at 78% 55%, #182940 0%, transparent 48%), #0a1424; }
 .support-page--contact .support-contact-hero__inner { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 90px; align-items: start; }
