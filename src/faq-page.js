@@ -66,7 +66,7 @@ function enhanceFaq() {
       const endHeight = item.getBoundingClientRect().height;
       item.open = true;
       item.style.overflow = 'hidden';
-      const animation = item.animate([{height: `${startHeight}px`}, {height: `${endHeight}px`}], {duration: 300, easing: 'cubic-bezier(.22,.61,.36,1)'});
+      const animation = item.animate([{height: `${startHeight}px`}, {height: `${endHeight}px`}], {duration: 460, easing: 'cubic-bezier(.16,1,.3,1)'});
       animations.set(item, animation);
       animation.onfinish = () => {
         item.open = desiredOpen;

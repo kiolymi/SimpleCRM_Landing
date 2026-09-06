@@ -1642,7 +1642,11 @@ body:is([data-page="learn"], [data-page="how-to"], [data-page="announcements"]) 
 /* Visible, deterministic entrance animation, including first paint in Safari. */
 @media (prefers-reduced-motion: no-preference) {
   .has-js [data-reveal].is-visible {
-    animation: crm-reveal 950ms cubic-bezier(.22,.61,.36,1) var(--reveal-delay,0ms) backwards;
+    animation: crm-reveal 1100ms cubic-bezier(.16,1,.3,1) var(--reveal-delay,0ms) backwards;
+    /* One entrance mechanism: avoid a transform transition fighting keyframes. */
+    transition-property: background-color, border-color, box-shadow, color;
+    transition-duration: 420ms;
+    will-change: auto;
   }
   .has-js [data-reveal="slide-left"] { --reveal-x: -36px; --reveal-y: 0px; }
   .has-js [data-reveal="slide-right"] { --reveal-x: 36px; --reveal-y: 0px; }
@@ -1656,8 +1660,20 @@ body:is([data-page="learn"], [data-page="how-to"], [data-page="announcements"]) 
   }
 }
 @keyframes crm-reveal {
-  from { opacity: 0; transform: translate3d(var(--reveal-x,0px),var(--reveal-y,32px),0); }
+  from { opacity: 0; transform: translate3d(var(--reveal-x,0px),var(--reveal-y,40px),0); }
   to { opacity: 1; transform: translate3d(0,0,0); }
+}
+
+/* Shared soft interaction rhythm on every route. */
+@media (prefers-reduced-motion: no-preference) {
+  .site-main :is(.button,.btn,.article-card,.testimonial-card,.pricing-plan,.faq-rich-item,.faq-search__field),
+  .site-header :is(a,button), .site-footer a {
+    transition-duration: 420ms;
+    transition-timing-function: cubic-bezier(.16,1,.3,1);
+  }
+  .faq-page__hero h1:not([data-reveal]) { animation: crm-reveal 1000ms cubic-bezier(.16,1,.3,1) both; }
+  .faq-page__hero > .container > p:not([data-reveal]) { animation: crm-reveal 1000ms cubic-bezier(.16,1,.3,1) 100ms backwards; }
+  .faq-search { animation: crm-reveal 1000ms cubic-bezier(.16,1,.3,1) 200ms backwards; }
 }
 
 /* Light editorial pages alternate with the dark product and learning pages. */
@@ -1872,6 +1888,7 @@ button:is(.header-app-store, .app-store-badge) { font: inherit; cursor: pointer;
 .newsletter-section .newsletter-card .button { grid-column: 3; min-width: 150px; min-height: 46px; border-radius: 6px; box-shadow: none; }
 .newsletter-section .newsletter-card .form-status:empty { display: none; }
 @media (max-width: 600px) {
+  #testimonials-title .text-nowrap:last-child { white-space: normal; }
   .newsletter-section .newsletter-card { grid-template-columns: minmax(0, 1fr); min-height: 0; padding: 40px 20px; }
   .newsletter-section .newsletter-card .button { width: 100%; }
   .newsletter-section .newsletter-card label, .newsletter-section .newsletter-card .button { grid-column: 1; }
