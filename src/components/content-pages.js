@@ -184,7 +184,7 @@ export function createFaqPage() {
   section.innerHTML = `
     <div class="faq-page__hero"><div class="container" data-reveal="scale"><h1 id="faq-title">Частые вопросы</h1><p>Здесь собраны ответы о Simple CRM, возможностях продукта, приватности и запуске команды.</p></div></div>
     <div class="container faq-list-wrap">
-      <div class="faq-list" data-reveal="scale">
+      <div class="faq-list">
         ${questions.map(([question, answer], index) => `<details class="faq-rich-item" data-reveal="slide-up"${index === 0 ? ' open' : ''}><summary>${escapeHtml(question)}${iconSvg('chevron-down')}</summary><p>${escapeHtml(answer)}</p></details>`).join('')}
       </div>
     </div>

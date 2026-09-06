@@ -1,6 +1,6 @@
 import { createSiteShell } from './components/site-shell.js?v=20260824-31';
 import { createHomePage } from './components/home-sections.js?v=20260824-33';
-import { createAboutPage, createArticleLayout, createContentHubPage, createFaqPage, createPricingPage, createPrivacyPage, createReleasesPage, createSearchPage, createSupportPage } from './components/content-pages.js?v=20260906-3';
+import { createAboutPage, createArticleLayout, createContentHubPage, createFaqPage, createPricingPage, createPrivacyPage, createReleasesPage, createSearchPage, createSupportPage } from './components/content-pages.js?v=20260906-4';
 import { pageMeta } from './data/site.js?v=20260824-30';
 import { createProductDeviceMockup } from './components/product-device-mockup.js';
 
@@ -126,6 +126,7 @@ function prepareRevealSequences(root) {
     '.demo-section__copy ul',
     '.pricing-questions__list',
     '.about-journey',
+    '.faq-list',
   ];
 
   root.querySelectorAll(groupSelectors.join(',')).forEach(group => {

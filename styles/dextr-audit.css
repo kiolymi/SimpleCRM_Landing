@@ -1385,6 +1385,31 @@ body {
 }
 
 /* Чистый, плотно обрезанный логотип без встроенной PNG-сетки. */
+.faq-page--dextr { background: #0a1424; color: #e8eef5; }
+.faq-page--dextr .faq-page__hero { padding: 76px 0 36px; }
+.faq-page--dextr .container { max-width: 952px; }
+.faq-page--dextr .faq-page__hero h1 { font-size: clamp(34px, 4vw, 48px); color: #f3f6fa; letter-spacing: -.025em; line-height: 1.15; }
+.faq-page--dextr .faq-page__hero > .container { text-align: left; }
+.faq-page--dextr .faq-page__hero h1 { margin-inline: 0; }
+.faq-page--dextr .faq-page__hero > .container > p { max-width: none; margin-inline: 0; color: #c6d0dc; font-size: 17px; line-height: 1.65; }
+.faq-page--dextr .faq-list { border-top: 0; }
+.faq-page--dextr .faq-rich-item { background: transparent; border: 0; border-bottom: 1px solid #222f40; border-radius: 0; box-shadow: none; }
+.faq-page--dextr .faq-rich-item summary { padding: 26px 0; color: #e6edf4; font-size: 17px; letter-spacing: 0; line-height: 1.5; gap: 24px; }
+.faq-page--dextr .faq-rich-item summary svg { display: none; }
+.faq-page--dextr .faq-rich-item summary::after { content: '+'; flex: 0 0 20px; margin-left: auto; color: #bdcddb; font-size: 24px; font-weight: 400; text-align: center; }
+.faq-page--dextr .faq-rich-item[open] summary::after { content: '−'; }
+.faq-page--dextr .faq-rich-item > p { padding: 0 30px 26px 0; margin: 0; color: #c6d0dc; font-size: 17px; line-height: 1.7; }
+.faq-page--dextr .faq-rich-item summary:hover { color: #fff; }
+.faq-page--dextr .support-newsletter { background: transparent; }
+.faq-page--dextr .newsletter-card { min-height: 0; padding: 28px 0; background: transparent; border: 0; box-shadow: none; }
+.faq-page--dextr .newsletter-card :is(h2,p,label) { color: #d7e2ed; }
+.faq-page--dextr .newsletter-card h2 { font-size: 30px; }
+.faq-page--dextr .newsletter-card input { color: #edf3f8; background: #182232; border-color: #3c4b60; }
+.faq-page--dextr .newsletter-card input::placeholder { color: #abb8c9; }
+.faq-page--dextr .form-status:empty { display: none; }
+body[data-page="faq"] .site-header { background: #0a1424; border-color: #253043; }
+body[data-page="faq"] .site-header :is(.brand, .desktop-nav > a, .desktop-nav__trigger, .menu-toggle) { color: #edf1f6; }
+body[data-page="faq"] .header-app-store { background: #fff; color: #080b10; }
 .article-page--editorial { padding: 42px 0 72px; background: #0a1424; color: #e9eef5; }
 .container.editorial-layout { display: grid; grid-template-columns: minmax(0, 760px) minmax(240px, 320px); align-items: start; gap: 48px; max-width: 1280px; }
 .editorial-main { min-width: 0; }
