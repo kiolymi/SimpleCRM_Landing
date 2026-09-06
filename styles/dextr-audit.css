@@ -1418,6 +1418,28 @@ body[data-page="home"] :is(.trust-section,.testimonials-section,.product-panoram
 @media (max-width: 900px) { .testimonials-section .testimonials-grid { grid-template-columns: repeat(2,minmax(0,1fr)); } }
 @media (max-width: 600px) { .testimonials-section .testimonials-grid { grid-template-columns: 1fr; } }
 
+.search-page { background: #0a1424; color: #c4cfdd; }
+.search-page :is(h1,h2,h3) { color: #f2f5fa; }
+.search-page p { color: #c4cfdd; }
+.search-page .section-heading p { color: #c4cfdd; }
+.mobile-menu { background: #101c2e; color: #edf2f8; }
+.mobile-menu :is(.brand,.icon-button), .mobile-menu__nav > a, .mobile-menu__resources a { color: #edf2f8; }
+.mobile-menu__resources p { color: #a6b7cb; }
+.mobile-menu__nav a.is-current { color: #a6c9e1; }
+.search-page .search-form,.search-page .search-form input { background: #182436; color: #edf2f8; border-color: #3c4b60; box-shadow: none; }
+.search-page .article-card,.search-page .article-card__body { background: #182436; border-color: #293a50; box-shadow: none; }
+.search-page .article-card__body a { color: #a6c9e1; }
+body[data-page="search"] .site-header { background: #0a1424; border-color: #253043; }
+body[data-page="search"] .site-header :is(.brand,.desktop-nav > a,.desktop-nav__trigger,.menu-toggle) { color: #edf1f6; }
+body[data-page="search"] .header-app-store { background: #fff; color: #080b10; }
+.releases-toc__disclosure summary { color: #e5edf6; cursor: pointer; font-size: 14px; font-weight: 700; }
+.releases-toc__disclosure[open] summary { margin-bottom: 20px; }
+body[data-page="releases"] .menu-toggle { color: #edf2f8; border-color: #65788f; }
+@media (max-width: 1023px) {
+  .releases-toc { max-height: none; padding: 18px 22px; }
+  .releases-toc__disclosure nav { max-height: 45vh; overflow-y: auto; }
+}
+
 /* Чистый, плотно обрезанный логотип без встроенной PNG-сетки. */
 body:is([data-page="about"], [data-page="privacy"], [data-page="pricing"]) .site-header { background: #0a1424; border-color: #253043; }
 body:is([data-page="about"], [data-page="privacy"], [data-page="pricing"]) .site-header :is(.brand, .desktop-nav > a, .desktop-nav__trigger, .menu-toggle) { color: #edf1f6; }
@@ -1609,3 +1631,44 @@ body:is([data-page="learn"], [data-page="how-to"], [data-page="announcements"]) 
   background: transparent;
   object-fit: cover;
 }
+
+/* Visible, deterministic entrance animation, including first paint in Safari. */
+@media (prefers-reduced-motion: no-preference) {
+  .has-js [data-reveal].is-visible {
+    animation: crm-reveal 950ms cubic-bezier(.22,.61,.36,1) var(--reveal-delay,0ms) both;
+  }
+  .has-js [data-reveal="slide-left"] { --reveal-x: -36px; --reveal-y: 0px; }
+  .has-js [data-reveal="slide-right"] { --reveal-x: 36px; --reveal-y: 0px; }
+  .has-js.is-navigating .site-shell { transition-duration: 240ms; }
+}
+@keyframes crm-reveal {
+  from { opacity: 0; transform: translate3d(var(--reveal-x,0px),var(--reveal-y,32px),0); }
+  to { opacity: 1; transform: translate3d(0,0,0); }
+}
+
+/* Light editorial pages alternate with the dark product and learning pages. */
+body:is([data-page="about"],[data-page="pricing"],[data-page="support"]) {
+  background: #edf4fa;
+}
+body:is([data-page="about"],[data-page="pricing"],[data-page="support"]) .site-header {
+  background: #edf4fa; border-color: #d5e1ed;
+}
+body:is([data-page="about"],[data-page="pricing"],[data-page="support"]) .site-header :is(.brand,.desktop-nav > a,.desktop-nav__trigger,.menu-toggle) { color: #152b45; }
+body:is([data-page="about"],[data-page="pricing"],[data-page="support"]) .header-app-store { background: #101c2e; color: #fff; }
+.company-page,.pricing-page--dextr,.support-page--contact { background: linear-gradient(130deg,#f3f7fb,#e8f2fb 55%,#f0f5fa); color: #172d47; }
+.support-page--contact .support-contact-hero { background: radial-gradient(ellipse at 80% 35%,#dceafa,transparent 60%); }
+.company-page :is(h1,h2,h3),.pricing-page--dextr :is(h1,h2,h3),.support-page--contact .support-contact-hero__copy h1 { color: #172d47; }
+.company-page p,.pricing-page--dextr p,.support-page--contact .support-contact-hero__copy > p { color: #4a5f77; }
+.pricing-page--dextr .pricing-plan { background: #fafdff; border-color: #cfdeec; }
+.pricing-page--dextr .pricing-plan--featured { border-color: #6b9cc4; }
+.pricing-page--dextr .pricing-plan__name,.pricing-page--dextr .pricing-plan__timeline strong { color: #172d47; }
+.pricing-page--dextr .pricing-plan h2 small,.pricing-page--dextr .pricing-plan__timeline p,.pricing-page--dextr .pricing-plan__description,.pricing-page--dextr .pricing-pledge p { color: #4a5f77; }
+.company-page .article-card,.company-page .article-card__body { background: #fafdff; border-color: #cfdeec; }
+.company-page .article-card__body p { color: #4a5f77; }
+.company-page .article-card__body a { color: #245b87; }
+.company-page .newsletter-card :is(h2,p,label),.pricing-page--dextr .newsletter-card :is(h2,p,label),.support-page--contact .newsletter-card :is(h2,p,label) { color: #172d47; }
+.company-page .newsletter-card input,.pricing-page--dextr .newsletter-card input,.support-page--contact .newsletter-card input { background: #fafdff; border-color: #bfcede; color: #172d47; }
+.support-page--contact .support-newsletter { background: transparent; }
+.pricing-page--dextr .pricing-page__hero h1,.pricing-page--dextr .pricing-plan h2,.pricing-page--dextr .pricing-pledge h2 { color: #172d47; }
+.pricing-page--dextr .pricing-page__hero p { color: #4a5f77; }
+.support-page--contact .support-message > summary { color: #245b87; }
