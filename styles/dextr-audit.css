@@ -1718,6 +1718,19 @@ body:is([data-page="article"],[data-page="learn"],[data-page="how-to"],[data-pag
 .article-page--editorial .editorial-search .search-form :is(input,button),.content-hub--archive .search-form :is(input,button) { color: #245b87; }
 .article-page--editorial .editorial-search .search-form input::placeholder,.content-hub--archive :is(.search-form input,.archive-newsletter input)::placeholder { color: #536b83; }
 
+.back-to-top {
+  position: fixed; right: max(24px, env(safe-area-inset-right)); bottom: max(24px, env(safe-area-inset-bottom));
+  z-index: 40; display: grid; place-items: center; width: 46px; height: 46px;
+  border: 1px solid #b7cde1; border-radius: 50%; background: #edf4fa; color: #173a60;
+  opacity: 0; visibility: hidden; transform: translateY(10px); pointer-events: none;
+  transition: opacity 280ms ease, transform 280ms ease, visibility 280ms, background-color 220ms ease;
+}
+.back-to-top svg { width: 24px; height: 24px; }
+.back-to-top.is-visible { opacity: 1; visibility: visible; transform: none; pointer-events: auto; }
+.back-to-top:hover { background: #dcecff; }
+.back-to-top:focus-visible { outline: 3px solid #1681e9; outline-offset: 4px; }
+@media (prefers-reduced-motion: reduce) { .back-to-top { transition: none; } }
+
 /* Dialog colors are isolated from the page header theme. */
 body[data-page] .site-header .mobile-menu { background: #edf4fa; color: #172d47; }
 body[data-page] .site-header .mobile-menu :is(.brand,.brand > span,.icon-button),

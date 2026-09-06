@@ -53,6 +53,7 @@ wireScrollMotion(app);
 wireInteractiveComponents(app);
 wireScrollProgress();
 wireSectionNavigation(app);
+wireBackToTop(app);
 wireSmoothAnchorNavigation(app);
 wireStablePageNavigation(app);
 
@@ -224,6 +225,26 @@ function prepareRevealSequences(root) {
   });
 }
 
+function wireBackToTop(root) {
+  const link = document.createElement('a');
+  link.href = '#main-content';
+  link.className = 'back-to-top';
+  link.setAttribute('aria-label', 'Вернуться к началу страницы');
+  link.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="m6 14 6-6 6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+  root.append(link);
+  let scheduled = false;
+  const update = () => {
+    scheduled = false;
+    link.classList.toggle('is-visible', window.scrollY > Math.max(600, window.innerHeight));
+  };
+  window.addEventListener('scroll', () => {
+    if (scheduled) return;
+    scheduled = true;
+    requestAnimationFrame(update);
+  }, { passive: true });
+  update();
+}
+
 function wireSmoothAnchorNavigation(root) {
   let scrollFrame = 0;
   let arrivalTimer = 0;
@@ -242,9 +263,16 @@ function wireSmoothAnchorNavigation(root) {
     const start = window.scrollY;
     const distance = destination - start;
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const focusDestination = () => {
+      const temporaryTabIndex = !target.hasAttribute('tabindex');
+      if (temporaryTabIndex) target.setAttribute('tabindex', '-1');
+      target.focus({ preventScroll: true });
+      if (temporaryTabIndex) target.addEventListener('blur', () => target.removeAttribute('tabindex'), { once: true });
+    };
 
     if (reduceMotion || Math.abs(distance) < 2) {
       window.scrollTo(0, destination);
+      focusDestination();
     } else {
       const startedAt = performance.now();
       const duration = Math.min(1050, Math.max(620, Math.abs(distance) * 0.34));
@@ -259,6 +287,7 @@ function wireSmoothAnchorNavigation(root) {
           return;
         }
         scrollFrame = 0;
+        focusDestination();
       };
       scrollFrame = window.requestAnimationFrame(render);
     }
