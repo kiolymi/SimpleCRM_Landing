@@ -1399,16 +1399,19 @@ body {
   box-sizing: border-box;
 }
 
-/* The homepage uses one canvas from hero through newsletter. */
-body[data-page="home"] :is(.trust-section,.testimonials-section,.product-panorama,.home-articles,.newsletter-section) { background: #071426; color: #c4cfdd; }
-body[data-page="home"] :is(.trust-section,.testimonials-section,.product-panorama,.home-articles,.newsletter-section) :is(h2,h3,dt) { color: #f2f5fa; }
-body[data-page="home"] :is(.trust-section,.testimonials-section,.product-panorama,.home-articles,.newsletter-section) :is(p,dd,li) { color: #c4cfdd; }
+/* Light reading canvas; dark hero and subscription panel provide the accents. */
+body[data-page="home"] :is(.trust-section,.testimonials-section,.product-panorama,.home-articles,.newsletter-section) { background: #f1f6fb; color: #4a6078; }
+body[data-page="home"] :is(.trust-section,.testimonials-section,.product-panorama,.home-articles) :is(h2,h3,dt) { color: #172d47; }
+body[data-page="home"] :is(.trust-section,.testimonials-section,.product-panorama,.home-articles) :is(p,dd,li) { color: #4a6078; }
+body[data-page="home"] .product-panorama .section-heading > p:last-child { color: #4a6078; }
+body[data-page="home"] .newsletter-section :is(h2,h3) { color: #f2f5fa; }
+body[data-page="home"] .newsletter-section p { color: #c4cfdd; }
 .testimonials-section .testimonials-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 24px; align-items: start; }
-.testimonials-section .testimonial-card { grid-column: auto; grid-row: auto; min-height: 0; background: #182436; border: 1px solid #293a50; box-shadow: none; }
-.testimonials-section .testimonial-card :is(strong,small,.testimonial-card__meta) { color: #c4cfdd; }
+.testimonials-section .testimonial-card { grid-column: auto; grid-row: auto; min-height: 0; background: #fafdff; border: 1px solid #cfdeec; box-shadow: none; }
+.testimonials-section .testimonial-card :is(strong,small,.testimonial-card__meta) { color: #4a6078; }
 .testimonials-section .testimonial-card::before,.testimonials-section .testimonial-card::after { display: none; }
-.home-articles .article-card,.home-articles .article-card__body { background: #182436; border-color: #293a50; box-shadow: none; }
-.home-articles .article-card__body a,.home-articles .button--outline,.trust-section .text-link { color: #a6c9e1; }
+.home-articles .article-card,.home-articles .article-card__body { background: #fafdff; border-color: #cfdeec; box-shadow: none; }
+.home-articles .article-card__body a,.home-articles .button--outline,.trust-section .text-link { color: #245b87; }
 .newsletter-section .newsletter-card { background: transparent; border: 0; box-shadow: none; min-height: 0; }
 .newsletter-section .newsletter-card label { color: #c4cfdd; }
 .newsletter-section .newsletter-card input { background: #182436; border-color: #3c4b60; color: #edf2f8; }
