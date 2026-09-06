@@ -8,33 +8,37 @@ export function createContentHubPage(category) {
   const meta = categoryMeta[category];
   const posts = getArticlesByCategory(category);
   const section = document.createElement('section');
-  section.className = 'content-hub content-hub--rich';
+  section.className = 'content-hub content-hub--archive';
   section.setAttribute('aria-labelledby', 'hub-title');
   section.innerHTML = `
-    <div class="content-hub__hero"><div class="container" data-reveal="scale"><h1 id="hub-title">${escapeHtml(meta.title)}</h1><p>${escapeHtml(meta.description)}</p><div class="content-hub__search"></div></div></div>
     <div class="container">
-      <nav class="content-hub__tabs" aria-label="Разделы материалов" data-reveal="scale">${Object.entries(categoryMeta).map(([key, item]) => `<a href="${escapeAttribute(item.href)}"${key === category ? ' class="is-current" aria-current="page"' : ''}>${escapeHtml(item.title)}</a>`).join('')}</nav>
-      <section class="content-hub__articles"><header data-reveal="slide-left"><h2>${category === 'learn' ? 'Учитесь работать с клиентами спокойнее' : category === 'how-to' ? 'Как использовать Simple CRM' : 'Что нового в Simple CRM'}</h2><p>${category === 'learn' ? 'Практические материалы о клиентах, встречах, отношениях и следующем шаге.' : category === 'how-to' ? 'Короткие инструкции по возможностям, которые помогают помнить детали и быстро действовать.' : 'Новые функции, улучшения и продуктовые заметки команды.'}</p></header><div class="article-grid article-grid--hub"></div></section>
-      <section class="content-hub__other" data-reveal="scale"><h2>Другие разделы</h2><div class="cross-promo-grid"></div></section>
-      <section class="support-newsletter section content-hub__newsletter" aria-labelledby="hub-newsletter-title">
-        <form class="newsletter-card" data-newsletter-form data-reveal="scale" novalidate>
-          <div>
-            <p class="eyebrow">Подписка на новости</p>
-            <h2 id="hub-newsletter-title">Получайте новости о новых возможностях</h2>
-            <p>Подпишитесь на обновления Simple CRM: релизы, полезные сценарии и спокойные подсказки по работе с клиентами.</p>
+      <header class="archive-heading" data-reveal="scale">
+        <h1 id="hub-title">${escapeHtml(meta.title)}</h1>
+        <div class="content-hub__search"></div>
+      </header>
+      <nav class="archive-categories" aria-label="Другие разделы материалов" data-reveal="scale"></nav>
+      <section class="archive-posts" aria-labelledby="archive-posts-title">
+        <h2 id="archive-posts-title" data-reveal="scale">${category === 'learn' ? 'Статьи о работе с клиентами' : category === 'how-to' ? 'Пошаговые инструкции' : 'Новости Simple CRM'}</h2>
+        <div class="article-grid"></div>
+      </section>
+      <section class="archive-newsletter" aria-labelledby="hub-newsletter-title">
+        <form data-newsletter-form novalidate>
+          <h2 id="hub-newsletter-title">Подписка на новости</h2>
+          <label for="hub-email">Электронная почта <span aria-hidden="true">*</span></label>
+          <div class="archive-newsletter__row">
+            <input id="hub-email" name="email" type="email" autocomplete="email" placeholder="you@example.com" required />
+            <button class="button button--primary" type="submit">Подписаться</button>
           </div>
-          <label><span class="visually-hidden">Электронная почта</span><input name="email" type="email" autocomplete="email" placeholder="you@example.com" required /></label>
-          <button class="button button--primary" type="submit">Подписаться</button>
           <p class="form-status" data-form-status aria-live="polite"></p>
         </form>
       </section>
     </div>`;
   section.querySelector('.content-hub__search').append(createSearchForm());
-  const promos = Object.entries(categoryMeta).filter(([key]) => key !== category).map(([key, item]) => ({ key, ...item }));
-  promos.forEach(item => section.querySelector('.cross-promo-grid').append(createCrossPromo(item, getArticlesByCategory(item.key))));
+  Object.entries(categoryMeta).filter(([key]) => key !== category).forEach(([key, item]) => {
+    section.querySelector('.archive-categories').append(createCrossPromo(item, getArticlesByCategory(key)));
+  });
   const grid = section.querySelector('.article-grid');
-  if (posts.length) posts.forEach((post, index) => { const card = createArticleCard(post); if (index === 0) card.classList.add('article-card--lead'); grid.append(card); });
-  else grid.append(createEmptyState('В этом разделе пока нет материалов', 'Откройте инструкции или материалы о работе с клиентами'));
+  posts.forEach(post => grid.append(createArticleCard(post)));
   return section;
 }
 
@@ -420,9 +424,9 @@ export function createReleasesPage() {
 
 function createCrossPromo(meta, posts) {
   const card = document.createElement('article');
-  card.className = 'cross-promo';
-  const titles = posts.slice(0, 2).map(post => `<li>${escapeHtml(post.title)}</li>`).join('') || '<li>Практические сценарии Simple CRM</li>';
-  card.innerHTML = `<p class="eyebrow">${escapeHtml(meta.title)}</p><p>${escapeHtml(meta.description)}</p><ul>${titles}</ul><a class="text-link" href="${escapeAttribute(meta.href)}">Открыть раздел ${iconSvg('arrow-right')}</a>`;
+  card.className = 'archive-category';
+  const titles = posts.slice(0, 2).map(post => `<li><a href="${escapeAttribute(post.href)}">${iconSvg('arrow-right')}<span>${escapeHtml(post.title)}</span></a></li>`).join('');
+  card.innerHTML = `<h2><a href="${escapeAttribute(meta.href)}">${escapeHtml(meta.title)}</a></h2><ul>${titles}</ul><a class="text-link" href="${escapeAttribute(meta.href)}">Все материалы ${iconSvg('arrow-right')}</a>`;
   return card;
 }
 
