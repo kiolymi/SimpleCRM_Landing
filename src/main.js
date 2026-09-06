@@ -588,19 +588,58 @@ function wireWorkflow(root) {
 }
 
 function wireForms(root) {
+  root.querySelectorAll('[data-newsletter-form], [data-demo-form]').forEach((form, index) => {
+    const status = form.querySelector('[data-form-status]');
+    if (!status.id) status.id = `form-feedback-${index}`;
+    form.addEventListener('input', event => {
+      const field = event.target;
+      if (!field.matches('input, select, textarea') || !field.checkValidity()) return;
+      field.classList.remove('is-invalid');
+      field.removeAttribute('aria-invalid');
+      const descriptions = (field.getAttribute('aria-describedby') || '').split(' ').filter(id => id && id !== status.id);
+      if (descriptions.length) field.setAttribute('aria-describedby', descriptions.join(' '));
+      else field.removeAttribute('aria-describedby');
+      if (!form.querySelector('[aria-invalid="true"]') && status.classList.contains('is-error')) {
+        status.textContent = '';
+        status.className = 'form-status';
+      }
+    });
+  });
+
+  const validate = (form, status) => {
+    const fields = [...form.elements].filter(field => typeof field.checkValidity === 'function');
+    fields.forEach(field => {
+      field.classList.remove('is-invalid');
+      field.removeAttribute('aria-invalid');
+      const descriptions = (field.getAttribute('aria-describedby') || '').split(' ').filter(id => id && id !== status.id);
+      if (descriptions.length) field.setAttribute('aria-describedby', descriptions.join(' '));
+      else field.removeAttribute('aria-describedby');
+    });
+    const invalid = fields.find(field => !field.checkValidity());
+    if (!invalid) return true;
+    invalid.classList.add('is-invalid');
+    invalid.setAttribute('aria-invalid', 'true');
+    const descriptions = new Set((invalid.getAttribute('aria-describedby') || '').split(' ').filter(Boolean));
+    descriptions.add(status.id);
+    invalid.setAttribute('aria-describedby', [...descriptions].join(' '));
+    status.textContent = invalid.type === 'email'
+      ? 'Укажите почту в формате name@example.com.'
+      : invalid.type === 'checkbox'
+        ? 'Подтвердите согласие на обработку данных.'
+        : invalid.tagName === 'SELECT'
+          ? 'Выберите тему обращения.'
+          : invalid.tagName === 'TEXTAREA'
+            ? 'Напишите сообщение — что нужно решить?'
+            : 'Укажите ваше имя.';
+    status.className = 'form-status is-error';
+    invalid.focus();
+    return false;
+  };
   root.querySelectorAll('[data-newsletter-form]').forEach(form => {
     form.addEventListener('submit', event => {
       event.preventDefault();
       const status = form.querySelector('[data-form-status]');
-      const invalid = [...form.elements].find(field => typeof field.checkValidity === 'function' && !field.checkValidity());
-      form.querySelectorAll('.is-invalid').forEach(field => field.classList.remove('is-invalid'));
-      if (invalid) {
-        invalid.classList.add('is-invalid');
-        invalid.focus();
-        status.textContent = 'Введите рабочую почту — отправим только новости о продукте.';
-        status.className = 'form-status is-error';
-        return;
-      }
+      if (!validate(form, status)) return;
       status.textContent = 'Демонстрационная форма: адрес проверен, подписка не оформлена. Данные не отправлены.';
       status.className = 'form-status';
     });
@@ -610,15 +649,7 @@ function wireForms(root) {
     form.addEventListener('submit', event => {
       event.preventDefault();
       const status = form.querySelector('[data-form-status]');
-      const invalid = [...form.elements].find(field => typeof field.checkValidity === 'function' && !field.checkValidity());
-      form.querySelectorAll('.is-invalid').forEach(field => field.classList.remove('is-invalid'));
-      if (invalid) {
-        invalid.classList.add('is-invalid');
-        invalid.focus();
-        status.textContent = 'Проверьте обязательные поля — так мы сможем ответить на заявку.';
-        status.className = 'form-status is-error';
-        return;
-      }
+      if (!validate(form, status)) return;
       status.textContent = 'Демонстрационная форма: поля заполнены корректно. Заявка не отправлена, данные остались на этой странице.';
       status.className = 'form-status';
     });
