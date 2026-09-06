@@ -19,11 +19,11 @@ export function createContentHubPage(category) {
       <section class="support-newsletter section content-hub__newsletter" aria-labelledby="hub-newsletter-title">
         <form class="newsletter-card" data-newsletter-form data-reveal="scale" novalidate>
           <div>
-            <p class="eyebrow">Newsletter Signup</p>
+            <p class="eyebrow">Подписка на новости</p>
             <h2 id="hub-newsletter-title">Получайте новости о новых возможностях</h2>
             <p>Подпишитесь на обновления Simple CRM: релизы, полезные сценарии и спокойные подсказки по работе с клиентами.</p>
           </div>
-          <label><span class="visually-hidden">Email</span><input name="email" type="email" autocomplete="email" placeholder="Получать обновления" required /></label>
+          <label><span class="visually-hidden">Электронная почта</span><input name="email" type="email" autocomplete="email" placeholder="you@example.com" required /></label>
           <button class="button button--primary" type="submit">Подписаться</button>
           <p class="form-status" data-form-status aria-live="polite"></p>
         </form>
@@ -148,11 +148,11 @@ export function createPricingPage() {
       <div class="container">
         <form class="newsletter-card" data-newsletter-form data-reveal="scale" novalidate>
           <div>
-            <p class="eyebrow">Newsletter Signup</p>
+            <p class="eyebrow">Подписка на новости</p>
             <h2 id="pricing-newsletter-title">Получайте новости о новых возможностях</h2>
             <p>Оставьте почту, чтобы узнавать о релизах, сценариях и полезных улучшениях Simple CRM.</p>
           </div>
-          <label><span class="visually-hidden">Email</span><input name="email" type="email" autocomplete="email" placeholder="Получать обновления" required /></label>
+          <label><span class="visually-hidden">Электронная почта</span><input name="email" type="email" autocomplete="email" placeholder="you@example.com" required /></label>
           <button class="button button--primary" type="submit">Подписаться</button>
           <p class="form-status" data-form-status aria-live="polite"></p>
         </form>
@@ -186,11 +186,11 @@ export function createFaqPage() {
       <div class="container">
         <form class="newsletter-card" data-newsletter-form data-reveal="scale" novalidate>
           <div>
-            <p class="eyebrow">Newsletter Signup</p>
+            <p class="eyebrow">Подписка на новости</p>
             <h2 id="faq-newsletter-title">Получайте новости о новых возможностях</h2>
             <p>Узнавайте о релизах Simple CRM, полезных сценариях и улучшениях интерфейса.</p>
           </div>
-          <label><span class="visually-hidden">Email</span><input name="email" type="email" autocomplete="email" placeholder="Получать обновления" required /></label>
+          <label><span class="visually-hidden">Электронная почта</span><input name="email" type="email" autocomplete="email" placeholder="you@example.com" required /></label>
           <button class="button button--primary" type="submit">Подписаться</button>
           <p class="form-status" data-form-status aria-live="polite"></p>
         </form>
@@ -200,128 +200,42 @@ export function createFaqPage() {
 }
 
 export function createAboutPage() {
-  const guide = [
-    {
-      id: 'find-client',
-      number: '01',
-      short: 'Найдите клиента',
-      title: 'Откройте нужного клиента за несколько секунд',
-      copy: 'Поиск сразу показывает подходящие карточки. Менеджер видит имя, контактные данные и статус, не перебирая таблицы и переписки.',
-      points: ['Быстрый поиск по имени и контактам', 'Понятный статус клиента до открытия карточки'],
-      image: '/simple-crm-landing-screens/14-client-search.png',
-      alt: 'Поиск клиента в Simple CRM',
-    },
-    {
-      id: 'client-card',
-      number: '02',
-      short: 'Проверьте контекст',
-      title: 'В карточке уже есть всё, что нужно перед разговором',
-      copy: 'Контакты, ближайшая встреча, открытые задачи и сумма к оплате собраны на одном экране. Новый сотрудник понимает ситуацию без пересказов коллег.',
-      points: ['Встречи и задачи связаны с конкретным клиентом', 'Сообщения, файлы и оплаты остаются в общей истории'],
-      image: '/simple-crm-landing-screens/15-client-overview.png',
-      alt: 'Полная карточка клиента в Simple CRM',
-    },
-    {
-      id: 'plan-meeting',
-      number: '03',
-      short: 'Назначьте встречу',
-      title: 'Запланируйте встречу, пока договорённость свежая',
-      copy: 'Выберите клиента, дату, время, формат, локацию и услугу. Встреча сразу появляется в расписании, поэтому следующий контакт не потеряется.',
-      points: ['Онлайн, в офисе или на выезде', 'Все параметры встречи сохраняются одним действием'],
-      image: '/simple-crm-landing-screens/11-create-meeting.png',
-      alt: 'Форма создания встречи в Simple CRM',
-    },
-    {
-      id: 'workday',
-      number: '04',
-      short: 'Ведите день',
-      title: 'Начните день с готового расписания',
-      copy: 'Экран «Сегодня» показывает порядок встреч и свободные окна. Менеджер понимает, к кому готовиться сейчас и что запланировано дальше.',
-      points: ['Расписание дня без переключения между календарями', 'Быстрый переход к клиенту и деталям встречи'],
-      image: '/simple-crm-landing-screens/01-today-schedule.png',
-      alt: 'Расписание рабочего дня в Simple CRM',
-    },
-    {
-      id: 'next-action',
-      number: '05',
-      short: 'Зафиксируйте итог',
-      title: 'Каждая договорённость становится понятной задачей',
-      copy: 'После разговора создайте следующий шаг, назначьте срок и ответственного. Доска показывает, что новое, что уже в работе и что завершено.',
-      points: ['Задачи не отделены от истории клиента', 'Команда видит приоритеты и прогресс без отдельного отчёта'],
-      image: '/simple-crm-landing-screens/20-task-board.png',
-      alt: 'Доска задач в Simple CRM',
-    },
-    {
-      id: 'keep-context',
-      number: '06',
-      short: 'Сохраните историю',
-      title: 'Продолжайте диалог с полным контекстом под рукой',
-      copy: 'Сообщения остаются рядом с клиентом, встречами и задачами. Любой сотрудник видит, что уже обсудили и какой ответ ждёт клиент.',
-      points: ['Переписка доступна из рабочего пространства клиента', 'Контекст не зависит от личного мессенджера менеджера'],
-      image: '/simple-crm-landing-screens/19-client-conversation.png',
-      alt: 'Диалог с клиентом в Simple CRM',
-    },
-  ];
   const section = document.createElement('section');
-  section.className = 'inner-page section about-page';
+  section.className = 'company-page';
   section.setAttribute('aria-labelledby', 'about-title');
   section.innerHTML = `
-    <div class="container about-hero">
-      <div class="about-hero__copy" data-reveal="slide-left">
-        <h1 id="about-title">Весь путь клиента связан в одну понятную историю</h1>
-        <p>Simple CRM помогает небольшой команде вести клиента от первого контакта до следующей встречи, задачи и оплаты. Ничего не нужно восстанавливать по памяти.</p>
-        <div class="about-hero__actions">
-          <a class="button button--primary" href="#product-guide">Посмотреть, как это работает ${iconSvg('arrow-down')}</a>
-          <a class="text-link" href="/#demo">Запросить демонстрацию ${iconSvg('arrow-right')}</a>
-        </div>
-      </div>
-      <div class="about-hero__visual" data-reveal="device"></div>
-    </div>
-    <nav class="container about-journey" aria-label="Этапы работы с клиентом" data-reveal="scale">
-      ${guide.map(item => `<a href="#${item.id}">${escapeHtml(item.short)}</a>`).join('')}
-    </nav>
-    <div class="about-guide" id="product-guide">
-      ${guide.map((item, index) => `
-        <article class="about-guide__step${index % 2 ? ' about-guide__step--reverse' : ''}" id="${item.id}" data-reveal="${index % 2 ? 'slide-left' : 'slide-right'}">
-          <div class="container about-guide__grid">
-            <div class="about-guide__copy">
-              <h2>${escapeHtml(item.title)}</h2>
-              <p>${escapeHtml(item.copy)}</p>
-              <ul>${item.points.map(point => `<li>${iconSvg('check')}<span>${escapeHtml(point)}</span></li>`).join('')}</ul>
-            </div>
-            <div class="about-guide__visual" data-guide-image="${index}"></div>
-          </div>
-        </article>
-      `).join('')}
-    </div>
-    <div class="container">
-      <section class="about-day" data-reveal="scale">
-        <div>
-          <h2>Первый рабочий день без долгой настройки</h2>
-          <p>Создайте рабочее пространство, добавьте команду и начните с реальных клиентов. Основной сценарий понятен без отдельного администратора.</p>
-        </div>
-        <ol>
-          <li><span>1</span><div><strong>Добавьте клиентов</strong><p>Перенесите рабочую базу и контактные данные.</p></div></li>
-          <li><span>2</span><div><strong>Пригласите коллег</strong><p>Распределите клиентов и текущие задачи.</p></div></li>
-          <li><span>3</span><div><strong>Продолжайте работу</strong><p>Планируйте встречи и фиксируйте следующий шаг.</p></div></li>
-        </ol>
+    <div class="container company-page__inner">
+      <header class="company-page__hero" data-reveal="scale">
+        <h1 id="about-title">Помогаем сохранять главное в отношениях с клиентами</h1>
+        <p>За каждым контактом — разговоры, встречи и договорённости. Simple CRM собирает их в одну историю, чтобы вы могли уделять больше внимания людям и быстрее возвращаться к сути разговора.</p>
+      </header>
+      <section class="company-page__mission" aria-labelledby="mission-title" data-reveal="scale">
+        <h2 id="mission-title">Наша миссия</h2>
+        <p>Сделать работу с клиентами понятной и последовательной. Когда детали прошлой встречи и следующий шаг под рукой, проще выполнять обещания и поддерживать отношения.</p>
       </section>
-      <section class="about-final" data-reveal="scale">
-        <h2>Покажем Simple CRM на процессах вашей команды</h2>
-        <p>Разберём путь клиента, настроим первый рабочий сценарий и ответим на вопросы сотрудников.</p>
-        <a class="button button--primary" href="/#demo">Запросить демонстрацию ${iconSvg('arrow-right')}</a>
+      <section class="company-page__team" aria-labelledby="team-title" data-reveal="scale">
+        <h2 id="team-title">О Simple CRM</h2>
+        <p>Мы создаём рабочее пространство вокруг клиента: его истории, встреч и задач. В основе продукта — простой принцип: нужный контекст должен быть доступен в тот момент, когда он нужен.</p>
+        <div class="company-page__principles">
+          <div><h3>Внимание к деталям</h3><p>От первого сообщения до следующей встречи — важные договорённости остаются рядом с клиентом.</p></div>
+          <div><h3>Понятный следующий шаг</h3><p>Расписание и задачи помогают перейти от разговора к действию без лишних переключений.</p></div>
+        </div>
+      </section>
+      <section class="company-page__news" aria-labelledby="company-news-title">
+        <header data-reveal="scale"><h2 id="company-news-title">Новости продукта</h2><p>Новые возможности и заметки о развитии Simple CRM.</p></header>
+        <div class="article-grid"></div>
+      </section>
+      <section class="support-newsletter section" aria-labelledby="about-newsletter-title">
+        <form class="newsletter-card" data-newsletter-form novalidate>
+          <div><h2 id="about-newsletter-title">Подписка на новости</h2><p>Узнавайте о новых возможностях Simple CRM.</p></div>
+          <label><span>Электронная почта</span><input name="email" type="email" autocomplete="email" placeholder="you@example.com" required /></label>
+          <button class="button button--primary" type="submit">Подписаться</button>
+          <p class="form-status" data-form-status aria-live="polite"></p>
+        </form>
       </section>
     </div>`;
-
-  const heroVisual = section.querySelector('.about-hero__visual');
-  heroVisual.append(
-    createProductDeviceMockup({ mode: 'image', device: 'phone', image: { src: '/simple-crm-landing-screens/16-client-activity.png' }, alt: 'Единая история клиента в Simple CRM' }),
-    createProductDeviceMockup({ mode: 'image', device: 'phone', image: { src: '/simple-crm-landing-screens/21-task-list.png' }, alt: 'Список задач в Simple CRM' }),
-  );
-  guide.forEach((item, index) => {
-    section.querySelector(`[data-guide-image="${index}"]`).append(
-      createProductDeviceMockup({ mode: 'image', device: 'phone', image: { src: item.image }, alt: item.alt }),
-    );
+  getArticlesByCategory('announcements').slice(0, 3).forEach(article => {
+    section.querySelector('.article-grid').append(createArticleCard(article));
   });
   return section;
 }
@@ -369,7 +283,7 @@ export function createSupportPage() {
             <h2 id="support-newsletter-title">Получайте новости о новых возможностях</h2>
             <p>Пришлём заметные релизы, полезные сценарии и улучшения Simple CRM. Только продуктовые обновления — без шума.</p>
           </div>
-          <label><span class="visually-hidden">Email</span><input name="email" type="email" autocomplete="email" placeholder="you@company.ru" required /></label>
+          <label><span class="visually-hidden">Электронная почта</span><input name="email" type="email" autocomplete="email" placeholder="you@company.ru" required /></label>
           <button class="button button--primary" type="submit">Подписаться</button>
           <p class="form-status" data-form-status aria-live="polite"></p>
         </form>
@@ -449,7 +363,7 @@ export function createPrivacyPage() {
   section.className = 'inner-page section document-page document-page--dextr privacy-page';
   section.dataset.reveal = 'scale';
   section.setAttribute('aria-labelledby', 'privacy-title');
-  section.innerHTML = `<div class="container document-single"><article class="document-main"><header class="document-header"><h1 id="privacy-title">Политика конфиденциальности</h1><p class="document-updated">Последнее обновление: 29 мая 2026</p><p class="document-lead">Ваша приватность важна для нас. Эта политика простым языком объясняет, какие данные Simple CRM собирает и не собирает, как мы их используем и когда они могут быть переданы сервисным поставщикам.</p></header><div class="document-body">${chapters.map(chapter => `<section id="${escapeAttribute(chapter.id)}"><h2>${escapeHtml(chapter.title)}</h2>${chapter.paragraphs.map(paragraph => `<p>${escapeHtml(paragraph)}</p>`).join('')}${chapter.items ? `<ul>${chapter.items.map(item => `<li>${escapeHtml(item)}</li>`).join('')}</ul>` : ''}</section>`).join('')}</div></article></div><section class="support-newsletter section" aria-labelledby="privacy-newsletter-title"><div class="container"><form class="newsletter-card" data-newsletter-form data-reveal="scale" novalidate><div><p class="eyebrow">Newsletter Signup</p><h2 id="privacy-newsletter-title">Получайте новости о новых возможностях</h2><p>Подпишитесь, чтобы узнавать о релизах Simple CRM и важных изменениях продукта.</p></div><label><span class="visually-hidden">Email</span><input name="email" type="email" autocomplete="email" placeholder="Получать обновления" required /></label><button class="button button--primary" type="submit">Подписаться</button><p class="form-status" data-form-status aria-live="polite"></p></form></div></section>`;
+  section.innerHTML = `<div class="container document-single"><article class="document-main"><header class="document-header"><h1 id="privacy-title">Политика конфиденциальности</h1><p class="document-updated">Последнее обновление: 29 мая 2026</p><p class="document-lead">Ваша приватность важна для нас. Эта политика простым языком объясняет, какие данные Simple CRM собирает и не собирает, как мы их используем и когда они могут быть переданы сервисным поставщикам.</p></header><div class="document-body">${chapters.map(chapter => `<section id="${escapeAttribute(chapter.id)}"><h2>${escapeHtml(chapter.title)}</h2>${chapter.paragraphs.map(paragraph => `<p>${escapeHtml(paragraph)}</p>`).join('')}${chapter.items ? `<ul>${chapter.items.map(item => `<li>${escapeHtml(item)}</li>`).join('')}</ul>` : ''}</section>`).join('')}</div></article></div><section class="support-newsletter section" aria-labelledby="privacy-newsletter-title"><div class="container"><form class="newsletter-card" data-newsletter-form data-reveal="scale" novalidate><div><p class="eyebrow">Подписка на новости</p><h2 id="privacy-newsletter-title">Получайте новости о новых возможностях</h2><p>Подпишитесь, чтобы узнавать о релизах Simple CRM и важных изменениях продукта.</p></div><label><span class="visually-hidden">Электронная почта</span><input name="email" type="email" autocomplete="email" placeholder="you@example.com" required /></label><button class="button button--primary" type="submit">Подписаться</button><p class="form-status" data-form-status aria-live="polite"></p></form></div></section>`;
   return section;
 }
 

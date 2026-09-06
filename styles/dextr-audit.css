@@ -1,4 +1,7 @@
 /* Authoritative visual-fidelity layer. Loaded after components.css. */
+@media (min-width: 1024px) and (max-width: 1239px) {
+  .site-header .header-app-store { margin-left: auto; }
+}
 .header-app-store {
   display: none;
   min-width: 144px;

@@ -4094,3 +4094,25 @@ body[data-page="releases"] .desktop-nav > a.is-current::after {
   .feature-card:focus-within .feature-card__mockup { min-height: 560px; }
   .site-footer__nav { gap: 10px 20px; }
 }
+.company-page { padding-block: 80px 0; }
+.container.company-page__inner { max-width: 1180px; }
+.company-page__hero { max-width: 960px; margin-bottom: 84px; }
+.company-page h1 { margin: 0 0 28px; font-size: clamp(36px, 4.4vw, 64px); line-height: 1.12; letter-spacing: -.04em; }
+.company-page h2 { margin: 0 0 22px; font-size: clamp(28px, 3vw, 40px); line-height: 1.2; letter-spacing: -.025em; }
+.company-page p { color: var(--color-ink-muted); line-height: 1.75; font-size: 18px; }
+.company-page__mission { max-width: 860px; margin-bottom: 80px; }
+.company-page__team { margin-bottom: 84px; }
+.company-page__team > p { max-width: 860px; }
+.company-page__principles { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; margin-top: 36px; }
+.company-page__principles h3 { font-size: 24px; margin: 0 0 14px; }
+.company-page__news > header { margin-bottom: 32px; }
+.company-page__news .article-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); max-width: none; margin-inline: 0; }
+.company-page .newsletter-card { min-height: 0; padding: 32px; box-shadow: none; }
+.company-page .form-status:empty { display: none; }
+@media (max-width: 767px) {
+  .company-page { padding-top: 48px; }
+  .company-page__hero, .company-page__mission, .company-page__team { margin-bottom: 52px; }
+  .company-page__principles { grid-template-columns: 1fr; gap: 24px; }
+  .company-page__news .article-grid { grid-template-columns: 1fr; }
+  .company-page p { font-size: 17px; }
+}
