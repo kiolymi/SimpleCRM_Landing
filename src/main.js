@@ -44,6 +44,7 @@ if (pageKey === 'home') {
 const app = document.querySelector('#app');
 app.append(createSiteShell(main));
 wireDownloadPlaceholder(app);
+wireAmbientBackground(app);
 protectProductName(app);
 markCurrentNavigation(app);
 prepareRevealSequences(app);
@@ -58,6 +59,16 @@ wireStablePageNavigation(app);
 requestAnimationFrame(() => {
   document.documentElement.classList.add('is-page-ready');
 });
+
+function wireAmbientBackground(root) {
+  const host = root.querySelector('.site-main > section');
+  if (!host) return;
+  host.classList.add('page-ambient-host');
+  const ambient = document.createElement('div');
+  ambient.className = 'page-ambient';
+  ambient.setAttribute('aria-hidden', 'true');
+  host.prepend(ambient);
+}
 
 function wireDownloadPlaceholder(root) {
   const links = [...root.querySelectorAll('a[href="https://apps.apple.com/"]')];
