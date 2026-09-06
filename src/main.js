@@ -180,6 +180,14 @@ function wireScrollReveals(root) {
 
 function prepareRevealSequences(root) {
   // Long reading pages reveal individual blocks, not one oversized container.
+  root.querySelectorAll('.article-page--editorial, .document-page--dextr, .releases-page--dextr-notes, .search-page').forEach(element => {
+    element.removeAttribute('data-reveal');
+  });
+  root.querySelectorAll('.releases-header, .release-entry__heading, .release-group, .search-page .inner-page-header, .search-page__form, .search-page .empty-state').forEach(element => {
+    element.dataset.reveal = 'rise';
+    element.dataset.delay = '0';
+  });
+  root.querySelectorAll('.release-entry').forEach(element => element.removeAttribute('data-reveal'));
   root.querySelectorAll('.article-header, .article-body > *, .article-pagination, .article-related-inline, .document-header, .document-body > section').forEach(element => {
     if (!element.hasAttribute('data-reveal')) element.dataset.reveal = 'rise';
     element.dataset.delay = '0';
