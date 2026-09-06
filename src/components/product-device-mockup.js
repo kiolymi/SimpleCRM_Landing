@@ -1,6 +1,6 @@
 const validDevices = new Set(['phone', 'tablet', 'desktop']);
 
-export function createProductDeviceMockup({ mode = 'placeholder', device = 'phone', label = 'Экран Simple CRM', screen = 'client', image, alt = '' } = {}) {
+export function createProductDeviceMockup({ mode = 'placeholder', device = 'phone', label = 'Экран Simple CRM', screen = 'client', image, alt = '', priority = false } = {}) {
   if (!validDevices.has(device)) throw new Error(`Неизвестный тип устройства: ${device}`);
 
   const figure = document.createElement('figure');
@@ -14,10 +14,15 @@ export function createProductDeviceMockup({ mode = 'placeholder', device = 'phon
   if (mode === 'image' && image?.src) {
     const img = document.createElement('img');
     img.className = 'device-mockup__image';
+    img.loading = priority ? 'eager' : 'lazy';
+    img.decoding = 'async';
+    if (priority) img.setAttribute('fetchpriority', 'high');
+    // All supplied phone exports share these intrinsic dimensions.
+    const isSuppliedScreen = image.src.includes('/simple-crm-landing-screens/');
+    if (image.width || isSuppliedScreen) img.width = image.width || 1170;
+    if (image.height || isSuppliedScreen) img.height = image.height || 2532;
     img.src = image.src;
     img.alt = alt || image.alt || '';
-    if (image.width) img.width = image.width;
-    if (image.height) img.height = image.height;
     frame.append(img);
   } else if (mode === 'demo') {
     frame.append(createDemoScreen({ device, label, screen }));

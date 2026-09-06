@@ -1,8 +1,8 @@
 import { createSiteShell } from './components/site-shell.js?v=20260906-16';
-import { createHomePage } from './components/home-sections.js?v=20260824-33';
-import { createAboutPage, createArticleLayout, createContentHubPage, createFaqPage, createPricingPage, createPrivacyPage, createReleasesPage, createSearchPage, createSupportPage } from './components/content-pages.js?v=20260906-17';
+import { createHomePage } from './components/home-sections.js?v=20260906-28';
+import { createAboutPage, createArticleLayout, createContentHubPage, createFaqPage, createPricingPage, createPrivacyPage, createReleasesPage, createSearchPage, createSupportPage } from './components/content-pages.js?v=20260906-28';
 import { pageMeta } from './data/site.js?v=20260824-30';
-import { createProductDeviceMockup } from './components/product-device-mockup.js';
+import { createProductDeviceMockup } from './components/product-device-mockup.js?v=20260906-1';
 
 const pageKey = document.body.dataset.page || 'home';
 const page = pageMeta[pageKey] || pageMeta.home;

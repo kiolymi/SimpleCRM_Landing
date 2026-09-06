@@ -1,6 +1,6 @@
 import { createArticleCard } from './article-card.js?v=20260824-28';
 import { iconSvg } from './icons.js?v=20260824-28';
-import { createProductDeviceMockup } from './product-device-mockup.js';
+import { createProductDeviceMockup } from './product-device-mockup.js?v=20260906-1';
 import { homeContent } from '../data/home.js?v=20260824-31';
 
 export function createHomePage() {
@@ -44,7 +44,7 @@ function createHero(hero) {
         <div class="hero-device-aura" aria-hidden="true"><span></span><span></span></div>
       </div>
     </div>`;
-  const mockup = createProductDeviceMockup({ mode: hero.mockup.image ? 'image' : 'demo', ...hero.mockup });
+  const mockup = createProductDeviceMockup({ mode: hero.mockup.image ? 'image' : 'demo', ...hero.mockup, priority: true });
   mockup.classList.add('hero-device', 'hero-device--main');
   mockup.dataset.parallax = '0.025';
   section.querySelector('.home-hero__visual').append(mockup);
