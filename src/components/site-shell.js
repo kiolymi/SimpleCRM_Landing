@@ -70,9 +70,29 @@ function wireResourceMenu(header) {
   const close = () => { menu.classList.remove('is-open'); trigger.setAttribute('aria-expanded', 'false'); };
   const open = () => { menu.classList.add('is-open'); trigger.setAttribute('aria-expanded', 'true'); };
   trigger.addEventListener('focus', open);
-  trigger.addEventListener('keydown', (event) => { if (event.key === 'ArrowDown') { event.preventDefault(); open(); menu.querySelector('a').focus(); } });
+  trigger.addEventListener('keydown', event => {
+    if (event.key !== 'ArrowDown' && event.key !== 'ArrowUp') return;
+    event.preventDefault();
+    open();
+    const items = [...menu.querySelectorAll('[role="menuitem"]')];
+    (event.key === 'ArrowDown' ? items[0] : items.at(-1))?.focus();
+  });
   menu.addEventListener('focusout', () => requestAnimationFrame(() => { if (!menu.contains(document.activeElement)) close(); }));
-  menu.addEventListener('keydown', (event) => { if (event.key === 'Escape') { close(); trigger.focus(); } });
+  menu.addEventListener('keydown', event => {
+    if (event.key === 'Escape') {
+      event.preventDefault();
+      trigger.focus();
+      close();
+      return;
+    }
+    const items = [...menu.querySelectorAll('[role="menuitem"]')];
+    const index = items.indexOf(event.target);
+    if (index < 0 || !['ArrowDown', 'ArrowUp', 'Home', 'End'].includes(event.key)) return;
+    event.preventDefault();
+    const next = event.key === 'Home' ? 0 : event.key === 'End' ? items.length - 1
+      : (index + (event.key === 'ArrowDown' ? 1 : -1) + items.length) % items.length;
+    items[next].focus();
+  });
   menu.addEventListener('mouseenter', open);
   menu.addEventListener('mouseleave', close);
 }
