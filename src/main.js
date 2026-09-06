@@ -1,6 +1,6 @@
 import { createSiteShell } from './components/site-shell.js?v=20260824-31';
 import { createHomePage } from './components/home-sections.js?v=20260824-33';
-import { createAboutPage, createArticleLayout, createContentHubPage, createFaqPage, createPricingPage, createPrivacyPage, createReleasesPage, createSearchPage, createSupportPage } from './components/content-pages.js?v=20260906-4';
+import { createAboutPage, createArticleLayout, createContentHubPage, createFaqPage, createPricingPage, createPrivacyPage, createReleasesPage, createSearchPage, createSupportPage } from './components/content-pages.js?v=20260906-5';
 import { pageMeta } from './data/site.js?v=20260824-30';
 import { createProductDeviceMockup } from './components/product-device-mockup.js';
 
@@ -514,12 +514,8 @@ function wireForms(root) {
         status.className = 'form-status is-error';
         return;
       }
-      const button = form.querySelector('button[type="submit"]');
-      button.disabled = true;
-      button.textContent = 'Вы подписаны';
-      status.textContent = 'Готово! Будем присылать важные обновления Simple CRM.';
-      status.className = 'form-status is-success';
-      form.classList.add('is-sent');
+      status.textContent = 'Демонстрационная форма: адрес проверен, подписка не оформлена. Данные не отправлены.';
+      status.className = 'form-status';
     });
   });
 
@@ -536,14 +532,8 @@ function wireForms(root) {
         status.className = 'form-status is-error';
         return;
       }
-      const button = form.querySelector('button[type="submit"]');
-      button.disabled = true;
-      button.textContent = 'Заявка отправлена';
-      status.textContent = 'Спасибо! Мы свяжемся с вами по указанной почте в течение рабочего дня.';
-      status.className = 'form-status is-success';
-      form.classList.add('is-sent');
-      const success = form.querySelector('.demo-form__success');
-      window.setTimeout(() => success?.setAttribute('aria-hidden', 'false'), 260);
+      status.textContent = 'Демонстрационная форма: поля заполнены корректно. Заявка не отправлена, данные остались на этой странице.';
+      status.className = 'form-status';
     });
   });
 }

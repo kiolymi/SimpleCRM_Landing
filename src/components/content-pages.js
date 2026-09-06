@@ -265,12 +265,7 @@ export function createSupportPage() {
         <div class="support-contact-hero__visual" data-support-hero-visual data-reveal="slide-right"></div>
       </div>
     </div>
-    <div class="container support-layout support-layout--compact">
-      <aside class="support-aside" data-reveal="slide-left">
-        <div class="support-aside__intro"><h2>Перед обращением</h2><p>Чтобы мы быстрее помогли, опишите, что хотели сделать, что увидели на экране и какой результат ожидали.</p></div>
-        <nav aria-label="Разделы помощи"><a href="/learn/"><span>${iconSvg('document')}</span><div><strong>Материалы</strong><p>Сценарии работы с клиентами и встречами</p></div>${iconSvg('arrow-right')}</a><a href="/releases/"><span>${iconSvg('calendar')}</span><div><strong>Версии</strong><p>Что изменилось в последних обновлениях</p></div>${iconSvg('arrow-right')}</a></nav>
-        <div class="support-contact"><p>Время ответа</p><strong>Будние дни, 9:00–19:00</strong><span>По Москве. Срочные вопросы помечайте в теме обращения.</span></div>
-      </aside>
+    <div class="container support-message"><details><summary>Написать сообщение</summary>
       <form class="support-request demo-form" data-demo-form novalidate data-reveal="slide-right">
         <div class="support-request__heading"><h2>Написать команде</h2><p>Расскажите, что нужно решить — ответим по рабочей почте.</p></div>
         <div class="form-row"><label>Ваше имя<input name="name" type="text" autocomplete="name" placeholder="Анна Петрова" required /></label><label>Рабочая почта<input name="email" type="email" autocomplete="email" placeholder="anna@company.ru" required /></label></div>
@@ -280,7 +275,7 @@ export function createSupportPage() {
         <button class="button button--primary" type="submit">Отправить ${iconSvg('arrow-right')}</button>
         <p class="form-status" data-form-status aria-live="polite"></p>
       </form>
-    </div>
+    </details></div>
     <section class="support-newsletter section" aria-labelledby="support-newsletter-title">
       <div class="container">
         <form class="newsletter-card newsletter-card--support" data-newsletter-form data-reveal="scale" novalidate>
