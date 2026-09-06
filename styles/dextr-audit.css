@@ -1635,11 +1635,18 @@ body:is([data-page="learn"], [data-page="how-to"], [data-page="announcements"]) 
 /* Visible, deterministic entrance animation, including first paint in Safari. */
 @media (prefers-reduced-motion: no-preference) {
   .has-js [data-reveal].is-visible {
-    animation: crm-reveal 950ms cubic-bezier(.22,.61,.36,1) var(--reveal-delay,0ms) both;
+    animation: crm-reveal 950ms cubic-bezier(.22,.61,.36,1) var(--reveal-delay,0ms) backwards;
   }
   .has-js [data-reveal="slide-left"] { --reveal-x: -36px; --reveal-y: 0px; }
   .has-js [data-reveal="slide-right"] { --reveal-x: 36px; --reveal-y: 0px; }
   .has-js.is-navigating .site-shell { transition-duration: 240ms; }
+}
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .has-js [data-reveal].is-visible:is(.article-card, .testimonial-card, .pricing-plan):hover {
+    transform: translateY(-4px);
+    transition-duration: 420ms;
+    transition-timing-function: cubic-bezier(.22,.61,.36,1);
+  }
 }
 @keyframes crm-reveal {
   from { opacity: 0; transform: translate3d(var(--reveal-x,0px),var(--reveal-y,32px),0); }
