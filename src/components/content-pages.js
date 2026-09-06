@@ -211,9 +211,12 @@ export function createAboutPage() {
   section.setAttribute('aria-labelledby', 'about-title');
   section.innerHTML = `
     <div class="container company-page__inner">
-      <header class="company-page__hero" data-reveal="scale">
+      <header class="company-page__hero">
+        <div class="company-page__hero-copy" data-reveal="slide-left">
         <h1 id="about-title">Помогаем сохранять главное в отношениях с клиентами</h1>
         <p>За каждым контактом — разговоры, встречи и договорённости. Simple CRM собирает их в одну историю, чтобы вы могли уделять больше внимания людям и быстрее возвращаться к сути разговора.</p>
+        </div>
+        <div class="company-page__hero-screens" aria-label="Возможности Simple CRM"></div>
       </header>
       <section class="company-page__mission" aria-labelledby="mission-title" data-reveal="scale">
         <h2 id="mission-title">Наша миссия</h2>
@@ -240,6 +243,16 @@ export function createAboutPage() {
         </form>
       </section>
     </div>`;
+  [
+    ['15-client-overview.png', 'Карточка клиента'],
+    ['01-today-schedule.png', 'Расписание встреч'],
+  ].forEach(([file, alt], index) => {
+    const src = new URL(`../../simple-crm-landing-screens/${file}`, import.meta.url).href;
+    const device = createProductDeviceMockup({ mode: 'image', device: 'phone', image: { src, alt } });
+    device.dataset.reveal = 'rise';
+    device.dataset.delay = String(index * 140);
+    section.querySelector('.company-page__hero-screens').append(device);
+  });
   getArticlesByCategory('announcements').slice(0, 3).forEach(article => {
     section.querySelector('.article-grid').append(createArticleCard(article));
   });
