@@ -1672,3 +1672,15 @@ body:is([data-page="about"],[data-page="pricing"],[data-page="support"]) .header
 .pricing-page--dextr .pricing-page__hero h1,.pricing-page--dextr .pricing-plan h2,.pricing-page--dextr .pricing-pledge h2 { color: #172d47; }
 .pricing-page--dextr .pricing-page__hero p { color: #4a5f77; }
 .support-page--contact .support-message > summary { color: #245b87; }
+
+/* Explicit surface contrast; legacy component colors must not cross themes. */
+.home-features .feature-card .feature-card__description { color: #c4cfdd; }
+.search-page .inner-page-header p,.search-page .article-card .article-card__body p,.search-page .empty-state p { color: #c4cfdd; }
+.pricing-page--dextr .pricing-pledge__card p:not(.eyebrow) { color: #4a5f77; }
+.support-page--contact .support-message > details > summary { color: #245b87; }
+.article-page--editorial .eyebrow { color: #a6b7cb; }
+.article-card:nth-child(n) .article-card__cover { background-color: #eef7ff; }
+.article-card__cover-copy small { color: #0865bb; }
+.button.button--primary { background-color: #086acb; }
+.button.button--primary:hover { background-color: #075bb0; }
+.pricing-page--dextr .pricing-plan .button { background: #a6c9e1; color: #102235; }
