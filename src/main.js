@@ -1,6 +1,6 @@
 import { createSiteShell } from './components/site-shell.js?v=20260824-31';
 import { createHomePage } from './components/home-sections.js?v=20260824-33';
-import { createAboutPage, createArticleLayout, createContentHubPage, createFaqPage, createPricingPage, createPrivacyPage, createReleasesPage, createSearchPage, createSupportPage } from './components/content-pages.js?v=20260906-7';
+import { createAboutPage, createArticleLayout, createContentHubPage, createFaqPage, createPricingPage, createPrivacyPage, createReleasesPage, createSearchPage, createSupportPage } from './components/content-pages.js?v=20260906-8';
 import { pageMeta } from './data/site.js?v=20260824-30';
 import { createProductDeviceMockup } from './components/product-device-mockup.js';
 
@@ -92,8 +92,9 @@ function normalizePath(path) {
 function wireScrollReveals(root) {
   const elements = [...root.querySelectorAll('[data-reveal]')];
   if (!elements.length) return;
+  const motionPreference = window.matchMedia('(prefers-reduced-motion: reduce)');
 
-  if (!('IntersectionObserver' in window) || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  if (!('IntersectionObserver' in window) || motionPreference.matches) {
     elements.forEach(element => element.classList.add('is-visible'));
     return;
   }
@@ -104,7 +105,27 @@ function wireScrollReveals(root) {
       entry.target.classList.add('is-visible');
       currentObserver.unobserve(entry.target);
     });
-  }, { rootMargin: '0px 0px -9% 0px', threshold: 0.08 });
+  }, { rootMargin: '0px 0px -9% 0px', threshold: 0 });
+
+  // Keyboard navigation must never land inside an invisible reveal container.
+  root.addEventListener('focusin', event => {
+    let element = event.target.closest('[data-reveal]');
+    while (element) {
+      element.style.transitionDelay = '0ms';
+      element.classList.add('is-visible');
+      observer.unobserve(element);
+      element = element.parentElement?.closest('[data-reveal]');
+    }
+  });
+
+  motionPreference.addEventListener('change', event => {
+    if (!event.matches) return;
+    observer.disconnect();
+    elements.forEach(element => {
+      element.style.transitionDelay = '0ms';
+      element.classList.add('is-visible');
+    });
+  });
 
   elements.forEach((element, index) => {
     const explicitDelay = Number(element.dataset.delay);

@@ -1399,6 +1399,25 @@ body {
   box-sizing: border-box;
 }
 
+/* The homepage uses one canvas from hero through newsletter. */
+body[data-page="home"] :is(.trust-section,.testimonials-section,.product-panorama,.home-articles,.newsletter-section) { background: #071426; color: #c4cfdd; }
+body[data-page="home"] :is(.trust-section,.testimonials-section,.product-panorama,.home-articles,.newsletter-section) :is(h2,h3,dt) { color: #f2f5fa; }
+body[data-page="home"] :is(.trust-section,.testimonials-section,.product-panorama,.home-articles,.newsletter-section) :is(p,dd,li) { color: #c4cfdd; }
+.testimonials-section .testimonials-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 24px; align-items: start; }
+.testimonials-section .testimonial-card { grid-column: auto; grid-row: auto; min-height: 0; background: #182436; border: 1px solid #293a50; box-shadow: none; }
+.testimonials-section .testimonial-card :is(strong,small,.testimonial-card__meta) { color: #c4cfdd; }
+.testimonials-section .testimonial-card::before,.testimonials-section .testimonial-card::after { display: none; }
+.home-articles .article-card,.home-articles .article-card__body { background: #182436; border-color: #293a50; box-shadow: none; }
+.home-articles .article-card__body a,.home-articles .button--outline,.trust-section .text-link { color: #a6c9e1; }
+.newsletter-section .newsletter-card { background: transparent; border: 0; box-shadow: none; min-height: 0; }
+.newsletter-section .newsletter-card label { color: #c4cfdd; }
+.newsletter-section .newsletter-card input { background: #182436; border-color: #3c4b60; color: #edf2f8; }
+.newsletter-section { padding-block: 72px; }
+.newsletter-section .newsletter-card h2 { max-width: none; font-size: clamp(28px,3vw,36px); line-height: 1.2; letter-spacing: -.025em; }
+.home-articles .button--outline { background: transparent; border-color: #496078; box-shadow: none; }
+@media (max-width: 900px) { .testimonials-section .testimonials-grid { grid-template-columns: repeat(2,minmax(0,1fr)); } }
+@media (max-width: 600px) { .testimonials-section .testimonials-grid { grid-template-columns: 1fr; } }
+
 /* Чистый, плотно обрезанный логотип без встроенной PNG-сетки. */
 body:is([data-page="about"], [data-page="privacy"], [data-page="pricing"]) .site-header { background: #0a1424; border-color: #253043; }
 body:is([data-page="about"], [data-page="privacy"], [data-page="pricing"]) .site-header :is(.brand, .desktop-nav > a, .desktop-nav__trigger, .menu-toggle) { color: #edf1f6; }
