@@ -1,4 +1,4 @@
-import { createSiteShell } from './components/site-shell.js?v=20260824-30';
+import { createSiteShell } from './components/site-shell.js?v=20260824-31';
 import { createHomePage } from './components/home-sections.js?v=20260824-33';
 import { createAboutPage, createArticleLayout, createContentHubPage, createFaqPage, createPricingPage, createPrivacyPage, createReleasesPage, createSearchPage, createSupportPage } from './components/content-pages.js?v=20260824-33';
 import { pageMeta } from './data/site.js?v=20260824-30';

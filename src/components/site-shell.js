@@ -43,7 +43,7 @@ function navLinkMarkup({ label, href }) {
 }
 
 function resourceMenuMarkup() {
-  return `<div class="resource-menu"><a class="desktop-nav__trigger" href="/learn/" aria-expanded="false" aria-haspopup="true">Материалы ${iconSvg('chevron-down')}</a><div class="resource-menu__panel" role="menu"><a role="menuitem" href="/learn/"><strong>Все материалы</strong><span>Статьи о работе с клиентами</span></a>${resourceNavigation.filter(item => item.href !== '/learn/').map(({ label, href }) => `<a role="menuitem" href="${escapeAttribute(href)}">${escapeHtml(label)}</a>`).join('')}</div></div>`;
+  return `<div class="resource-menu"><a class="desktop-nav__trigger" href="/learn/" aria-expanded="false" aria-haspopup="true">Материалы ${iconSvg('chevron-down')}</a><div class="resource-menu__panel" role="menu"><a role="menuitem" href="/learn/"><strong>Все материалы</strong><span>Статьи о работе с клиентами</span></a>${resourceNavigation.filter(item => !item.href.endsWith('/learn/')).map(({ label, href }) => `<a role="menuitem" href="${escapeAttribute(href)}">${escapeHtml(label)}</a>`).join('')}</div></div>`;
 }
 
 function createMobileMenu() {
