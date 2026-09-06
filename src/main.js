@@ -1,6 +1,6 @@
 import { createSiteShell } from './components/site-shell.js?v=20260824-31';
 import { createHomePage } from './components/home-sections.js?v=20260824-33';
-import { createAboutPage, createArticleLayout, createContentHubPage, createFaqPage, createPricingPage, createPrivacyPage, createReleasesPage, createSearchPage, createSupportPage } from './components/content-pages.js?v=20260906-6';
+import { createAboutPage, createArticleLayout, createContentHubPage, createFaqPage, createPricingPage, createPrivacyPage, createReleasesPage, createSearchPage, createSupportPage } from './components/content-pages.js?v=20260906-7';
 import { pageMeta } from './data/site.js?v=20260824-30';
 import { createProductDeviceMockup } from './components/product-device-mockup.js';
 
@@ -93,7 +93,7 @@ function wireScrollReveals(root) {
   const elements = [...root.querySelectorAll('[data-reveal]')];
   if (!elements.length) return;
 
-  if (!('IntersectionObserver' in window)) {
+  if (!('IntersectionObserver' in window) || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     elements.forEach(element => element.classList.add('is-visible'));
     return;
   }
@@ -127,6 +127,7 @@ function prepareRevealSequences(root) {
     '.pricing-questions__list',
     '.about-journey',
     '.faq-list',
+    '.pricing-page__cards',
   ];
 
   root.querySelectorAll(groupSelectors.join(',')).forEach(group => {
