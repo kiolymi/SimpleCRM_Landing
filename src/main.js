@@ -43,6 +43,7 @@ if (pageKey === 'home') {
 
 const app = document.querySelector('#app');
 app.append(createSiteShell(main));
+wireDownloadPlaceholder(app);
 protectProductName(app);
 markCurrentNavigation(app);
 prepareRevealSequences(app);
@@ -57,6 +58,36 @@ wireStablePageNavigation(app);
 requestAnimationFrame(() => {
   document.documentElement.classList.add('is-page-ready');
 });
+
+function wireDownloadPlaceholder(root) {
+  const links = [...root.querySelectorAll('a[href="https://apps.apple.com/"]')];
+  if (!links.length) return;
+  const dialog = document.createElement('dialog');
+  let opener = null;
+  dialog.className = 'download-placeholder';
+  dialog.setAttribute('aria-labelledby', 'download-placeholder-title');
+  dialog.setAttribute('aria-describedby', 'download-placeholder-copy');
+  dialog.innerHTML = `<h2 id="download-placeholder-title">Скачивание пока недоступно</h2><p id="download-placeholder-copy">Это демонстрационная версия сайта Simple CRM. Ссылка на приложение будет добавлена позже.</p><button type="button" class="button button--primary" autofocus>Понятно</button>`;
+  document.body.append(dialog);
+  protectProductName(dialog);
+  dialog.addEventListener('close', () => opener?.focus({ preventScroll: true }));
+  dialog.querySelector('button').addEventListener('click', () => dialog.close());
+  dialog.addEventListener('click', event => {
+    if (event.target !== dialog) return;
+    const rect = dialog.getBoundingClientRect();
+    if (event.clientX < rect.left || event.clientX > rect.right || event.clientY < rect.top || event.clientY > rect.bottom) dialog.close();
+  });
+  links.forEach(link => {
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.className = link.className;
+    button.innerHTML = link.innerHTML;
+    button.setAttribute('aria-label', 'Скачать Simple CRM с App Store');
+    button.setAttribute('aria-haspopup', 'dialog');
+    button.addEventListener('click', () => { opener = button; dialog.showModal(); });
+    link.replaceWith(button);
+  });
+}
 
 function protectProductName(root) {
   [root, ...root.querySelectorAll('*')].forEach(element => {

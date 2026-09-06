@@ -1697,6 +1697,25 @@ body:is([data-page="about"],[data-page="pricing"],[data-page="support"]) .header
 .pricing-page--dextr .pricing-plan .button { background: #a6c9e1; color: #102235; }
 
 /* Keep the desktop composition within the same reading width as the reference. */
+.download-placeholder {
+  box-sizing: border-box;
+  width: min(460px, calc(100% - 40px));
+  max-height: calc(100dvh - 48px);
+  margin: auto;
+  padding: 32px;
+  border: 1px solid #c8d8e8;
+  border-radius: 24px;
+  background: #eff5fb;
+  color: #152b45;
+}
+.download-placeholder::backdrop { background: rgb(4 13 27 / 64%); backdrop-filter: blur(5px); }
+.download-placeholder h2 { margin: 0 0 16px; font-size: 28px; line-height: 1.2; letter-spacing: -.025em; }
+.download-placeholder p { margin: 0 0 24px; color: #485e76; font-size: 17px; line-height: 1.6; }
+.download-placeholder .button { width: 100%; }
+button:is(.header-app-store, .app-store-badge) { font: inherit; cursor: pointer; }
+@media (prefers-reduced-motion: no-preference) {
+  .download-placeholder[open] { animation: crm-reveal 260ms ease-out backwards; }
+}
 .company-page .company-page__hero {
   display: grid;
   grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
