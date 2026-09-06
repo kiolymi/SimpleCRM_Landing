@@ -1801,7 +1801,17 @@ body[data-page] .mobile-menu .mobile-menu__cta { color: #fff; }
 .download-placeholder h2 { margin: 0 0 16px; font-size: 28px; line-height: 1.2; letter-spacing: -.025em; }
 .download-placeholder p { margin: 0 0 24px; color: #485e76; font-size: 17px; line-height: 1.6; }
 .download-placeholder .button { width: 100%; }
-button:is(.header-app-store, .app-store-badge) { font: inherit; cursor: pointer; }
+button:is(.header-app-store, .app-store-badge) {
+  appearance: none;
+  -webkit-appearance: none;
+  border: 0;
+  font: inherit;
+  cursor: pointer;
+}
+button:is(.header-app-store, .app-store-badge):focus-visible {
+  outline: 3px solid #59b9ff;
+  outline-offset: 5px;
+}
 @media (prefers-reduced-motion: no-preference) {
   .download-placeholder[open] { animation: crm-reveal 260ms ease-out backwards; }
 }
