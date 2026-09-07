@@ -192,6 +192,18 @@ export function createFaqPage() {
     ['Есть ли приложение для большого экрана?', 'Интерфейс Simple CRM раскрывается на большом рабочем экране: больше клиентов, задач и деталей видно одновременно, а основные действия остаются рядом.'],
     ['Можно ли перенести данные?', 'Да. Подготовьте таблицу с клиентами — мы подскажем формат, поможем проверить данные и аккуратно перенести базу в Simple CRM.'],
     ['Как Simple CRM относится к приватности?', 'Данные клиентов остаются внутри вашего рабочего пространства. Мы не продаём клиентскую базу и не используем содержимое карточек для рекламы. Подробнее об этом написано в политике конфиденциальности.'],
+    ['Где посмотреть изменения и новые версии?', 'В разделе «Версии» собраны изменения по выпускам: новые возможности, улучшения и исправления. А в новостях продукта можно подробнее прочитать об отдельных обновлениях.'],
+  ];
+  const guides = [
+    ['about/', 'О приложении'],
+    ['pricing/', 'Сравнить тарифы'],
+    ['learn/client-context/', 'Что хранить в карточке клиента'],
+    ['how-to/prepare-meeting/', 'Как подготовить встречу'],
+    ['learn/client-context/', 'Как сохранить контекст клиента'],
+    ['about/', 'Возможности приложения'],
+    ['support/', 'Обсудить перенос данных'],
+    ['privacy/', 'Политика конфиденциальности'],
+    ['releases/', 'История обновлений'],
   ];
   const section = document.createElement('section');
   section.className = 'inner-page faq-page faq-page--dextr';
@@ -200,7 +212,7 @@ export function createFaqPage() {
     <div class="faq-page__hero"><div class="container" data-reveal="scale"><h1 id="faq-title">Частые вопросы</h1><p>Здесь собраны ответы о Simple CRM, возможностях продукта, приватности и запуске команды.</p></div></div>
     <div class="container faq-list-wrap">
       <div class="faq-list">
-        ${questions.map(([question, answer], index) => `<details class="faq-rich-item" data-reveal="slide-up"${index === 0 ? ' open' : ''}><summary>${escapeHtml(question)}${iconSvg('chevron-down')}</summary><p>${escapeHtml(answer)}</p></details>`).join('')}
+        ${questions.map(([question, answer], index) => `<details class="faq-rich-item" data-reveal="slide-up"${index === 0 ? ' open' : ''}><summary>${escapeHtml(question)}${iconSvg('chevron-down')}</summary><p>${escapeHtml(answer)}<br /><a class="text-link" href="${escapeAttribute(new URL(`../../${guides[index][0]}`, import.meta.url).href)}">${escapeHtml(guides[index][1])} ${iconSvg('arrow-right')}</a></p></details>`).join('')}
       </div>
     </div>
     <section class="support-newsletter section" aria-labelledby="faq-newsletter-title">
