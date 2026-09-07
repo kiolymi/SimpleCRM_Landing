@@ -73,8 +73,20 @@ function createMobileMenu() {
 function wireResourceMenu(header) {
   const menu = header.querySelector('.resource-menu');
   const trigger = menu.querySelector('.desktop-nav__trigger');
-  const close = () => { menu.classList.remove('is-open'); trigger.setAttribute('aria-expanded', 'false'); };
-  const open = () => { menu.classList.add('is-open'); trigger.setAttribute('aria-expanded', 'true'); };
+  const panel = menu.querySelector('.resource-menu__panel');
+  panel.id = 'resource-menu-panel';
+  panel.inert = true;
+  trigger.setAttribute('aria-controls', panel.id);
+  const close = () => {
+    menu.classList.remove('is-open');
+    trigger.setAttribute('aria-expanded', 'false');
+    panel.inert = true;
+  };
+  const open = () => {
+    panel.inert = false;
+    menu.classList.add('is-open');
+    trigger.setAttribute('aria-expanded', 'true');
+  };
   trigger.addEventListener('focus', open);
   trigger.addEventListener('keydown', event => {
     if (event.key !== 'ArrowDown' && event.key !== 'ArrowUp') return;
@@ -100,7 +112,9 @@ function wireResourceMenu(header) {
     items[next].focus();
   });
   menu.addEventListener('mouseenter', open);
-  menu.addEventListener('mouseleave', close);
+  menu.addEventListener('mouseleave', () => {
+    if (!menu.contains(document.activeElement)) close();
+  });
 }
 
 function wireMobileMenu(header, dialog) {

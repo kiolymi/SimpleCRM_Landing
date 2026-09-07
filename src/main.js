@@ -1,5 +1,5 @@
 import { addPageArtwork } from './components/page-art.js?v=20260907-50';
-import { createSiteShell } from './components/site-shell.js?v=20260906-37';
+import { createSiteShell } from './components/site-shell.js?v=20260908-56';
 import { createHomePage } from './components/home-sections.js?v=20260907-50';
 import { createAboutPage, createArticleLayout, createContentHubPage, createFaqPage, createPricingPage, createPrivacyPage, createReleasesPage, createSearchPage, createSupportPage } from './components/content-pages.js?v=20260907-50';
 import { pageMeta } from './data/site.js?v=20260906-30';
