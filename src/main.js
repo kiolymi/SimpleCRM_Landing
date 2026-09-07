@@ -700,7 +700,10 @@ function wireForms(root) {
     if (!status.id) status.id = `form-feedback-${index}`;
     form.addEventListener('input', event => {
       const field = event.target;
-      if (!field.matches('input, select, textarea') || !field.checkValidity()) return;
+      if (!field.matches('input, select, textarea')) return;
+      // A previous validation result no longer describes edited fields.
+      if (!status.classList.contains('is-error')) status.textContent = '';
+      if (!field.checkValidity() || (field.required && typeof field.value === 'string' && !field.value.trim())) return;
       field.classList.remove('is-invalid');
       field.removeAttribute('aria-invalid');
       const descriptions = (field.getAttribute('aria-describedby') || '').split(' ').filter(id => id && id !== status.id);
@@ -716,6 +719,7 @@ function wireForms(root) {
   const validate = (form, status) => {
     const fields = [...form.elements].filter(field => typeof field.checkValidity === 'function');
     fields.forEach(field => {
+      if (['text', 'email', 'textarea'].includes(field.type)) field.value = field.value.trim();
       field.classList.remove('is-invalid');
       field.removeAttribute('aria-invalid');
       const descriptions = (field.getAttribute('aria-describedby') || '').split(' ').filter(id => id && id !== status.id);
