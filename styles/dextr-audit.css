@@ -1069,13 +1069,19 @@ body {
 }
 
 @media (max-width: 767px) {
-  .home-hero__grid { gap: 48px; padding-block: 70px 72px; }
+  .home-hero { padding-block: 0; }
+  .home-hero__grid { grid-template-columns: minmax(0, 1fr); gap: 40px; padding-block: 48px 64px; }
+  .home-hero__copy { min-width: 0; }
   .home-hero__kicker { margin-bottom: 26px; padding: 8px 12px; font-size: 11px; }
   .home-hero__kicker span { height: 16px; }
-  .home-hero h1 { font-size: clamp(43px, 11.7vw, 54px); }
+  .home-hero h1 { max-width: 14ch; font-size: clamp(36px, 10vw, 48px); }
   .home-hero__lead { margin-top: 30px; }
   .home-hero__intro { margin-top: 24px; }
   .home-hero .app-store-badge { margin-top: 30px; }
+}
+@media (max-width: 359px) {
+  .home-hero__copy .home-hero__kicker { gap: 6px; padding-inline: 8px; font-size: 9px; }
+  .home-hero__copy .home-hero__kicker > svg { width: 12px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
