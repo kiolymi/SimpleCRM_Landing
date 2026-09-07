@@ -1792,6 +1792,14 @@ body[data-page] .mobile-menu .mobile-menu__cta { color: #fff; }
     flex-shrink: 0;
   }
   .search-form input { min-height: 44px; }
+  .site-main :is(input:not([type="checkbox"]):not([type="radio"]), select, textarea) {
+    font-size: 16px;
+  }
+  body:has(#support-message-form[open]) .back-to-top {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+  }
 }
 
 /* Soft, non-interactive background motion stays behind the reading surface. */
