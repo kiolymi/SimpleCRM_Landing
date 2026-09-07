@@ -11,9 +11,27 @@ export function createArticleCard(article) {
   coverLink.href = article.href;
   coverLink.setAttribute('aria-label', `Открыть материал: ${article.title}`);
   coverLink.style.aspectRatio = article.cover.aspectRatio;
+  const editorialCovers = {
+    'unified-client-history': ['customer-history.png', 'Объёмная стеклянная карточка клиента с календарём, сообщениями и документами'],
+    'task-board-release': ['team-tasks.png', 'Футуристичная композиция задач с синими стеклянными галочками'],
+  };
+  const editorialCover = editorialCovers[article.slug];
+  if (editorialCover) {
+    coverLink.classList.add('article-card__cover--editorial');
+    coverLink.style.aspectRatio = '3 / 2';
+    const image = document.createElement('img');
+    image.src = new URL(`../../assets/editorial/${editorialCover[0]}`, import.meta.url).href;
+    image.alt = editorialCover[1];
+    image.width = 1536;
+    image.height = 1024;
+    image.loading = 'lazy';
+    image.decoding = 'async';
+    coverLink.append(image);
+  } else {
   coverLink.innerHTML = article.cover.image
     ? `<span class="article-card__cover-layout"><span class="article-card__cover-copy"><small>${escapeHtml(article.cover.kicker || 'Материал')}</small>${iconSvg(article.cover.icon || 'document')}<b>${escapeHtml(article.cover.label)}</b></span><span class="article-card__cover-media"><img src="${escapeAttribute(article.cover.image.src)}" alt="${escapeAttribute(article.cover.image.alt)}" loading="lazy" /></span></span>`
     : `<span>${iconSvg(article.cover.icon || 'document')}<b>${escapeHtml(article.cover.label)}</b></span>`;
+  }
 
   const body = document.createElement('div');
   body.className = 'article-card__body';

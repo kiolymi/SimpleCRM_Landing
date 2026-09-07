@@ -1,4 +1,4 @@
-import { createArticleCard } from './article-card.js?v=20260824-28';
+import { createArticleCard } from './article-card.js?v=20260907-42';
 import { iconSvg } from './icons.js?v=20260824-28';
 import { createProductDeviceMockup } from './product-device-mockup.js?v=20260906-1';
 import { createSearchForm } from './search-form.js';

@@ -1930,6 +1930,25 @@ body:has(#mobile-menu[open], .download-placeholder[open]) {
 
 #support-message, #support-message-form { scroll-margin-top: 120px; }
 
+.article-card .article-card__cover--editorial {
+  display: block;
+  min-height: 0;
+  padding: 0;
+  overflow: hidden;
+  background: #dcecff;
+}
+.article-card .article-card__cover--editorial > img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-width: none;
+  object-fit: contain;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  filter: none;
+}
+
 .editorial-toc a.is-section-active,
 .releases-toc a.is-section-active {
   color: #9bd5ff;
