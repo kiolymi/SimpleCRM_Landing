@@ -564,11 +564,13 @@ function wireTableOfContents(root) {
   const update = () => {
     pending = false;
     const readingLine = Math.min(180, window.innerHeight * .25);
+    const atPageEnd = window.scrollY > 0 && window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 2;
     groups.forEach(group => {
       let current = group.entries[0];
       for (const entry of group.entries) {
         if (entry.target.getBoundingClientRect().top <= readingLine) current = entry;
       }
+      if (atPageEnd) current = group.entries.at(-1);
       if (group.current === current) return;
       group.current = current;
       group.entries.forEach(({ link }) => {
@@ -577,6 +579,19 @@ function wireTableOfContents(root) {
         if (active) link.setAttribute('aria-current', 'location');
         else link.removeAttribute('aria-current');
       });
+      // Keep the active item visible inside a scrolling TOC without moving
+      // the document (scrollIntoView would also scroll the reading page).
+      for (let scroller = group.nav; scroller && scroller !== root; scroller = scroller.parentElement) {
+        if (!/auto|scroll/.test(getComputedStyle(scroller).overflowY) || scroller.scrollHeight <= scroller.clientHeight) continue;
+        const bounds = scroller.getBoundingClientRect();
+        if (bounds.bottom <= 0 || bounds.top >= window.innerHeight) break;
+        const item = current.link.getBoundingClientRect();
+        const top = Math.max(0, bounds.top) + 12;
+        const bottom = Math.min(window.innerHeight, bounds.bottom) - 12;
+        if (item.top < top) scroller.scrollTop += item.top - top;
+        else if (item.bottom > bottom) scroller.scrollTop += item.bottom - bottom;
+        break;
+      }
     });
   };
   const requestUpdate = () => {
