@@ -69,7 +69,7 @@ export function createArticleLayout(slug) {
 }
 
 export function createSearchPage(searchParams) {
-  const query = searchParams.get('q') || '';
+  const query = (searchParams.get('q') || '').trim();
   const results = findArticles(query);
   const section = document.createElement('section');
   section.className = 'search-page section';
@@ -78,6 +78,14 @@ export function createSearchPage(searchParams) {
   const heading = query ? `Результаты поиска: «${query}»` : 'Поиск по материалам';
   section.innerHTML = `<div class="container"><header class="inner-page-header inner-page-header--compact"><h1 id="search-title">${escapeHtml(heading)}</h1><p>${query ? 'Ищем по материалам, которые уже есть на сайте' : 'Найдите подсказку про клиентов, встречи или задачи'}</p></header><div class="search-page__form"></div><div class="article-grid article-grid--search"></div></div>`;
   section.querySelector('.search-page__form').append(createSearchForm({ query }));
+  if (query) {
+    const count = results.length;
+    const form = count % 100 >= 11 && count % 100 <= 14 ? 'материалов'
+      : count % 10 === 1 ? 'материал' : count % 10 >= 2 && count % 10 <= 4 ? 'материала' : 'материалов';
+    section.querySelector('.inner-page-header p').textContent = count
+      ? `По вашему запросу ${count} ${form}. Выберите подходящую статью.`
+      : 'Совпадений нет. Попробуйте более короткий запрос или другое слово.';
+  }
   const grid = section.querySelector('.article-grid');
   if (!query) grid.append(createEmptyState('Начните поиск', 'Например: «встреча», «клиент» или «задача»'));
   else if (!results.length) grid.append(createEmptyState('Ничего не найдено', 'Попробуйте другое слово или загляните в материалы и инструкции'));

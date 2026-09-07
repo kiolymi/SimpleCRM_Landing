@@ -1950,7 +1950,8 @@ body:has(#mobile-menu[open], .download-placeholder[open]) {
 }
 .site-main :is(.pricing-page__hero,.faq-page__hero,.archive-heading) .page-art { max-width: 440px; margin-bottom: 0; }
 .site-main :is(.document-header,.releases-header) .page-art { max-width: 480px; margin-left: 0; }
-.site-main .search-page__form .page-art { max-width: 320px; }
+.site-main .search-page__form .page-art,
+.site-main .page-art--search-footer { max-width: 320px; }
 .site-main .page-art--standalone { width: min(calc(100% - 48px), 620px); }
 @media (max-width: 600px) {
   .site-main .page-art { margin-block: 24px; }

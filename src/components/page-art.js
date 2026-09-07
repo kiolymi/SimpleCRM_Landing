@@ -40,6 +40,10 @@ export function addPageArtwork(root, pageKey, articleSlug) {
     figure.classList.add('page-art--standalone');
     anchor.before(figure);
   }
+  else if (pageKey === 'search' && new URLSearchParams(window.location.search).get('q')?.trim()) {
+    figure.classList.add('page-art--search-footer');
+    root.querySelector('.article-grid--search').after(figure);
+  }
   else if (pageKey === 'article') anchor.after(figure);
   else anchor.append(figure);
 }
