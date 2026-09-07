@@ -1421,20 +1421,22 @@ body[data-page="home"] .newsletter-section p { color: #c4cfdd; }
 @media (max-width: 900px) { .testimonials-section .testimonials-grid { grid-template-columns: repeat(2,minmax(0,1fr)); } }
 @media (max-width: 600px) { .testimonials-section .testimonials-grid { grid-template-columns: 1fr; } }
 
-.search-page { background: #0a1424; color: #c4cfdd; }
-.search-page :is(h1,h2,h3) { color: #f2f5fa; }
-.search-page p { color: #c4cfdd; }
-.search-page .section-heading p { color: #c4cfdd; }
+.search-page { background: linear-gradient(130deg,#f3f7fb,#e8f2fb 55%,#f0f5fa); color: #172d47; }
+.search-page :is(h1,h2,h3) { color: #172d47; }
+.search-page p { color: #4a5f77; }
+.search-page .section-heading p { color: #4a5f77; }
 .mobile-menu { background: #101c2e; color: #edf2f8; }
 .mobile-menu :is(.brand,.icon-button), .mobile-menu__nav > a, .mobile-menu__resources a { color: #edf2f8; }
 .mobile-menu__resources p { color: #a6b7cb; }
 .mobile-menu__nav a.is-current { color: #a6c9e1; }
-.search-page .search-form,.search-page .search-form input { background: #182436; color: #edf2f8; border-color: #3c4b60; box-shadow: none; }
-.search-page .article-card,.search-page .article-card__body { background: #182436; border-color: #293a50; box-shadow: none; }
-.search-page .article-card__body a { color: #a6c9e1; }
-body[data-page="search"] .site-header { background: #0a1424; border-color: #253043; }
-body[data-page="search"] .site-header :is(.brand,.desktop-nav > a,.desktop-nav__trigger,.menu-toggle) { color: #edf1f6; }
-body[data-page="search"] .header-app-store { background: #fff; color: #080b10; }
+.search-page .search-form,.search-page .search-form input { background: #fafdff; color: #172d47; border-color: #bfcede; box-shadow: none; }
+.search-page .search-form input::placeholder { color: #536b83; }
+.search-page .article-card,.search-page .article-card__body { background: #fafdff; border-color: #cfdeec; box-shadow: none; }
+.search-page .article-card__body a { color: #245b87; }
+body[data-page="search"] { background: #edf4fa; }
+body[data-page="search"] .site-header { background: #edf4fa; border-color: #d5e1ed; }
+body[data-page="search"] .site-header :is(.brand,.desktop-nav > a,.desktop-nav__trigger,.menu-toggle) { color: #152b45; }
+body[data-page="search"] .header-app-store { background: #101c2e; color: #fff; }
 .releases-toc__disclosure summary { color: #e5edf6; cursor: pointer; font-size: 14px; font-weight: 700; }
 .releases-toc__disclosure[open] summary { margin-bottom: 20px; }
 body[data-page="releases"] .menu-toggle { color: #edf2f8; border-color: #65788f; }
@@ -1705,7 +1707,8 @@ body:is([data-page="about"],[data-page="pricing"],[data-page="support"]) .header
 
 /* Explicit surface contrast; legacy component colors must not cross themes. */
 .home-features .feature-card .feature-card__description { color: #4a6078; }
-.search-page .inner-page-header p,.search-page .article-card .article-card__body p,.search-page .empty-state p { color: #c4cfdd; }
+.search-page .inner-page-header p,.search-page .article-card .article-card__body p,.search-page .empty-state p { color: #4a5f77; }
+.search-page .empty-state { background: #fafdff; border-color: #cfdeec; }
 .pricing-page--dextr .pricing-pledge__card p:not(.eyebrow) { color: #4a5f77; }
 .support-page--contact .support-message > details > summary { color: #245b87; }
 .article-page--editorial .eyebrow { color: #a6b7cb; }
