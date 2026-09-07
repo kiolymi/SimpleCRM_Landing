@@ -1995,6 +1995,8 @@ body:has(#mobile-menu[open], .download-placeholder[open]) {
 .site-main .search-page__form .page-art,
 .site-main .page-art--search-footer { max-width: 320px; }
 .site-main .page-art--standalone { width: min(calc(100% - 48px), 620px); }
+/* Search terms are user input and may contain long, unbroken strings. */
+.site-main #search-title { overflow-wrap: anywhere; }
 .site-main .page-art-layout {
   display: flex;
   position: relative;
