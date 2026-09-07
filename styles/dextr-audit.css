@@ -1929,3 +1929,22 @@ body:has(#mobile-menu[open], .download-placeholder[open]) {
 .mobile-menu, .download-placeholder { overscroll-behavior: contain; }
 
 #support-message, #support-message-form { scroll-margin-top: 120px; }
+
+@media (max-width: 600px) {
+  .site-footer__inner { padding-bottom: 88px; }
+  .site-footer__nav {
+    display: grid;
+    grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr);
+    width: 100%;
+    gap: 4px 12px;
+  }
+  .site-footer__nav a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    padding: 4px;
+    overflow-wrap: anywhere;
+  }
+  .site-footer__legal { max-width: 260px; margin-inline: auto; }
+}
