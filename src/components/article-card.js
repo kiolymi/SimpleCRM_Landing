@@ -16,7 +16,29 @@ export function createArticleCard(article) {
     'task-board-release': ['team-tasks.png', 'Футуристичная композиция задач с синими стеклянными галочками'],
   };
   const editorialCover = editorialCovers[article.slug];
-  if (editorialCover) {
+  const compositeCovers = {
+    'follow-up-after-meeting': 'cover-followup.png',
+    'client-context': 'cover-client.png',
+    'prepare-meeting': 'cover-meeting.png',
+  };
+  const compositeCover = document.body.dataset.page === 'home' && compositeCovers[article.slug];
+  if (compositeCover) {
+    coverLink.classList.add('article-card__cover--composite');
+    coverLink.style.aspectRatio = '1 / 1';
+    const backdrop = document.createElement('img');
+    backdrop.className = 'article-card__scene';
+    backdrop.src = new URL(`../../assets/editorial/${compositeCover}`, import.meta.url).href;
+    backdrop.alt = '';
+    backdrop.loading = 'lazy';
+    backdrop.width = 1254;
+    backdrop.height = 1254;
+    const screen = document.createElement('img');
+    screen.className = 'article-card__real-screen';
+    screen.src = article.cover.image.src;
+    screen.alt = article.cover.image.alt;
+    screen.loading = 'lazy';
+    coverLink.append(backdrop, screen);
+  } else if (editorialCover) {
     coverLink.classList.add('article-card__cover--editorial');
     coverLink.style.aspectRatio = '3 / 2';
     const image = document.createElement('img');

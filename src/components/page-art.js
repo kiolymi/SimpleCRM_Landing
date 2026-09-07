@@ -19,6 +19,8 @@ const artwork = {
 };
 
 export function addPageArtwork(root, pageKey, articleSlug) {
+  // Illustrations support selected introductions, not every reading/utility page.
+  if (!['home', 'about', 'pricing', 'faq', 'learn', 'how-to'].includes(pageKey)) return;
   const entry = artwork[pageKey === 'article' ? articleSlug : pageKey];
   if (!entry) return;
   const [file, selector, alt] = entry;
@@ -26,24 +28,20 @@ export function addPageArtwork(root, pageKey, articleSlug) {
   if (!anchor) return;
   const figure = document.createElement('figure');
   figure.className = 'page-art';
+  figure.setAttribute('aria-hidden', 'true');
   figure.dataset.reveal = 'slide-up';
   figure.dataset.artwork = file;
   const img = document.createElement('img');
   img.src = new URL(`../../assets/editorial/${file}.png`, import.meta.url).href;
-  img.alt = alt;
+  img.alt = '';
   img.width = 1536;
   img.height = 1024;
   img.loading = 'lazy';
   img.decoding = 'async';
   figure.append(img);
-  if (pageKey === 'support') {
-    figure.classList.add('page-art--standalone');
-    anchor.before(figure);
-  }
-  else if (pageKey === 'search' && new URLSearchParams(window.location.search).get('q')?.trim()) {
-    figure.classList.add('page-art--search-footer');
-    root.querySelector('.article-grid--search').after(figure);
-  }
-  else if (pageKey === 'article') anchor.after(figure);
-  else anchor.append(figure);
+  const copy = document.createElement('div');
+  copy.className = 'page-art-layout__copy';
+  copy.append(...anchor.childNodes);
+  anchor.classList.add('page-art-layout');
+  anchor.append(copy, figure);
 }

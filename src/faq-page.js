@@ -9,7 +9,7 @@ function enhanceFaq() {
   search.setAttribute('role', 'search');
   search.setAttribute('aria-label', 'Поиск по вопросам');
   search.innerHTML = `<label class="visually-hidden" for="faq-query">Найти вопрос или ответ</label><div class="faq-search__field"><svg class="faq-search__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></svg><input id="faq-query" type="search" placeholder="Найти вопрос или ответ…" autocomplete="off" aria-controls="faq-results" /><button class="faq-search__clear" type="button" aria-label="Очистить поиск" hidden>×</button></div><p class="faq-search__status" role="status" aria-live="polite" aria-atomic="true">Например: оплата, теги или перенос данных</p>`;
-  page.querySelector('.faq-page__hero > .container').append(search);
+  page.querySelector('.faq-page__hero .page-art-layout__copy, .faq-page__hero > .container:not(.page-art-layout)').append(search);
   const list = page.querySelector('.faq-list');
   list.id = 'faq-results';
   const empty = document.createElement('div');
