@@ -150,7 +150,16 @@ export function getArticleBySlug(slug) {
 }
 
 export function findArticles(query) {
-  const normalizedQuery = query.trim().toLocaleLowerCase('ru');
-  if (!normalizedQuery) return [];
-  return articles.filter(article => [article.title, article.excerpt, ...(article.tags || [])].join(' ').toLocaleLowerCase('ru').includes(normalizedQuery));
+  const normalize = value => String(value).normalize('NFKC').toLocaleLowerCase('ru').replaceAll('ё', 'е');
+  const terms = normalize(query).match(/[\p{L}\p{N}]+/gu) || [];
+  if (!terms.length) return [];
+  return articles.filter(article => {
+    const text = normalize([
+      article.title,
+      article.excerpt,
+      ...(article.tags || []),
+      ...(article.content || []).map(block => block.text || ''),
+    ].join(' '));
+    return terms.every(term => text.includes(term));
+  });
 }

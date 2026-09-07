@@ -1,7 +1,7 @@
 import { addPageArtwork } from './components/page-art.js?v=20260907-44';
 import { createSiteShell } from './components/site-shell.js?v=20260906-37';
 import { createHomePage } from './components/home-sections.js?v=20260907-44';
-import { createAboutPage, createArticleLayout, createContentHubPage, createFaqPage, createPricingPage, createPrivacyPage, createReleasesPage, createSearchPage, createSupportPage } from './components/content-pages.js?v=20260907-46';
+import { createAboutPage, createArticleLayout, createContentHubPage, createFaqPage, createPricingPage, createPrivacyPage, createReleasesPage, createSearchPage, createSupportPage } from './components/content-pages.js?v=20260907-47';
 import { pageMeta } from './data/site.js?v=20260906-30';
 import { createProductDeviceMockup } from './components/product-device-mockup.js?v=20260906-1';
 
