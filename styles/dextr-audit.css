@@ -1927,3 +1927,5 @@ body:has(#mobile-menu[open], .download-placeholder[open]) {
   overflow: hidden;
 }
 .mobile-menu, .download-placeholder { overscroll-behavior: contain; }
+
+#support-message, #support-message-form { scroll-margin-top: 120px; }

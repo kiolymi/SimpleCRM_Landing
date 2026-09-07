@@ -308,8 +308,16 @@ export function createSupportPage() {
   section.querySelector('[data-support-hero-visual]').append(
     createProductDeviceMockup({ mode: 'image', device: 'phone', image: { src: '/simple-crm-landing-screens/19-client-conversation.png' }, alt: 'Диалог с клиентом в Simple CRM' }),
   );
+  const messageForm = section.querySelector('#support-message-form');
+  const openMessageFromHash = () => {
+    if (['#support-message', '#support-message-form'].includes(window.location.hash)) {
+      messageForm.open = true;
+    }
+  };
+  openMessageFromHash();
+  window.addEventListener('hashchange', openMessageFromHash);
   section.querySelector('a[href="#support-message"]').addEventListener('click', () => {
-    section.querySelector('#support-message-form').open = true;
+    messageForm.open = true;
   });
   return section;
 }
