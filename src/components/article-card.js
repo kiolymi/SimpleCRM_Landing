@@ -37,7 +37,9 @@ export function createArticleCard(article) {
   body.className = 'article-card__body';
   body.innerHTML = `<p class="article-card__category">${escapeHtml(categoryMeta[article.category]?.title || article.category)}</p><h3><a href="${escapeAttribute(article.href)}">${escapeHtml(article.title)}</a></h3><p>${escapeHtml(article.excerpt)}</p><a class="text-link" href="${escapeAttribute(article.href)}">Читать ${iconSvg('arrow-right')}</a>`;
 
-  card.append(coverLink, body);
+  // News artwork belongs to the news archive, not every cross-promotion.
+  if (!editorialCover || document.body.dataset.page === 'announcements') card.append(coverLink);
+  card.append(body);
   return card;
 }
 

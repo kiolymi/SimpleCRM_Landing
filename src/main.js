@@ -1,6 +1,7 @@
+import { addPageArtwork } from './components/page-art.js?v=20260907-43';
 import { createSiteShell } from './components/site-shell.js?v=20260906-37';
-import { createHomePage } from './components/home-sections.js?v=20260907-42';
-import { createAboutPage, createArticleLayout, createContentHubPage, createFaqPage, createPricingPage, createPrivacyPage, createReleasesPage, createSearchPage, createSupportPage } from './components/content-pages.js?v=20260907-42';
+import { createHomePage } from './components/home-sections.js?v=20260907-43';
+import { createAboutPage, createArticleLayout, createContentHubPage, createFaqPage, createPricingPage, createPrivacyPage, createReleasesPage, createSearchPage, createSupportPage } from './components/content-pages.js?v=20260907-43';
 import { pageMeta } from './data/site.js?v=20260906-30';
 import { createProductDeviceMockup } from './components/product-device-mockup.js?v=20260906-1';
 
@@ -43,6 +44,7 @@ if (pageKey === 'home') {
 
 const app = document.querySelector('#app');
 app.append(createSiteShell(main));
+addPageArtwork(app, pageKey, document.body.dataset.articleSlug);
 wireDownloadPlaceholder(app);
 wireAmbientBackground(app);
 protectProductName(app);
