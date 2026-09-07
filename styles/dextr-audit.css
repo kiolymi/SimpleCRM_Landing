@@ -1986,8 +1986,9 @@ body:has(#mobile-menu[open], .download-placeholder[open]) {
 }
 .site-main .page-art-layout__copy { position: relative; z-index: 1; min-width: 0; width: 54%; padding-block: 24px; }
 .site-main .page-art-layout__copy :is(h1,h2,p) { max-width: 100%; }
-.site-main .page-art-layout > .page-art { position: absolute; z-index: 0; inset: 0 0 0 auto; width: 40%; height: 100%; max-width: none; margin: 0; pointer-events: none; -webkit-mask-image: radial-gradient(ellipse at center, #000 30%, transparent 72%); mask-image: radial-gradient(ellipse at center, #000 30%, transparent 72%); }
-.site-main .page-art-layout > .page-art img { width: 100%; height: 100%; object-fit: contain; border-radius: 0; mix-blend-mode: multiply; }
+.site-main .page-art-layout > .page-art { position: absolute; z-index: 0; inset: 0 0 0 auto; display: flex; align-items: center; width: 40%; height: 100%; max-width: none; margin: 0; pointer-events: none; }
+/* Fade the image itself: masking its taller container left horizontal image edges visible. */
+.site-main .page-art-layout > .page-art img { width: 100%; height: auto; object-fit: contain; border-radius: 0; mix-blend-mode: multiply; -webkit-mask-image: radial-gradient(ellipse closest-side at center, #000 42%, transparent 100%); mask-image: radial-gradient(ellipse closest-side at center, #000 42%, transparent 100%); }
 .site-main .page-art-layout #testimonials-title { font-size: clamp(30px, 3.2vw, 46px); line-height: 1.16; }
 .site-main .page-art-layout #testimonials-title .text-nowrap:last-child { white-space: normal; }
 .site-main .page-art-layout .content-hub__search { max-width: 480px; margin-inline: 0; }
