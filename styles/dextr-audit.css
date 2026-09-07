@@ -1783,6 +1783,17 @@ body[data-page] .mobile-menu .mobile-menu__cta { color: #fff; }
 .mobile-menu__search .search-form input { min-width: 0; color: #172d47; background: transparent; }
 .mobile-menu__search .search-form input::placeholder { color: #526b83; }
 
+@media (max-width: 767px), (pointer: coarse) {
+  .site-header .menu-toggle,
+  .mobile-menu__top .icon-button,
+  .search-form .icon-button {
+    min-width: 44px;
+    min-height: 44px;
+    flex-shrink: 0;
+  }
+  .search-form input { min-height: 44px; }
+}
+
 /* Soft, non-interactive background motion stays behind the reading surface. */
 .page-ambient-host { position: relative; isolation: isolate; }
 .page-ambient {
