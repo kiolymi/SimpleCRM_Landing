@@ -161,6 +161,10 @@ function wireScrollReveals(root) {
     let element = event.target.closest('[data-reveal]');
     while (element) {
       element.style.transitionDelay = '0ms';
+      element.style.setProperty('--reveal-delay', '0ms');
+      // Reveal immediately on focus; entrance keyframes otherwise keep a
+      // focused link transparent during their staggered delay.
+      element.style.animation = 'none';
       element.classList.add('is-visible');
       observer.unobserve(element);
       element = element.parentElement?.closest('[data-reveal]');
