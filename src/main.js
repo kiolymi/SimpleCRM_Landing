@@ -277,9 +277,17 @@ function wireSmoothAnchorNavigation(root) {
 
   const animateTo = target => {
     cancelScroll();
-    const header = root.querySelector('.site-header');
-    const headerOffset = (header?.getBoundingClientRect().height || 0) + 24;
-    const destination = Math.max(0, target.getBoundingClientRect().top + window.scrollY - headerOffset);
+    // Use the same spacing as native fragment navigation. The header scrolls
+    // away, so reserving its height here created an unnecessary empty band.
+    const targetOffset = parseFloat(getComputedStyle(target).scrollMarginTop) || 24;
+    // Read layout coordinates, not the temporary translate/scale used by
+    // entrance animations; otherwise the final heading can overshoot.
+    let targetTop = 0;
+    for (let element = target; element; element = element.offsetParent) {
+      targetTop += element.offsetTop + (element.offsetParent?.clientTop || 0);
+    }
+    const destination = target.id === 'main-content' ? 0
+      : Math.max(0, targetTop - targetOffset);
     const start = window.scrollY;
     const distance = destination - start;
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
