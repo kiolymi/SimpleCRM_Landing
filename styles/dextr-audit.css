@@ -2017,8 +2017,9 @@ body:has(#mobile-menu[open], .download-placeholder[open]) {
 @media (max-width: 767px) {
   .site-main .page-art-layout { min-height: 0; text-align: center; }
   .site-main .page-art-layout__copy { width: 100%; padding-block: 0; }
-  .site-main .page-art-layout > .page-art { width: 100%; opacity: .09; }
-  .site-main .page-art-layout > .page-art img { object-position: right center; }
+  .site-main .page-art-layout > .page-art { width: 100%; }
+  /* Keep decorative opacity on the image: reveal animations own the wrapper opacity. */
+  .site-main .page-art-layout > .page-art img { object-position: right center; opacity: .09; }
   .site-main .page-art-layout .content-hub__search { margin-inline: auto; }
 }
 @media (max-width: 600px) {
