@@ -1483,7 +1483,7 @@ body:is([data-page="about"], [data-page="privacy"], [data-page="pricing"]) .head
 .pricing-page--dextr .pricing-page__hero h1 { color: #f2f5f9; font-size: clamp(36px, 4.5vw, 60px); line-height: 1.15; }
 .pricing-page--dextr .pricing-page__hero p { color: #c6d0dc; font-size: 17px; }
 .pricing-page--dextr .pricing-page__cards { max-width: 1200px; gap: 30px; }
-.pricing-page--dextr .pricing-plan { padding: 38px; background: #1e2c3d; border: 1px solid #2d3c4f; border-radius: 16px; box-shadow: none; }
+.pricing-page--dextr .pricing-plan { padding: 38px; background: #1e2c3d; border: 1px solid #2d3c4f; border-radius: 16px; box-shadow: none; grid-template-rows: auto auto auto auto 1fr auto; align-content: stretch; }
 .pricing-page--dextr .pricing-plan--featured { border: 2px solid #a6c9e1; }
 .pricing-page--dextr .pricing-plan__name { margin: 0; color: #f2f5f9; font-size: 34px; }
 .pricing-page--dextr .pricing-plan__description { min-height: 76px; margin: 14px 0 20px; }
