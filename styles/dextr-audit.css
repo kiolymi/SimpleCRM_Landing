@@ -1727,6 +1727,12 @@ body:is([data-page="article"],[data-page="learn"],[data-page="how-to"],[data-pag
 .article-page--editorial :is(.article-header h1,.article-body h2,.article-body h3,.article-related-inline h2),.content-hub--archive :is(.archive-heading h1,.archive-posts > h2,.archive-newsletter h2) { color: #172d47; }
 .article-page--editorial :is(.article-meta,.article-body,.article-body p,.article-body li,.eyebrow,.article-tags),.content-hub--archive .article-card__body > p { color: #4a5f77; }
 .article-page--editorial .article-body a,.article-page--editorial .article-body li::marker { color: #17639d; }
+.article-page--editorial .article-category-link { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; color: #245b87; text-decoration: none; }
+.article-category-link svg { width: 18px; height: 18px; transition: transform 280ms ease; }
+.article-category-link:hover span { text-decoration: underline; text-underline-offset: 4px; }
+.article-category-link:hover svg { transform: translateX(-3px); }
+.article-category-link:focus-visible { outline: 2px solid #086acb; outline-offset: 4px; border-radius: 4px; }
+@media (prefers-reduced-motion: reduce) { .article-category-link svg { transition: none; transform: none; } }
 .article-page--editorial :is(.editorial-toc,.article-pagination a,.article-related-inline a,.article-tags > span),.content-hub--archive .archive-category { background: #f7fbff; border-color: #cfdeec; color: #172d47; }
 .article-page--editorial .editorial-toc summary { color: #172d47; }
 .article-page--editorial .editorial-toc a,.content-hub--archive :is(.archive-category li a,.archive-category > .text-link,.article-card h3 a,.article-card .text-link) { color: #245b87; }
