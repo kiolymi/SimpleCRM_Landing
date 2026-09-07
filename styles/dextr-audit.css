@@ -1655,10 +1655,17 @@ body:is([data-page="learn"], [data-page="how-to"], [data-page="announcements"]) 
   .has-js.is-navigating .site-shell { transition-duration: 240ms; }
 }
 @media (hover: hover) and (prefers-reduced-motion: no-preference) {
-  .has-js [data-reveal].is-visible:is(.article-card, .testimonial-card, .pricing-plan):hover {
-    transform: translateY(-4px);
+  .has-js [data-reveal].is-visible:is(.article-card, .testimonial-card, .pricing-plan) {
+    /* Keep hover movement separate from entrance keyframe transforms. */
+    translate: 0 0;
+    transition-property: translate, background-color, border-color, box-shadow, color;
     transition-duration: 420ms;
+    transition-delay: 0ms !important;
     transition-timing-function: cubic-bezier(.22,.61,.36,1);
+  }
+  .has-js [data-reveal].is-visible:is(.article-card, .testimonial-card, .pricing-plan):hover {
+    transform: none;
+    translate: 0 -4px;
   }
 }
 @keyframes crm-reveal {
