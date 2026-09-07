@@ -1930,6 +1930,16 @@ body:has(#mobile-menu[open], .download-placeholder[open]) {
 
 #support-message, #support-message-form { scroll-margin-top: 120px; }
 
+.editorial-toc a.is-section-active,
+.releases-toc a.is-section-active {
+  color: #9bd5ff;
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 5px;
+}
+.article-page--editorial .editorial-toc a.is-section-active { color: #075eac; }
+.releases-toc .releases-toc__version.is-section-active { color: #9bd5ff !important; }
+
 @media (max-width: 600px) {
   .site-footer__inner { padding-bottom: 88px; }
   .site-footer__nav {

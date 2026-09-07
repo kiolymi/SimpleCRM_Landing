@@ -53,6 +53,7 @@ wireScrollMotion(app);
 wireInteractiveComponents(app);
 wireScrollProgress();
 wireSectionNavigation(app);
+wireTableOfContents(app);
 wireBackToTop(app);
 wireSmoothAnchorNavigation(app);
 wireStablePageNavigation(app);
@@ -538,6 +539,49 @@ function wireSectionNavigation(root) {
     sections.forEach(item => item.link.classList.toggle('is-section-active', item.section === visible.target));
   }, { rootMargin: '-24% 0px -60% 0px', threshold: [0, .15, .35] });
   sections.forEach(item => observer.observe(item.section));
+}
+
+function wireTableOfContents(root) {
+  const groups = [...root.querySelectorAll('.editorial-toc nav, .releases-toc nav')].map(nav => {
+    const entries = [...nav.querySelectorAll('a[href^="#"]')].map(link => {
+      let id;
+      try { id = decodeURIComponent(link.hash.slice(1)); } catch { return null; }
+      const target = document.getElementById(id);
+      return target ? { link, target } : null;
+    }).filter(Boolean);
+    return { nav, entries, current: null };
+  }).filter(group => group.entries.length);
+  if (!groups.length) return;
+
+  let pending = false;
+  const update = () => {
+    pending = false;
+    const readingLine = Math.min(180, window.innerHeight * .25);
+    groups.forEach(group => {
+      let current = group.entries[0];
+      for (const entry of group.entries) {
+        if (entry.target.getBoundingClientRect().top <= readingLine) current = entry;
+      }
+      if (group.current === current) return;
+      group.current = current;
+      group.entries.forEach(({ link }) => {
+        const active = link === current.link;
+        link.classList.toggle('is-section-active', active);
+        if (active) link.setAttribute('aria-current', 'location');
+        else link.removeAttribute('aria-current');
+      });
+    });
+  };
+  const requestUpdate = () => {
+    if (pending) return;
+    pending = true;
+    requestAnimationFrame(update);
+  };
+  window.addEventListener('scroll', requestUpdate, { passive: true });
+  window.addEventListener('resize', requestUpdate);
+  window.addEventListener('pageshow', requestUpdate);
+  document.fonts?.ready.then(requestUpdate);
+  update();
 }
 
 function wireHeroPointer(root) {
