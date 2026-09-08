@@ -2111,6 +2111,17 @@ body:has(#mobile-menu[open], .download-placeholder[open]) {
 .article-card--news-backdrop .article-card__body > :is(h3, p) {
   max-width: 82%;
 }
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .article-card .article-card__guide-background,
+  .article-card > .article-card__news-backdrop {
+    transition: transform 750ms cubic-bezier(.2, .65, .3, 1);
+    transform-origin: 65% 50%;
+  }
+  .article-card:is(:hover, :focus-within) .article-card__guide-background,
+  .article-card:is(:hover, :focus-within) > .article-card__news-backdrop {
+    transform: scale(1.035);
+  }
+}
 @media (max-width: 600px) {
   .article-card--news-backdrop > .article-card__news-backdrop { opacity: .3; width: 80%; }
   .article-card--news-backdrop .article-card__body > :is(h3, p) { max-width: 100%; }
