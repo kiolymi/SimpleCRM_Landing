@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex" />
+    <meta name="theme-color" content="#edf4fb" />
+    <title>Страница не найдена — Simple CRM</title>
+    <link rel="icon" type="image/png" href="/favicon-64.png?v=20260824-1" />
+    <link rel="stylesheet" href="/styles/tokens.css?v=20260824-18" />
+    <link rel="stylesheet" href="/styles/global.css?v=20260824-34" />
+    <style>
+      body { margin: 0; min-height: 100svh; color: #172d47; background: radial-gradient(ellipse at 85% 20%, #d5e8fb, transparent 65%), #edf4fb; }
+      .error-header { padding: 28px clamp(24px, 4vw, 56px); }
+      .error-brand { display: inline-flex; align-items: center; gap: 12px; color: #172d47; font-weight: 700; text-decoration: none; white-space: nowrap; }
+      .error-brand img { width: 40px; height: 40px; }
+      .error-content { box-sizing: border-box; width: min(100%, 740px); margin: 0 auto; padding: clamp(48px, 12vh, 128px) 24px 64px; }
+      .error-code { margin: 0 0 20px; color: #256397; font-size: 17px; font-weight: 700; letter-spacing: .12em; }
+      h1 { margin: 0 0 24px; color: #172d47; font-size: clamp(36px, 6vw, 64px); line-height: 1.1; letter-spacing: -.035em; }
+      .error-description { max-width: 560px; margin: 0; color: #4a5f77; font-size: 19px; line-height: 1.65; }
+      .error-actions { display: flex; flex-wrap: wrap; gap: 16px; margin-top: 32px; }
+      .error-actions a { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 12px 24px; border: 1px solid #9ebbd4; border-radius: 12px; color: #205980; font-weight: 700; text-decoration: none; transition: background-color .25s ease, transform .25s ease; }
+      .error-actions a:first-child { color: #fff; border-color: #086acb; background: #086acb; }
+      .error-help { margin-top: 32px; font-size: 16px; line-height: 1.6; color: #4a5f77; }
+      .error-help a { color: #205980; text-underline-offset: 4px; }
+      a:focus-visible { outline: 3px solid #087df1; outline-offset: 5px; }
+      @media (hover: hover) { .error-actions a:hover { transform: translateY(-2px); background: #d8e9f8; } .error-actions a:first-child:hover { background: #075cb2; } }
+      @media (prefers-reduced-motion: no-preference) { .error-content { animation: error-entrance .65s ease-out both; } }
+      @media (prefers-reduced-motion: reduce) { .error-actions a { transition: none; } }
+      @keyframes error-entrance { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
+    </style>
+  </head>
+  <body>
+    <header class="error-header"><a class="error-brand" href="/" aria-label="Simple CRM — главная"><img src="/simple-crm-logo-refined.png?v=20260824-2" width="40" height="40" alt="" />Simple CRM</a></header>
+    <main class="error-content">
+      <p class="error-code">ОШИБКА 404</p>
+      <h1>Такой страницы нет</h1>
+      <p class="error-description">Возможно, в адресе опечатка или страница была перенесена. Вернитесь на главную или найдите нужную статью в материалах.</p>
+      <nav class="error-actions" aria-label="Куда перейти"><a href="/">На главную</a><a href="/learn/">Открыть материалы</a></nav>
+      <p class="error-help">Не получается найти нужное? <a href="/support/">Обратитесь в поддержку</a>.</p>
+    </main>
+  </body>
+</html>
