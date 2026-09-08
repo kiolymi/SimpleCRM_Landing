@@ -389,3 +389,59 @@ body[data-page="faq"] .faq-page--dextr .newsletter-card input {
   body #main-content .faq-rich-item > p { font-size: 16px; }
   body #main-content #testimonials-title .text-nowrap:last-child { white-space: normal; }
 }
+
+/* FAQ interaction polish: the reading column and search share one rhythm,
+   while each answer opens as a calm, spacious card. */
+body[data-page="faq"] .faq-page--dextr .faq-search {
+  width: 100% !important;
+  max-width: none !important;
+  margin: 32px 0 0 !important;
+}
+body[data-page="faq"] .faq-page--dextr .faq-list-wrap {
+  padding-top: 30px !important;
+  padding-bottom: 72px !important;
+}
+body[data-page="faq"] .faq-page--dextr .faq-list {
+  gap: 24px !important;
+}
+body[data-page="faq"] .faq-page--dextr .faq-rich-item {
+  overflow: hidden;
+  transition: opacity 720ms cubic-bezier(.16,1,.3,1), transform 820ms cubic-bezier(.16,1,.3,1), border-color 280ms ease, background-color 280ms ease, box-shadow 420ms ease;
+}
+body[data-page="faq"] .faq-page--dextr .faq-rich-item summary {
+  min-height: 78px;
+  padding: 26px 28px !important;
+  cursor: pointer;
+  user-select: none;
+}
+body[data-page="faq"] .faq-page--dextr .faq-rich-item summary::after {
+  content: '' !important;
+  display: block;
+  flex: 0 0 12px;
+  width: 12px;
+  height: 12px;
+  margin-right: 4px;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  border-radius: 1px;
+  background: transparent !important;
+  transform: rotate(45deg) translateY(-3px);
+  transition: transform 520ms cubic-bezier(.16,1,.3,1), color 220ms ease;
+}
+body[data-page="faq"] .faq-page--dextr .faq-rich-item[open] summary::after {
+  transform: rotate(225deg) translateY(-2px);
+}
+body[data-page="faq"] .faq-page--dextr .faq-rich-item > p {
+  padding: 0 28px 32px !important;
+}
+@media (hover: hover) {
+  body[data-page="faq"] .faq-page--dextr .faq-rich-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 16px 34px rgb(37 83 125 / 10%) !important;
+  }
+}
+@media (max-width: 600px) {
+  body[data-page="faq"] .faq-page--dextr .faq-list { gap: 16px !important; }
+  body[data-page="faq"] .faq-page--dextr .faq-rich-item summary { min-height: 70px; padding: 22px 18px !important; }
+  body[data-page="faq"] .faq-page--dextr .faq-rich-item > p { padding: 0 18px 26px !important; }
+}

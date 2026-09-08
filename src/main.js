@@ -1,7 +1,7 @@
 import { addPageArtwork } from './components/page-art.js?v=20260908-83';
 import { createSiteShell } from './components/site-shell.js?v=20260908-56';
 import { createHomePage } from './components/home-sections.js?v=20260908-82';
-import { createAboutPage, createArticleLayout, createContentHubPage, createFaqPage, createPricingPage, createPrivacyPage, createReleasesPage, createSearchPage, createSupportPage } from './components/content-pages.js?v=20260908-91';
+import { createAboutPage, createArticleLayout, createContentHubPage, createFaqPage, createPricingPage, createPrivacyPage, createReleasesPage, createSearchPage, createSupportPage } from './components/content-pages.js?v=20260908-92';
 import { pageMeta } from './data/site.js?v=20260906-30';
 import { createProductDeviceMockup } from './components/product-device-mockup.js?v=20260906-1';
 
@@ -526,6 +526,7 @@ function wireInteractiveComponents(root) {
   wireBillingToggle(root);
   wireWorkflow(root);
   wireFaqSearch(root);
+  wireFaqAccordion(root);
   wireForms(root);
   wireHeroPointer(root);
   wireMobileAnchors(root);
@@ -545,10 +546,79 @@ function wireFaqSearch(root) {
     items.forEach(item => {
       const visible = !query || item.dataset.search.includes(query);
       item.hidden = !visible;
+      if (visible && query) item.classList.add('is-visible');
       if (visible) matches += 1;
     });
     groups.forEach(group => { group.hidden = ![...group.querySelectorAll('[data-faq-item]')].some(item => !item.hidden); });
     if (status) status.textContent = query ? (matches ? `Найдено ответов: ${matches}` : 'Подходящих ответов не найдено. Напишите в поддержку — разберём вопрос лично.') : '';
+  });
+}
+
+function wireFaqAccordion(root) {
+  const items = [...root.querySelectorAll('.faq-rich-item')];
+  if (!items.length) return;
+  const motion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const animations = new Map();
+
+  const cancelAnimation = item => {
+    animations.get(item)?.cancel();
+    animations.delete(item);
+    item.style.removeProperty('height');
+    item.style.removeProperty('overflow');
+  };
+
+  const toggleItem = (item, force) => {
+    const desiredOpen = typeof force === 'boolean' ? force : !item.open;
+    const startHeight = item.getBoundingClientRect().height;
+    cancelAnimation(item);
+    if (motion.matches || !item.animate) {
+      item.open = desiredOpen;
+      return;
+    }
+
+    // Measure both states, then animate the details element itself. This keeps
+    // the answer content flowing naturally instead of snapping open or shut.
+    item.open = desiredOpen;
+    const endHeight = item.getBoundingClientRect().height;
+    item.open = true;
+    item.style.height = `${startHeight}px`;
+    item.style.overflow = 'hidden';
+    const animation = item.animate(
+      [{ height: `${startHeight}px` }, { height: `${endHeight}px` }],
+      { duration: 620, easing: 'cubic-bezier(.16,1,.3,1)' },
+    );
+    animations.set(item, animation);
+    animation.onfinish = () => {
+      item.open = desiredOpen;
+      animations.delete(item);
+      item.style.removeProperty('height');
+      item.style.removeProperty('overflow');
+    };
+    animation.oncancel = () => {
+      item.style.removeProperty('height');
+      item.style.removeProperty('overflow');
+    };
+  };
+
+  items.forEach(item => {
+    if (item.dataset.accordionReady) return;
+    item.dataset.accordionReady = 'true';
+    const summary = item.querySelector('summary');
+    if (!summary) return;
+    summary.addEventListener('click', event => {
+      event.preventDefault();
+      toggleItem(item);
+    });
+    item.addEventListener('click', event => {
+      const target = event.target instanceof Element ? event.target : null;
+      if (target?.closest('summary, a, button, input, textarea, select')) return;
+      event.preventDefault();
+      toggleItem(item);
+    });
+  });
+
+  motion.addEventListener('change', event => {
+    if (event.matches) items.forEach(cancelAnimation);
   });
 }
 
