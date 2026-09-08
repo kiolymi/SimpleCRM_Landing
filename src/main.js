@@ -9,7 +9,7 @@ const pageKey = document.body.dataset.page || 'home';
 const page = pageMeta[pageKey] || pageMeta.home;
 // Replace stylesheet URLs after a visual release so GitHub Pages/Yandex cannot
 // keep mixing a fresh component file with an older cached theme file.
-const styleRelease = '20260908-3';
+const styleRelease = '20260908-7';
 document.querySelectorAll('link[rel="stylesheet"][href*="/styles/"]').forEach(link => {
   const href = link.getAttribute('href');
   if (!href) return;
@@ -54,7 +54,9 @@ if (pageKey === 'home') {
 
 const app = document.querySelector('#app');
 app.append(createSiteShell(main));
+rewriteProjectPaths(app);
 addPageArtwork(app, pageKey, document.body.dataset.articleSlug);
+rewriteProjectPaths(app);
 wireDownloadPlaceholder(app);
 wireAmbientBackground(app);
 protectProductName(app);
@@ -118,6 +120,23 @@ function wireAmbientBackground(root) {
     ambient.className = 'page-ambient';
     ambient.setAttribute('aria-hidden', 'true');
     host.prepend(ambient);
+  });
+}
+
+// GitHub Pages serves this project under /SimpleCRM_Landing/ while local
+// development serves it from /. Normalize generated links and image sources
+// so navigation and product artwork work in both environments.
+function rewriteProjectPaths(root) {
+  const projectPrefix = window.location.hostname.endsWith('github.io') && window.location.pathname.startsWith('/SimpleCRM_Landing/')
+    ? '/SimpleCRM_Landing'
+    : '';
+  if (!projectPrefix) return;
+  root.querySelectorAll('[href], [src]').forEach(element => {
+    for (const attribute of ['href', 'src']) {
+      const value = element.getAttribute(attribute);
+      if (!value || !value.startsWith('/') || value.startsWith('//') || value.startsWith(projectPrefix)) continue;
+      element.setAttribute(attribute, `${projectPrefix}${value}`);
+    }
   });
 }
 
