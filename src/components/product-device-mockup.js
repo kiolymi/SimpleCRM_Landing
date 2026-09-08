@@ -21,7 +21,8 @@ export function createProductDeviceMockup({ mode = 'placeholder', device = 'phon
     const isSuppliedScreen = image.src.includes('/simple-crm-landing-screens/');
     if (image.width || isSuppliedScreen) img.width = image.width || 1170;
     if (image.height || isSuppliedScreen) img.height = image.height || 2532;
-    img.src = image.src;
+    const projectPrefix = window.location.hostname.endsWith('github.io') && window.location.pathname.startsWith('/SimpleCRM_Landing/') ? '/SimpleCRM_Landing' : '';
+    img.src = projectPrefix && image.src.startsWith('/') && !image.src.startsWith('//') ? `${projectPrefix}${image.src}` : image.src;
     img.alt = alt || image.alt || '';
     frame.append(img);
   } else if (mode === 'demo') {
