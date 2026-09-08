@@ -1,11 +1,23 @@
 import { addPageArtwork } from './components/page-art.js?v=20260908-83';
 import { createSiteShell } from './components/site-shell.js?v=20260908-56';
 import { createHomePage } from './components/home-sections.js?v=continuous-video13';
-import { createAboutPage, createArticleLayout, createContentHubPage, createFaqPage, createPricingPage, createPrivacyPage, createReleasesPage, createSearchPage, createSupportPage } from './components/content-pages.js?v=human-message3';
+import { createAboutPage, createArticleLayout, createContentHubPage, createFaqPage, createPricingPage, createPrivacyPage, createReleasesPage, createSearchPage, createSupportPage } from './components/content-pages.js?v=support15';
 import { pageMeta } from './data/site.js?v=20260906-30';
 import { createProductDeviceMockup } from './components/product-device-mockup.js?v=20260906-1';
 
 const pageKey = document.body.dataset.page || 'home';
+if (pageKey === 'support') {
+  const supportStyles = document.createElement('link');
+  supportStyles.rel = 'stylesheet';
+  supportStyles.href = new URL('../styles/support-center.css?v=support15', import.meta.url).href;
+  document.head.append(supportStyles);
+}
+if (['learn', 'how-to', 'announcements', 'article'].includes(pageKey)) {
+  const catalogStyles = document.createElement('link');
+  catalogStyles.rel = 'stylesheet';
+  catalogStyles.href = new URL('../styles/materials-catalog.css?v=catalog14', import.meta.url).href;
+  document.head.append(catalogStyles);
+}
 const page = pageMeta[pageKey] || pageMeta.home;
 // Replace stylesheet URLs after a visual release so GitHub Pages/Yandex cannot
 // keep mixing a fresh component file with an older cached theme file.

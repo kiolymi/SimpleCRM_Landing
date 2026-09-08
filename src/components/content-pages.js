@@ -1,45 +1,13 @@
-import { createArticleCard } from './article-card.js?v=news-materials1';
+import { createArticleCard } from './article-card.js?v=catalog14';
+import { createMaterialsCatalog } from './materials-catalog.js?v=catalog14';
+import { createSupportCenter } from './support-center.js?v=support15';
 import { iconSvg } from './icons.js?v=20260824-28';
 import { createProductDeviceMockup } from './product-device-mockup.js?v=20260906-1';
 import { createSearchForm } from './search-form.js';
 import { articles, categoryMeta, findArticles, getArticleBySlug, getArticlesByCategory } from '../data/articles.js?v=20260908-82';
 
 export function createContentHubPage(category) {
-  const meta = categoryMeta[category];
-  const posts = getArticlesByCategory(category);
-  const section = document.createElement('section');
-  section.className = 'content-hub content-hub--archive';
-  section.setAttribute('aria-labelledby', 'hub-title');
-  section.innerHTML = `
-    <div class="container">
-      <header class="archive-heading" data-reveal="scale">
-        <h1 id="hub-title">${escapeHtml(meta.title)}</h1>
-        <div class="content-hub__search"></div>
-      </header>
-      <nav class="archive-categories" aria-label="Другие разделы материалов" data-reveal="scale"></nav>
-      <section class="archive-posts" aria-labelledby="archive-posts-title">
-        <h2 id="archive-posts-title" data-reveal="scale">${category === 'learn' ? 'Статьи о работе с клиентами' : category === 'how-to' ? 'Пошаговые инструкции' : 'Новости Simple CRM'}</h2>
-        <div class="article-grid"></div>
-      </section>
-      <section class="archive-newsletter" aria-labelledby="hub-newsletter-title">
-        <form data-newsletter-form novalidate>
-          <h2 id="hub-newsletter-title">Подписка на новости</h2>
-          <label for="hub-email">Электронная почта <span aria-hidden="true">*</span></label>
-          <div class="archive-newsletter__row">
-            <input id="hub-email" name="email" type="email" autocomplete="email" placeholder="you@example.com" required />
-            <button class="button button--primary" type="submit">Подписаться</button>
-          </div>
-          <p class="form-status" data-form-status aria-live="polite"></p>
-        </form>
-      </section>
-    </div>`;
-  section.querySelector('.content-hub__search').append(createSearchForm());
-  Object.entries(categoryMeta).filter(([key]) => key !== category).forEach(([key, item]) => {
-    section.querySelector('.archive-categories').append(createCrossPromo(item, getArticlesByCategory(key)));
-  });
-  const grid = section.querySelector('.article-grid');
-  posts.forEach(post => grid.append(createArticleCard(post)));
-  return section;
+  return createMaterialsCatalog(category);
 }
 
 export function createArticleLayout(slug) {
@@ -51,26 +19,31 @@ export function createArticleLayout(slug) {
   section.setAttribute('aria-labelledby', 'article-title');
   const headings = article.content.filter(block => block.type === 'h2').map(block => ({ ...block, id: slugify(block.text) }));
   const related = article.relatedSlugs.map(getArticleBySlug).filter(Boolean);
-  const siblings = getArticlesByCategory(article.category);
-  const position = siblings.findIndex(item => item.slug === article.slug);
-  const previous = siblings[position - 1];
-  const next = siblings[position + 1];
   section.innerHTML = `<div class="container editorial-layout"><article class="editorial-main"><header class="article-header"><p class="eyebrow">${escapeHtml(categoryMeta[article.category].title)}</p><h1 id="article-title">${escapeHtml(article.title)}</h1>${article.publishedAt ? `<p class="article-meta">${escapeHtml(article.publishedAt)}${article.author ? ` — ${escapeHtml(article.author)}` : ''}</p>` : ''}</header><div class="article-body"></div><nav class="article-pagination" aria-label="Навигация по материалам"></nav><section class="article-tags" aria-label="Теги материала"><span>Теги:</span>${article.tags.map(tag => `<span>${escapeHtml(tag)}</span>`).join('')}</section>${related.length ? '<section class="article-related-inline"><h2>Читайте также</h2><div></div></section>' : ''}</article><aside class="editorial-sidebar" aria-label="Навигация по статье"><details class="editorial-toc" open><summary>На этой странице</summary><nav aria-label="Оглавление">${headings.map(h => `<a href="#${escapeAttribute(h.id)}">${escapeHtml(h.text)}</a>`).join('')}</nav></details><div class="editorial-search"></div></aside></div>`;
   const categoryLink = document.createElement('a');
   categoryLink.className = 'article-category-link';
-  categoryLink.href = new URL(`../../${article.category}/`, import.meta.url).href;
-  categoryLink.innerHTML = `${iconSvg('arrow-left')}<span>${escapeHtml(categoryMeta[article.category].title)}</span>`;
-  categoryLink.setAttribute('aria-label', `Вернуться в раздел «${categoryMeta[article.category].title}»`);
+  categoryLink.href = new URL('../../learn/', import.meta.url).href;
+  categoryLink.innerHTML = `${iconSvg('arrow-left')}<span>Все материалы</span>`;
+  categoryLink.setAttribute('aria-label', 'Вернуться ко всем материалам');
   section.querySelector('.article-header .eyebrow').replaceChildren(categoryLink);
-  section.querySelector('.editorial-search').append(createSearchForm());
+  section.querySelector('.editorial-search').remove();
   if (window.matchMedia('(max-width: 900px)').matches) section.querySelector('.editorial-toc').open = false;
   const body = section.querySelector('.article-body');
   article.content.forEach(block => body.append(createArticleBlock(block)));
-  const pagination = section.querySelector('.article-pagination');
-  if (previous) pagination.append(createPaginationLink('Предыдущий материал', previous, 'arrow-left'));
-  if (next) pagination.append(createPaginationLink('Следующий материал', next, 'arrow-right'));
+  section.querySelector('.article-pagination').remove();
+  section.querySelector('.article-tags').remove();
   const relatedContainer = section.querySelector('.article-related-inline > div');
-  if (relatedContainer) related.forEach(item => relatedContainer.append(createRelatedLink(item)));
+  if (relatedContainer) {
+    relatedContainer.className = 'materials-grid';
+    related.forEach(item => {
+      const card = createArticleCard(item);
+      card.removeAttribute('data-reveal');
+      relatedContainer.append(card);
+    });
+  }
+  const back = categoryLink.cloneNode(true);
+  back.classList.add('article-return');
+  section.querySelector('.editorial-main').append(back);
   return section;
 }
 
@@ -309,65 +282,7 @@ export function createAboutPage() {
 }
 
 export function createSupportPage() {
-  const section = document.createElement('section');
-  section.className = 'inner-page support-page support-page--contact';
-  section.setAttribute('aria-labelledby', 'support-title');
-  section.innerHTML = `
-    <div class="support-contact-hero">
-      <div class="container support-contact-hero__inner">
-        <div class="support-contact-hero__copy" data-reveal="slide-left">
-          <p class="eyebrow">Поддержка</p>
-          <h1 id="support-title">Мы здесь, чтобы помочь</h1>
-          <p>Если у вас есть вопрос, идея или нужна помощь с Simple CRM, напишите нам. Мы читаем обращение целиком, не просим повторять контекст и отвечаем по существу.</p>
-          <div class="support-contact-links" aria-label="Способы связи">
-            <a href="#support-message" aria-controls="support-message-form"><span>${iconSvg('message-square')}</span><strong>Написать команде</strong><small>Для вопросов о продукте, настройке и запуске</small></a>
-            <a href="/faq/"><span>${iconSvg('task-list')}</span><strong>Ответы на вопросы</strong><small>Быстрые подсказки по тарифам, данным и ежедневной работе</small></a>
-          </div>
-        </div>
-        <div class="support-contact-hero__visual" data-support-hero-visual data-reveal="slide-right"></div>
-      </div>
-    </div>
-    <div class="container support-message" id="support-message"><details id="support-message-form"><summary>Написать сообщение</summary>
-      <form class="support-request demo-form" data-demo-form novalidate data-reveal="slide-right">
-        <div class="support-request__heading"><h2>Написать команде</h2><p>Расскажите, что нужно решить — ответим по рабочей почте.</p></div>
-        <div class="form-row"><label>Ваше имя<input name="name" type="text" autocomplete="name" placeholder="Анна Петрова" required /></label><label>Рабочая почта<input name="email" type="email" autocomplete="email" placeholder="anna@company.ru" required /></label></div>
-        <label>Тема<select name="topic" required><option value="">Выберите тему</option><option>Вопрос по продукту</option><option>Настройка Simple CRM</option><option>Импорт клиентов</option><option>Тарифы и оплата</option><option>Ошибка или техническая проблема</option></select></label>
-        <label>Сообщение<textarea name="message" rows="5" placeholder="Например: хочу перенести базу клиентов и настроить встречи для команды из 5 человек" required></textarea></label>
-        <label class="form-consent"><input name="consent" type="checkbox" required /><span>Согласен на обработку данных для ответа на обращение</span></label>
-        <button class="button button--primary" type="submit">Отправить ${iconSvg('arrow-right')}</button>
-        <p class="form-status" data-form-status aria-live="polite"></p>
-      </form>
-    </details></div>
-    <section class="support-newsletter section" aria-labelledby="support-newsletter-title">
-      <div class="container">
-        <form class="newsletter-card newsletter-card--support" data-newsletter-form data-reveal="scale" novalidate>
-          <div>
-            <p class="eyebrow">Новости продукта</p>
-            <h2 id="support-newsletter-title">Получайте новости о новых возможностях</h2>
-            <p>Пришлём заметные релизы, полезные сценарии и улучшения Simple CRM. Только продуктовые обновления — без шума.</p>
-          </div>
-          <label><span class="visually-hidden">Электронная почта</span><input name="email" type="email" autocomplete="email" placeholder="you@company.ru" required /></label>
-          <button class="button button--primary" type="submit">Подписаться</button>
-          <p class="form-status" data-form-status aria-live="polite"></p>
-        </form>
-      </div>
-    </section>
-    `;
-  section.querySelector('[data-support-hero-visual]').append(
-    createProductDeviceMockup({ mode: 'image', device: 'phone', image: { src: '/simple-crm-landing-screens/19-client-conversation.png' }, alt: 'Диалог с клиентом в Simple CRM' }),
-  );
-  const messageForm = section.querySelector('#support-message-form');
-  const openMessageFromHash = () => {
-    if (['#support-message', '#support-message-form'].includes(window.location.hash)) {
-      messageForm.open = true;
-    }
-  };
-  openMessageFromHash();
-  window.addEventListener('hashchange', openMessageFromHash);
-  section.querySelector('a[href="#support-message"]').addEventListener('click', () => {
-    messageForm.open = true;
-  });
-  return section;
+  return createSupportCenter();
 }
 
 export function createPrivacyPage() {

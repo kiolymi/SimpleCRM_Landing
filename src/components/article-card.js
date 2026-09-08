@@ -22,6 +22,7 @@ export function createArticleCard(article) {
     'follow-up-after-meeting': 'cover-followup.png',
     'client-context': 'cover-client.png',
     'prepare-meeting': 'cover-meeting.png',
+    'create-follow-up-task': 'article-nextstep.png',
   };
   // Use the same editorial scene treatment on archive cards as on the home
   // page, so every material keeps a visual anchor instead of a blank panel.
