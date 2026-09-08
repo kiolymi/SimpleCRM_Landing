@@ -9,7 +9,7 @@ const pageKey = document.body.dataset.page || 'home';
 const page = pageMeta[pageKey] || pageMeta.home;
 // Replace stylesheet URLs after a visual release so GitHub Pages/Yandex cannot
 // keep mixing a fresh component file with an older cached theme file.
-const styleRelease = '20260908-7';
+const styleRelease = '20260908-8';
 document.querySelectorAll('link[rel="stylesheet"][href*="/styles/"]').forEach(link => {
   const href = link.getAttribute('href');
   if (!href) return;
