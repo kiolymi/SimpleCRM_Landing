@@ -53,32 +53,21 @@ function createHero(hero) {
   video.className = 'home-hero__background-video';
   video.muted = true;
   video.loop = true;
+  video.autoplay = true;
   video.playsInline = true;
   video.setAttribute('aria-hidden', 'true');
   video.poster = new URL('../../video-background/warped-preview-00s.jpg', import.meta.url).href;
   video.preload = 'metadata';
   video.src = new URL('../../video-background/Simple-CRM-Warped-Honeycomb-Light-12s.mp4', import.meta.url).href;
   section.prepend(video);
-  const toggle = document.createElement('button');
-  toggle.type = 'button';
-  toggle.className = 'background-motion-toggle';
-  section.append(toggle);
   const reduced = matchMedia('(prefers-reduced-motion: reduce)');
-  let paused = false, visible = true;
   const sync = () => {
-    const play = !paused && visible && !document.hidden && !reduced.matches;
-    toggle.textContent = paused ? 'Включить фон' : 'Приостановить фон';
-    toggle.setAttribute('aria-pressed', String(paused));
-    toggle.hidden = reduced.matches;
-    if (play) video.play().catch(() => { paused = true; toggle.textContent = 'Включить фон'; toggle.setAttribute('aria-pressed', 'true'); });
+    const play = !document.hidden && !reduced.matches;
+    if (play) video.play().catch(() => {});
     else video.pause();
   };
-  toggle.addEventListener('click', () => { paused = !paused; sync(); });
   reduced.addEventListener('change', sync);
   document.addEventListener('visibilitychange', sync);
-  if ('IntersectionObserver' in window) {
-    new IntersectionObserver(entries => { visible = entries[0].isIntersecting; sync(); }).observe(section);
-  }
   requestAnimationFrame(sync);
   return section;
 }
