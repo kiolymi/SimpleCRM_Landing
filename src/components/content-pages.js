@@ -2,7 +2,7 @@ import { createArticleCard } from './article-card.js?v=20260907-50';
 import { iconSvg } from './icons.js?v=20260824-28';
 import { createProductDeviceMockup } from './product-device-mockup.js?v=20260906-1';
 import { createSearchForm } from './search-form.js';
-import { articles, categoryMeta, findArticles, getArticleBySlug, getArticlesByCategory } from '../data/articles.js?v=20260908-69';
+import { articles, categoryMeta, findArticles, getArticleBySlug, getArticlesByCategory } from '../data/articles.js?v=20260908-70';
 
 export function createContentHubPage(category) {
   const meta = categoryMeta[category];
