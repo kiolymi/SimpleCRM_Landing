@@ -1389,11 +1389,13 @@ body {
   border: 5px solid #596779 !important;
   border-radius: 10.5% / 4.9% !important;
   background: #f1f4f9 !important;
-  box-sizing: border-box;
+  /* The aspect ratio describes the screen, excluding the surrounding bezel. */
+  box-sizing: content-box;
   isolation: isolate;
 }
 
 .device-mockup--image .device-mockup__image {
+  height: auto;
   border-radius: inherit;
 }
 
