@@ -495,8 +495,35 @@ section.innerHTML = `<div class="container releases-layout"><article class="rele
 function createCrossPromo(meta, posts) {
   const card = document.createElement('article');
   card.className = 'archive-category';
+  const visualByCategory = {
+    learn: 'cover-followup.png',
+    'how-to': 'cover-meeting.png',
+    announcements: 'announcements-signal.png',
+  };
+  const visual = document.createElement('div');
+  visual.className = 'archive-category__visual';
+  const backdrop = document.createElement('img');
+  backdrop.src = new URL(`../../assets/editorial/${visualByCategory[meta.href.split('/')[1]] || 'cover-client.png'}`, import.meta.url).href;
+  backdrop.alt = '';
+  backdrop.loading = 'lazy';
+  backdrop.decoding = 'async';
+  visual.append(backdrop);
+  const screen = posts[0]?.cover?.image;
+  if (screen?.src) {
+    const phone = document.createElement('img');
+    phone.className = 'archive-category__screen';
+    phone.src = screen.src;
+    phone.alt = screen.alt || '';
+    phone.loading = 'lazy';
+    phone.decoding = 'async';
+    visual.append(phone);
+  }
+  card.append(visual);
   const titles = posts.slice(0, 2).map(post => `<li><a href="${escapeAttribute(post.href)}">${iconSvg('arrow-right')}<span>${escapeHtml(post.title)}</span></a></li>`).join('');
-  card.innerHTML = `<h2><a href="${escapeAttribute(meta.href)}">${escapeHtml(meta.title)}</a></h2><ul>${titles}</ul><a class="text-link" href="${escapeAttribute(meta.href)}">Все материалы ${iconSvg('arrow-right')}</a>`;
+  const body = document.createElement('div');
+  body.className = 'archive-category__body';
+  body.innerHTML = `<h2><a href="${escapeAttribute(meta.href)}">${escapeHtml(meta.title)}</a></h2><ul>${titles}</ul><a class="text-link" href="${escapeAttribute(meta.href)}">Все материалы ${iconSvg('arrow-right')}</a>`;
+  card.append(body);
   return card;
 }
 
