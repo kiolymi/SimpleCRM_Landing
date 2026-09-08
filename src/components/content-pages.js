@@ -2,7 +2,7 @@ import { createArticleCard } from './article-card.js?v=20260907-50';
 import { iconSvg } from './icons.js?v=20260824-28';
 import { createProductDeviceMockup } from './product-device-mockup.js?v=20260906-1';
 import { createSearchForm } from './search-form.js';
-import { articles, categoryMeta, findArticles, getArticleBySlug, getArticlesByCategory } from '../data/articles.js?v=20260907-47';
+import { articles, categoryMeta, findArticles, getArticleBySlug, getArticlesByCategory } from '../data/articles.js?v=20260908-69';
 
 export function createContentHubPage(category) {
   const meta = categoryMeta[category];
@@ -490,7 +490,7 @@ function createArticleBlock(block) {
   if (block.type === 'mockup') {
     const wrapper = document.createElement('div');
     wrapper.className = 'article-body__mockup';
-    const image = /задач/i.test(block.label) ? '/simple-crm-landing-screens/20-task-board.png' : /календар|встреч/i.test(block.label) ? '/simple-crm-landing-screens/11-create-meeting.png' : '/simple-crm-landing-screens/15-client-overview.png';
+    const image = new URL(`../../simple-crm-landing-screens/${block.screen || '15-client-overview.png'}`, import.meta.url).href;
     wrapper.append(createProductDeviceMockup({ mode: 'image', device: 'phone', image: { src: image }, alt: `${block.label} в Simple CRM` }));
     return wrapper;
   }
