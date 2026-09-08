@@ -59,10 +59,47 @@ wireTableOfContents(app);
 wireBackToTop(app);
 wireSmoothAnchorNavigation(app);
 wireStablePageNavigation(app);
+wireHistoryScrollRestoration();
 
 requestAnimationFrame(() => {
   document.documentElement.classList.add('is-page-ready');
 });
+
+function wireHistoryScrollRestoration() {
+  // WebKit can restore scroll before this JS-rendered document has its height.
+  // Prefer the individual history entry; keep a tab-local fallback for WebKit.
+  const storageKey = `simple-crm-scroll:${window.location.href}`;
+  let initialPosition = window.history.state?.simpleCrmScroll;
+  try { initialPosition ||= JSON.parse(sessionStorage.getItem(storageKey)); } catch { /* Optional fallback. */ }
+  let saveTimer = 0;
+  const savePosition = () => {
+    window.clearTimeout(saveTimer);
+    const position = { x: window.scrollX, y: window.scrollY, url: window.location.href };
+    try { sessionStorage.setItem(`simple-crm-scroll:${position.url}`, JSON.stringify(position)); } catch { /* Storage can be disabled. */ }
+    try {
+      window.history.replaceState({ ...window.history.state, simpleCrmScroll: position }, '');
+    } catch { /* Navigation still works if history state is unavailable. */ }
+  };
+  const restorePosition = event => {
+    const navigation = performance.getEntriesByType('navigation')[0];
+    if (!event.persisted && navigation?.type !== 'back_forward') return;
+    const saved = event.persisted ? window.history.state?.simpleCrmScroll : initialPosition;
+    if (!saved || saved.url !== window.location.href || !Number.isFinite(saved.y)) return;
+    requestAnimationFrame(() => requestAnimationFrame(() => {
+      window.scrollTo({ left: saved.x || 0, top: saved.y, behavior: 'instant' });
+    }));
+  };
+  window.addEventListener('pagehide', () => window.clearTimeout(saveTimer));
+  window.addEventListener('pageshow', restorePosition);
+  // Safari may reject replaceState during pagehide, so capture it beforehand.
+  document.addEventListener('click', event => {
+    if (event.target.closest('a[href]')) savePosition();
+  }, { capture: true });
+  window.addEventListener('scroll', () => {
+    window.clearTimeout(saveTimer);
+    saveTimer = window.setTimeout(savePosition, 200);
+  }, { passive: true });
+}
 
 function wireAmbientBackground(root) {
   root.querySelectorAll('.site-main > section:first-child, .home-features').forEach(host => {
