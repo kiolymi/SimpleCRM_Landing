@@ -1650,10 +1650,52 @@ body:is([data-page="learn"], [data-page="how-to"], [data-page="announcements"]) 
   object-fit: cover;
 }
 
+/* Shared type scale: layout and page theme must not change typography. */
+:root {
+  --font-display: var(--font-sans);
+  --crm-type-page: clamp(32px, 3.4vw, 48px);
+  --crm-type-section: clamp(26px, 2.7vw, 34px);
+  --crm-type-card: clamp(19px, 1.5vw, 22px);
+}
+body #main-content,
+body #main-content :is(h1,h2,h3,h4,p,li,span,a,button,input,textarea,select) {
+  font-family: var(--font-sans);
+}
+body #main-content :is(h1,h2,h3,h4) {
+  font-weight: 700;
+  font-synthesis: none;
+  letter-spacing: -.025em;
+  line-height: 1.22;
+  overflow-wrap: break-word;
+}
+body #main-content h1 { font-size: var(--crm-type-page); line-height: 1.15; }
+body #main-content .home-hero h1 { font-size: clamp(36px, 4vw, 58px); }
+body #main-content h2 { font-size: var(--crm-type-section); }
+body #main-content h3 { font-size: var(--crm-type-card); }
+body #main-content h4 { font-size: 20px; }
+body #main-content p { font-size: 16px; line-height: 1.65; }
+body #main-content :is(.article-body,.document-body,.release-entry) h2 { font-size: 28px; }
+body #main-content :is(.article-body,.document-body,.release-group) h3 { font-size: 22px; }
+body #main-content :is(.article-body,.document-body,.release-group) :is(p,li,li > span) { font-size: 17px; line-height: 1.75; }
+body #main-content :is(.section-heading > p:last-child,.company-page__hero-copy > p,.support-contact-hero__copy > p,.home-hero__lead,.home-hero__intro,.inner-page-header > p) { font-size: clamp(17px, 1.4vw, 20px); }
+body #main-content :is(.article-meta,.eyebrow,.article-card__category,.form-status,.document-updated,.release-entry__heading p) { font-size: 14px; line-height: 1.5; }
+body #main-content :is(.editorial-toc,.releases-toc) a { font-size: 14px; line-height: 1.6; }
+body #main-content :is(.newsletter-card,.archive-newsletter) h2 { font-size: clamp(26px, 2.4vw, 32px); }
+body #main-content .pricing-plan h2 { font-size: 32px; }
+body #main-content .pricing-plan h2 small { font-size: 14px; line-height: 1.5; }
+body #main-content .pricing-plan__name { font-size: 28px; font-weight: 700; }
+body #main-content .archive-categories h2 { font-size: 14px; letter-spacing: 0; }
+body #main-content .article-card__cover-copy small { font-size: 12px; }
+body #main-content :is(button,input,textarea,select,.button) { font-size: 16px; }
+@media (max-width: 600px) {
+  body #main-content :is(.article-body,.document-body,.release-group) :is(p,li,li > span) { font-size: 16px; }
+  body #main-content :is(.article-body,.document-body,.release-entry) h2 { font-size: 24px; }
+}
+
 /* Visible, deterministic entrance animation, including first paint in Safari. */
 @media (prefers-reduced-motion: no-preference) {
   .has-js [data-reveal].is-visible {
-    animation: crm-reveal 1100ms cubic-bezier(.16,1,.3,1) var(--reveal-delay,0ms) backwards;
+    animation: var(--reveal-animation, crm-reveal) var(--reveal-duration, 1000ms) cubic-bezier(.16,1,.3,1) var(--reveal-delay,0ms) backwards;
     /* One entrance mechanism: avoid a transform transition fighting keyframes. */
     transition-property: background-color, border-color, box-shadow, color;
     transition-duration: 420ms;
@@ -1661,6 +1703,12 @@ body:is([data-page="learn"], [data-page="how-to"], [data-page="announcements"]) 
   }
   .has-js [data-reveal="slide-left"] { --reveal-x: -36px; --reveal-y: 0px; }
   .has-js [data-reveal="slide-right"] { --reveal-x: 36px; --reveal-y: 0px; }
+  .has-js [data-motion="title"] { --reveal-animation: crm-title-in; --reveal-duration: 850ms; }
+  .has-js [data-motion="copy"] { --reveal-animation: crm-copy-in; --reveal-duration: 700ms; }
+  .has-js [data-motion="device"] { --reveal-animation: crm-device-in; --reveal-duration: 1100ms; }
+  .has-js [data-motion="card"] { --reveal-animation: crm-card-in; --reveal-duration: 950ms; }
+  .has-js [data-motion="detail"] { --reveal-animation: crm-detail-in; --reveal-duration: 750ms; }
+  .has-js [data-motion="art"] { --reveal-animation: crm-art-in; --reveal-duration: 1200ms; }
   .has-js.is-navigating .site-shell { transition-duration: 240ms; }
 }
 @media (hover: hover) and (prefers-reduced-motion: no-preference) {
@@ -1680,6 +1728,30 @@ body:is([data-page="learn"], [data-page="how-to"], [data-page="announcements"]) 
 @keyframes crm-reveal {
   from { opacity: 0; transform: translate3d(var(--reveal-x,0px),var(--reveal-y,40px),0); }
   to { opacity: 1; transform: translate3d(0,0,0); }
+}
+@keyframes crm-title-in {
+  from { opacity: 0; transform: translate3d(0, 26px, 0); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes crm-copy-in {
+  from { opacity: 0; transform: translate3d(0, 10px, 0); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes crm-device-in {
+  from { opacity: 0; transform: translate3d(0, 32px, 0) scale(.94); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes crm-card-in {
+  from { opacity: 0; transform: translate3d(0, 24px, 0) scale(.97); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes crm-detail-in {
+  from { opacity: 0; transform: translate3d(-18px, 0, 0); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes crm-art-in {
+  from { opacity: 0; transform: scale(1.045); }
+  to { opacity: 1; transform: none; }
 }
 
 /* Shared soft interaction rhythm on every route. */
@@ -2013,7 +2085,7 @@ body:has(#mobile-menu[open], .download-placeholder[open]) {
 .site-main .page-art-layout > .page-art { position: absolute; z-index: 0; inset: 0 0 0 auto; display: flex; align-items: center; width: 40%; height: 100%; max-width: none; margin: 0; pointer-events: none; }
 /* Fade the image itself: masking its taller container left horizontal image edges visible. */
 .site-main .page-art-layout > .page-art img { width: 100%; height: auto; object-fit: contain; border-radius: 0; mix-blend-mode: multiply; -webkit-mask-image: radial-gradient(ellipse closest-side at center, #000 42%, transparent 100%); mask-image: radial-gradient(ellipse closest-side at center, #000 42%, transparent 100%); }
-.site-main .page-art-layout #testimonials-title { font-size: clamp(30px, 3.2vw, 46px); line-height: 1.16; }
+.site-main .page-art-layout #testimonials-title { font-size: var(--crm-type-section); line-height: 1.22; }
 .site-main .page-art-layout #testimonials-title .text-nowrap:last-child { white-space: normal; }
 .site-main .page-art-layout .content-hub__search { max-width: 480px; margin-inline: 0; }
 @media (max-width: 767px) {
@@ -2136,6 +2208,118 @@ body:has(#mobile-menu[open], .download-placeholder[open]) {
 }
 .article-page--editorial .editorial-toc a.is-section-active { color: #075eac; }
 .releases-toc .releases-toc__version.is-section-active { color: #9bd5ff !important; }
+
+/* Release notes use the same type scale and reading rhythm as every other route.
+   Keep the Dextr-inspired dark canvas, but remove the oversized, isolated scale. */
+body[data-page="releases"] #main-content,
+body[data-page="releases"] #main-content :is(h1,h2,h3,h4,p,li,a,button,summary) {
+  font-family: var(--font-sans);
+}
+body[data-page="releases"] .releases-page--dextr-notes .releases-layout {
+  width: min(calc(100% - 96px), 1216px);
+  max-width: 1216px;
+  grid-template-columns: minmax(0, 1fr) 280px;
+  gap: 56px;
+  padding-top: 64px;
+}
+body[data-page="releases"] .releases-page--dextr-notes .releases-header h1 {
+  max-width: 760px;
+  margin: 0 0 52px;
+  font-size: var(--crm-type-page);
+  line-height: 1.15;
+  letter-spacing: -.035em;
+  font-weight: 700;
+}
+body[data-page="releases"] .releases-page--dextr-notes .release-list { gap: 64px; }
+body[data-page="releases"] .releases-page--dextr-notes .release-entry__heading h2 {
+  font-size: var(--crm-type-section);
+  line-height: 1.22;
+  letter-spacing: -.03em;
+  font-weight: 700;
+}
+body[data-page="releases"] .releases-page--dextr-notes .release-entry__heading p {
+  margin-top: 18px;
+  color: #c6d0dc;
+  font-size: 16px;
+  line-height: 1.6;
+}
+body[data-page="releases"] .releases-page--dextr-notes .release-group { margin-top: 42px; }
+body[data-page="releases"] .releases-page--dextr-notes .release-group h3 {
+  margin-bottom: 18px;
+  font-size: var(--crm-type-card);
+  line-height: 1.3;
+  letter-spacing: -.025em;
+}
+body[data-page="releases"] .releases-page--dextr-notes .release-group ul { gap: 14px; }
+body[data-page="releases"] .releases-page--dextr-notes .release-group li span {
+  font-size: 17px;
+  line-height: 1.7;
+}
+body[data-page="releases"] .releases-toc {
+  top: 96px;
+  padding: 22px 22px 24px;
+  border-radius: 16px;
+}
+body[data-page="releases"] .releases-toc__disclosure summary { font-size: 14px; }
+body[data-page="releases"] .releases-toc__version { font-size: 16px; }
+body[data-page="releases"] .releases-toc__child { font-size: 14px; }
+
+/* FAQ keeps one shared column: intro, search and answers now line up exactly. */
+body[data-page="faq"] .faq-page--dextr .container {
+  width: min(calc(100% - 96px), 1040px);
+  max-width: 1040px;
+  margin-inline: auto;
+}
+body[data-page="faq"] .faq-page--dextr .faq-page__hero {
+  padding: 72px 0 28px;
+}
+body[data-page="faq"] .faq-page--dextr .faq-page__hero > .container {
+  text-align: left;
+}
+body[data-page="faq"] .faq-page--dextr .faq-page__hero h1 {
+  max-width: none;
+  margin: 0 0 16px;
+  font-size: var(--crm-type-page);
+  line-height: 1.15;
+}
+body[data-page="faq"] .faq-page--dextr .faq-page__hero > .container > p {
+  max-width: 720px;
+  margin: 0;
+  font-size: 18px;
+  line-height: 1.6;
+}
+body[data-page="faq"] .faq-page--dextr .faq-search {
+  width: min(100%, 760px);
+  max-width: none;
+  margin: 28px 0 0;
+  min-height: 58px;
+  padding-inline: 18px;
+  border: 1px solid #c4d6e8;
+  border-radius: 14px;
+  box-shadow: 0 12px 28px rgb(23 66 108 / 8%);
+}
+body[data-page="faq"] .faq-page--dextr .faq-search__status {
+  margin: 10px 0 0;
+  text-align: left;
+}
+body[data-page="faq"] .faq-page--dextr .faq-list-wrap { padding-top: 14px; }
+
+@media (max-width: 600px) {
+  body[data-page="faq"] .faq-page--dextr .container {
+    width: calc(100% - 40px);
+  }
+  body[data-page="faq"] .faq-page--dextr .faq-page__hero { padding-top: 48px; }
+}
+
+@media (max-width: 1023px) {
+  body[data-page="releases"] .releases-page--dextr-notes .releases-layout {
+    width: calc(100% - 48px);
+    grid-template-columns: minmax(0, 1fr);
+    gap: 28px;
+    padding-top: 40px;
+  }
+  body[data-page="releases"] .releases-toc { position: relative; top: auto; order: -1; }
+}
 
 @media (max-width: 600px) {
   .site-footer__inner { padding-bottom: 88px; }

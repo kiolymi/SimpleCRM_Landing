@@ -1,0 +1,97 @@
+/* Continuous page canvas. Decorative layers never intercept controls. */
+body[data-page] { --surface-flow: #edf4fb; }
+body[data-page] .site-main {
+  position: relative;
+  isolation: isolate;
+  background:
+    radial-gradient(ellipse 65% 850px at 102% 18%, #d6e8fa 0%, transparent 75%),
+    radial-gradient(ellipse 58% 1000px at -12% 48%, #dce6f7 0%, transparent 74%),
+    radial-gradient(ellipse 65% 900px at 95% 78%, #d9eef5 0%, transparent 76%),
+    var(--surface-flow);
+}
+body[data-page] .site-main > :is(.home-features,.trust-section,.testimonials-section,.product-panorama,.home-articles,.newsletter-section,.company-page,.pricing-page,.support-page,.faq-page,.article-page,.content-hub,.search-page) {
+  background: transparent;
+  border-top: 0;
+  border-bottom: 0;
+}
+body[data-page] :is(.company-page__mission,.company-page__team,.company-page__news,.pricing-page__hero,.pricing-pledge,.support-contact-hero,.support-form-section,.support-newsletter,.faq-page__hero,.faq-list-wrap,.archive-newsletter) {
+  background: transparent;
+  border-top: 0;
+  border-bottom: 0;
+}
+/* Replace stacked local glows with one shared surface and rare line motifs. */
+.site-main .page-ambient { display: none; }
+body[data-page] .site-main::before {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse 440px 170px at 108% 34%, transparent 98%, rgb(45 113 176 / 10%) 99%, transparent 100%),
+    radial-gradient(ellipse 510px 230px at 108% 34%, transparent 98.7%, rgb(45 113 176 / 7%) 99%, transparent 100%),
+    radial-gradient(ellipse 600px 280px at -15% 69%, transparent 99%, rgb(45 113 176 / 7%) 99.3%, transparent 100%);
+}
+body[data-page] .site-main::after {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  top: 14%; left: 0; right: 0; height: 1600px;
+  pointer-events: none;
+  background: radial-gradient(ellipse at 80% 24%, rgb(136 190 238 / 13%), transparent 48%),radial-gradient(ellipse at 10% 72%, rgb(165 179 233 / 9%), transparent 42%);
+}
+.site-main .home-hero {
+  position: relative;
+  isolation: isolate;
+  /* Fade into the light canvas at the section edge instead of ending on a hard line. */
+  background: linear-gradient(180deg, #081525 0%, #081525 70%, #1e3a56 83%, #d5e6f4 100%);
+  padding-bottom: 160px;
+  border: 0;
+  -webkit-mask-image: none;
+  mask-image: none;
+}
+.site-main .home-hero::before,
+.site-main .home-hero .hero-ambient,
+.site-main .home-hero .hero-device-aura,
+.site-main .home-hero .home-hero__visual::before,
+.site-main .home-hero .home-hero__visual::after { display: none !important; }
+.site-main .home-hero::after {
+  display: none !important;
+}
+.hero-motion-canvas {
+  position: absolute; inset: 0; width: 100%; height: calc(100% - 140px);
+  pointer-events: none; z-index: -1;
+  background: radial-gradient(ellipse at 78% 32%, #143453, transparent 62%);
+  -webkit-mask-image: linear-gradient(#000 70%, transparent);
+  mask-image: linear-gradient(#000 70%, transparent);
+}
+.background-motion-toggle {
+  position: absolute; right: 32px; bottom: 205px; z-index: 2;
+  padding: 8px 12px; border: 1px solid rgb(167 202 230 / 25%); border-radius: 24px;
+  background: rgb(8 21 37 / 60%); color: #bbd1e5; font: inherit; font-size: 12px;
+  cursor: pointer; transition: background 240ms, border-color 240ms;
+}
+.background-motion-toggle:hover { background: #17324c; border-color: #6b99bd; }
+.background-motion-toggle:focus-visible { outline: 2px solid #aad9ff; outline-offset: 4px; }
+body[data-page] .site-footer {
+  border-top: 0;
+  padding-top: 150px;
+  background: linear-gradient(#edf4fb, #a3b6c9 32px, #40566e 76px, #0a1627 130px);
+}
+body:is([data-page="privacy"],[data-page="releases"]) .site-main {
+  --surface-flow: #0a1424;
+  background: radial-gradient(ellipse 70% 900px at 105% 15%, #142b43, transparent 80%),radial-gradient(ellipse 60% 1200px at -10% 70%,#112237,transparent 75%),#0a1424;
+}
+body:is([data-page="privacy"],[data-page="releases"]) .site-main > section { background: transparent; }
+body:is([data-page="privacy"],[data-page="releases"]) .site-footer { background: #0a1424; padding-top: 60px; }
+@media (prefers-reduced-motion: no-preference) {
+  body[data-page] .site-main::after { animation: surface-breathe 24s ease-in-out infinite alternate; }
+}
+@keyframes surface-breathe { from { opacity: .45; transform: translateY(-25px); } to { opacity: 1; transform: translateY(35px); } }
+@media (max-width: 767px) {
+  .site-main .home-hero { padding-bottom: 105px; }
+  .site-main .home-hero { -webkit-mask-image: linear-gradient(#000 calc(100% - 130px), transparent); mask-image: linear-gradient(#000 calc(100% - 130px), transparent); }
+  .site-main .home-hero::after { height: 130px !important; }
+  .background-motion-toggle { right: 20px; bottom: 142px; }
+  body[data-page] .site-main::after { height: 1000px; }
+}

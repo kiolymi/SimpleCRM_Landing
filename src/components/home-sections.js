@@ -1,4 +1,4 @@
-import { createArticleCard } from './article-card.js?v=20260908-75';
+import { createArticleCard } from './article-card.js?v=20260908-84';
 import { iconSvg } from './icons.js?v=20260824-28';
 import { createProductDeviceMockup } from './product-device-mockup.js?v=20260906-1';
 import { homeContent } from '../data/home.js?v=20260908-57';
@@ -117,7 +117,7 @@ function createTestimonials(testimonials) {
       <p class="testimonial-card__quote">«${escapeHtml(item.quote)}»</p>
       <footer><span class="testimonial-card__avatar" aria-hidden="true">${escapeHtml(item.name.slice(0, 1))}</span><span><strong>${escapeHtml(item.name)}</strong><small>${escapeHtml(item.role)}</small></span></footer>
     </article>`).join('');
-  section.innerHTML = `<div class="container"><div class="section-heading section-heading--center" data-reveal><p class="eyebrow">Отзывы команд</p><h2 id="testimonials-title"><span class="text-nowrap">Simple CRM</span><br />помогает не терять<br /><span class="text-nowrap">продолжение разговора</span></h2><p>Вся история остаётся рядом — поэтому менеджеры быстрее готовятся к встречам и реже теряют договорённости.</p></div><div class="testimonials-grid">${cards}</div></div>`;
+  section.innerHTML = `<div class="container"><div class="section-heading section-heading--center" data-reveal><p class="eyebrow">Отзывы команд</p><h2 id="testimonials-title" aria-label="Simple CRM помогает не терять продолжение разговора"><span class="text-nowrap">Simple CRM</span><br /> помогает не терять<br /> <span class="text-nowrap">продолжение разговора</span></h2><p>Вся история остаётся рядом — поэтому менеджеры быстрее готовятся к встречам и реже теряют договорённости.</p></div><div class="testimonials-grid">${cards}</div></div>`;
   return section;
 }
 

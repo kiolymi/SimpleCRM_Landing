@@ -1,8 +1,8 @@
-import { createArticleCard } from './article-card.js?v=20260908-75';
+import { createArticleCard } from './article-card.js?v=20260908-84';
 import { iconSvg } from './icons.js?v=20260824-28';
 import { createProductDeviceMockup } from './product-device-mockup.js?v=20260906-1';
 import { createSearchForm } from './search-form.js';
-import { articles, categoryMeta, findArticles, getArticleBySlug, getArticlesByCategory } from '../data/articles.js?v=20260908-72';
+import { articles, categoryMeta, findArticles, getArticleBySlug, getArticlesByCategory } from '../data/articles.js?v=20260908-82';
 
 export function createContentHubPage(category) {
   const meta = categoryMeta[category];
@@ -229,10 +229,10 @@ export function createFaqPage() {
   section.className = 'inner-page faq-page faq-page--dextr';
   section.setAttribute('aria-labelledby', 'faq-title');
   section.innerHTML = `
-    <div class="faq-page__hero"><div class="container" data-reveal="scale"><h1 id="faq-title">Частые вопросы</h1><p>Здесь собраны ответы о Simple CRM, возможностях продукта, приватности и запуске команды.</p></div></div>
+    <div class="faq-page__hero"><div class="container" data-reveal="scale"><h1 id="faq-title">Частые вопросы</h1><p>Здесь собраны ответы о Simple CRM, возможностях продукта, приватности и запуске команды.</p><label class="faq-search" aria-label="Поиск по вопросам"><svg class="ui-icon" aria-hidden="true"><use href="#icon-search"></use></svg><input data-faq-search type="search" placeholder="Найти вопрос или ответ…" autocomplete="off" /></label><p class="faq-search__status" data-faq-status aria-live="polite"></p></div></div>
     <div class="container faq-list-wrap">
       <div class="faq-list">
-        ${questions.map(([question, answer], index) => `<details class="faq-rich-item" data-reveal="slide-up"${index === 0 ? ' open' : ''}><summary>${escapeHtml(question)}${iconSvg('chevron-down')}</summary><p>${escapeHtml(answer)}<br /><a class="text-link" href="${escapeAttribute(new URL(`../../${guides[index][0]}`, import.meta.url).href)}">${escapeHtml(guides[index][1])} ${iconSvg('arrow-right')}</a></p></details>`).join('')}
+        ${questions.map(([question, answer], index) => `<details class="faq-rich-item" data-faq-item data-search="${escapeAttribute(`${question} ${answer}`.toLocaleLowerCase('ru-RU'))}" data-reveal="slide-up"${index === 0 ? ' open' : ''}><summary>${escapeHtml(question)}${iconSvg('chevron-down')}</summary><p>${escapeHtml(answer)}<br /><a class="text-link" href="${escapeAttribute(new URL(`../../${guides[index][0]}`, import.meta.url).href)}">${escapeHtml(guides[index][1])} ${iconSvg('arrow-right')}</a></p></details>`).join('')}
       </div>
     </div>
     <section class="support-newsletter section" aria-labelledby="faq-newsletter-title">

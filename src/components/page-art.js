@@ -2,7 +2,6 @@ const artwork = {
   home: ['home-connections', '.testimonials-section .section-heading', 'Стеклянный мост, объединяющий людей'],
   about: ['about-team', '.company-page__mission', 'Команда за круглым синим столом'],
   pricing: ['pricing-value', '.pricing-page__hero .container', 'Стеклянные ступени и весы — выбор возможностей'],
-  faq: ['faq-answers', '.faq-page__hero .container', 'Объёмные символы вопроса, диалога и ясного ответа'],
   privacy: ['privacy-shield', '.document-header', 'Синий стеклянный щит и замок'],
   releases: ['releases-evolution', '.releases-header', 'Стеклянная лестница развития продукта'],
   support: ['support-care', '.support-message', 'Гарнитура вокруг символа диалога'],
@@ -20,7 +19,7 @@ const artwork = {
 
 export function addPageArtwork(root, pageKey, articleSlug) {
   // Illustrations support selected introductions, not every reading/utility page.
-  if (!['home', 'about', 'pricing', 'faq', 'learn', 'how-to'].includes(pageKey)) return;
+  if (!['home', 'about', 'pricing', 'learn', 'how-to'].includes(pageKey)) return;
   const entry = artwork[pageKey === 'article' ? articleSlug : pageKey];
   if (!entry) return;
   const [file, selector, alt] = entry;

@@ -1,12 +1,22 @@
-import { addPageArtwork } from './components/page-art.js?v=20260907-50';
+import { addPageArtwork } from './components/page-art.js?v=20260908-83';
 import { createSiteShell } from './components/site-shell.js?v=20260908-56';
-import { createHomePage } from './components/home-sections.js?v=20260908-75';
-import { createAboutPage, createArticleLayout, createContentHubPage, createFaqPage, createPricingPage, createPrivacyPage, createReleasesPage, createSearchPage, createSupportPage } from './components/content-pages.js?v=20260908-75';
+import { createHomePage } from './components/home-sections.js?v=20260908-82';
+import { createAboutPage, createArticleLayout, createContentHubPage, createFaqPage, createPricingPage, createPrivacyPage, createReleasesPage, createSearchPage, createSupportPage } from './components/content-pages.js?v=20260908-82';
 import { pageMeta } from './data/site.js?v=20260906-30';
 import { createProductDeviceMockup } from './components/product-device-mockup.js?v=20260906-1';
 
 const pageKey = document.body.dataset.page || 'home';
 const page = pageMeta[pageKey] || pageMeta.home;
+// Replace stylesheet URLs after a visual release so GitHub Pages/Yandex cannot
+// keep mixing a fresh component file with an older cached theme file.
+const styleRelease = '20260908-3';
+document.querySelectorAll('link[rel="stylesheet"][href*="/styles/"]').forEach(link => {
+  const href = link.getAttribute('href');
+  if (!href) return;
+  const url = new URL(href, window.location.href);
+  url.searchParams.set('v', styleRelease);
+  link.setAttribute('href', `${url.pathname}?${url.searchParams.toString()}`);
+});
 document.documentElement.classList.add('has-js');
 document.documentElement.classList.remove('is-navigating');
 
@@ -279,6 +289,27 @@ function prepareRevealSequences(root) {
       element.dataset.reveal = 'rise';
       element.dataset.delay = String(index * 100);
     });
+  });
+
+  // Give short heading groups a reading rhythm without animating nested wrappers.
+  root.querySelectorAll('.section-heading[data-reveal]').forEach(group => {
+    const copy = [...group.children].filter(child => child.matches('h1,h2,h3,p'));
+    if (!copy.length) return;
+    group.removeAttribute('data-reveal');
+    copy.forEach((child, index) => {
+      child.dataset.reveal = 'rise';
+      child.dataset.delay = String(index * 90);
+    });
+  });
+  root.querySelectorAll('[data-reveal]').forEach(element => {
+    let motion = 'default';
+    if (element.matches('.article-card,.testimonial-card,.use-case-card,.empty-state')) motion = 'card';
+    else if (element.matches('.page-art')) motion = 'art';
+    else if (element.matches('.device-mockup,.article-body__mockup') || element.querySelector(':scope > .device-mockup')) motion = 'device';
+    else if (element.matches('h1,h2,h3,.feature-card__heading,.release-entry__heading')) motion = 'title';
+    else if (element.matches('p,blockquote')) motion = 'copy';
+    else if (element.matches('li,.faq-item,.company-page__principles > div')) motion = 'detail';
+    element.dataset.motion = motion;
   });
 }
 

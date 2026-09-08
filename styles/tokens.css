@@ -38,7 +38,8 @@
   --space-12: 48px;
   --space-16: 64px;
   --font-sans: "Onest", "Segoe UI Variable", "SF Pro Text", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  --font-display: "Manrope", "Arial Nova", "Segoe UI Variable Display", "SF Pro Display", ui-sans-serif, system-ui, sans-serif;
+  /* One type family across every route, including releases and utility pages. */
+  --font-display: var(--font-sans);
   --transition-fast: 180ms ease;
   --transition-reveal: 600ms cubic-bezier(.16, 1, .3, 1);
 }

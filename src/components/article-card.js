@@ -1,4 +1,4 @@
-import { categoryMeta } from '../data/articles.js?v=20260824-28';
+import { categoryMeta } from '../data/articles.js?v=20260908-84';
 import { iconSvg } from './icons.js?v=20260824-28';
 
 export function createArticleCard(article) {
@@ -21,7 +21,9 @@ export function createArticleCard(article) {
     'client-context': 'cover-client.png',
     'prepare-meeting': 'cover-meeting.png',
   };
-  const compositeCover = document.body.dataset.page === 'home' && compositeCovers[article.slug];
+  // Use the same editorial scene treatment on archive cards as on the home
+  // page, so every material keeps a visual anchor instead of a blank panel.
+  const compositeCover = compositeCovers[article.slug];
   if (compositeCover) {
     coverLink.classList.add('article-card__cover--composite');
     coverLink.style.aspectRatio = '1 / 1';
@@ -29,6 +31,7 @@ export function createArticleCard(article) {
     backdrop.className = 'article-card__scene';
     backdrop.src = new URL(`../../assets/editorial/${compositeCover}`, import.meta.url).href;
     backdrop.alt = '';
+    backdrop.setAttribute('aria-hidden', 'true');
     backdrop.loading = 'lazy';
     backdrop.width = 1254;
     backdrop.height = 1254;
@@ -74,7 +77,7 @@ export function createArticleCard(article) {
 
   const body = document.createElement('div');
   body.className = 'article-card__body';
-  body.innerHTML = `<p class="article-card__category">${escapeHtml(categoryMeta[article.category]?.title || article.category)}</p><h3><a href="${escapeAttribute(article.href)}">${escapeHtml(article.title)}</a></h3><p>${escapeHtml(article.excerpt)}</p><a class="text-link" href="${escapeAttribute(article.href)}">Читать ${iconSvg('arrow-right')}</a>`;
+  body.innerHTML = `<p class="article-card__category">${escapeHtml(categoryMeta[article.category]?.title || article.category)}</p><h3><a href="${escapeAttribute(article.href)}">${escapeHtml(article.title)}</a></h3><p>${escapeHtml(article.excerpt)}</p><a class="text-link" href="${escapeAttribute(article.href)}" aria-label="${escapeAttribute(`Читать: ${article.title}`)}">Читать ${iconSvg('arrow-right')}</a>`;
 
   // News illustrations support the headline instead of adding a separate cover row.
   if (editorialCover) {
