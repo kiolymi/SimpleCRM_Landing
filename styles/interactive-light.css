@@ -1,0 +1,39 @@
+.site-pointer-light {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  z-index: 900;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 500ms ease;
+}
+.site-pointer-light::before {
+  content: '';
+  position: absolute;
+  width: 180px;
+  height: 180px;
+  left: -90px;
+  top: -90px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgb(64 167 240 / 12%), rgb(103 179 244 / 6%) 35%, transparent 70%);
+  transition: transform 650ms ease, opacity 650ms ease;
+}
+.site-pointer-light.is-active { opacity: 1; }
+.site-pointer-light.is-over-control::before { transform: scale(1.25); }
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  body :is(.article-card, .pricing-plan, .faq-rich-item, .archive-category, .company-page__principles > div, .testimonial-card, .release-entry).has-pointer-light {
+    box-shadow: 0 0 0 1px rgb(81 164 225 / 30%), 0 12px 36px rgb(45 121 186 / 12%) !important;
+  }
+  body :is(a, button, summary).has-pointer-light {
+    text-shadow: 0 0 18px rgb(99 181 245 / 38%);
+  }
+  body :is(.article-card, .pricing-plan, .faq-rich-item, .archive-category, .company-page__principles > div, .testimonial-card, .release-entry) {
+    transition-property: transform, opacity, border-color, background-color, box-shadow;
+    transition-duration: 650ms;
+  }
+}
+@media (hover: none), (pointer: coarse), (prefers-reduced-motion: reduce) {
+  .site-pointer-light { display: none !important; }
+}

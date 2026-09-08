@@ -306,7 +306,7 @@ body[data-page="releases"] .releases-toc .releases-toc__version.is-section-activ
   color: #087df1 !important;
 }
 body[data-page="releases"] .releases-toc__child { border-left-color: #c8dceb !important; }
-body[data-page="releases"] .site-footer { background: #edf4fb !important; color: #173452; }
+body[data-page="releases"] .site-footer { background: #0a1424 !important; color: #f6f8fb; }
 
 /* Search uses the same light reading canvas as the article archives. */
 body[data-page="search"] .site-header { background: #edf4f9; border-color: #d5e2ee; }
@@ -392,10 +392,22 @@ body[data-page="faq"] .faq-page--dextr .newsletter-card input {
 
 /* FAQ interaction polish: the reading column and search share one rhythm,
    while each answer opens as a calm, spacious card. */
-body[data-page="faq"] .faq-page--dextr .faq-search {
+body[data-page="faq"] .faq-page--dextr :is(.faq-search, .faq-list) {
+  box-sizing: border-box;
   width: 100% !important;
-  max-width: none !important;
-  margin: 32px 0 0 !important;
+  max-width: 100% !important;
+  margin-inline: auto;
+}
+body[data-page="faq"] .faq-page--dextr .faq-search {
+  margin: 32px auto 0 !important;
+  overflow: hidden;
+}
+body[data-page="faq"] .faq-page--dextr .faq-search input {
+  min-width: 0;
+}
+body[data-page="faq"] .faq-page--dextr .faq-search__status {
+  width: 100%;
+  margin-inline: auto;
 }
 body[data-page="faq"] .faq-page--dextr .faq-list-wrap {
   padding-top: 30px !important;

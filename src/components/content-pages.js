@@ -1,4 +1,4 @@
-import { createArticleCard } from './article-card.js?v=20260908-84';
+import { createArticleCard } from './article-card.js?v=news-materials1';
 import { iconSvg } from './icons.js?v=20260824-28';
 import { createProductDeviceMockup } from './product-device-mockup.js?v=20260906-1';
 import { createSearchForm } from './search-form.js';
@@ -270,8 +270,10 @@ export function createAboutPage() {
         <p>Сделать работу с клиентами понятной и последовательной. Когда детали прошлой встречи и следующий шаг под рукой, проще выполнять обещания и поддерживать отношения.</p>
       </section>
       <section class="company-page__team" aria-labelledby="team-title" data-reveal="scale">
-        <h2 id="team-title">О Simple CRM</h2>
-        <p>Мы создаём рабочее пространство вокруг клиента: его истории, встреч и задач. В основе продукта — простой принцип: нужный контекст должен быть доступен в тот момент, когда он нужен.</p>
+        <div class="company-page__team-intro">
+        <h2 id="team-title">В центре — человек.<br /><span>Всё важное — рядом.</span></h2>
+        <p>Simple CRM помогает помнить не только задачи, но и людей за ними. История клиента, встречи и договорённости собраны вместе — чтобы продолжать разговор, а не начинать его заново.</p>
+        </div>
         <div class="company-page__principles">
           <div><h3>Внимание к деталям</h3><p>От первого сообщения до следующей встречи — важные договорённости остаются рядом с клиентом.</p></div>
           <div><h3>Понятный следующий шаг</h3><p>Расписание и задачи помогают перейти от разговора к действию без лишних переключений.</p></div>

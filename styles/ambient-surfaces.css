@@ -43,8 +43,8 @@ body[data-page] .site-main::after {
 .site-main .home-hero {
   position: relative;
   isolation: isolate;
-  /* Fade into the light canvas at the section edge instead of ending on a hard line. */
-  background: linear-gradient(180deg, #081525 0%, #081525 70%, #1e3a56 83%, #d5e6f4 100%);
+  /* Keep a clean boundary with the following light section. */
+  background: #0e253d;
   padding-bottom: 160px;
   border: 0;
   -webkit-mask-image: none;
@@ -62,8 +62,8 @@ body[data-page] .site-main::after {
   position: absolute; inset: 0; width: 100%; height: calc(100% - 140px);
   pointer-events: none; z-index: -1;
   background: radial-gradient(ellipse at 78% 32%, #143453, transparent 62%);
-  -webkit-mask-image: linear-gradient(#000 70%, transparent);
-  mask-image: linear-gradient(#000 70%, transparent);
+  -webkit-mask-image: none;
+  mask-image: none;
 }
 .background-motion-toggle {
   position: absolute; right: 32px; bottom: 205px; z-index: 2;
@@ -75,22 +75,22 @@ body[data-page] .site-main::after {
 .background-motion-toggle:focus-visible { outline: 2px solid #aad9ff; outline-offset: 4px; }
 body[data-page] .site-footer {
   border-top: 0;
-  padding-top: 150px;
-  background: linear-gradient(#edf4fb, #a3b6c9 32px, #40566e 76px, #0a1627 130px);
+  padding-top: 0;
+  background: #0a1627;
 }
 body:is([data-page="privacy"],[data-page="releases"]) .site-main {
   --surface-flow: #0a1424;
   background: radial-gradient(ellipse 70% 900px at 105% 15%, #142b43, transparent 80%),radial-gradient(ellipse 60% 1200px at -10% 70%,#112237,transparent 75%),#0a1424;
 }
 body:is([data-page="privacy"],[data-page="releases"]) .site-main > section { background: transparent; }
-body:is([data-page="privacy"],[data-page="releases"]) .site-footer { background: #0a1424; padding-top: 60px; }
+body:is([data-page="privacy"],[data-page="releases"]) .site-footer { background: #0a1424; padding-top: 0; }
 @media (prefers-reduced-motion: no-preference) {
   body[data-page] .site-main::after { animation: surface-breathe 24s ease-in-out infinite alternate; }
 }
 @keyframes surface-breathe { from { opacity: .45; transform: translateY(-25px); } to { opacity: 1; transform: translateY(35px); } }
 @media (max-width: 767px) {
   .site-main .home-hero { padding-bottom: 105px; }
-  .site-main .home-hero { -webkit-mask-image: linear-gradient(#000 calc(100% - 130px), transparent); mask-image: linear-gradient(#000 calc(100% - 130px), transparent); }
+  .site-main .home-hero { -webkit-mask-image: none; mask-image: none; }
   .site-main .home-hero::after { height: 130px !important; }
   .background-motion-toggle { right: 20px; bottom: 142px; }
   body[data-page] .site-main::after { height: 1000px; }

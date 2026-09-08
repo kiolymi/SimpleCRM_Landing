@@ -19,7 +19,7 @@ export function createHomePage() {
 
 function createHero(hero) {
   const section = document.createElement('section');
-  section.className = 'home-hero';
+  section.className = 'home-hero home-hero--video';
   section.setAttribute('aria-labelledby', 'page-title');
   const title = escapeHtml(hero.title).replace(' — ', ' —<br />');
   section.innerHTML = `
@@ -48,6 +48,38 @@ function createHero(hero) {
   mockup.classList.add('hero-device', 'hero-device--main');
   mockup.dataset.parallax = '0.025';
   section.querySelector('.home-hero__visual').append(mockup);
+  mockup.classList.add('hero-device--soft-hover');
+  const video = document.createElement('video');
+  video.className = 'home-hero__background-video';
+  video.muted = true;
+  video.loop = true;
+  video.playsInline = true;
+  video.setAttribute('aria-hidden', 'true');
+  video.poster = new URL('../../video-background/warped-preview-00s.jpg', import.meta.url).href;
+  video.preload = 'metadata';
+  video.src = new URL('../../video-background/Simple-CRM-Warped-Honeycomb-Light-12s.mp4', import.meta.url).href;
+  section.prepend(video);
+  const toggle = document.createElement('button');
+  toggle.type = 'button';
+  toggle.className = 'background-motion-toggle';
+  section.append(toggle);
+  const reduced = matchMedia('(prefers-reduced-motion: reduce)');
+  let paused = false, visible = true;
+  const sync = () => {
+    const play = !paused && visible && !document.hidden && !reduced.matches;
+    toggle.textContent = paused ? 'Включить фон' : 'Приостановить фон';
+    toggle.setAttribute('aria-pressed', String(paused));
+    toggle.hidden = reduced.matches;
+    if (play) video.play().catch(() => { paused = true; toggle.textContent = 'Включить фон'; toggle.setAttribute('aria-pressed', 'true'); });
+    else video.pause();
+  };
+  toggle.addEventListener('click', () => { paused = !paused; sync(); });
+  reduced.addEventListener('change', sync);
+  document.addEventListener('visibilitychange', sync);
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(entries => { visible = entries[0].isIntersecting; sync(); }).observe(section);
+  }
+  requestAnimationFrame(sync);
   return section;
 }
 
@@ -101,9 +133,15 @@ function createTrustSection(trust) {
   section.className = 'section section--subtle trust-section';
   section.setAttribute('aria-labelledby', 'trust-title');
   section.innerHTML = `<div class="container trust-section__grid"><div class="trust-section__visual" data-reveal="slide-left"></div><div class="trust-section__copy" data-reveal="slide-right" data-delay="110"><h2 id="trust-title">${escapeHtml(trust.title)}</h2><p>${escapeHtml(trust.copy)}</p><ul class="trust-benefits">${trust.benefits.map(item => `<li>${iconSvg('check')}<span>${escapeHtml(item)}</span></li>`).join('')}</ul><a class="text-link" href="${escapeAttribute(trust.cta.href)}">${escapeHtml(trust.cta.label)} ${iconSvg('arrow-right')}</a></div></div>`;
-  const mockup = createProductDeviceMockup({ mode: trust.mockup.image ? 'image' : 'demo', ...trust.mockup });
-  mockup.dataset.parallax = '0.018';
-  section.querySelector('.trust-section__visual').append(mockup);
+  const illustration = document.createElement('img');
+  illustration.className = 'trust-section__illustration';
+  illustration.src = new URL('../../assets/editorial/customer-data-shield.png', import.meta.url).href;
+  illustration.alt = 'Синий стеклянный щит защищает карточки клиентов';
+  illustration.width = 1024;
+  illustration.height = 1536;
+  illustration.loading = 'lazy';
+  illustration.decoding = 'async';
+  section.querySelector('.trust-section__visual').append(illustration);
   return section;
 }
 

@@ -17,6 +17,8 @@ export function createArticleCard(article) {
   };
   const editorialCover = editorialCovers[article.slug];
   const compositeCovers = {
+    'unified-client-history': 'customer-history.png',
+    'task-board-release': 'team-tasks.png',
     'follow-up-after-meeting': 'cover-followup.png',
     'client-context': 'cover-client.png',
     'prepare-meeting': 'cover-meeting.png',
@@ -80,7 +82,7 @@ export function createArticleCard(article) {
   body.innerHTML = `<p class="article-card__category">${escapeHtml(categoryMeta[article.category]?.title || article.category)}</p><h3><a href="${escapeAttribute(article.href)}">${escapeHtml(article.title)}</a></h3><p>${escapeHtml(article.excerpt)}</p><a class="text-link" href="${escapeAttribute(article.href)}" aria-label="${escapeAttribute(`Читать: ${article.title}`)}">Читать ${iconSvg('arrow-right')}</a>`;
 
   // News illustrations support the headline instead of adding a separate cover row.
-  if (editorialCover) {
+  if (editorialCover && !compositeCover) {
     card.classList.add('article-card--news-backdrop');
     const backdrop = coverLink.querySelector('img');
     backdrop.className = 'article-card__news-backdrop';

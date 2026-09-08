@@ -1,7 +1,8 @@
+import './interactive-light.js?v=clean-feature-hover2';
 // Lightweight video-like hero: generated locally, no third-party media requests.
 function initializeAmbientSurface() {
 const hero = document.querySelector('.home-hero');
-if (hero) {
+if (hero && !hero.classList.contains('home-hero--video')) {
   const canvas = document.createElement('canvas');
   canvas.className = 'hero-motion-canvas';
   canvas.setAttribute('aria-hidden', 'true');

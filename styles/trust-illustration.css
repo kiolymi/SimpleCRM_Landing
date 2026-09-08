@@ -1,0 +1,16 @@
+.trust-section .trust-section__visual {
+  min-height: 0;
+}
+.trust-section__illustration {
+  display: block;
+  width: min(100%, 480px);
+  height: auto;
+  aspect-ratio: 2 / 3;
+  margin-inline: auto;
+  object-fit: contain;
+  border: 0;
+  border-radius: 28px;
+}
+@media (max-width: 600px) {
+  .trust-section__illustration { width: min(100%, 360px); border-radius: 20px; }
+}

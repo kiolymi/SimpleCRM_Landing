@@ -1,7 +1,7 @@
 import { addPageArtwork } from './components/page-art.js?v=20260908-83';
 import { createSiteShell } from './components/site-shell.js?v=20260908-56';
-import { createHomePage } from './components/home-sections.js?v=20260908-82';
-import { createAboutPage, createArticleLayout, createContentHubPage, createFaqPage, createPricingPage, createPrivacyPage, createReleasesPage, createSearchPage, createSupportPage } from './components/content-pages.js?v=20260908-92';
+import { createHomePage } from './components/home-sections.js?v=trust-illustration1';
+import { createAboutPage, createArticleLayout, createContentHubPage, createFaqPage, createPricingPage, createPrivacyPage, createReleasesPage, createSearchPage, createSupportPage } from './components/content-pages.js?v=human-message3';
 import { pageMeta } from './data/site.js?v=20260906-30';
 import { createProductDeviceMockup } from './components/product-device-mockup.js?v=20260906-1';
 
@@ -9,8 +9,8 @@ const pageKey = document.body.dataset.page || 'home';
 const page = pageMeta[pageKey] || pageMeta.home;
 // Replace stylesheet URLs after a visual release so GitHub Pages/Yandex cannot
 // keep mixing a fresh component file with an older cached theme file.
-const styleRelease = '20260908-8';
-document.querySelectorAll('link[rel="stylesheet"][href*="/styles/"]').forEach(link => {
+const styleRelease = '20260908-publish12';
+document.querySelectorAll('link[rel="stylesheet"][href*="styles/"]').forEach(link => {
   const href = link.getAttribute('href');
   if (!href) return;
   const url = new URL(href, window.location.href);

@@ -1,0 +1,84 @@
+body #main-content .home-hero--video {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background: #0e253d !important;
+  -webkit-mask-image: none !important;
+  mask-image: none !important;
+  min-height: 0 !important;
+  padding-bottom: 0 !important;
+}
+body #main-content .home-hero--video > .home-hero__background-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+  pointer-events: none;
+  transform: none !important;
+  scale: none !important;
+  transition: none !important;
+  animation: none !important;
+}
+body #main-content .home-hero--video > .home-hero__grid {
+  position: relative;
+  z-index: 2;
+  min-height: 0 !important;
+  padding-bottom: 56px !important;
+}
+body #main-content .home-hero--video .home-hero__visual {
+  min-height: 0 !important;
+}
+body #main-content .home-hero--video::before,
+body #main-content .home-hero--video::after,
+body #main-content .home-hero--video > .hero-ambient,
+body #main-content .home-hero--video > .page-ambient,
+body #main-content .home-hero--video > .hero-motion-canvas,
+body #main-content .home-hero--video .hero-device-aura,
+body #main-content .home-hero--video .home-hero__visual::before,
+body #main-content .home-hero--video .home-hero__visual::after { display: none !important; }
+body #main-content .home-hero--video :is(h1,.home-hero__lead,.home-hero__intro) { color: #fff !important; }
+body #main-content .home-hero--video .background-motion-toggle { z-index: 3; }
+
+/* Only the phone scales; the video remains an independent, fixed layer. */
+body #main-content .home-hero .hero-device--soft-hover {
+  width: min(100%, 336px) !important;
+  max-width: 336px !important;
+  min-width: 0 !important;
+  margin: 0 !important;
+  transform: none !important;
+  transition: none !important;
+  animation: none !important;
+}
+@media (max-width: 1023px) {
+  body #main-content .home-hero .hero-device--soft-hover {
+    width: min(100%, 310px) !important;
+    max-width: 310px !important;
+  }
+}
+@media (max-width: 600px) {
+  body #main-content .home-hero .hero-device--soft-hover {
+    width: min(100%, 286px) !important;
+    max-width: 286px !important;
+  }
+}
+body #main-content .home-hero .hero-device--soft-hover .device-mockup__frame {
+  transform: scale(var(--screen-scale, 1)) rotate(var(--screen-roll, 0deg)) !important;
+  transform-origin: center center;
+  transition: none !important;
+  animation: none !important;
+}
+body #main-content .home-hero .hero-device--soft-hover .device-mockup__image {
+  transform: none !important;
+  animation: none !important;
+}
+@media (prefers-reduced-motion: reduce) {
+  body #main-content .home-hero .hero-device--soft-hover .device-mockup__frame { transition: none !important; }
+}
+body #main-content .home-hero--video,
+body #main-content .home-hero--video > .home-hero__grid,
+body #main-content .home-hero--video .home-hero__visual.is-visible {
+  transform: none !important;
+  scale: none !important;
+}
