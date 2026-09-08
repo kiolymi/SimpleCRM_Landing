@@ -2052,6 +2052,15 @@ body:has(#mobile-menu[open], .download-placeholder[open]) {
   filter: none;
 }
 
+.search-suggestions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  margin: 24px 0;
+}
+.search-suggestions .button { min-height: 44px; padding: 10px 18px; }
+
 .article-card--news-backdrop {
   position: relative;
   isolation: isolate;

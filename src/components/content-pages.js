@@ -96,6 +96,26 @@ export function createSearchPage(searchParams) {
   if (!query) grid.append(createEmptyState('Начните поиск', 'Например: «встреча», «клиент» или «задача»'));
   else if (!results.length) grid.append(createEmptyState('Ничего не найдено', 'Попробуйте другое слово или загляните в материалы и инструкции'));
   else results.forEach(result => grid.append(createArticleCard(result)));
+  if (!query || !results.length) {
+    const suggestions = document.createElement('nav');
+    suggestions.className = 'search-suggestions';
+    suggestions.setAttribute('aria-label', 'Популярные темы материалов');
+    for (const topic of ['Клиенты', 'Встречи', 'Задачи']) {
+      const link = document.createElement('a');
+      const url = new URL('../../search/', import.meta.url);
+      url.searchParams.set('q', topic === 'Клиенты' ? 'клиент' : topic === 'Встречи' ? 'встреч' : 'задач');
+      link.href = url.href;
+      link.className = 'button button--outline';
+      link.textContent = topic;
+      suggestions.append(link);
+    }
+    const all = document.createElement('a');
+    all.href = new URL('../../learn/', import.meta.url).href;
+    all.className = 'text-link';
+    all.textContent = 'Открыть все материалы';
+    const empty = grid.querySelector('.empty-state');
+    empty.append(suggestions, all);
+  }
   return section;
 }
 
