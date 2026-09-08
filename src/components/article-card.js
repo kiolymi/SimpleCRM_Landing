@@ -53,6 +53,23 @@ export function createArticleCard(article) {
   coverLink.innerHTML = article.cover.image
     ? `<span class="article-card__cover-layout"><span class="article-card__cover-copy"><small>${escapeHtml(article.cover.kicker || 'Материал')}</small>${iconSvg(article.cover.icon || 'document')}<b>${escapeHtml(article.cover.label)}</b></span><span class="article-card__cover-media"><img src="${escapeAttribute(article.cover.image.src)}" alt="${escapeAttribute(article.cover.image.alt)}" loading="lazy" /></span></span>`
     : `<span>${iconSvg(article.cover.icon || 'document')}<b>${escapeHtml(article.cover.label)}</b></span>`;
+    const guideBackground = {
+      'prepare-meeting': 'article-meeting.png',
+      'create-follow-up-task': 'article-nextstep.png',
+    }[article.slug];
+    if (guideBackground) {
+      coverLink.classList.add('article-card__cover--guide-background');
+      const backdrop = document.createElement('img');
+      backdrop.className = 'article-card__guide-background';
+      backdrop.src = new URL(`../../assets/editorial/${guideBackground}`, import.meta.url).href;
+      backdrop.alt = '';
+      backdrop.setAttribute('aria-hidden', 'true');
+      backdrop.width = 1536;
+      backdrop.height = 1024;
+      backdrop.loading = 'lazy';
+      backdrop.decoding = 'async';
+      coverLink.prepend(backdrop);
+    }
   }
 
   const body = document.createElement('div');
