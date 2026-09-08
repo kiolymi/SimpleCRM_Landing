@@ -327,6 +327,10 @@ function wireSmoothAnchorNavigation(root) {
   };
 
   ['wheel', 'touchstart'].forEach(type => window.addEventListener(type, cancelScroll, { passive: true }));
+  // History navigation restores its own position; an unfinished animation
+  // must not overwrite it or focus a section the user has already left.
+  window.addEventListener('popstate', cancelScroll);
+  window.addEventListener('hashchange', cancelScroll);
   window.addEventListener('keydown', event => {
     if (['ArrowDown', 'ArrowUp', 'PageDown', 'PageUp', 'Home', 'End', ' '].includes(event.key)) cancelScroll();
   });
