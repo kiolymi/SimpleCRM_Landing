@@ -6,8 +6,8 @@
     <meta name="robots" content="noindex" />
     <meta name="theme-color" content="#edf4fb" />
     <title>Страница не найдена — Simple CRM</title>
-    <link rel="icon" type="image/png" href="/favicon-64.png?v=20260824-1" />
-    <link rel="stylesheet" href="/styles/tokens.css?v=20260824-18" />
+    <link rel="icon" type="image/png" href="/favicon-64.png?v=20260824-1" data-site-asset="favicon-64.png?v=20260824-1" />
+    <link rel="stylesheet" href="/styles/tokens.css?v=20260824-18" data-site-asset="styles/tokens.css?v=20260824-18" />
     <link rel="stylesheet" href="/styles/global.css?v=20260824-34" />
     <style>
       body { margin: 0; min-height: 100svh; color: #172d47; background: radial-gradient(ellipse at 85% 20%, #d5e8fb, transparent 65%), #edf4fb; }
@@ -31,13 +31,20 @@
     </style>
   </head>
   <body>
-    <header class="error-header"><a class="error-brand" href="/" aria-label="Simple CRM — главная"><img src="/simple-crm-logo-refined.png?v=20260824-2" width="40" height="40" alt="" />Simple CRM</a></header>
+    <header class="error-header"><a class="error-brand" href="/" data-site-link="" aria-label="Simple CRM — главная"><img src="/simple-crm-logo-refined.png?v=20260824-2" data-site-asset="simple-crm-logo-refined.png?v=20260824-2" width="40" height="40" alt="" />Simple CRM</a></header>
     <main class="error-content">
       <p class="error-code">ОШИБКА 404</p>
       <h1>Такой страницы нет</h1>
       <p class="error-description">Возможно, в адресе опечатка или страница была перенесена. Вернитесь на главную или найдите нужную статью в материалах.</p>
-      <nav class="error-actions" aria-label="Куда перейти"><a href="/">На главную</a><a href="/learn/">Открыть материалы</a></nav>
-      <p class="error-help">Не получается найти нужное? <a href="/support/">Обратитесь в поддержку</a>.</p>
+      <nav class="error-actions" aria-label="Куда перейти"><a href="/" data-site-link="">На главную</a><a href="/learn/" data-site-link="learn/">Открыть материалы</a></nav>
+      <p class="error-help">Не получается найти нужное? <a href="/support/" data-site-link="support/">Обратитесь в поддержку</a>.</p>
     </main>
+    <script>
+      (() => {
+        const base = location.hostname.endsWith('github.io') ? '/SimpleCRM_Landing/' : '/';
+        document.querySelectorAll('[data-site-link]').forEach(link => { link.href = `${base}${link.dataset.siteLink || ''}`; });
+        document.querySelectorAll('[data-site-asset]').forEach(asset => { asset.href = `${base}${asset.dataset.siteAsset}`; asset.src = `${base}${asset.dataset.siteAsset}`; });
+      })();
+    </script>
   </body>
 </html>
