@@ -6,3 +6,6 @@ node_modules/
 dist/
 *.log
 *.tmp
+.video-tools/
+__pycache__/
+*.pyc

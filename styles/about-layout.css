@@ -66,7 +66,8 @@ body[data-page="about"] .company-page__principles {
   padding-top: 32px;
   border-top: 1px solid #36516b;
 }
-body[data-page="about"] .company-page__principles > div {
+/* Outrank the shared pointer-light ring, including its dynamically loaded CSS. */
+body[data-page="about"] #main-content .company-page__principles > div {
   padding: 0;
   border: 0;
   background: transparent;

@@ -1,4 +1,4 @@
-import { articles } from '../data/articles.js?v=20260908-82';
+import { articles } from '../data/articles.js?v=practice16';
 import { createArticleCard } from './article-card.js?v=catalog14';
 import { iconSvg } from './icons.js?v=20260824-28';
 
@@ -6,7 +6,7 @@ export function createMaterialsCatalog(category) {
   const section = document.createElement('section');
   section.className = 'materials-catalog';
   section.setAttribute('aria-labelledby', 'hub-title');
-  section.innerHTML = `<div class="container"><header class="materials-intro"><p class="eyebrow">База знаний Simple CRM</p><h1 id="hub-title">Меньше искать.<br>Проще работать.</h1><p>Практические советы, инструкции и новости продукта — всё в одном месте.</p></header><div class="materials-tools"><label class="materials-search">${iconSvg('search')}<span class="visually-hidden">Найти материал</span><input type="search" placeholder="Например, встреча или карточка клиента" autocomplete="off"></label><div class="materials-filters" role="group" aria-label="Тип материала"></div></div><div class="materials-results"><h2>Все материалы</h2><span role="status" aria-live="polite"></span></div><div class="materials-grid"></div><div class="materials-empty" hidden><h2>Ничего не нашлось</h2><p>Попробуйте другое слово или посмотрите все материалы.</p><button type="button" class="button button--secondary">Сбросить поиск и фильтры</button></div></div>`;
+  section.innerHTML = `<div class="container"><header class="materials-intro"><p class="eyebrow">База знаний Simple CRM</p><h1 id="hub-title">Меньше искать.<br>Проще работать.</h1><p>Как подготовить встречу, вернуться к клиенту и записать следующий шаг. Инструкции и новости Simple CRM — в одном месте.</p></header><div class="materials-tools"><label class="materials-search">${iconSvg('search')}<span class="visually-hidden">Найти материал</span><input type="search" placeholder="Например, встреча или карточка клиента" autocomplete="off"></label><div class="materials-filters" role="group" aria-label="Тип материала"></div></div><div class="materials-results"><h2>Все материалы</h2><span role="status" aria-live="polite"></span></div><div class="materials-grid"></div><div class="materials-empty" hidden><h2>Ничего не нашлось</h2><p>Попробуйте другое слово или посмотрите все материалы.</p><button type="button" class="button button--secondary">Сбросить поиск и фильтры</button></div></div>`;
   const labels = { all: 'Все материалы', learn: 'Практика', 'how-to': 'Инструкции', announcements: 'Новости продукта' };
   const params = new URLSearchParams(location.search);
   const fallback = category === 'learn' ? 'all' : category;

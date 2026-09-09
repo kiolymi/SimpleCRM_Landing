@@ -1,10 +1,10 @@
 import { createArticleCard } from './article-card.js?v=catalog14';
-import { createMaterialsCatalog } from './materials-catalog.js?v=catalog14';
-import { createSupportCenter } from './support-center.js?v=support15';
+import { createMaterialsCatalog } from './materials-catalog.js?v=practice16';
+import { createSupportCenter } from './support-center.js?v=practice16';
 import { iconSvg } from './icons.js?v=20260824-28';
 import { createProductDeviceMockup } from './product-device-mockup.js?v=20260906-1';
 import { createSearchForm } from './search-form.js';
-import { articles, categoryMeta, findArticles, getArticleBySlug, getArticlesByCategory } from '../data/articles.js?v=20260908-82';
+import { articles, categoryMeta, findArticles, getArticleBySlug, getArticlesByCategory } from '../data/articles.js?v=practice16';
 
 export function createContentHubPage(category) {
   return createMaterialsCatalog(category);
@@ -111,10 +111,9 @@ export function createPricingPage() {
       name: 'Pro',
       price: '1 490 ₽ / месяц',
       period: 'Оплата помесячно',
-      description: 'Для команд, которым нужно вывести работу с клиентами на следующий уровень: история, роли, документы и приоритетная поддержка.',
+      description: 'Для расширенной работы с клиентами и помощниками: общая история, роли, документы и приоритетная поддержка.',
       cta: 'Попробовать Pro',
       featured: true,
-      badge: 'Популярно',
       features: [
         ['Всё из бесплатного, плюс…', 'Командный контекст, роли сотрудников и общая история клиента.'],
         ['После каждого разговора', 'Сохраняйте важные итоги, чтобы помнить, о чём договорились.'],
@@ -144,7 +143,6 @@ export function createPricingPage() {
           <div class="pricing-plan__timeline">
             ${plan.features.map(([label, text]) => `<div><span>${iconSvg('check')}</span><p><strong>${escapeHtml(label)}</strong>${escapeHtml(text)}</p></div>`).join('')}
           </div>
-          <a class="button pricing-plan__bottom-action ${plan.featured ? 'button--primary' : 'button--outline'}" href="/support/" aria-label="${escapeAttribute(plan.cta)} — тариф ${escapeAttribute(plan.name)}">${escapeHtml(plan.cta)}</a>
         </article>
       `).join('')}
     </div>
@@ -157,71 +155,89 @@ export function createPricingPage() {
           <a class="text-link" href="/privacy/">Подробнее о конфиденциальности ${iconSvg('arrow-right')}</a>
         </div>
       </div>
-    </section>
-    <section class="support-newsletter section" aria-labelledby="pricing-newsletter-title">
-      <div class="container">
-        <form class="newsletter-card" data-newsletter-form data-reveal="scale" novalidate>
-          <div>
-            <p class="eyebrow">Подписка на новости</p>
-            <h2 id="pricing-newsletter-title">Получайте новости о новых возможностях</h2>
-            <p>Оставьте почту, чтобы узнавать о релизах, сценариях и полезных улучшениях Simple CRM.</p>
-          </div>
-          <label><span class="visually-hidden">Электронная почта</span><input name="email" type="email" autocomplete="email" placeholder="you@example.com" required /></label>
-          <button class="button button--primary" type="submit">Подписаться</button>
-          <p class="form-status" data-form-status aria-live="polite"></p>
-        </form>
-      </div>
     </section>`;
   return section;
 }
 
 export function createFaqPage() {
   const questions = [
-    ['Что такое Simple CRM?', 'Simple CRM — приложение для команд, которым нужно помнить клиентов, встречи, задачи, документы, оплаты и следующий шаг в одном месте. Оно помогает быстро вернуться к контексту и не терять важные детали после разговора.'],
-    ['Simple CRM бесплатная?', 'Базовый режим можно использовать бесплатно. Pro открывает больше возможностей для команды: роли, общую историю, документы, расширенные сценарии и приоритетную поддержку.'],
-    ['Как добавить клиента?', 'Создайте карточку клиента вручную или импортируйте базу. После этого к клиенту можно привязывать встречи, задачи, сообщения, документы и счета.'],
-    ['Можно ли отмечать, где мы познакомились с клиентом?', 'Да. Встречи можно связывать с форматом, офисом или другой локацией, чтобы команда понимала, где и когда произошёл контакт.'],
-    ['Можно ли объединять клиентов по группам и тегам?', 'Да. Используйте статусы, теги и рабочие признаки, чтобы быстро находить нужных клиентов и видеть, кому пора написать.'],
-    ['Есть ли приложение для большого экрана?', 'Интерфейс Simple CRM раскрывается на большом рабочем экране: больше клиентов, задач и деталей видно одновременно, а основные действия остаются рядом.'],
-    ['Можно ли перенести данные?', 'Да. Подготовьте таблицу с клиентами — мы подскажем формат, поможем проверить данные и аккуратно перенести базу в Simple CRM.'],
-    ['Как Simple CRM относится к приватности?', 'Данные клиентов остаются внутри вашего рабочего пространства. Мы не продаём клиентскую базу и не используем содержимое карточек для рекламы. Подробнее об этом написано в политике конфиденциальности.'],
-    ['Где посмотреть изменения и новые версии?', 'В разделе «Версии» собраны изменения по выпускам: новые возможности, улучшения и исправления. А в новостях продукта можно подробнее прочитать об отдельных обновлениях.'],
-  ];
-  const guides = [
-    ['about/', 'О приложении'],
-    ['pricing/', 'Сравнить тарифы'],
-    ['learn/client-context/', 'Что хранить в карточке клиента'],
-    ['how-to/prepare-meeting/', 'Как подготовить встречу'],
-    ['learn/client-context/', 'Как сохранить контекст клиента'],
-    ['about/', 'Возможности приложения'],
-    ['support/', 'Обсудить перенос данных'],
-    ['privacy/', 'Политика конфиденциальности'],
-    ['releases/', 'История обновлений'],
-  ];
+  [
+    "Что такое Simple CRM?",
+    "Клиентская база для частной практики: психологов, коучей, тренеров и других специалистов. В приложении связаны клиенты, встречи, задачи, переписка, документы и оплаты.",
+    "about/",
+    "О приложении"
+  ],
+  [
+    "Подойдёт ли Simple CRM, если я работаю один?",
+    "Да. Вы можете вести свои записи, клиентов и задачи самостоятельно. Если в работе участвует помощник, возможности совместной работы и роли можно посмотреть в тарифах.",
+    "pricing/",
+    "Посмотреть тарифы"
+  ],
+  [
+    "Клиент обещал записаться позже. Как не потерять связь?",
+    "Создайте задачу связаться с клиентом, укажите дату и привяжите его карточку. Когда вернётесь к задаче, рядом будут контакты и история договорённостей. Сообщение клиенту отправляете вы.",
+    "how-to/create-follow-up-task/",
+    "Создать задачу для следующего контакта"
+  ],
+  [
+    "Что делать, если клиент не пришёл или перенёс встречу?",
+    "Сначала свяжитесь с клиентом и согласуйте дальнейшие действия. Держите актуальные дату, время и место в записи встречи. Если новую дату ещё не выбрали, создайте задачу вернуться к вопросу.",
+    "how-to/prepare-meeting/",
+    "Проверить детали встречи"
+  ],
+  [
+    "Как следить за оплатой и не забывать напомнить?",
+    "Проверяйте счета, которые ждут оплаты, и историю платежей в Simple CRM. Если нужно уточнить перевод, создайте задачу с датой и свяжите её с клиентом. Это помогает организовать проверку, но не заменяет сам разговор об оплате.",
+    "how-to/create-follow-up-task/",
+    "Поставить задачу с датой"
+  ],
+  [
+    "Simple CRM бесплатная?",
+    "Базовый режим можно использовать бесплатно. Pro открывает дополнительные возможности: роли, общую историю, документы и приоритетную поддержку. Актуальные условия собраны на странице тарифов.",
+    "pricing/",
+    "Сравнить тарифы"
+  ],
+  [
+    "Как добавить клиента?",
+    "Создайте карточку клиента вручную или импортируйте базу. После этого к клиенту можно привязывать встречи, задачи, сообщения, документы и счета.",
+    "learn/client-context/",
+    "Что хранить в карточке клиента"
+  ],
+  [
+    "Можно ли объединять клиентов по группам и тегам?",
+    "Да. Используйте статусы и теги, чтобы находить нужные записи и различать рабочие группы клиентов.",
+    "learn/client-context/",
+    "Навести порядок в клиентской базе"
+  ],
+  [
+    "Можно ли перенести данные?",
+    "Подготовьте таблицу с клиентами и проверьте поля перед переносом. Вопросы о формате и возможностях импорта можно найти в поддержке.",
+    "support/",
+    "Помощь с переносом данных"
+  ],
+  [
+    "Как Simple CRM относится к приватности?",
+    "Мы не продаём клиентскую базу и не используем содержимое карточек для рекламы. Какие данные обрабатывает сервис и как устроен доступ, описано в политике конфиденциальности.",
+    "privacy/",
+    "Политика конфиденциальности"
+  ],
+  [
+    "Где посмотреть изменения и новые версии?",
+    "В разделе «Версии» собраны изменения по выпускам: новые возможности, улучшения и исправления.",
+    "releases/",
+    "История обновлений"
+  ]
+];
   const section = document.createElement('section');
   section.className = 'inner-page faq-page faq-page--dextr';
   section.setAttribute('aria-labelledby', 'faq-title');
   section.innerHTML = `
-    <div class="faq-page__hero"><div class="container" data-reveal="scale"><h1 id="faq-title">Частые вопросы</h1><p>Здесь собраны ответы о Simple CRM, возможностях продукта, приватности и запуске команды.</p><label class="faq-search" aria-label="Поиск по вопросам"><svg class="ui-icon" aria-hidden="true"><use href="#icon-search"></use></svg><input data-faq-search type="search" placeholder="Найти вопрос или ответ…" autocomplete="off" /></label><p class="faq-search__status" data-faq-status aria-live="polite"></p></div></div>
+    <div class="faq-page__hero"><div class="container" data-reveal="scale"><h1 id="faq-title">Частые вопросы</h1><p>О клиентах, записях, переносах, оплатах и начале работы в Simple CRM.</p><label class="faq-search" aria-label="Поиск по вопросам"><svg class="ui-icon" aria-hidden="true"><use href="#icon-search"></use></svg><input data-faq-search type="search" placeholder="Найти вопрос или ответ…" autocomplete="off" /></label><p class="faq-search__status" data-faq-status aria-live="polite"></p></div></div>
     <div class="container faq-list-wrap">
       <div class="faq-list">
-        ${questions.map(([question, answer], index) => `<details class="faq-rich-item" data-faq-item data-search="${escapeAttribute(`${question} ${answer}`.toLocaleLowerCase('ru-RU'))}" data-reveal="slide-left"${index === 0 ? ' open' : ''}><summary>${escapeHtml(question)}</summary><p>${escapeHtml(answer)}<br /><a class="text-link" href="${escapeAttribute(new URL(`../../${guides[index][0]}`, import.meta.url).href)}">${escapeHtml(guides[index][1])} ${iconSvg('arrow-right')}</a></p></details>`).join('')}
+        ${questions.map(([question, answer, href, linkLabel], index) => `<details class="faq-rich-item" data-faq-item data-search="${escapeAttribute(`${question} ${answer}`.toLocaleLowerCase('ru-RU'))}" data-reveal="slide-left"${index === 0 ? ' open' : ''}><summary>${escapeHtml(question)}</summary><p>${escapeHtml(answer)}<br /><a class="text-link" href="${escapeAttribute(new URL(`../../${href}`, import.meta.url).href)}">${escapeHtml(linkLabel)} ${iconSvg('arrow-right')}</a></p></details>`).join('')}
       </div>
-    </div>
-    <section class="support-newsletter section" aria-labelledby="faq-newsletter-title">
-      <div class="container">
-        <form class="newsletter-card" data-newsletter-form data-reveal="scale" novalidate>
-          <div>
-            <p class="eyebrow">Подписка на новости</p>
-            <h2 id="faq-newsletter-title">Получайте новости о новых возможностях</h2>
-            <p>Узнавайте о релизах Simple CRM, полезных сценариях и улучшениях интерфейса.</p>
-          </div>
-          <label><span class="visually-hidden">Электронная почта</span><input name="email" type="email" autocomplete="email" placeholder="you@example.com" required /></label>
-          <button class="button button--primary" type="submit">Подписаться</button>
-          <p class="form-status" data-form-status aria-live="polite"></p>
-        </form>
-      </div>
-    </section>`;
+    </div>`;
   return section;
 }
 
@@ -233,36 +249,24 @@ export function createAboutPage() {
     <div class="container company-page__inner">
       <header class="company-page__hero">
         <div class="company-page__hero-copy" data-reveal="slide-left">
-        <h1 id="about-title">Помогаем строить отношения с клиентами</h1>
-        <p>За каждым контактом — разговоры, встречи и договорённости. Simple CRM собирает их в одну историю, чтобы вы могли уделять больше внимания людям и быстрее возвращаться к сути разговора.</p>
+        <h1 id="about-title">Для практики, в которой важен каждый человек</h1>
+        <p>Simple CRM — клиентская база для психологов, коучей, тренеров и других специалистов частной практики. Записи, задачи, переписка и расчёты собраны рядом: для самостоятельной работы и работы с помощником.</p>
         </div>
         <div class="company-page__hero-screens" aria-label="Возможности Simple CRM"></div>
       </header>
-      <section class="company-page__mission" aria-labelledby="mission-title" data-reveal="scale">
-        <h2 id="mission-title">Наша миссия</h2>
-        <p>Сделать работу с клиентами понятной и последовательной. Когда детали прошлой встречи и следующий шаг под рукой, проще выполнять обещания и поддерживать отношения.</p>
-      </section>
       <section class="company-page__team" aria-labelledby="team-title" data-reveal="scale">
         <div class="company-page__team-intro">
         <h2 id="team-title">В центре — человек.<br /><span>Всё важное — рядом.</span></h2>
-        <p>Simple CRM помогает помнить не только задачи, но и людей за ними. История клиента, встречи и договорённости собраны вместе — чтобы продолжать разговор, а не начинать его заново.</p>
+        <p>Вы работаете с людьми, а не со списком дел. Пусть организационные вопросы — кому написать, когда встретиться и что с оплатой — будут под рукой, не занимая всё ваше внимание.</p>
         </div>
         <div class="company-page__principles">
-          <div><h3>Внимание к деталям</h3><p>От первого сообщения до следующей встречи — важные договорённости остаются рядом с клиентом.</p></div>
-          <div><h3>Понятный следующий шаг</h3><p>Расписание и задачи помогают перейти от разговора к действию без лишних переключений.</p></div>
+          <div><h3>Внимательнее к договорённостям</h3><p>Перед встречей можно вернуться к переписке и уточнить, на чём вы остановились.</p></div>
+          <div><h3>Спокойнее между встречами</h3><p>Следующий контакт и напоминание об оплате можно записать в задачи, а не держать в голове.</p></div>
         </div>
       </section>
       <section class="company-page__news" aria-labelledby="company-news-title">
         <header data-reveal="scale"><h2 id="company-news-title">Новости продукта</h2><p>Новые возможности и заметки о развитии Simple CRM.</p></header>
         <div class="article-grid"></div>
-      </section>
-      <section class="support-newsletter section" aria-labelledby="about-newsletter-title">
-        <form class="newsletter-card" data-newsletter-form novalidate>
-          <div><h2 id="about-newsletter-title">Подписка на новости</h2><p>Узнавайте о новых возможностях Simple CRM.</p></div>
-          <label><span>Электронная почта</span><input name="email" type="email" autocomplete="email" placeholder="you@example.com" required /></label>
-          <button class="button button--primary" type="submit">Подписаться</button>
-          <p class="form-status" data-form-status aria-live="polite"></p>
-        </form>
       </section>
     </div>`;
   [
@@ -352,7 +356,7 @@ export function createPrivacyPage() {
   section.className = 'inner-page section document-page document-page--dextr privacy-page';
   section.dataset.reveal = 'scale';
   section.setAttribute('aria-labelledby', 'privacy-title');
-  section.innerHTML = `<div class="container document-single editorial-layout"><article class="document-main"><header class="document-header"><h1 id="privacy-title">Политика конфиденциальности</h1><p class="document-updated">Последнее обновление: 29 мая 2026</p><p class="document-lead">Ваша приватность важна для нас. Эта политика простым языком объясняет, какие данные Simple CRM собирает и не собирает, как мы их используем и когда они могут быть переданы сервисным поставщикам.</p></header><div class="document-body">${chapters.map(chapter => `<section id="${escapeAttribute(chapter.id)}"><h2>${escapeHtml(chapter.title)}</h2>${chapter.paragraphs.map(paragraph => `<p>${escapeHtml(paragraph)}</p>`).join('')}${chapter.items ? `<ul>${chapter.items.map(item => `<li>${escapeHtml(item)}</li>`).join('')}</ul>` : ''}</section>`).join('')}</div></article><aside class="editorial-sidebar"><details class="editorial-toc" open><summary>На этой странице</summary><nav aria-label="Разделы политики">${chapters.map(c => `<a href="#${escapeAttribute(c.id)}">${escapeHtml(c.title)}</a>`).join('')}</nav></details></aside></div><section class="support-newsletter section" aria-labelledby="privacy-newsletter-title"><div class="container"><form class="newsletter-card" data-newsletter-form data-reveal="scale" novalidate><div><p class="eyebrow">Подписка на новости</p><h2 id="privacy-newsletter-title">Получайте новости о новых возможностях</h2><p>Подпишитесь, чтобы узнавать о релизах Simple CRM и важных изменениях продукта.</p></div><label><span class="visually-hidden">Электронная почта</span><input name="email" type="email" autocomplete="email" placeholder="you@example.com" required /></label><button class="button button--primary" type="submit">Подписаться</button><p class="form-status" data-form-status aria-live="polite"></p></form></div></section>`;
+  section.innerHTML = `<div class="container document-single editorial-layout"><article class="document-main"><header class="document-header"><h1 id="privacy-title">Политика конфиденциальности</h1><p class="document-updated">Последнее обновление: 29 мая 2026</p><p class="document-lead">Ваша приватность важна для нас. Эта политика простым языком объясняет, какие данные Simple CRM собирает и не собирает, как мы их используем и когда они могут быть переданы сервисным поставщикам.</p></header><div class="document-body">${chapters.map(chapter => `<section id="${escapeAttribute(chapter.id)}"><h2>${escapeHtml(chapter.title)}</h2>${chapter.paragraphs.map(paragraph => `<p>${escapeHtml(paragraph)}</p>`).join('')}${chapter.items ? `<ul>${chapter.items.map(item => `<li>${escapeHtml(item)}</li>`).join('')}</ul>` : ''}</section>`).join('')}</div></article><aside class="editorial-sidebar"><details class="editorial-toc" open><summary>На этой странице</summary><nav aria-label="Разделы политики">${chapters.map(c => `<a href="#${escapeAttribute(c.id)}">${escapeHtml(c.title)}</a>`).join('')}</nav></details></aside></div>`;
   if (window.matchMedia('(max-width: 900px)').matches) section.querySelector('.editorial-toc').open = false;
   return section;
 }

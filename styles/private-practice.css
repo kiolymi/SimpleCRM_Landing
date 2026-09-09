@@ -1,0 +1,222 @@
+/* Private-practice narrative. No transforms on the hero or its video layers. */
+body[data-page="home"] #main-content .home-hero h1 {
+  font-size: clamp(34px, 3.8vw, 54px);
+  max-width: 18ch;
+}
+body[data-page="home"] #main-content .home-hero__kicker {
+  color: #bedaf2;
+  font-size: 14px;
+  font-weight: 600;
+}
+body[data-page="home"] #main-content .home-hero__intro {
+  max-width: 48ch;
+  opacity: .8;
+  font-size: 16px;
+}
+/* Human scenes form a new section; the video hero above is unchanged. */
+body[data-page="home"] #main-content .practice-audience {
+  padding-block: clamp(56px, 6vw, 88px);
+  background: #edf4fb;
+  border-bottom: 1px solid #dce8f3;
+}
+.practice-audience > .container { max-width: 1240px; }
+.practice-audience__intro { max-width: 800px; margin: 0 auto 40px; text-align: center; }
+/* One type scale and one reading color across both new narrative sections. */
+body #main-content :is(.practice-audience, .practice-stories) {
+  font-family: var(--font-sans);
+}
+body #main-content :is(.practice-audience, .practice-stories) p {
+  font-family: inherit;
+  font-size: 1rem;
+  line-height: 1.7;
+  font-weight: 400;
+  letter-spacing: 0;
+  color: #48627c;
+}
+body #main-content :is(.practice-audience, .practice-stories) h2 {
+  font-family: inherit;
+  font-size: clamp(1.625rem, 2.4vw, 2rem);
+  line-height: 1.3;
+  font-weight: 600;
+  letter-spacing: -.015em;
+  color: #18324d;
+}
+body #main-content :is(.practice-person, .practice-situation) h3 {
+  font-family: inherit;
+  font-size: 1.25rem;
+  line-height: 1.4;
+  font-weight: 600;
+  letter-spacing: 0;
+  color: #18324d;
+  text-wrap: pretty;
+}
+body #main-content .practice-audience__intro h2 { margin: 0 0 20px; text-wrap: balance; }
+body #main-content .practice-audience__intro > p:last-child { margin: 0; }
+.practice-audience__grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
+.practice-person { display: flex; min-width: 0; margin: 0; overflow: hidden; background: #fff; border-radius: 24px; }
+body #main-content a.practice-person { color: inherit; text-decoration: none; border: 0; }
+body #main-content a.practice-person:hover { text-decoration: none; }
+body #main-content a.practice-person:focus-visible { outline: 3px solid #1765a6; outline-offset: 4px; }
+.practice-person__figure { display: flex; flex-direction: column; flex: 1; min-width: 0; margin: 0; }
+.practice-person__image { flex-shrink: 0; aspect-ratio: 3 / 2; overflow: hidden; }
+.practice-person__image img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.practice-person figcaption { display: flex; flex-direction: column; flex: 1; padding: 26px 24px 30px; }
+body #main-content .practice-person h3 { margin: 0 0 14px; }
+body #main-content .practice-person figcaption p { margin: 0; }
+.practice-person__cta { display: flex; align-items: center; gap: 8px; margin-top: auto; padding-top: 24px; color: #1765a6; font-size: 1rem; font-weight: 500; line-height: 1.5; }
+.practice-person__cta svg { width: 20px; height: 20px; flex-shrink: 0; }
+body #main-content .practice-person:is(:hover, :focus-visible) .practice-person__cta > span { text-decoration: underline; text-underline-offset: 4px; }
+.practice-audience__footnote { margin: 28px auto 0; max-width: 760px; text-align: center; }
+body #main-content .practice-audience__footnote p { margin: 0; }
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .practice-person__image img { transition: transform 1600ms cubic-bezier(.22,.61,.36,1); }
+  .practice-person:is(:hover, :focus-visible) .practice-person__image img { transform: scale(1.035); }
+}
+body[data-page="home"] #main-content .practice-stories {
+  padding-block: clamp(56px, 7vw, 96px);
+  background: #f8fbff;
+  border-bottom: 1px solid #dce8f3;
+}
+.practice-stories > .container { max-width: 1240px; }
+.practice-stories__intro { max-width: 690px; margin: 0 auto 40px; text-align: center; }
+body #main-content .practice-stories__intro h2 { margin: 0 0 20px; }
+.practice-explorer__tabs {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+  margin: 0 auto 32px;
+  max-width: 960px;
+}
+body #main-content .practice-explorer__tab {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-width: 0;
+  min-height: 52px;
+  padding: 14px 16px;
+  border: 0;
+  border-radius: 16px;
+  background: #eaf1f8;
+  color: #345674;
+  font: 500 1rem/1.4 var(--font-sans);
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 250ms ease, color 250ms ease;
+}
+.practice-explorer__tab svg { width: 20px; height: 20px; flex-shrink: 0; }
+body #main-content .practice-explorer__tab:hover { background: #dceaf7; }
+body #main-content .practice-explorer__tab[aria-selected="true"] { color: #fff; background: #0e253d; }
+body #main-content :is(.practice-explorer__tab, .practice-story):focus-visible { outline: 3px solid #1765a6; outline-offset: 5px; }
+.practice-story {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  align-items: center;
+  gap: clamp(28px, 4vw, 56px);
+}
+.practice-story[hidden] { display: none !important; }
+.practice-story__art { margin: 0; min-width: 0; }
+/* A fixed scene with independently moving product screens; never scale the backdrop. */
+.practice-scene {
+  position: relative;
+  isolation: isolate;
+  aspect-ratio: 5 / 4;
+  overflow: hidden;
+  border-radius: 26px;
+  background: #deebf7;
+}
+.practice-scene__background {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 40% center;
+}
+.practice-scene--payments .practice-scene__background { object-position: 60% center; }
+.practice-scene__device {
+  --scene-angle: 4deg;
+  --scene-hover-angle: 2deg;
+  position: absolute;
+  z-index: 1;
+  top: 9%;
+  right: 9%;
+  width: 29%;
+  transform: rotate(var(--scene-angle));
+  transform-origin: 50% 75%;
+  filter: drop-shadow(0 18px 18px rgb(20 52 85 / 24%));
+}
+.practice-scene--payments .practice-scene__device {
+  --scene-angle: -6deg;
+  --scene-hover-angle: -3deg;
+  top: 10%;
+  right: auto;
+  left: 10%;
+}
+body #main-content .practice-scene__device > .device-mockup { width: 100%; max-width: none; margin: 0; }
+body #main-content .practice-scene__device .device-mockup__frame { border-width: 3px !important; }
+.practice-scene__glint {
+  position: absolute;
+  z-index: 2;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  opacity: 0;
+  background: radial-gradient(ellipse at 75% 20%, rgb(255 255 255 / 24%), transparent 64%);
+}
+.practice-scene__glint::after {
+  content: '';
+  position: absolute;
+  inset: -30% -15%;
+  background: linear-gradient(110deg, transparent 32%, rgb(210 239 255 / 8%) 42%, rgb(255 255 255 / 55%) 50%, rgb(255 255 255 / 9%) 58%, transparent 68%);
+  transform: translateX(-110%);
+}
+.practice-scene--payments .practice-scene__glint {
+  background: radial-gradient(ellipse at 25% 25%, rgb(255 242 207 / 20%), transparent 64%);
+}
+.practice-scene--payments .practice-scene__glint::after { transform: translateX(110%); }
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .practice-scene__device { transition: transform 1800ms cubic-bezier(.22,.61,.36,1); }
+  .practice-scene__glint { transition: opacity 800ms ease; }
+  .practice-scene__glint::after { transition: transform 2400ms cubic-bezier(.45,0,.25,1); }
+  .practice-scene:hover .practice-scene__device { transform: translateY(-5px) rotate(var(--scene-hover-angle)) scale(1.035); }
+  .practice-scene:hover .practice-scene__glint { opacity: 1; }
+  .practice-scene:hover .practice-scene__glint::after { transform: translateX(110%); }
+  .practice-scene--payments:hover .practice-scene__glint::after { transform: translateX(-110%); }
+}
+.practice-story__copy { min-width: 0; padding: 24px 0; }
+body #main-content .practice-situation h3 { margin: 0 0 12px; }
+body #main-content .practice-situation p { margin: 0 0 12px; }
+.practice-situation__solution { display: flex; align-items: flex-start; gap: 14px; margin: 24px 0 12px; padding: 20px; border-radius: 18px; background: #eaf3fc; }
+.practice-situation__solution > svg { width: 22px; height: 22px; flex-shrink: 0; margin-top: 3px; color: #1373be; }
+body #main-content .practice-situation__solution p { margin: 0; color: #18324d; }
+body #main-content .practice-story .text-link { display: inline-flex; margin-top: 16px; gap: 8px; font-size: 1rem; font-weight: 500; color: #1765a6; }
+body[data-page="home"] #main-content .home-features { padding-block: 72px; }
+body[data-page="home"] #main-content .feature-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px; }
+body[data-page="home"] #main-content .feature-card__mockup .device-mockup { max-width: 242px; margin-inline: auto; }
+body[data-page="home"] #main-content .feature-card__description { font-size: 16px; max-width: 34ch; margin-inline: auto; }
+body[data-page="home"] #main-content .trust-section { padding-block: 64px; }
+body[data-page="home"] #main-content .trust-section__illustration { max-width: 310px; }
+body[data-page="home"] #main-content .trust-section__copy > p { font-size: 17px; }
+body[data-page="home"] #main-content .home-articles { padding-block: 72px; }
+@media (max-width: 800px) {
+  .practice-audience__grid { grid-template-columns: minmax(0, 1fr); max-width: 560px; margin-inline: auto; }
+  .practice-audience__intro { margin-bottom: 28px; }
+  .practice-story { grid-template-columns: minmax(0, 1fr); gap: 28px; }
+  .practice-story__art { max-width: 600px; width: 100%; margin-inline: auto; }
+  .practice-story__copy { min-height: 17rem; padding: 0; }
+  .practice-explorer__tabs { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .practice-stories__intro { margin-bottom: 36px; }
+  body[data-page="home"] #main-content .feature-grid { grid-template-columns: minmax(0, 1fr); gap: 48px; }
+  body[data-page="home"] #main-content .feature-card__description { max-width: 44ch; }
+}
+@media (max-width: 480px) {
+  .practice-person { border-radius: 18px; }
+  .practice-person figcaption { padding: 22px 20px 26px; }
+  .practice-scene { border-radius: 18px; }
+  body #main-content .practice-explorer__tab { padding: 12px 10px; gap: 8px; font-size: .875rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  body #main-content .practice-explorer__tab { transition: none; }
+}

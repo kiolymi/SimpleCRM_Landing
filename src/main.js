@@ -1,11 +1,17 @@
 import { addPageArtwork } from './components/page-art.js?v=20260908-83';
 import { createSiteShell } from './components/site-shell.js?v=20260908-56';
-import { createHomePage } from './components/home-sections.js?v=continuous-video13';
-import { createAboutPage, createArticleLayout, createContentHubPage, createFaqPage, createPricingPage, createPrivacyPage, createReleasesPage, createSearchPage, createSupportPage } from './components/content-pages.js?v=support15';
-import { pageMeta } from './data/site.js?v=20260906-30';
+import { createHomePage } from './components/home-sections.js?v=explore22';
+import { createAboutPage, createArticleLayout, createContentHubPage, createFaqPage, createPricingPage, createPrivacyPage, createReleasesPage, createSearchPage, createSupportPage } from './components/content-pages.js?v=practice16';
+import { pageMeta } from './data/site.js?v=practice16';
 import { createProductDeviceMockup } from './components/product-device-mockup.js?v=20260906-1';
 
 const pageKey = document.body.dataset.page || 'home';
+if (pageKey === 'home') {
+  const practiceStyles = document.createElement('link');
+  practiceStyles.rel = 'stylesheet';
+  practiceStyles.href = new URL('../styles/private-practice.css?v=explore22', import.meta.url).href;
+  document.head.append(practiceStyles);
+}
 if (pageKey === 'support') {
   const supportStyles = document.createElement('link');
   supportStyles.rel = 'stylesheet';
@@ -21,19 +27,20 @@ if (['learn', 'how-to', 'announcements', 'article'].includes(pageKey)) {
 const page = pageMeta[pageKey] || pageMeta.home;
 // Replace stylesheet URLs after a visual release so GitHub Pages/Yandex cannot
 // keep mixing a fresh component file with an older cached theme file.
-const styleRelease = '20260908-publish12';
+const styleRelease = '20260909-practice16';
 document.querySelectorAll('link[rel="stylesheet"][href*="styles/"]').forEach(link => {
   const href = link.getAttribute('href');
   if (!href) return;
   const url = new URL(href, window.location.href);
-  url.searchParams.set('v', styleRelease);
+  url.searchParams.set('v', url.pathname.endsWith('/styles/private-practice.css') ? 'explore22' : styleRelease);
+  if (url.pathname.endsWith('/styles/about-layout.css')) url.searchParams.set('v', 'borderless-principles23');
   link.setAttribute('href', `${url.pathname}?${url.searchParams.toString()}`);
 });
 document.documentElement.classList.add('has-js');
 document.documentElement.classList.remove('is-navigating');
 
 if (pageMeta[pageKey]) {
-  document.title = pageKey === 'home' ? 'Simple CRM' : `${page.title} — Simple CRM`;
+  document.title = pageKey === 'home' ? 'Simple CRM — клиентская база для частной практики' : `${page.title} — Simple CRM`;
 }
 
 const main = document.createElement('main');

@@ -5,13 +5,13 @@ export function createSupportCenter() {
   section.className = 'support-center';
   section.setAttribute('aria-labelledby', 'support-title');
   section.innerHTML = `<div class="container">
-    <header class="support-center__intro"><p class="eyebrow">Поддержка Simple CRM</p><h1 id="support-title">С чем нужна помощь?</h1><p>Найдите готовый ответ или расскажите о своём вопросе команде.</p></header>
+    <header class="support-center__intro"><p class="eyebrow">Поддержка Simple CRM</p><h1 id="support-title">С чем нужна помощь?</h1><p>Подсказки по клиентской базе, записям и задачам для вашей практики.</p></header>
     <div class="support-center__layout">
       <section class="support-compose" id="support-message" aria-labelledby="support-form-title">
         <header><span class="support-center__icon">${iconSvg('message-square')}</span><div><h2 id="support-form-title">Написать команде</h2><p>Все детали обращения — в одной форме.</p></div></header>
         <form data-demo-form novalidate id="support-message-form">
-          <div class="support-compose__row"><label>Ваше имя <span class="support-optional">(необязательно)</span><input name="name" autocomplete="name" placeholder="Как к вам обращаться"></label><label>Электронная почта <span aria-hidden="true">*</span><input name="email" type="email" autocomplete="email" placeholder="you@company.ru" required></label></div>
-          <label>Тема обращения <span aria-hidden="true">*</span><select name="topic" required><option value="">Выберите, с чем нужна помощь</option><option>Начало работы и настройка</option><option>Клиенты и импорт данных</option><option>Встречи и задачи</option><option>Тарифы и оплата</option><option>Ошибка в приложении</option><option>Идея или другой вопрос</option></select></label>
+          <div class="support-compose__row"><label>Ваше имя <span class="support-optional">(необязательно)</span><input name="name" autocomplete="name" placeholder="Как к вам обращаться"></label><label>Электронная почта <span aria-hidden="true">*</span><input name="email" type="email" autocomplete="email" placeholder="you@example.com" required></label></div>
+          <label>Тема обращения <span aria-hidden="true">*</span><select name="topic" required><option value="">Выберите, с чем нужна помощь</option><option>Начало работы и настройка</option><option>Клиенты и импорт данных</option><option>Записи, переносы и задачи</option><option>Счета и оплаты клиентов</option><option>Подписка и тарифы</option><option>Ошибка в приложении</option><option>Идея или другой вопрос</option></select></label>
           <label>Ваш вопрос <span aria-hidden="true">*</span><textarea name="message" rows="5" required placeholder="Что вы хотели сделать и на каком шаге возник вопрос?" aria-describedby="support-message-hint"></textarea></label>
           <p id="support-message-hint" class="support-field-hint">Если это ошибка, укажите версию приложения и модель устройства. Не добавляйте пароли и личные данные клиентов.</p>
           <label class="support-consent"><input name="consent" type="checkbox" required><span>Согласен на обработку данных для ответа на обращение. <a href="/privacy/">Политика конфиденциальности</a></span></label>

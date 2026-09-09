@@ -42,9 +42,9 @@ export const footerNavigation = [
 ];
 
 export const pageMeta = {
-  home: { eyebrow: 'Simple CRM', title: 'Вся работа с клиентом — в одном месте', description: 'Встречи, задачи, переписка, документы и оплаты в единой истории клиента' },
+  home: { eyebrow: 'Simple CRM', title: 'Клиентская база для частной практики', description: 'Клиенты, записи, переносы и оплаты для психологов, коучей, тренеров и других специалистов' },
   pricing: { eyebrow: 'Simple CRM', title: 'Тарифы', description: 'Прозрачные условия для самостоятельной работы и команды' },
-  about: { eyebrow: 'Simple CRM', title: 'О продукте', description: 'О том, как Simple CRM помогает не терять нить в работе с клиентами' },
+  about: { eyebrow: 'Simple CRM', title: 'О продукте', description: 'Как Simple CRM помогает организовать частную практику и работу с клиентами' },
   faq: { eyebrow: 'Simple CRM', title: 'Вопросы и ответы', description: 'Короткие ответы о том, что уже есть в продукте' },
   support: { eyebrow: 'Simple CRM', title: 'Поддержка', description: 'Поможем с продуктом, настройкой и первым запуском' },
   learn: { eyebrow: 'Simple CRM', title: 'Материалы', description: 'Коротко о встречах, задачах и следующем шаге' },
