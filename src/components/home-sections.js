@@ -2,7 +2,7 @@ import { createArticleCard } from './article-card.js?v=20260908-84';
 import { iconSvg } from './icons.js?v=20260824-28';
 import { createProductDeviceMockup } from './product-device-mockup.js?v=20260906-1';
 import { homeContent } from '../data/home.js?v=people17';
-import { createPracticeStories } from './practice-stories.js?v=explore22';
+import { createPracticeStories } from './practice-flows.js?v=refinement1';
 import { createPracticeAudience } from './practice-audience.js?v=links20';
 
 export function createHomePage() {

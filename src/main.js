@@ -1,6 +1,6 @@
 import { addPageArtwork } from './components/page-art.js?v=20260908-83';
 import { createSiteShell } from './components/site-shell.js?v=20260908-56';
-import { createHomePage } from './components/home-sections.js?v=explore22';
+import { createHomePage } from './components/home-sections.js?v=refinement1';
 import { createAboutPage, createArticleLayout, createContentHubPage, createFaqPage, createPricingPage, createPrivacyPage, createReleasesPage, createSearchPage, createSupportPage } from './components/content-pages.js?v=practice16';
 import { pageMeta } from './data/site.js?v=practice16';
 import { createProductDeviceMockup } from './components/product-device-mockup.js?v=20260906-1';
@@ -11,6 +11,10 @@ if (pageKey === 'home') {
   practiceStyles.rel = 'stylesheet';
   practiceStyles.href = new URL('../styles/private-practice.css?v=explore22', import.meta.url).href;
   document.head.append(practiceStyles);
+  const flowStyles = document.createElement('link');
+  flowStyles.rel = 'stylesheet';
+  flowStyles.href = new URL('../styles/practice-flows.css?v=refinement1', import.meta.url).href;
+  document.head.append(flowStyles);
 }
 if (pageKey === 'support') {
   const supportStyles = document.createElement('link');
