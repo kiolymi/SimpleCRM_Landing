@@ -1,0 +1,187 @@
+{
+  "scale": 2,
+  "files": [
+    {
+      "file": "b01-availability.png",
+      "bytes": 84473,
+      "width": 780,
+      "height": 1688,
+      "sha256": "9C5B7F805A820C2FC331405238F7FA96423C51D815AE744880A33037C1E68D65"
+    },
+    {
+      "file": "b02-client-time.png",
+      "bytes": 71312,
+      "width": 780,
+      "height": 1688,
+      "sha256": "57140075F819C10E671F39D07631FEF82FF2E26D6C9BFA7E9F8906821176C97D"
+    },
+    {
+      "file": "b03-client-review.png",
+      "bytes": 82034,
+      "width": 780,
+      "height": 1688,
+      "sha256": "BA286CD43F695DDB3B130C2F46CDF8101AABE86BA64EB7EE6D31D4729FB818AB"
+    },
+    {
+      "file": "b04-client-confirmed.png",
+      "bytes": 83644,
+      "width": 780,
+      "height": 1688,
+      "sha256": "B4A1980C3679EB1AD976AAF8CC0869F20AF37C53E706D19E888716AB6BDBD61E"
+    },
+    {
+      "file": "b05a-time-taken.png",
+      "bytes": 58126,
+      "width": 780,
+      "height": 1688,
+      "sha256": "04A1666ECBEC01389A460204577ED2E64E7DE35F8C2EC9CDB2C2C6BB3BCFE650"
+    },
+    {
+      "file": "b05b-hold-expired.png",
+      "bytes": 64129,
+      "width": 780,
+      "height": 1688,
+      "sha256": "4F91466B5F3E7A15952B170857D36089C1B05E1C02C7E5729D7A880AC27ACAF0"
+    },
+    {
+      "file": "b05c-no-times.png",
+      "bytes": 55613,
+      "width": 780,
+      "height": 1688,
+      "sha256": "227A8872661590423FFF2BFF694F7F381D53706BCF4996A4F43B4A543BBACA36"
+    },
+    {
+      "file": "b06a-reschedule-review.png",
+      "bytes": 95620,
+      "width": 780,
+      "height": 1688,
+      "sha256": "6505A47A5BFC358C2BEA6A071E8D5D7F5023859EA7460F2C1B23B79A4F0AE8E3"
+    },
+    {
+      "file": "b06b-cancel-review.png",
+      "bytes": 86422,
+      "width": 780,
+      "height": 1688,
+      "sha256": "B5074E93DEBF16516616FFCCF72822D7E5DCF20DF6E0D1D22379DB52886B01EC"
+    },
+    {
+      "file": "b06c-rescheduled.png",
+      "bytes": 83932,
+      "width": 780,
+      "height": 1688,
+      "sha256": "BC66836675C25184DB4FCE5FBF5ABE9F4880F98E617AE54E3E6828FA379746BD"
+    },
+    {
+      "file": "b06d-cancelled.png",
+      "bytes": 86707,
+      "width": 780,
+      "height": 1688,
+      "sha256": "DD717CBE1D3032BC8B446B2EA6A6F9A3A1A3B5E4BCF73843A6FE8BCFDF1BCED3"
+    },
+    {
+      "file": "p01-meeting.png",
+      "bytes": 81038,
+      "width": 780,
+      "height": 1688,
+      "sha256": "0054C7AF034915439E26DDC7E7FDD8DFFB5A6B1BE4B88624111AB2FA351B2333"
+    },
+    {
+      "file": "p02-invoice.png",
+      "bytes": 76402,
+      "width": 780,
+      "height": 1688,
+      "sha256": "558AB094F977EAF91DE191EAF562CBE900F89A7B528566517E287F555AB7003E"
+    },
+    {
+      "file": "p03-reminders.png",
+      "bytes": 107546,
+      "width": 780,
+      "height": 1688,
+      "sha256": "E494C640E65EDF93A4A9521BFB792ACAB9AA2F569D7F771F14B927FB7F325855"
+    },
+    {
+      "file": "p04-client-prepayment.png",
+      "bytes": 83967,
+      "width": 780,
+      "height": 1688,
+      "sha256": "386C1A510ADAF938AD65E16388AE7B6504EAD07682B38A754CF70ED3FF649147"
+    },
+    {
+      "file": "p05a-payment-checking.png",
+      "bytes": 86858,
+      "width": 780,
+      "height": 1688,
+      "sha256": "B477236DDFFBB4E94FEDFD0BBF2CE30BF6F0A949EFA4D0A5042FC9798BE5C665"
+    },
+    {
+      "file": "p05b-prepayment-received.png",
+      "bytes": 86732,
+      "width": 780,
+      "height": 1688,
+      "sha256": "B6002930124C07D62D68FC6383D4F0E50C07501B9A46C2E3CE7C7393C341F6DD"
+    },
+    {
+      "file": "p05c-payment-failed.png",
+      "bytes": 83366,
+      "width": 780,
+      "height": 1688,
+      "sha256": "204BD5DB9E9CA8F03FFA4572C8548303B3F21868ACA4A3E6ACDBB8747DA31234"
+    },
+    {
+      "file": "p05d-payment-unknown.png",
+      "bytes": 84567,
+      "width": 780,
+      "height": 1688,
+      "sha256": "E9AB5041AC76396526F07D5D354CE42169F78D25137544C4CF0F82A30FC36B46"
+    },
+    {
+      "file": "p05e-payment-after-expiry.png",
+      "bytes": 94962,
+      "width": 780,
+      "height": 1688,
+      "sha256": "9A38A89F1E6A6A0441D5926DAFBC0A6CAFC378F28B3193763E6E473BCF0D889D"
+    },
+    {
+      "file": "r01-today.png",
+      "bytes": 79466,
+      "width": 780,
+      "height": 1688,
+      "sha256": "AF7D32EC3BA6158427F35A3041F501E47761D6E1CA59D46597EF6141EC731B08"
+    },
+    {
+      "file": "r02-client.png",
+      "bytes": 76707,
+      "width": 780,
+      "height": 1688,
+      "sha256": "E8ABAB888DDE423C85D462F9B57A0F6D7C65B8B9CFCABAA36D78F811193767E6"
+    },
+    {
+      "file": "r03-message.png",
+      "bytes": 83352,
+      "width": 780,
+      "height": 1688,
+      "sha256": "73584717AB4F1DBAC8C77F77E1B92EF74A349F255FAD21D71CA971CF7636B2B9"
+    },
+    {
+      "file": "r04a-sent.png",
+      "bytes": 90064,
+      "width": 780,
+      "height": 1688,
+      "sha256": "7A664278FB43A4B6885A2F72E5A717CC46DF0BCDEC3B40EC503FEA75A9E37515"
+    },
+    {
+      "file": "r04b-send-error.png",
+      "bytes": 93511,
+      "width": 780,
+      "height": 1688,
+      "sha256": "2548A0B47778CCBB92FD9887B721D77D57F021019AB87E0FB159D734E4756460"
+    },
+    {
+      "file": "r04c-send-unknown.png",
+      "bytes": 95378,
+      "width": 780,
+      "height": 1688,
+      "sha256": "6502DC14A941132985C0EF44CF7A487DE9954B868C259EB777CAD176C43D4D00"
+    }
+  ]
+}

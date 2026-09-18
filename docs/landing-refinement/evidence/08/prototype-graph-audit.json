@@ -1,0 +1,13 @@
+{
+  "date": "2026-09-18",
+  "screens": 26,
+  "edges": 49,
+  "flowEntries": 9,
+  "reachable": 26,
+  "unreachable": [],
+  "invalidEdges": [],
+  "allFinal": true,
+  "sizes": true,
+  "originalGuardMatch": true,
+  "browserPlayback": "NOT_VERIFIED: browser requires Figma login; actual stored reactions inspected via authenticated Figma connector"
+}

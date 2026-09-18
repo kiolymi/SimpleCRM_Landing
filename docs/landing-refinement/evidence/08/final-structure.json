@@ -1,0 +1,937 @@
+{
+  "page": "1648:18212",
+  "sections": [
+    {
+      "id": "1649:18212",
+      "name": "01 — Вернуться к клиенту · концепция",
+      "placeholder": false
+    },
+    {
+      "id": "1649:18214",
+      "name": "02 — Предоплата и встреча · концепция",
+      "placeholder": false
+    },
+    {
+      "id": "1649:18216",
+      "name": "03 — Выбрать время по ссылке · концепция",
+      "placeholder": false
+    }
+  ],
+  "screens": [
+    {
+      "id": "1650:18212",
+      "name": "R01 / Сегодня / Следующий контакт",
+      "section": "1649:18212",
+      "width": 390,
+      "height": 844,
+      "placeholder": false,
+      "fonts": [
+        "Inter"
+      ],
+      "links": [
+        {
+          "id": "1654:18260",
+          "visible": true,
+          "actions": [
+            {
+              "type": "NODE",
+              "to": "1650:18330",
+              "navigation": "NAVIGATE"
+            }
+          ]
+        },
+        {
+          "id": "1654:18269",
+          "visible": true,
+          "actions": [
+            {
+              "type": "NODE",
+              "to": "1650:18330",
+              "navigation": "NAVIGATE"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1650:18330",
+      "name": "R02 / Клиент / История",
+      "section": "1649:18212",
+      "width": 390,
+      "height": 844,
+      "placeholder": false,
+      "fonts": [
+        "Inter"
+      ],
+      "links": [
+        {
+          "id": "1650:18335",
+          "visible": true,
+          "actions": [
+            {
+              "type": "NODE",
+              "to": "1650:18212",
+              "navigation": "NAVIGATE"
+            }
+          ]
+        },
+        {
+          "id": "1650:18355",
+          "visible": true,
+          "actions": [
+            {
+              "type": "NODE",
+              "to": "1650:18499",
+              "navigation": "NAVIGATE"
+            }
+          ]
+        },
+        {
+          "id": "1650:18361",
+          "visible": true,
+          "actions": [
+            {
+              "type": "NODE",
+              "to": "1651:18252",
+              "navigation": "NAVIGATE"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1650:18499",
+      "name": "R03 / Сообщение / Черновик",
+      "section": "1649:18212",
+      "width": 390,
+      "height": 844,
+      "placeholder": false,
+      "fonts": [
+        "Inter"
+      ],
+      "links": [
+        {
+          "id": "1650:18534",
+          "visible": true,
+          "actions": [
+            {
+              "type": "NODE",
+              "to": "1650:18330",
+              "navigation": "NAVIGATE"
+            }
+          ]
+        },
+        {
+          "id": "1660:18269",
+          "visible": true,
+          "actions": [
+            {
+              "type": "NODE",
+              "to": "1669:18305",
+              "navigation": "NAVIGATE"
+            }
+          ]
+        },
+        {
+          "id": "1660:18271",
+          "visible": true,
+          "actions": [
+            {
+              "type": "NODE",
+              "to": "1650:18330",
+              "navigation": "NAVIGATE"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1669:18305",
+      "name": "R04a / Сообщение / Отправлено",
+      "section": "1649:18212",
+      "width": 390,
+      "height": 844,
+      "placeholder": false,
+      "fonts": [
+        "Inter"
+      ],
+      "links": [
+        {
+          "id": "1669:18340",
+          "visible": true,
+          "actions": [
+            {
+              "type": "NODE",
+              "to": "1650:18330",
+              "navigation": "NAVIGATE"
+            }
+          ]
+        },
+        {
+          "id": "1669:18356",
+          "visible": true,
+          "actions": [
+            {
+              "type": "NODE",
+              "to": "1650:18330",
+              "navigation": "NAVIGATE"
+            }
+          ]
+        },
+        {
+          "id": "1669:18357",
+          "visible": true,
+          "actions": [
+            {
+              "type": "NODE",
+              "to": "1650:18212",
+              "navigation": "NAVIGATE"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1669:18365",
+      "name": "R04b / Сообщение / Ошибка",
+      "section": "1649:18212",
+      "width": 390,
+      "height": 844,
+      "placeholder": false,
+      "fonts": [
+        "Inter"
+      ],
+      "links": [
+        {
+          "id": "1669:18400",
+          "visible": true,
+          "actions": [
+            {
+              "type": "NODE",
+              "to": "1650:18499",
+              "navigation": "NAVIGATE"
+            }
+          ]
+        },
+        {
+          "id": "1669:18416",
+          "visible": true,
+          "actions": [
+            {
+              "type": "NODE",
+              "to": "1650:18499",
+              "navigation": "NAVIGATE"
+            }
+          ]
+        },
+        {
+          "id": "1669:18417",
+          "visible": true,
+          "actions": [
+            {
+              "type": "NODE",
+              "to": "1650:18212",
+              "navigation": "NAVIGATE"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1669:18425",
+      "name": "R04c / Сообщение / Статус неизвестен",
+      "section": "1649:18212",
+      "width": 390,
+      "height": 844,
+      "placeholder": false,
+      "fonts": [
+        "Inter"
+      ],
+      "links": [
+        {
+          "id": "1669:18460",
+          "visible": true,
+          "actions": [
+            {
+              "type": "NODE",
+              "to": "1650:18330",
+              "navigation": "NAVIGATE"
+            }
+          ]
+        },
+        {
+          "id": "1669:18476",
+          "visible": true,
+          "actions": [
+            {
+              "type": "NODE",
+              "to": "1669:18305",
+              "navigation": "NAVIGATE"
+            }
+          ]
+        },
+        {
+          "id": "1669:18477",
+          "visible": true,
+          "actions": [
+            {
+              "type": "NODE",
+              "to": "1650:18212",
+              "navigation": "NAVIGATE"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1651:18252",
+      "name": "P01 / Встреча / Предоплата отдельно",
+      "section": "1649:18214",
+      "width": 390,
+      "height": 844,
+      "placeholder": false,
+      "fonts": [
+        "Inter"
+      ],
+      "links": [
+        {
+          "id": "1651:18273",
+          "visible": true,
+          "actions": [
+            {
+              "type": "NODE",
+              "to": "1651:18298",
+              "navigation": "NAVIGATE"
+            }
+          ]
+        },
+        {
+          "id": "1651:18284",
+          "visible": true,
+          "actions": [
+            {
+              "type": "NODE",
+              "to": "1650:18330",
+              "navigation": "NAVIGATE"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1651:18298",
+      "name": "P02 / Счёт / Предоплата",
+      "section": "1649:18214",
+      "width": 390,
+      "height": 844,
+      "placeholder": false,
+      "fonts": [
+        "Inter"
+      ],
+      "links": [
+        {
+          "id": "1651:18328",
+          "visible": true,
+          "actions": [
+            {
+              "type": "NODE",
+              "to": "1651:18350",
+              "navigation": "NAVIGATE"
+            }
+          ]
+        },
+        {
+          "id": "1651:18329",
+          "visible": true,
+          "actions": [
+            {
+              "type": "NODE",
+              "to": "1651:18252",
+              "navigation": "NAVIGATE"
+            }
+          ]
+        },
+        {
+          "id": "1651:18330",
+          "visible": true,
+          "actions": [
+            {
+              "type": "NODE",
+              "to": "1665:18275",
+              "navigation": "NAVIGATE"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1651:18350",
+      "name": "P03 / Настройки / Напоминания",
+      "section": "1649:18214",
+      "width": 390,
+      "height": 844,
+      "placeholder": false,
+      "fonts": [
+        "Inter"
+      ],
+      "links": [
+        {
+          "id": "1651:18397",
+          "visible": true,
+          "actions": [
+            {
+              "type": "NODE",
+              "to": "1651:18298",
+              "navigation": "NAVIGATE"
+            }
+          ]
+        },
+        {
+          "id": "1664:18273",
+          "visible": true,
+          "actions": [
+            {
+              "type": "NODE",
+              "to": "1651:18298",
+              "navigation": "NAVIGATE"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1665:18275",
+      "name": "P04 / Клиент / Предоплата",
+      "section": "1649:18214",
+      "width": 390,
+      "height": 844,
+      "placeholder": false,
+      "fonts": [
+        "Inter"
+      ],
+      "links": [
+        {
+          "id": "1666:18299",
+          "visible": true,
+          "actions": [
+            {
+              "type": "NODE",
+              "to": "1671:18323",
+              "navigation": "NAVIGATE"
+            }
+          ]
+        },
+        {
+          "id": "1666:18301",
+          "visible": true,
+          "actions": [
+            {
+              "type": "NODE",
+              "to": "1665:18273",
+              "navigation": "NAVIGATE"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1671:18323",
+      "name": "P05a / Клиент / Проверяем оплату",
+      "section": "1649:18214",
+      "width": 390,
+      "height": 844,
+      "placeholder": false,
+      "fonts": [
+        "Inter"
+      ],
+      "links": [
+        {
+          "id": "1671:18330",
+          "visible": true,
+          "actions": [
+            {
+              "type": "NODE",
+              "to": "1671:18339",
+              "navigation": "NAVIGATE"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1671:18339",
+      "name": "P05b / Клиент / Предоплата получена",
+      "section": "1649:18214",
+      "width": 390,
+      "height": 844,
+      "placeholder": false,
+      "fonts": [
+        "Inter"
+      ],
+      "links": [
+        {
+          "id": "1671:18346",
+          "visible": true,
+          "actions": [
+            {
+              "type": "NODE",
+              "to": "1665:18274",
+              "navigation": "NAVIGATE"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1671:18355",
+      "name": "P05c / Клиент / Оплата не прошла",
+      "section": "1649:18214",
+      "width": 390,
+      "height": 844,
+      "placeholder": false,
+      "fonts": [
+        "Inter"
+      ],
+      "links": [
+        {
+          "id": "1671:18362",
+          "visible": true,
+          "actions": [
+            {
+              "type": "NODE",
+              "to": "1665:18275",
+              "navigation": "NAVIGATE"
+            }
+          ]
+        },
+        {
+          "id": "1671:18363",
+          "visible": true,
+          "actions": [
+            {
+              "type": "NODE",
+              "to": "1665:18275",
+              "navigation": "NAVIGATE"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1671:18371",
+      "name": "P05d / Клиент / Результат неизвестен",
+      "section": "1649:18214",
+      "width": 390,
+      "height": 844,
+      "placeholder": false,
+      "fonts": [
+        "Inter"
+      ],
+      "links": [
+        {
+          "id": "1671:18378",
+          "visible": true,
+          "actions": [
+            {
+              "type": "NODE",
+              "to": "1671:18339",
+              "navigation": "NAVIGATE"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1679:18385",
+      "name": "P05e / Клиент / Оплата после истечения удержания",
+      "section": "1649:18214",
+      "width": 390,
+      "height": 844,
+      "placeholder": false,
+      "fonts": [
+        "Inter"
+      ],
+      "links": [
+        {
+          "id": "1679:18392",
+          "visible": true,
+          "actions": [
+            {
+              "type": "NODE",
+              "to": "1665:18272",
+              "navigation": "NAVIGATE"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1665:18272",
+      "name": "B02 / Клиент / Выбор времени",
+      "section": "1649:18216",
+      "width": 390,
+      "height": 844,
+      "placeholder": false,
+      "fonts": [
+        "Inter"
+      ],
+      "links": [
+        {
+          "id": "1667:18289",
+          "visible": true,
+          "actions": [
+            {
+              "type": "NODE",
+              "to": "1674:18347",
+              "navigation": "NAVIGATE"
+            }
+          ]
+        },
+        {
+          "id": "1666:18285",
+          "visible": true,
+          "actions": [
+            {
+              "type": "NODE",
+              "to": "1665:18273",
+              "navigation": "NAVIGATE"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1665:18273",
+      "name": "B03 / Клиент / Проверка записи",
+      "section": "1649:18216",
+      "width": 390,
+      "height": 844,
+      "placeholder": false,
+      "fonts": [
+        "Inter"
+      ],
+      "links": [
+        {
+          "id": "1668:18303",
+          "visible": true,
+          "actions": [
+            {
+              "type": "NODE",
+              "to": "1665:18275",
+              "navigation": "NAVIGATE"
+            }
+          ]
+        },
+        {
+          "id": "1668:18305",
+          "visible": true,
+          "actions": [
+            {
+              "type": "NODE",
+              "to": "1665:18272",
+              "navigation": "NAVIGATE"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1665:18274",
+      "name": "B04 / Клиент / Подтверждение",
+      "section": "1649:18216",
+      "width": 390,
+      "height": 844,
+      "placeholder": false,
+      "fonts": [
+        "Inter"
+      ],
+      "links": [
+        {
+          "id": "1668:18317",
+          "visible": true,
+          "actions": [
+            {
+              "type": "NODE",
+              "to": "1674:18392",
+              "navigation": "NAVIGATE"
+            }
+          ]
+        },
+        {
+          "id": "1668:18319",
+          "visible": true,
+          "actions": [
+            {
+              "type": "NODE",
+              "to": "1674:18407",
+              "navigation": "NAVIGATE"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1674:18347",
+      "name": "B05a / Клиент / Время заняли",
+      "section": "1649:18216",
+      "width": 390,
+      "height": 844,
+      "placeholder": false,
+      "fonts": [
+        "Inter"
+      ],
+      "links": [
+        {
+          "id": "1674:18353",
+          "visible": true,
+          "actions": [
+            {
+              "type": "NODE",
+              "to": "1665:18272",
+              "navigation": "NAVIGATE"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1674:18362",
+      "name": "B05b / Клиент / Удержание истекло",
+      "section": "1649:18216",
+      "width": 390,
+      "height": 844,
+      "placeholder": false,
+      "fonts": [
+        "Inter"
+      ],
+      "links": [
+        {
+          "id": "1674:18368",
+          "visible": true,
+          "actions": [
+            {
+              "type": "NODE",
+              "to": "1679:18385",
+              "navigation": "NAVIGATE"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1674:18377",
+      "name": "B05c / Клиент / Нет свободного времени",
+      "section": "1649:18216",
+      "width": 390,
+      "height": 844,
+      "placeholder": false,
+      "fonts": [
+        "Inter"
+      ],
+      "links": [
+        {
+          "id": "1674:18383",
+          "visible": true,
+          "actions": [
+            {
+              "type": "NODE",
+              "to": "1665:18272",
+              "navigation": "NAVIGATE"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1674:18392",
+      "name": "B06a / Клиент / Проверить перенос",
+      "section": "1649:18216",
+      "width": 390,
+      "height": 844,
+      "placeholder": false,
+      "fonts": [
+        "Inter"
+      ],
+      "links": [
+        {
+          "id": "1674:18398",
+          "visible": true,
+          "actions": [
+            {
+              "type": "NODE",
+              "to": "1674:18422",
+              "navigation": "NAVIGATE"
+            }
+          ]
+        },
+        {
+          "id": "1674:18399",
+          "visible": true,
+          "actions": [
+            {
+              "type": "NODE",
+              "to": "1665:18274",
+              "navigation": "NAVIGATE"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1674:18407",
+      "name": "B06b / Клиент / Проверить отмену",
+      "section": "1649:18216",
+      "width": 390,
+      "height": 844,
+      "placeholder": false,
+      "fonts": [
+        "Inter"
+      ],
+      "links": [
+        {
+          "id": "1674:18413",
+          "visible": true,
+          "actions": [
+            {
+              "type": "NODE",
+              "to": "1674:18437",
+              "navigation": "NAVIGATE"
+            }
+          ]
+        },
+        {
+          "id": "1674:18414",
+          "visible": true,
+          "actions": [
+            {
+              "type": "NODE",
+              "to": "1665:18274",
+              "navigation": "NAVIGATE"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1674:18422",
+      "name": "B06c / Клиент / Встреча перенесена",
+      "section": "1649:18216",
+      "width": 390,
+      "height": 844,
+      "placeholder": false,
+      "fonts": [
+        "Inter"
+      ],
+      "links": [
+        {
+          "id": "1674:18428",
+          "visible": true,
+          "actions": [
+            {
+              "type": "NODE",
+              "to": "1665:18272",
+              "navigation": "NAVIGATE"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1674:18437",
+      "name": "B06d / Клиент / Встреча отменена",
+      "section": "1649:18216",
+      "width": 390,
+      "height": 844,
+      "placeholder": false,
+      "fonts": [
+        "Inter"
+      ],
+      "links": [
+        {
+          "id": "1674:18443",
+          "visible": true,
+          "actions": [
+            {
+              "type": "NODE",
+              "to": "1665:18272",
+              "navigation": "NAVIGATE"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1674:18452",
+      "name": "B01 / Специалист / Время для записи",
+      "section": "1649:18216",
+      "width": 390,
+      "height": 844,
+      "placeholder": false,
+      "fonts": [
+        "Inter"
+      ],
+      "links": [
+        {
+          "id": "1674:18484",
+          "visible": true,
+          "actions": [
+            {
+              "type": "NODE",
+              "to": "1650:18212",
+              "navigation": "NAVIGATE"
+            }
+          ]
+        },
+        {
+          "id": "1675:18406",
+          "visible": true,
+          "actions": [
+            {
+              "type": "NODE",
+              "to": "1665:18272",
+              "navigation": "NAVIGATE"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "flows": [
+    {
+      "nodeId": "1650:18212",
+      "name": "01 · Вернуться к клиенту"
+    },
+    {
+      "nodeId": "1651:18252",
+      "name": "02 · Предоплата и встреча"
+    },
+    {
+      "nodeId": "1674:18452",
+      "name": "03 · Запись по ссылке"
+    },
+    {
+      "nodeId": "1669:18365",
+      "name": "Проверка · Ошибка отправки"
+    },
+    {
+      "nodeId": "1669:18425",
+      "name": "Проверка · Отправка неизвестна"
+    },
+    {
+      "nodeId": "1671:18355",
+      "name": "Проверка · Оплата не прошла"
+    },
+    {
+      "nodeId": "1671:18371",
+      "name": "Проверка · Оплата неизвестна"
+    },
+    {
+      "nodeId": "1674:18362",
+      "name": "Проверка · Истекло удержание"
+    },
+    {
+      "nodeId": "1674:18377",
+      "name": "Проверка · Нет свободных окон"
+    }
+  ]
+}

@@ -1,0 +1,180 @@
+{
+  "sources": [
+    {
+      "id": "522:6856",
+      "name": "iPhone / Today / Schedule / Default",
+      "hash": "8e71933a",
+      "length": 75809
+    },
+    {
+      "id": "682:11412",
+      "name": "iPhone / Client 360 / Overview",
+      "hash": "6bbdf0f9",
+      "length": 108137
+    },
+    {
+      "id": "683:11412",
+      "name": "iPhone / Client 360 / Activity",
+      "hash": "5fc80ced",
+      "length": 106172
+    },
+    {
+      "id": "597:8293",
+      "name": "Prototype / Active / Calendar / Meeting detail",
+      "hash": "1e085cff",
+      "length": 30464
+    },
+    {
+      "id": "617:8479",
+      "name": "Prototype / Active / Calendar / Meeting / Reminder",
+      "hash": "6c66d16d",
+      "length": 31147
+    },
+    {
+      "id": "621:8479",
+      "name": "Prototype / Active / Calendar / Meeting / Reminder sent",
+      "hash": "1fc9349a",
+      "length": 21290
+    },
+    {
+      "id": "621:8517",
+      "name": "Prototype / Active / Calendar / Meeting / Reminder error",
+      "hash": "a9efa1b2",
+      "length": 32818
+    },
+    {
+      "id": "915:13113",
+      "name": "Prototype / Payments / Invoice",
+      "hash": "9315b4d4",
+      "length": 33276
+    },
+    {
+      "id": "905:13094",
+      "name": "Prototype / Settings / Notifications / Payments / Client Reminder On",
+      "hash": "4d7d0f8a",
+      "length": 39911
+    },
+    {
+      "id": "45:5",
+      "name": "03 — Components",
+      "hash": "1b6fae20",
+      "length": 1352122
+    }
+  ],
+  "originalPageChildren": [
+    {
+      "id": "45:4",
+      "name": "02 — Foundations"
+    },
+    {
+      "id": "45:5",
+      "name": "03 — Components"
+    },
+    {
+      "id": "45:6",
+      "name": "04 — iPhone screens"
+    },
+    {
+      "id": "45:8",
+      "name": "06 — Prototype flows"
+    },
+    {
+      "id": "45:10",
+      "name": "08 — Landing assets"
+    },
+    {
+      "id": "1152:14038",
+      "name": "10 — FINAL / 01 Сегодня"
+    },
+    {
+      "id": "1152:14039",
+      "name": "11 — FINAL / 02 Календарь и встречи"
+    },
+    {
+      "id": "1152:14040",
+      "name": "12 — FINAL / 03 Клиенты"
+    },
+    {
+      "id": "1152:14041",
+      "name": "13 — FINAL / 04 Сообщения"
+    },
+    {
+      "id": "1152:14042",
+      "name": "14 — FINAL / 05 Задачи и уведомления"
+    },
+    {
+      "id": "1152:14043",
+      "name": "15 — FINAL / 06 Файлы и итоги встреч"
+    },
+    {
+      "id": "1152:14044",
+      "name": "16 — FINAL / 07 Платежи"
+    },
+    {
+      "id": "1152:14045",
+      "name": "17 — FINAL / 08 Настройки и справочники"
+    },
+    {
+      "id": "1152:14046",
+      "name": "18 — SYSTEM / Оверлеи, sheets и клавиатуры"
+    },
+    {
+      "id": "1158:14038",
+      "name": "20 — USER STORIES / Все пользовательские пути"
+    },
+    {
+      "id": "1152:14047",
+      "name": "90 — ARCHIVE / Старые полноэкранные picker-экраны"
+    },
+    {
+      "id": "1152:14048",
+      "name": "91 — ARCHIVE / Исходные референсные экраны"
+    },
+    {
+      "id": "45:7",
+      "name": "93 — ARCHIVE / iPad screens (история)"
+    },
+    {
+      "id": "1152:14050",
+      "name": "95 — ARCHIVE / Прочее"
+    },
+    {
+      "id": "1416:16523",
+      "name": "00 — НАЧАТЬ ЗДЕСЬ / Обзор продукта"
+    },
+    {
+      "id": "1583:17503",
+      "name": "LANDING EXPORT / 25 VERIFIED SCREENS"
+    }
+  ],
+  "variables": {
+    "hash": "60d288eb",
+    "length": 27012
+  },
+  "textStyles": {
+    "hash": "533bbfaf",
+    "length": 2605
+  },
+  "paintStyles": {
+    "hash": "741638a5",
+    "length": 2
+  },
+  "effectStyles": {
+    "hash": "a5a3d344",
+    "length": 981
+  },
+  "effectNames": [
+    {
+      "id": "S:fb183ff7a893648c5b5215819d518db0aadb6798,",
+      "name": "Elevation/Floating"
+    },
+    {
+      "id": "S:7ded0c6e68916af206d2c665147a0776a66e590e,",
+      "name": "Elevation / Modal"
+    },
+    {
+      "id": "S:837fbfbfeb2d4dacb81bce595e8d882ea49ca21d,",
+      "name": "iOS / Glass"
+    }
+  ]
+}

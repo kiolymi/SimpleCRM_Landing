@@ -4,8 +4,8 @@
   "execution_mode": "goal",
   "target_branch": "codex/landing-practice-refinement",
   "base_commit": "ae375a73e4eec2349167d191a773a76811cda97e",
-  "current_stage": "08",
-  "next_action": "Этап 08: проверить Figma и создать изолированную рабочую область с копиями и новыми клиентскими экранами.",
+  "current_stage": "09",
+  "next_action": "Этап 09: проверить существующие фотографии и подготовить ограниченный набор responsive-экспортов Figma для трёх историй.",
   "last_updated": "2026-09-18",
   "active_goal_started": true,
   "publication_allowed": false,
@@ -75,21 +75,21 @@
     },
     {
       "id": "08",
+      "status": "passed",
+      "iterations": 1,
+      "reports": ["outputs/08-figma.md", "outputs/08-figma-manifest.json"],
+      "evidence": ["evidence/08/discovery.md", "evidence/08/original-fingerprints.json", "evidence/08/original-fingerprints-after.json", "evidence/08/token-discovery.json", "evidence/08/figma-audit.md", "evidence/08/prototype-graph-audit.json", "evidence/08/final-structure.json", "evidence/08/exports-manifest.json"],
+      "blockers": [],
+      "next_action": "26 экранов и 49 переходов проверены, PNG сохранены. Browser playback требует входа в Figma; реальные интеграции не подтверждены."
+    },
+    {
+      "id": "09",
       "status": "active",
       "iterations": 1,
       "reports": [],
       "evidence": [],
       "blockers": [],
-      "next_action": "Прочитать skills, проверить источники/текущие страницы, изолировать копии до изменения."
-    },
-    {
-      "id": "09",
-      "status": "pending",
-      "iterations": 0,
-      "reports": [],
-      "evidence": [],
-      "blockers": [],
-      "next_action": ""
+      "next_action": "Инвентаризация существующих фото и отбор Figma PNG; затем responsive media, alt и motion-протокол."
     },
     {
       "id": "10",
