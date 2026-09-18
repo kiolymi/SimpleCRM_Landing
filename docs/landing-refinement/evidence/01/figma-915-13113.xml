@@ -1,0 +1,37 @@
+<frame id="915:13113" name="Prototype / Payments / Invoice" x="120" y="1054" width="390" height="844">
+  <frame id="915:13114" name="Frame" x="296" y="15" width="74" height="16" />
+  <instance id="915:13120" name="iOS / Toolbar button / Back" x="8" y="53" width="44" height="44" />
+  <text id="915:13121" name="Счёт" x="85" y="63" width="220" height="24" />
+  <text id="915:13122" name="Отправить счёт" x="278" y="64" width="96" height="22" />
+  <rounded-rectangle id="915:13123" name="Rectangle" x="0" y="102" width="390" height="1" />
+  <frame id="915:13124" name="Frame" x="16" y="119" width="358" height="164" />
+  <text id="915:13125" name="Ожидает оплаты" x="32" y="136" width="160" height="18" />
+  <text id="915:13126" name="4 500 ₽" x="32" y="166" width="200" height="41" />
+  <text id="915:13127" name="Счёт №1048 · от 15 августа" x="32" y="216" width="300" height="19" />
+  <text id="915:13128" name="Срок оплаты: сегодня" x="32" y="243" width="300" height="19" />
+  <text id="915:13129" name="СОСТАВ СЧЁТА" x="32" y="307" width="150" height="16" />
+  <frame id="915:13130" name="Frame" x="16" y="333" width="358" height="78" />
+  <text id="915:13131" name="Проектная встреча" x="32" y="347" width="220" height="20" />
+  <text id="915:13132" name="15 августа · 50 минут" x="32" y="373" width="220" height="17" />
+  <text id="915:13133" name="4 500 ₽" x="278" y="359" width="72" height="20" />
+  <text id="915:13134" name="ПЛАТЕЛЬЩИК" x="32" y="435" width="120" height="16" />
+  <frame id="915:13135" name="Frame" x="16" y="461" width="358" height="64" />
+  <text id="915:13136" name="Петрова Е. С." x="32" y="474" width="220" height="20" />
+  <text id="915:13137" name="Клиент" x="32" y="498" width="220" height="17" />
+  <frame id="915:13138" name="Frame" x="16" y="684" width="358" height="52" />
+  <text id="915:13139" name="Принять оплату 4 500 ₽" x="16" y="699" width="358" height="21" />
+  <instance id="915:13140" name="iOS / Tab bar" x="0" y="761" width="390" height="83" hidden="true" />
+  <text id="915:13141" name="9:41" x="20" y="14" width="40" height="19" hidden="true" />
+  <rounded-rectangle id="915:13181" name="Home indicator / Original vector" x="128" y="831" width="134" height="5" />
+  <rounded-rectangle id="920:12947" name="Prototype / Send invoice" x="278" y="44" width="96" height="57" />
+  <rounded-rectangle id="921:12918" name="Prototype / Back payments" x="0" y="44" width="62" height="58" />
+  <rounded-rectangle id="921:12924" name="Prototype / Accept invoice" x="16" y="684" width="358" height="52" />
+  <rounded-rectangle id="1184:16651" name="Navigation / Tab / Today" x="0" y="761" width="78" height="83" />
+  <rounded-rectangle id="1184:16653" name="Navigation / Tab / Calendar" x="78" y="761" width="78" height="83" />
+  <rounded-rectangle id="1184:16655" name="Navigation / Tab / Clients" x="156" y="761" width="78" height="83" />
+  <rounded-rectangle id="1184:16657" name="Navigation / Tab / Messages" x="234" y="761" width="78" height="83" />
+  <rounded-rectangle id="1184:16659" name="Navigation / Tab / Tasks" x="312" y="761" width="78" height="83" />
+  <rounded-rectangle id="1318:16520" name="Safe area / White surface" x="0" y="0" width="390" height="47" />
+  <text id="1369:19782" name="Status / Time / Unified" x="20" y="14" width="40" height="18" />
+  <frame id="1369:19783" name="Status / Indicators / Unified" x="296" y="15" width="74" height="16" />
+</frame>

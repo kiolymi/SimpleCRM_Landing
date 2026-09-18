@@ -1,0 +1,66 @@
+<frame id="905:13094" name="Prototype / Settings / Notifications / Payments / Client Reminder On" x="1500" y="8526" width="390" height="844">
+  <vector id="905:13095" name="Vector" x="0" y="0" width="390" height="844" />
+  <vector id="905:13096" name="Vector" x="0" y="0" width="390" height="101" />
+  <text id="905:13097" name="9:41" x="20" y="11" width="32" height="18" hidden="true" />
+  <text id="905:13098" name="● Wi-Fi 100%" x="302" y="14" width="79" height="15" hidden="true" />
+  <vector id="905:13099" name="Vector" x="19" y="61" width="6" height="12" />
+  <text id="905:13100" name="Назад" x="35" y="57" width="48" height="19" />
+  <text id="905:13101" name="Платежи" x="85" y="63" width="220" height="24" />
+  <vector id="905:13102" name="Vector" x="0" y="100.5" width="390" height="0" />
+  <text id="905:13103" name="Сигналы об оплате без ручной проверки." x="16" y="119" width="265" height="16" />
+  <vector id="905:13104" name="Vector" x="16" y="154" width="358" height="408" />
+  <vector id="905:13105" name="Vector" x="24" y="168" width="40" height="40" />
+  <vector id="905:13106" name="Vector" x="34" y="177" width="20" height="24" />
+  <text id="905:13107" name="Все уведомления" x="76" y="171" width="141" height="19" />
+  <text id="905:13108" name="Включены" x="76" y="194" width="67" height="16" />
+  <vector id="905:13109" name="Vector" x="348" y="182" width="6" height="12" hidden="true" />
+  <vector id="905:13110" name="Vector" x="76" y="222" width="282" height="0" />
+  <vector id="905:13111" name="Vector" x="24" y="236" width="40" height="40" />
+  <vector id="905:13112" name="Vector" x="36" y="250" width="16" height="12" />
+  <text id="905:13113" name="Перед оплатой" x="76" y="239" width="121" height="19" />
+  <text id="905:13114" name="За 1 день" x="76" y="262" width="60" height="16" />
+  <vector id="905:13115" name="Vector" x="348" y="250" width="6" height="12" hidden="true" />
+  <vector id="905:13116" name="Vector" x="76" y="290" width="282" height="0" />
+  <vector id="905:13117" name="Vector" x="24" y="304" width="40" height="40" />
+  <vector id="905:13118" name="Vector" x="36" y="314" width="16" height="16" />
+  <text id="905:13119" name="Если просрочено" x="76" y="307" width="139" height="19" />
+  <text id="905:13120" name="Раз в день" x="76" y="330" width="68" height="16" />
+  <vector id="905:13121" name="Vector" x="348" y="318" width="6" height="12" hidden="true" />
+  <vector id="905:13122" name="Vector" x="76" y="358" width="282" height="0" />
+  <vector id="905:13123" name="Vector" x="24" y="372" width="40" height="40" />
+  <vector id="905:13124" name="Vector" x="37" y="382" width="14" height="20" />
+  <text id="905:13125" name="После оплаты" x="76" y="375" width="114" height="19" />
+  <text id="905:13126" name="Без сигнала" x="76" y="398" width="78" height="16" />
+  <vector id="905:13127" name="Vector" x="348" y="386" width="6" height="12" hidden="true" />
+  <vector id="905:13128" name="Vector" x="76" y="426" width="282" height="0" />
+  <vector id="905:13129" name="Vector" x="24" y="440" width="40" height="40" />
+  <vector id="905:13130" name="Vector" x="35" y="454" width="18" height="12" />
+  <text id="905:13131" name="Напоминать клиенту" x="76" y="443" width="168" height="19" />
+  <text id="905:13132" name="Автоматически" x="76" y="466" width="99" height="16" />
+  <vector id="905:13133" name="Vector" x="348" y="454" width="6" height="12" hidden="true" />
+  <vector id="905:13134" name="Vector" x="76" y="494" width="282" height="0" />
+  <vector id="905:13135" name="Vector" x="24" y="508" width="40" height="40" />
+  <vector id="905:13136" name="Vector" x="35" y="516.2293090820312" width="19" height="19.770706176757812" />
+  <text id="905:13137" name="Тихие часы" x="76" y="511" width="93" height="19" />
+  <text id="905:13138" name="Учитываются" x="76" y="534" width="85" height="16" />
+  <vector id="905:13139" name="Vector" x="348" y="522" width="6" height="12" hidden="true" />
+  <vector id="905:13143" name="Vector" x="128" y="831" width="134" height="5" />
+  <rounded-rectangle id="905:13144" name="Back in Notifications" x="0" y="44" width="95" height="57" />
+  <rounded-rectangle id="905:13145" name="Switch / Payments On / Track" x="307" y="173" width="51" height="31" />
+  <ellipse id="905:13146" name="Switch / Payments On / Knob" x="329" y="175" width="27" height="27" />
+  <rounded-rectangle id="905:13147" name="Hotspot / Toggle Payments On" x="299" y="165" width="67" height="47" />
+  <rounded-rectangle id="905:13148" name="Payment / Before due / Track" x="307" y="241" width="51" height="31" />
+  <ellipse id="905:13149" name="Payment / Before due / Knob" x="329" y="243" width="27" height="27" />
+  <rounded-rectangle id="905:13150" name="Payment / Overdue / Track" x="307" y="309" width="51" height="31" />
+  <ellipse id="905:13151" name="Payment / Overdue / Knob" x="329" y="311" width="27" height="27" />
+  <rounded-rectangle id="905:13152" name="Payment / Paid / Track" x="307" y="377" width="51" height="31" />
+  <ellipse id="905:13153" name="Payment / Paid / Knob" x="309" y="379" width="27" height="27" />
+  <rounded-rectangle id="905:13154" name="Payment / Client reminder / Track" x="307" y="445" width="51" height="31" />
+  <ellipse id="905:13155" name="Payment / Client reminder / Knob" x="329" y="447" width="27" height="27" />
+  <rounded-rectangle id="905:13156" name="Payment / Quiet hours / Track" x="307" y="513" width="51" height="31" />
+  <ellipse id="905:13157" name="Payment / Quiet hours / Knob" x="329" y="515" width="27" height="27" />
+  <rounded-rectangle id="906:12906" name="Switch / Payment / Client reminder / Restore" x="299" y="437" width="67" height="47" />
+  <rounded-rectangle id="1318:16593" name="Safe area / White surface" x="0" y="0" width="390" height="47" />
+  <text id="1369:20652" name="Status / Time / Unified" x="20" y="14" width="40" height="18" />
+  <frame id="1369:20653" name="Status / Indicators / Unified" x="296" y="15" width="74" height="16" />
+</frame>

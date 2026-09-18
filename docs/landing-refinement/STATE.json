@@ -1,32 +1,32 @@
 {
   "schema_version": 1,
-  "package_status": "prepared",
-  "execution_mode": "not_started",
+  "package_status": "running",
+  "execution_mode": "goal",
   "target_branch": "codex/landing-practice-refinement",
   "base_commit": "ae375a73e4eec2349167d191a773a76811cda97e",
-  "current_stage": "01",
-  "next_action": "Прочитать GOAL.md/COMMON.md и выполнить только stages/01-baseline.md после явного запуска пользователем.",
+  "current_stage": "02",
+  "next_action": "Этап 02: прочитать DOCX и составить реестр продуктовых обещаний.",
   "last_updated": "2026-09-18",
-  "active_goal_started": false,
+  "active_goal_started": true,
   "publication_allowed": false,
   "stages": [
     {
       "id": "01",
-      "status": "pending",
-      "iterations": 0,
-      "reports": [],
-      "evidence": [],
+      "status": "passed",
+      "iterations": 1,
+      "reports": ["outputs/01-baseline.md"],
+      "evidence": ["evidence/01/browser-baseline.md", "evidence/01/figma-reminder.png", "evidence/01/figma-682-11412.xml", "evidence/01/figma-915-13113.xml", "evidence/01/figma-905-13094.xml"],
       "blockers": [],
-      "next_action": ""
+      "next_action": "Исходник сохранён; полный регрессионный аудит в этапе 12."
     },
     {
       "id": "02",
-      "status": "pending",
-      "iterations": 0,
+      "status": "active",
+      "iterations": 1,
       "reports": [],
       "evidence": [],
       "blockers": [],
-      "next_action": ""
+      "next_action": "Прочитать DOCX, код и Figma; отделить design_only от работающих функций."
     },
     {
       "id": "03",
