@@ -4,8 +4,8 @@
   "execution_mode": "goal",
   "target_branch": "codex/landing-practice-refinement",
   "base_commit": "ae375a73e4eec2349167d191a773a76811cda97e",
-  "current_stage": "02",
-  "next_action": "Этап 02: прочитать DOCX и составить реестр продуктовых обещаний.",
+  "current_stage": "07",
+  "next_action": "Этап 07: таблицы состояний трёх сценариев, две роли и минимальный набор Figma.",
   "last_updated": "2026-09-18",
   "active_goal_started": true,
   "publication_allowed": false,
@@ -21,57 +21,57 @@
     },
     {
       "id": "02",
+      "status": "passed",
+      "iterations": 1,
+      "reports": ["outputs/02-product-truth.md"],
+      "evidence": ["evidence/02/source-review.md"],
+      "blockers": [],
+      "next_action": "Обновить F01–F16 при получении подтверждений владельца; до этого применять безопасные формулировки."
+    },
+    {
+      "id": "03",
+      "status": "passed",
+      "iterations": 1,
+      "reports": ["outputs/03-audience.md"],
+      "evidence": ["evidence/03/audience-audit.md"],
+      "blockers": [],
+      "next_action": "Использовать ситуации и словарь; исследование пользователей отдельно, не имитировать."
+    },
+    {
+      "id": "04",
+      "status": "passed",
+      "iterations": 1,
+      "reports": ["outputs/04-conversion.md"],
+      "evidence": ["evidence/04/conversion-audit.md"],
+      "blockers": [],
+      "next_action": "Спецификация готова; CTA_DELIVERY остаётся заблокирован Q002/Q004, реальная отправка не выполнена."
+    },
+    {
+      "id": "05",
+      "status": "passed",
+      "iterations": 1,
+      "reports": ["outputs/05-structure.md"],
+      "evidence": ["evidence/05/structure-audit.md"],
+      "blockers": [],
+      "next_action": "Структура выбрана; I003 закрывается только после реализации и browser retest."
+    },
+    {
+      "id": "06",
+      "status": "passed",
+      "iterations": 1,
+      "reports": ["outputs/06-copy.md"],
+      "evidence": ["evidence/06/copy-audit.md"],
+      "blockers": [],
+      "next_action": "Тексты готовы для макетов и локального внедрения; готовность продукта/канала не подтверждена."
+    },
+    {
+      "id": "07",
       "status": "active",
       "iterations": 1,
       "reports": [],
       "evidence": [],
       "blockers": [],
-      "next_action": "Прочитать DOCX, код и Figma; отделить design_only от работающих функций."
-    },
-    {
-      "id": "03",
-      "status": "pending",
-      "iterations": 0,
-      "reports": [],
-      "evidence": [],
-      "blockers": [],
-      "next_action": ""
-    },
-    {
-      "id": "04",
-      "status": "pending",
-      "iterations": 0,
-      "reports": [],
-      "evidence": [],
-      "blockers": [],
-      "next_action": ""
-    },
-    {
-      "id": "05",
-      "status": "pending",
-      "iterations": 0,
-      "reports": [],
-      "evidence": [],
-      "blockers": [],
-      "next_action": ""
-    },
-    {
-      "id": "06",
-      "status": "pending",
-      "iterations": 0,
-      "reports": [],
-      "evidence": [],
-      "blockers": [],
-      "next_action": ""
-    },
-    {
-      "id": "07",
-      "status": "pending",
-      "iterations": 0,
-      "reports": [],
-      "evidence": [],
-      "blockers": [],
-      "next_action": ""
+      "next_action": "Описать полный путь и ошибки, сверить вымышленные суммы/даты и границы демонстрации."
     },
     {
       "id": "08",
