@@ -1,0 +1,149 @@
+{
+  "schema_version": 1,
+  "package_status": "prepared",
+  "execution_mode": "not_started",
+  "target_branch": "codex/landing-practice-refinement",
+  "base_commit": "ae375a73e4eec2349167d191a773a76811cda97e",
+  "current_stage": "01",
+  "next_action": "Прочитать GOAL.md/COMMON.md и выполнить только stages/01-baseline.md после явного запуска пользователем.",
+  "last_updated": "2026-09-18",
+  "active_goal_started": false,
+  "publication_allowed": false,
+  "stages": [
+    {
+      "id": "01",
+      "status": "pending",
+      "iterations": 0,
+      "reports": [],
+      "evidence": [],
+      "blockers": [],
+      "next_action": ""
+    },
+    {
+      "id": "02",
+      "status": "pending",
+      "iterations": 0,
+      "reports": [],
+      "evidence": [],
+      "blockers": [],
+      "next_action": ""
+    },
+    {
+      "id": "03",
+      "status": "pending",
+      "iterations": 0,
+      "reports": [],
+      "evidence": [],
+      "blockers": [],
+      "next_action": ""
+    },
+    {
+      "id": "04",
+      "status": "pending",
+      "iterations": 0,
+      "reports": [],
+      "evidence": [],
+      "blockers": [],
+      "next_action": ""
+    },
+    {
+      "id": "05",
+      "status": "pending",
+      "iterations": 0,
+      "reports": [],
+      "evidence": [],
+      "blockers": [],
+      "next_action": ""
+    },
+    {
+      "id": "06",
+      "status": "pending",
+      "iterations": 0,
+      "reports": [],
+      "evidence": [],
+      "blockers": [],
+      "next_action": ""
+    },
+    {
+      "id": "07",
+      "status": "pending",
+      "iterations": 0,
+      "reports": [],
+      "evidence": [],
+      "blockers": [],
+      "next_action": ""
+    },
+    {
+      "id": "08",
+      "status": "pending",
+      "iterations": 0,
+      "reports": [],
+      "evidence": [],
+      "blockers": [],
+      "next_action": ""
+    },
+    {
+      "id": "09",
+      "status": "pending",
+      "iterations": 0,
+      "reports": [],
+      "evidence": [],
+      "blockers": [],
+      "next_action": ""
+    },
+    {
+      "id": "10",
+      "status": "pending",
+      "iterations": 0,
+      "reports": [],
+      "evidence": [],
+      "blockers": [],
+      "next_action": ""
+    },
+    {
+      "id": "11",
+      "status": "pending",
+      "iterations": 0,
+      "reports": [],
+      "evidence": [],
+      "blockers": [],
+      "next_action": ""
+    },
+    {
+      "id": "12",
+      "status": "pending",
+      "iterations": 0,
+      "reports": [],
+      "evidence": [],
+      "blockers": [],
+      "next_action": ""
+    },
+    {
+      "id": "13",
+      "status": "pending",
+      "iterations": 0,
+      "reports": [],
+      "evidence": [],
+      "blockers": [],
+      "next_action": ""
+    },
+    {
+      "id": "14",
+      "status": "pending",
+      "iterations": 0,
+      "reports": [],
+      "evidence": [],
+      "blockers": [],
+      "next_action": ""
+    },
+    {
+      "id": "15",
+      "status": "pending",
+      "iterations": 0,
+      "reports": [],
+      "evidence": [],
+      "blockers": [],
+      "next_action": ""
+    }
+  ]
+}

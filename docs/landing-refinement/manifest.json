@@ -1,0 +1,261 @@
+{
+  "schema_version": 1,
+  "created_at": "2026-09-18",
+  "workspace": "C:/Users/Irene/Documents/ChatGPT/фигма ряз",
+  "target_branch": "codex/landing-practice-refinement",
+  "base_ref": "main",
+  "base_commit": "ae375a73e4eec2349167d191a773a76811cda97e",
+  "mode": "sequential",
+  "publication_allowed": false,
+  "stages": [
+    {
+      "id": "01",
+      "title": "Зафиксировать исходник и защитить прежнюю работу",
+      "prompt": "stages/01-baseline.md",
+      "depends_on": [],
+      "inputs": [
+        "CONTEXT.md"
+      ],
+      "outputs": [
+        "outputs/01-baseline.md"
+      ]
+    },
+    {
+      "id": "02",
+      "title": "Сопоставить встречу, сайт, Figma и реальные возможности",
+      "prompt": "stages/02-product-truth.md",
+      "depends_on": [
+        "01"
+      ],
+      "inputs": [
+        "outputs/01-baseline.md",
+        "CONTEXT.md"
+      ],
+      "outputs": [
+        "outputs/02-product-truth.md"
+      ]
+    },
+    {
+      "id": "03",
+      "title": "Описать аудиторию и узнаваемые ситуации",
+      "prompt": "stages/03-audience.md",
+      "depends_on": [
+        "02"
+      ],
+      "inputs": [
+        "outputs/02-product-truth.md"
+      ],
+      "outputs": [
+        "outputs/03-audience.md"
+      ]
+    },
+    {
+      "id": "04",
+      "title": "Спроектировать реальный следующий шаг посетителя",
+      "prompt": "stages/04-conversion.md",
+      "depends_on": [
+        "03"
+      ],
+      "inputs": [
+        "outputs/02-product-truth.md",
+        "outputs/03-audience.md"
+      ],
+      "outputs": [
+        "outputs/04-conversion.md"
+      ]
+    },
+    {
+      "id": "05",
+      "title": "Собрать структуру главной и убрать повторы",
+      "prompt": "stages/05-structure.md",
+      "depends_on": [
+        "04"
+      ],
+      "inputs": [
+        "outputs/02-product-truth.md",
+        "outputs/03-audience.md",
+        "outputs/04-conversion.md"
+      ],
+      "outputs": [
+        "outputs/05-structure.md"
+      ]
+    },
+    {
+      "id": "06",
+      "title": "Подготовить тексты главной и общую терминологию",
+      "prompt": "stages/06-copy.md",
+      "depends_on": [
+        "05"
+      ],
+      "inputs": [
+        "outputs/02-product-truth.md",
+        "outputs/03-audience.md",
+        "outputs/04-conversion.md",
+        "outputs/05-structure.md"
+      ],
+      "outputs": [
+        "outputs/06-copy.md"
+      ]
+    },
+    {
+      "id": "07",
+      "title": "Спроектировать три сценария и состояния",
+      "prompt": "stages/07-flows.md",
+      "depends_on": [
+        "06"
+      ],
+      "inputs": [
+        "outputs/02-product-truth.md",
+        "outputs/04-conversion.md",
+        "outputs/05-structure.md",
+        "outputs/06-copy.md"
+      ],
+      "outputs": [
+        "outputs/07-flows.md"
+      ]
+    },
+    {
+      "id": "08",
+      "title": "Доработать Figma в отдельной рабочей области",
+      "prompt": "stages/08-figma.md",
+      "depends_on": [
+        "07"
+      ],
+      "inputs": [
+        "outputs/01-baseline.md",
+        "outputs/02-product-truth.md",
+        "outputs/06-copy.md",
+        "outputs/07-flows.md",
+        "CONTEXT.md"
+      ],
+      "outputs": [
+        "outputs/08-figma.md",
+        "outputs/08-figma-manifest.json"
+      ]
+    },
+    {
+      "id": "09",
+      "title": "Подготовить изображения и осмысленную анимацию",
+      "prompt": "stages/09-visuals.md",
+      "depends_on": [
+        "08"
+      ],
+      "inputs": [
+        "outputs/05-structure.md",
+        "outputs/06-copy.md",
+        "outputs/08-figma.md",
+        "outputs/08-figma-manifest.json"
+      ],
+      "outputs": [
+        "outputs/09-visuals.md",
+        "outputs/09-assets-manifest.json"
+      ]
+    },
+    {
+      "id": "10",
+      "title": "Реализовать главную в новой ветке",
+      "prompt": "stages/10-landing.md",
+      "depends_on": [
+        "09"
+      ],
+      "inputs": [
+        "outputs/01-baseline.md",
+        "outputs/02-product-truth.md",
+        "outputs/04-conversion.md",
+        "outputs/05-structure.md",
+        "outputs/06-copy.md",
+        "outputs/07-flows.md",
+        "outputs/08-figma.md",
+        "outputs/09-visuals.md"
+      ],
+      "outputs": [
+        "outputs/10-landing.md"
+      ]
+    },
+    {
+      "id": "11",
+      "title": "Согласовать остальные страницы и навигацию",
+      "prompt": "stages/11-secondary-pages.md",
+      "depends_on": [
+        "10"
+      ],
+      "inputs": [
+        "outputs/02-product-truth.md",
+        "outputs/04-conversion.md",
+        "outputs/06-copy.md",
+        "outputs/10-landing.md"
+      ],
+      "outputs": [
+        "outputs/11-secondary-pages.md"
+      ]
+    },
+    {
+      "id": "12",
+      "title": "Провести функциональную и визуальную проверку",
+      "prompt": "stages/12-quality.md",
+      "depends_on": [
+        "11"
+      ],
+      "inputs": [
+        "ACCEPTANCE.md",
+        "outputs/10-landing.md",
+        "outputs/11-secondary-pages.md"
+      ],
+      "outputs": [
+        "outputs/12-quality.md"
+      ]
+    },
+    {
+      "id": "13",
+      "title": "Подготовить локальную версию к показу на форуме",
+      "prompt": "stages/13-forum.md",
+      "depends_on": [
+        "12"
+      ],
+      "inputs": [
+        "outputs/02-product-truth.md",
+        "outputs/04-conversion.md",
+        "outputs/12-quality.md"
+      ],
+      "outputs": [
+        "outputs/13-forum.md"
+      ]
+    },
+    {
+      "id": "14",
+      "title": "Выполнить цикл независимых по задаче аудитов и исправлений",
+      "prompt": "stages/14-refinement-loop.md",
+      "depends_on": [
+        "13"
+      ],
+      "inputs": [
+        "ACCEPTANCE.md",
+        "ISSUES.md",
+        "DECISIONS.md",
+        "outputs/12-quality.md",
+        "outputs/13-forum.md"
+      ],
+      "outputs": [
+        "outputs/14-refinement-loop.md"
+      ]
+    },
+    {
+      "id": "15",
+      "title": "Передать проверенный результат и сохранить историю",
+      "prompt": "stages/15-handoff.md",
+      "depends_on": [
+        "14"
+      ],
+      "inputs": [
+        "STATE.json",
+        "ACCEPTANCE.md",
+        "ISSUES.md",
+        "DECISIONS.md",
+        "outputs/14-refinement-loop.md"
+      ],
+      "outputs": [
+        "outputs/15-handoff.md"
+      ]
+    }
+  ]
+}
