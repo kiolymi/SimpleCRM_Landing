@@ -4,8 +4,8 @@
   "execution_mode": "goal",
   "target_branch": "codex/landing-practice-refinement",
   "base_commit": "ae375a73e4eec2349167d191a773a76811cda97e",
-  "current_stage": "09",
-  "next_action": "Этап 09: проверить существующие фотографии и подготовить ограниченный набор responsive-экспортов Figma для трёх историй.",
+  "current_stage": "10",
+  "next_action": "Этап 10: реализовать три видимые истории и честные CTA на существующем статическом сайте, сохраняя видео hero.",
   "last_updated": "2026-09-18",
   "active_goal_started": true,
   "publication_allowed": false,
@@ -84,21 +84,21 @@
     },
     {
       "id": "09",
+      "status": "passed",
+      "iterations": 1,
+      "reports": ["outputs/09-visuals.md", "outputs/09-assets-manifest.json"],
+      "evidence": ["evidence/09/media-audit.md", "evidence/09/media-build.json"],
+      "blockers": [],
+      "next_action": "12 точных экранов и3 фото подготовлены, исходники сохранены. Компоновка и motion проверяются в10/12."
+    },
+    {
+      "id": "10",
       "status": "active",
       "iterations": 1,
       "reports": [],
       "evidence": [],
       "blockers": [],
-      "next_action": "Инвентаризация существующих фото и отбор Figma PNG; затем responsive media, alt и motion-протокол."
-    },
-    {
-      "id": "10",
-      "status": "pending",
-      "iterations": 0,
-      "reports": [],
-      "evidence": [],
-      "blockers": [],
-      "next_action": ""
+      "next_action": "Прочитать stage10 и обязательные skills, проверить текущие компоненты/стили, внедрить новую структуру и локально протестировать."
     },
     {
       "id": "11",

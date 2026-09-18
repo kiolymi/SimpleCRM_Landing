@@ -1,0 +1,488 @@
+{
+  "schema_version": 1,
+  "status": "prepared",
+  "date": "2026-09-18",
+  "code_checkpoint": "9093627",
+  "new_ai_generations": 0,
+  "reason": "Reuse accepted people photos; missing exact UI supplied by isolated Figma exports, not AI.",
+  "assets": [
+    {
+      "id": "r01-today",
+      "kind": "figma-screen",
+      "source": "docs/landing-refinement/evidence/08/exports/r01-today.png",
+      "alt": "Следующий контакт: напоминание специалисту написать Елене 18 сентября",
+      "variants": [
+        {
+          "path": "assets/practice-refinement/r01-today-780.webp",
+          "width": 780,
+          "height": 1688,
+          "bytes": 28770,
+          "sha256": "2a43a2d71732a69d8fd9a9f4aebb7135e7f76c7f27551deef5a546c31a27e3da",
+          "format": "webp"
+        }
+      ],
+      "fallback": {
+        "path": "assets/practice-refinement/r01-today.png",
+        "width": 780,
+        "height": 1688,
+        "bytes": 79466,
+        "sha256": "af7d32ec3ba6158427f35a3041f501e47761d6e1ca59d46597ef6141ec731b08",
+        "format": "png"
+      },
+      "display": "contain; never crop UI",
+      "pixelEquality780": true
+    },
+    {
+      "id": "r02-client",
+      "kind": "figma-screen",
+      "source": "docs/landing-refinement/evidence/08/exports/r02-client.png",
+      "alt": "Пример карточки Елены: последняя договорённость и следующий контакт",
+      "variants": [
+        {
+          "path": "assets/practice-refinement/r02-client-780.webp",
+          "width": 780,
+          "height": 1688,
+          "bytes": 28368,
+          "sha256": "32b84ee1c508601356eb0eef9b16174a85843f436be4991048eb146f68c2839e",
+          "format": "webp"
+        }
+      ],
+      "fallback": {
+        "path": "assets/practice-refinement/r02-client.png",
+        "width": 780,
+        "height": 1688,
+        "bytes": 76707,
+        "sha256": "e8abab888dde423c85d462f9b57a0f6d7c65b8b9cfcabaa36d78f811193767e6",
+        "format": "png"
+      },
+      "display": "contain; never crop UI",
+      "pixelEquality780": true
+    },
+    {
+      "id": "r03-message",
+      "kind": "figma-screen",
+      "source": "docs/landing-refinement/evidence/08/exports/r03-message.png",
+      "alt": "Пример сообщения Елене перед следующей встречей; отправку решает специалист",
+      "variants": [
+        {
+          "path": "assets/practice-refinement/r03-message-780.webp",
+          "width": 780,
+          "height": 1688,
+          "bytes": 31102,
+          "sha256": "cba54caac13a77192dbeafb5ea37d34a63baf597f52b5d2974082316134b1b2b",
+          "format": "webp"
+        }
+      ],
+      "fallback": {
+        "path": "assets/practice-refinement/r03-message.png",
+        "width": 780,
+        "height": 1688,
+        "bytes": 83352,
+        "sha256": "73584717ab4f1dbac8c77f77e1b92ef74a349f255fad21d71ca971cf7636b2b9",
+        "format": "png"
+      },
+      "display": "contain; never crop UI",
+      "pixelEquality780": true
+    },
+    {
+      "id": "r04a-sent",
+      "kind": "figma-screen",
+      "source": "docs/landing-refinement/evidence/08/exports/r04a-sent.png",
+      "alt": "Вымышленный результат отправки сообщения, не подтверждение прочтения",
+      "variants": [
+        {
+          "path": "assets/practice-refinement/r04a-sent-780.webp",
+          "width": 780,
+          "height": 1688,
+          "bytes": 33046,
+          "sha256": "bdfeb6ae10b8407a1907917583f8c723bf980af801e3abcb3cada8da4ef8d608",
+          "format": "webp"
+        }
+      ],
+      "fallback": {
+        "path": "assets/practice-refinement/r04a-sent.png",
+        "width": 780,
+        "height": 1688,
+        "bytes": 90064,
+        "sha256": "7a664278fb43a4b6885a2f72e5a717cc46df0bcdec3b40ec503fea75a9e37515",
+        "format": "png"
+      },
+      "display": "contain; never crop UI",
+      "pixelEquality780": true
+    },
+    {
+      "id": "p01-meeting",
+      "kind": "figma-screen",
+      "source": "docs/landing-refinement/evidence/08/exports/p01-meeting.png",
+      "alt": "Пример встречи: 22 сентября, 15:00, предоплата ещё не получена",
+      "variants": [
+        {
+          "path": "assets/practice-refinement/p01-meeting-780.webp",
+          "width": 780,
+          "height": 1688,
+          "bytes": 30260,
+          "sha256": "568eebca489257bdc8791e8f082954b04e1996db6b10da0e94058bbe83e39817",
+          "format": "webp"
+        }
+      ],
+      "fallback": {
+        "path": "assets/practice-refinement/p01-meeting.png",
+        "width": 780,
+        "height": 1688,
+        "bytes": 81038,
+        "sha256": "0054c7af034915439e26ddc7e7fdd8dffb5a6b1be4b88624111ab2fa351b2333",
+        "format": "png"
+      },
+      "display": "contain; never crop UI",
+      "pixelEquality780": true
+    },
+    {
+      "id": "p02-invoice",
+      "kind": "figma-screen",
+      "source": "docs/landing-refinement/evidence/08/exports/p02-invoice.png",
+      "alt": "Пример счёта на предоплату 1 000 рублей к консультации",
+      "variants": [
+        {
+          "path": "assets/practice-refinement/p02-invoice-780.webp",
+          "width": 780,
+          "height": 1688,
+          "bytes": 27064,
+          "sha256": "41280e7d7fb97a6555b6d96315c27a5c8b2a43040963b13902b3b18645ab7823",
+          "format": "webp"
+        }
+      ],
+      "fallback": {
+        "path": "assets/practice-refinement/p02-invoice.png",
+        "width": 780,
+        "height": 1688,
+        "bytes": 76402,
+        "sha256": "558ab094f977eaf91de191eaf562cbe900f89a7b528566517e287f555ab7003e",
+        "format": "png"
+      },
+      "display": "contain; never crop UI",
+      "pixelEquality780": true
+    },
+    {
+      "id": "p04-client-prepayment",
+      "kind": "figma-screen",
+      "source": "docs/landing-refinement/evidence/08/exports/p04-client-prepayment.png",
+      "alt": "Клиент проверяет пример предоплаты: 1 000 рублей из 3 000, остаток 2 000",
+      "variants": [
+        {
+          "path": "assets/practice-refinement/p04-client-prepayment-780.webp",
+          "width": 780,
+          "height": 1688,
+          "bytes": 29924,
+          "sha256": "514599c15fff73aeb4731f85bee1370e471d859dafbbda49a809d5a7ef9844a2",
+          "format": "webp"
+        }
+      ],
+      "fallback": {
+        "path": "assets/practice-refinement/p04-client-prepayment.png",
+        "width": 780,
+        "height": 1688,
+        "bytes": 83967,
+        "sha256": "386c1a510adaf938ad65e16388ae7b6504ead07682b38a754cf70ed3ff649147",
+        "format": "png"
+      },
+      "display": "contain; never crop UI",
+      "pixelEquality780": true
+    },
+    {
+      "id": "p05b-prepayment-received",
+      "kind": "figma-screen",
+      "source": "docs/landing-refinement/evidence/08/exports/p05b-prepayment-received.png",
+      "alt": "В примере предоплата получена: 1 000 рублей, остаток 2 000",
+      "variants": [
+        {
+          "path": "assets/practice-refinement/p05b-prepayment-received-780.webp",
+          "width": 780,
+          "height": 1688,
+          "bytes": 30756,
+          "sha256": "c4c6c5f32d2909664868786254f7e853286a988d8b101388a5f58eece49dffa3",
+          "format": "webp"
+        }
+      ],
+      "fallback": {
+        "path": "assets/practice-refinement/p05b-prepayment-received.png",
+        "width": 780,
+        "height": 1688,
+        "bytes": 86732,
+        "sha256": "b6002930124c07d62d68fc6383d4f0e50c07501b9a46c2e3ce7c7393c341f6dd",
+        "format": "png"
+      },
+      "display": "contain; never crop UI",
+      "pixelEquality780": true
+    },
+    {
+      "id": "b01-availability",
+      "kind": "figma-screen",
+      "source": "docs/landing-refinement/evidence/08/exports/b01-availability.png",
+      "alt": "Специалист выбирает часы для записи на консультацию",
+      "variants": [
+        {
+          "path": "assets/practice-refinement/b01-availability-780.webp",
+          "width": 780,
+          "height": 1688,
+          "bytes": 29812,
+          "sha256": "a8518f84449d97a98abd5ef2cdcd9aa4a1756fd370a80d4c86478101d7406a98",
+          "format": "webp"
+        }
+      ],
+      "fallback": {
+        "path": "assets/practice-refinement/b01-availability.png",
+        "width": 780,
+        "height": 1688,
+        "bytes": 84473,
+        "sha256": "9c5b7f805a820c2fc331405238f7fa96423c51d815ae744880a33037c1e68d65",
+        "format": "png"
+      },
+      "display": "contain; never crop UI",
+      "pixelEquality780": true
+    },
+    {
+      "id": "b02-client-time",
+      "kind": "figma-screen",
+      "source": "docs/landing-refinement/evidence/08/exports/b02-client-time.png",
+      "alt": "Клиент выбирает время консультации: 22 сентября, Москва, UTC+3",
+      "variants": [
+        {
+          "path": "assets/practice-refinement/b02-client-time-780.webp",
+          "width": 780,
+          "height": 1688,
+          "bytes": 23982,
+          "sha256": "2daca854fba2816d6c1921d84d531416dce6238229dfe8e44d11de55d6b4eb04",
+          "format": "webp"
+        }
+      ],
+      "fallback": {
+        "path": "assets/practice-refinement/b02-client-time.png",
+        "width": 780,
+        "height": 1688,
+        "bytes": 71312,
+        "sha256": "57140075f819c10e671f39d07631fef82ff2e26d6c9bfa7e9f8906821176c97d",
+        "format": "png"
+      },
+      "display": "contain; never crop UI",
+      "pixelEquality780": true
+    },
+    {
+      "id": "b03-client-review",
+      "kind": "figma-screen",
+      "source": "docs/landing-refinement/evidence/08/exports/b03-client-review.png",
+      "alt": "Клиент проверяет вымышленную запись перед предоплатой",
+      "variants": [
+        {
+          "path": "assets/practice-refinement/b03-client-review-780.webp",
+          "width": 780,
+          "height": 1688,
+          "bytes": 28906,
+          "sha256": "739a32879ee00b40e1d86f1743a522fb78a68363e9f1f3f674b0bf6f5b1cba69",
+          "format": "webp"
+        }
+      ],
+      "fallback": {
+        "path": "assets/practice-refinement/b03-client-review.png",
+        "width": 780,
+        "height": 1688,
+        "bytes": 82034,
+        "sha256": "ba286cd43f695ddb3b130c2f46cdf8101aabe86ba64eb7ee6d31d4729fb818ab",
+        "format": "png"
+      },
+      "display": "contain; never crop UI",
+      "pixelEquality780": true
+    },
+    {
+      "id": "b04-client-confirmed",
+      "kind": "figma-screen",
+      "source": "docs/landing-refinement/evidence/08/exports/b04-client-confirmed.png",
+      "alt": "Пример подтверждённой записи на 22 сентября, 15:00–15:50",
+      "variants": [
+        {
+          "path": "assets/practice-refinement/b04-client-confirmed-780.webp",
+          "width": 780,
+          "height": 1688,
+          "bytes": 30150,
+          "sha256": "978755b239f970993b01bd862f1a7c80a7f32a28a88658a30dab17a0a8198482",
+          "format": "webp"
+        }
+      ],
+      "fallback": {
+        "path": "assets/practice-refinement/b04-client-confirmed.png",
+        "width": 780,
+        "height": 1688,
+        "bytes": 83644,
+        "sha256": "b4a1980c3679eb1ad976aaf8cc0869f20af37c53e706d19e888716ab6bdbd61e",
+        "format": "png"
+      },
+      "display": "contain; never crop UI",
+      "pixelEquality780": true
+    },
+    {
+      "id": "practice-psychologist",
+      "kind": "existing-illustrative-photo",
+      "source": "assets/editorial/practice-psychologist.jpg",
+      "alt": "Психолог слушает взрослого клиента в кабинете",
+      "variants": [
+        {
+          "path": "assets/practice-refinement/practice-psychologist-640.webp",
+          "width": 640,
+          "height": 427,
+          "bytes": 33260,
+          "sha256": "775925b5869ec4a48b073b632fac9dc528b54a484f2a4b11bd619592566058ae",
+          "format": "webp"
+        },
+        {
+          "path": "assets/practice-refinement/practice-psychologist-960.webp",
+          "width": 960,
+          "height": 640,
+          "bytes": 57554,
+          "sha256": "38f2faa7205c1a83399fd43ddf7c8d143d885279dfa9f2d16b80efb54bef336c",
+          "format": "webp"
+        }
+      ],
+      "fallback": {
+        "path": "assets/editorial/practice-psychologist.jpg",
+        "width": 1536,
+        "height": 1024,
+        "bytes": 231659,
+        "sha256": "50b114da1559f20a149fa8766682735f0c922d69ddf9e56d6dd61740ad21073f"
+      },
+      "display": "3:2; no additional crop",
+      "provenance": "Existing AI-generated illustration from original branch; not an actual customer testimonial"
+    },
+    {
+      "id": "practice-trainer",
+      "kind": "existing-illustrative-photo",
+      "source": "assets/editorial/practice-trainer.jpg",
+      "alt": "Тренер и клиентка обсуждают занятие в студии",
+      "variants": [
+        {
+          "path": "assets/practice-refinement/practice-trainer-640.webp",
+          "width": 640,
+          "height": 427,
+          "bytes": 32974,
+          "sha256": "2df7a2c6279682b97cc4ccdfc314ae4c58569b5549bcc6b4df166bc4eabee8e1",
+          "format": "webp"
+        },
+        {
+          "path": "assets/practice-refinement/practice-trainer-960.webp",
+          "width": 960,
+          "height": 640,
+          "bytes": 57206,
+          "sha256": "1f6d3590f43f534eb6becdee99c510f404d5fe1f6af53241c9a64c0ab88ed14e",
+          "format": "webp"
+        }
+      ],
+      "fallback": {
+        "path": "assets/editorial/practice-trainer.jpg",
+        "width": 1536,
+        "height": 1024,
+        "bytes": 243119,
+        "sha256": "69ab5580dc15cc78e675745bce381f838874debed2cbb06729c5ce8cf92bce6b"
+      },
+      "display": "3:2; no additional crop",
+      "provenance": "Existing AI-generated illustration from original branch; not an actual customer testimonial"
+    },
+    {
+      "id": "practice-mentor",
+      "kind": "existing-illustrative-photo",
+      "source": "assets/editorial/practice-mentor.jpg",
+      "alt": "Наставница и взрослая ученица работают за столом",
+      "variants": [
+        {
+          "path": "assets/practice-refinement/practice-mentor-640.webp",
+          "width": 640,
+          "height": 427,
+          "bytes": 34750,
+          "sha256": "01bcac91d5364065a0a09773d30ca30e5a5abf6549ae3665a2b369e24602c0cd",
+          "format": "webp"
+        },
+        {
+          "path": "assets/practice-refinement/practice-mentor-960.webp",
+          "width": 960,
+          "height": 640,
+          "bytes": 60082,
+          "sha256": "06e2b0beeeda6ece47fca8c6f76716a3e4a683a5853a92031187f41c52a73bc5",
+          "format": "webp"
+        }
+      ],
+      "fallback": {
+        "path": "assets/editorial/practice-mentor.jpg",
+        "width": 1536,
+        "height": 1024,
+        "bytes": 242355,
+        "sha256": "093b7b024173f39cd9d2a6b82868828f13e8095001f12f7f1f4592c494d943a6"
+      },
+      "display": "3:2; no additional crop",
+      "provenance": "Existing AI-generated illustration from original branch; not an actual customer testimonial"
+    }
+  ],
+  "protected_media": [
+    {
+      "path": "video-background/Simple-CRM-Warped-Honeycomb-Light-12s.mp4",
+      "bytes": 2779148,
+      "sha256": "03764985e1eee1f89deb6b5a7a9eebdcca4a5cc7595ffd531f1f28e4eead679e"
+    },
+    {
+      "path": "video-background/warped-preview-00s.jpg",
+      "bytes": 122906,
+      "sha256": "ca5aabda1ef4e9abb1cf32bd674e8926273ea2ea1f6a5db636d26ce779d19c11"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "return",
+      "assets": [
+        "practice-psychologist",
+        "r02-client",
+        "r01-today",
+        "r03-message",
+        "r04a-sent"
+      ],
+      "composition": "Human photo behind/alongside independent phone; no UI burned into photo; mobile one active frame with adjacent accessible text",
+      "loading": "Only current step; no preloading hidden step frames"
+    },
+    {
+      "id": "payment",
+      "assets": [
+        "p02-invoice",
+        "p04-client-prepayment",
+        "p05b-prepayment-received"
+      ],
+      "composition": "Large invoice phone and separate readable amount/status callout; no duplicate decorative money illustration",
+      "loading": "Only current step"
+    },
+    {
+      "id": "booking",
+      "assets": [
+        "b01-availability",
+        "b02-client-time",
+        "b03-client-review",
+        "b04-client-confirmed"
+      ],
+      "composition": "Practitioner view and client page labelled separately; narrow layout single active view and persistent role caption",
+      "loading": "Only current step"
+    },
+    {
+      "id": "client-context",
+      "assets": [
+        "r02-client",
+        "p01-meeting"
+      ],
+      "composition": "One client context and 3 short HTML annotations; meeting detail only on demand"
+    }
+  ],
+  "motion": {
+    "hover": "Fine pointer only: mild glow on separate overlay, no hover outline; phone transform only. Existing hero motion unchanged.",
+    "enterExit": "Optional 240–400ms opacity; slow device scale 1→1.025 over 1200ms both directions. Reserve media aspect ratio.",
+    "noHover": "All labels/actions visible; native buttons",
+    "reducedMotion": "Disable decorative transforms/glints and movement; state changes immediately with text unchanged",
+    "focus": "Keep visible keyboard focus; never substitute hover glow"
+  },
+  "verification": "evidence/09/media-audit.md",
+  "settings": {
+    "screens": "lossless WebP780 for mobile and desktop + identical PNG fallback; 390 candidate was larger and rejected",
+    "people": "WebP640/960, quality84, no crop"
+  }
+}
