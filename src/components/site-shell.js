@@ -1,6 +1,7 @@
 import { primaryNavigation, resourceNavigation, siteConfig } from '../data/site.js?v=20260906-30';
 import { iconSvg } from './icons.js?v=20260824-28';
 import { createSearchForm } from './search-form.js';
+import { accessConfig } from '../data/access.js?v=refinement3';
 
 export function createSiteShell(mainContent) {
   const shell = document.createElement('div');
@@ -11,13 +12,13 @@ export function createSiteShell(mainContent) {
 
 function createHeader() {
   const header = document.createElement('header');
+  const isPracticeHome = document.body.dataset.page === 'home';
   header.className = 'site-header';
   header.innerHTML = `
     <div class="container site-header__inner">
       ${brandMarkup()}
       <nav class="desktop-nav" aria-label="Основная навигация">
-        ${resourceMenuMarkup()}
-        ${primaryNavigation.map(navLinkMarkup).join('')}
+        ${isPracticeHome ? [{ label: 'Как помогает', href: '#practice' }, { label: 'О продукте', href: '/about/' }, { label: 'Вопросы', href: '/faq/' }, { label: 'Поддержка', href: '/support/' }].map(navLinkMarkup).join('') : resourceMenuMarkup() + primaryNavigation.map(navLinkMarkup).join('')}
       </nav>
       <a class="header-app-store" href="https://apps.apple.com/" target="_blank" rel="noopener noreferrer" aria-label="Скачать Simple CRM с App Store">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15.4 3.2c-.9.1-2 .7-2.6 1.4-.6.7-1.1 1.8-.9 2.8 1 .1 2-.5 2.6-1.2.6-.8 1-1.8.9-3Zm3.4 9.1c0-2.5 2-3.7 2.1-3.8-1.1-1.7-2.9-1.9-3.6-1.9-1.5-.2-3 .9-3.8.9-.8 0-2-.9-3.3-.9-1.7 0-3.3 1-4.2 2.6-1.8 3.1-.5 7.7 1.3 10.2.9 1.2 1.9 2.6 3.3 2.6 1.3-.1 1.8-.8 3.4-.8s2 .8 3.4.8c1.4 0 2.3-1.3 3.1-2.5 1.1-1.6 1.6-3.2 1.6-3.3-.1 0-3.1-1.2-3.1-4.7Z" /></svg>
@@ -27,7 +28,22 @@ function createHeader() {
     </div>
   `;
 
+  if (isPracticeHome) {
+    const access = header.querySelector('.header-app-store');
+    access.className = 'button header-practice-access';
+    access.href = accessConfig.primary.href;
+    access.textContent = accessConfig.primary.label;
+    access.removeAttribute('target');
+    access.removeAttribute('rel');
+    access.removeAttribute('aria-label');
+  }
+
   const mobileDialog = createMobileMenu();
+  if (isPracticeHome) {
+    const access = mobileDialog.querySelector('.mobile-menu__cta');
+    access.href = accessConfig.primary.href;
+    access.textContent = accessConfig.primary.label;
+  }
   header.append(mobileDialog);
   wireResourceMenu(header);
   wireMobileMenu(header, mobileDialog);
@@ -72,6 +88,7 @@ function createMobileMenu() {
 
 function wireResourceMenu(header) {
   const menu = header.querySelector('.resource-menu');
+  if (!menu) return;
   const trigger = menu.querySelector('.desktop-nav__trigger');
   const panel = menu.querySelector('.resource-menu__panel');
   panel.id = 'resource-menu-panel';
@@ -121,6 +138,7 @@ function wireMobileMenu(header, dialog) {
   const trigger = header.querySelector('.menu-toggle');
   const closeButton = dialog.querySelector('button');
   let openingScrollY = 0;
+  let followingLink = false;
   const close = () => {
     if (!dialog.open || dialog.classList.contains('is-closing')) return;
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
@@ -145,6 +163,7 @@ function wireMobileMenu(header, dialog) {
     timeout = window.setTimeout(finish, 560);
   };
   trigger.addEventListener('click', () => {
+    followingLink = false;
     openingScrollY = window.scrollY;
     trigger.setAttribute('aria-expanded', 'true');
     dialog.showModal();
@@ -152,13 +171,18 @@ function wireMobileMenu(header, dialog) {
     closeButton.focus();
   });
   closeButton.addEventListener('click', close);
-  dialog.querySelectorAll('a[href]').forEach(link => link.addEventListener('click', close));
+  dialog.querySelectorAll('a[href]').forEach(link => link.addEventListener('click', () => {
+    followingLink = true;
+    close();
+  }));
   dialog.addEventListener('click', (event) => { if (event.target === dialog) close(); });
   dialog.addEventListener('close', () => {
     dialog.classList.remove('is-visible', 'is-closing');
     trigger.setAttribute('aria-expanded', 'false');
-    trigger.focus({ preventScroll: true });
-    window.scrollTo({ top: openingScrollY, behavior: 'instant' });
+    if (!followingLink) {
+      trigger.focus({ preventScroll: true });
+      window.scrollTo({ top: openingScrollY, behavior: 'instant' });
+    }
   });
   dialog.addEventListener('cancel', (event) => { event.preventDefault(); close(); });
   dialog.addEventListener('keydown', (event) => {

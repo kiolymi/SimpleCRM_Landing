@@ -4,9 +4,9 @@
   "execution_mode": "goal",
   "target_branch": "codex/landing-practice-refinement",
   "base_commit": "ae375a73e4eec2349167d191a773a76811cda97e",
-  "current_stage": "10",
-  "next_action": "Этап 10: реализовать три видимые истории и честные CTA на существующем статическом сайте, сохраняя видео hero.",
-  "last_updated": "2026-09-18",
+  "current_stage": "11",
+  "next_action": "Этап 11: согласовать остальные страницы и навигацию с новой честной главной; убрать неподтверждённые цены, trial и ложные CTA.",
+  "last_updated": "2026-09-19",
   "active_goal_started": true,
   "publication_allowed": false,
   "stages": [
@@ -93,21 +93,21 @@
     },
     {
       "id": "10",
-      "status": "active",
-      "iterations": 1,
-      "reports": [],
-      "evidence": [],
+      "status": "passed",
+      "iterations": 2,
+      "reports": ["outputs/10-landing.md"],
+      "evidence": ["evidence/10/first-slice.md", "evidence/10/browser-audit.md", "evidence/10/media-fallback.html", "evidence/10/responsive-preview.html"],
       "blockers": [],
-      "next_action": "Прочитать stage10 и обязательные skills, проверить текущие компоненты/стили, внедрить новую структуру и локально протестировать."
+      "next_action": "Главная внедрена и проверена локально; реальные внешние CTA остаются зависимостями Q002/Q004."
     },
     {
       "id": "11",
-      "status": "pending",
+      "status": "active",
       "iterations": 0,
       "reports": [],
       "evidence": [],
       "blockers": [],
-      "next_action": ""
+      "next_action": "Прочитать stages/11-secondary-pages.md, проверить secondary pages, убрать неподтверждённые коммерческие обещания и синхронизировать навигацию."
     },
     {
       "id": "12",

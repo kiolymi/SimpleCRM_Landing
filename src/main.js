@@ -1,6 +1,6 @@
 import { addPageArtwork } from './components/page-art.js?v=20260908-83';
-import { createSiteShell } from './components/site-shell.js?v=20260908-56';
-import { createHomePage } from './components/home-sections.js?v=refinement1';
+import { createSiteShell } from './components/site-shell.js?v=refinement4';
+import { createHomePage } from './components/home-sections.js?v=refinement2';
 import { createAboutPage, createArticleLayout, createContentHubPage, createFaqPage, createPricingPage, createPrivacyPage, createReleasesPage, createSearchPage, createSupportPage } from './components/content-pages.js?v=practice16';
 import { pageMeta } from './data/site.js?v=practice16';
 import { createProductDeviceMockup } from './components/product-device-mockup.js?v=20260906-1';
@@ -31,12 +31,13 @@ if (['learn', 'how-to', 'announcements', 'article'].includes(pageKey)) {
 const page = pageMeta[pageKey] || pageMeta.home;
 // Replace stylesheet URLs after a visual release so GitHub Pages/Yandex cannot
 // keep mixing a fresh component file with an older cached theme file.
-const styleRelease = '20260909-practice16';
+const styleRelease = '20260919-refinement5';
 document.querySelectorAll('link[rel="stylesheet"][href*="styles/"]').forEach(link => {
   const href = link.getAttribute('href');
   if (!href) return;
   const url = new URL(href, window.location.href);
   url.searchParams.set('v', url.pathname.endsWith('/styles/private-practice.css') ? 'explore22' : styleRelease);
+  if (url.pathname.endsWith('/styles/practice-flows.css')) url.searchParams.set('v', 'refinement3');
   if (url.pathname.endsWith('/styles/about-layout.css')) url.searchParams.set('v', 'borderless-principles23');
   link.setAttribute('href', `${url.pathname}?${url.searchParams.toString()}`);
 });

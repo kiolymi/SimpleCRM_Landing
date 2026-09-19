@@ -1,0 +1,7 @@
+<!doctype html><html lang="ru"><head><meta charset="utf-8"><title>Локальный тест fallback изображений</title><style>body{font:16px system-ui}main{display:flex;gap:40px}section{width:260px}img{max-width:100%;height:auto}</style></head><body><h1>Тест двух ошибок загрузки</h1><main><section id="png"><h2>WebP отсутствует, PNG доступен</h2></section><section id="missing"><h2>Оба формата отсутствуют</h2></section></main><script type="module">
+import { createPracticeScreen } from '../../../../src/components/practice-media.js?v=refinement2';
+const png = createPracticeScreen('r02-client', 'Тест восстановления PNG', { loading: 'eager' });
+png.querySelector('source').srcset = './deliberately-missing.webp';
+document.querySelector('#png').append(png);
+document.querySelector('#missing').append(createPracticeScreen('deliberately-missing', 'Тест недоступного изображения', { loading: 'eager' }));
+</script></body></html>

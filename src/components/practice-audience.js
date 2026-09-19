@@ -1,30 +1,31 @@
 import { iconSvg } from './icons.js?v=20260824-28';
+import { createPracticePhoto } from './practice-media.js?v=refinement2';
 
 // Illustrative scenes, not portraits or testimonials of actual customers.
 const practicePeople = [
   {
-    image: new URL('../../assets/editorial/practice-psychologist.jpg', import.meta.url).href,
+    image: 'practice-psychologist',
     alt: 'Психолог внимательно слушает взрослого клиента в кабинете',
     title: 'Психологам и коучам',
-    href: '/learn/client-context/',
-    linkLabel: 'Узнать об истории клиента',
-    copy: 'Время консультации, договорённости о следующей встрече, сообщение, на которое нужно ответить. Пусть эти детали будут рядом с клиентом, а не в разных переписках.',
+    href: '#story-return',
+    linkLabel: 'Узнать про следующий контакт',
+    copy: 'Договорились связаться через неделю? Важно вернуться к разговору в нужный момент, а не случайно вспомнить о нём через месяц.',
   },
   {
-    image: new URL('../../assets/editorial/practice-trainer.jpg', import.meta.url).href,
+    image: 'practice-trainer',
     alt: 'Тренер и клиентка обсуждают следующее занятие в небольшой студии',
     title: 'Тренерам и инструкторам',
-    href: '/how-to/prepare-meeting/',
-    linkLabel: 'Узнать о планировании встреч',
-    copy: 'Согласовать перенос, проверить время тренировки и оплату. Организационные вопросы тоже требуют внимания — и не должны теряться между занятиями.',
+    href: '#story-payment',
+    linkLabel: 'Узнать про предоплату',
+    copy: 'Клиент перенёс тренировку. Теперь нужно проверить новое время и разобраться, за какое занятие уже внесена оплата.',
   },
   {
-    image: new URL('../../assets/editorial/practice-mentor.jpg', import.meta.url).href,
+    image: 'practice-mentor',
     alt: 'Наставница и взрослая ученица вместе работают за столом',
     title: 'Репетиторам и консультантам',
-    href: '/how-to/create-follow-up-task/',
-    linkLabel: 'Узнать о следующем шаге',
-    copy: 'Вспомнить, на чём остановились, что договорились сделать и когда созвониться снова. Сохраните переписку и следующий шаг, чтобы не начинать каждый разговор с поиска.',
+    href: '#story-booking',
+    linkLabel: 'Узнать про запись по ссылке',
+    copy: 'Одному удобно утром, другому — после работы. Хочется согласовать время без длинной переписки.',
   },
 ];
 
@@ -35,13 +36,13 @@ export function createPracticeAudience() {
   section.setAttribute('aria-labelledby', 'practice-audience-title');
   section.innerHTML = `<div class="container">
     <header class="practice-audience__intro" data-reveal>
-      <h2 id="practice-audience-title">Для тех, кто работает с людьми лично</h2>
-      <p>Simple CRM помогает психологам, коучам, тренерам, репетиторам, наставникам и консультантам вести клиентскую базу, встречи и оплаты.</p>
+      <h2 id="practice-audience-title">Когда за каждой записью — человек</h2>
+      <p>Консультации, тренировки, занятия и личные встречи. Организационные вопросы похожи, даже если ваша работа разная.</p>
     </header>
     <div class="practice-audience__grid">
       ${practicePeople.map((person, index) => `<a class="practice-person" href="${person.href}" aria-labelledby="practice-person-title-${index} practice-person-link-${index}" data-reveal="slide-up" data-delay="${index * 100}">
         <figure class="practice-person__figure">
-          <div class="practice-person__image"><img src="${person.image}" alt="${person.alt}" width="1536" height="1024" loading="lazy" decoding="async"></div>
+          <div class="practice-person__image"></div>
           <figcaption>
             <h3 id="practice-person-title-${index}">${person.title}</h3><p>${person.copy}</p>
             <span class="practice-person__cta" id="practice-person-link-${index}"><span>${person.linkLabel}</span>${iconSvg('arrow-right')}</span>
@@ -50,8 +51,12 @@ export function createPracticeAudience() {
       </a>`).join('')}
     </div>
     <div class="practice-audience__footnote">
-      <p>И другим специалистам с постоянными клиентами и индивидуальными встречами — очно или онлайн.</p>
+      <p>И другим специалистам, к которым возвращаются на встречи: очно или онлайн.</p>
     </div>
   </div>`;
+  section.querySelectorAll('.practice-person__image').forEach((host, index) => {
+    const person = practicePeople[index];
+    host.append(createPracticePhoto(person.image, person.alt));
+  });
   return section;
 }

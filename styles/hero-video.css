@@ -29,6 +29,9 @@ body #main-content .home-hero--video > .home-hero__grid {
 }
 body #main-content .home-hero--video .home-hero__visual {
   min-height: 0 !important;
+  opacity: 1 !important;
+  transform: none !important;
+  transition: none !important;
 }
 body #main-content .home-hero--video::before,
 body #main-content .home-hero--video::after,
