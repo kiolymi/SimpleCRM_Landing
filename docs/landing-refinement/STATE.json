@@ -4,8 +4,8 @@
   "execution_mode": "goal",
   "target_branch": "codex/landing-practice-refinement",
   "base_commit": "ae375a73e4eec2349167d191a773a76811cda97e",
-  "current_stage": "13",
-  "next_action": "Этап 13: пройти короткий маршрут посетителя и подготовить честные материалы локального показа на форуме без публикации.",
+  "current_stage": "14",
+  "next_action": "Этап 14: выполнить два полных аудита одного итогового состояния: A по содержанию/пути и B по визуальному/функциональному качеству.",
   "last_updated": "2026-09-21",
   "active_goal_started": true,
   "publication_allowed": false,
@@ -120,21 +120,21 @@
     },
     {
       "id": "13",
+      "status": "passed",
+      "iterations": 1,
+      "reports": ["outputs/13-forum.md"],
+      "evidence": ["evidence/13/forum-walkthrough.md"],
+      "blockers": [],
+      "next_action": "Маршрут, речь, storyboard, план исследования и release-блокеры зафиксированы; localhost не выдаётся за публичную ссылку."
+    },
+    {
+      "id": "14",
       "status": "active",
       "iterations": 0,
       "reports": [],
       "evidence": [],
       "blockers": [],
-      "next_action": "Пройти короткий маршрут, подготовить устное объяснение, план полевой проверки, storyboard и release-blockers без публикации."
-    },
-    {
-      "id": "14",
-      "status": "pending",
-      "iterations": 0,
-      "reports": [],
-      "evidence": [],
-      "blockers": [],
-      "next_action": ""
+      "next_action": "Провести audit A и audit B на одном состоянии; исправить найденные P0/P1/P2 и повторить затронутые проверки."
     },
     {
       "id": "15",
