@@ -208,6 +208,7 @@ body[data-page="home"] #main-content .home-articles { padding-block: 72px; }
   .practice-story__copy { min-height: 17rem; padding: 0; }
   .practice-explorer__tabs { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .practice-stories__intro { margin-bottom: 36px; }
+  body #main-content :is(.practice-hero-actions__secondary, .practice-context .text-link, .practice-questions > .container > .text-link) { display: inline-flex; min-height: 44px; align-items: center; }
   body[data-page="home"] #main-content .feature-grid { grid-template-columns: minmax(0, 1fr); gap: 48px; }
   body[data-page="home"] #main-content .feature-card__description { max-width: 44ch; }
 }

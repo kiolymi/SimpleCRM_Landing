@@ -4,9 +4,9 @@
   "execution_mode": "goal",
   "target_branch": "codex/landing-practice-refinement",
   "base_commit": "ae375a73e4eec2349167d191a773a76811cda97e",
-  "current_stage": "12",
-  "next_action": "Этап 12: провести полный функциональный и визуальный аудит итогового сайта, проверить hero, responsive, доступность, media, ссылки и интерактив главной.",
-  "last_updated": "2026-09-20",
+  "current_stage": "13",
+  "next_action": "Этап 13: пройти короткий маршрут посетителя и подготовить честные материалы локального показа на форуме без публикации.",
+  "last_updated": "2026-09-21",
   "active_goal_started": true,
   "publication_allowed": false,
   "stages": [
@@ -111,21 +111,21 @@
     },
     {
       "id": "12",
+      "status": "passed",
+      "iterations": 1,
+      "reports": ["outputs/12-quality.md"],
+      "evidence": ["evidence/12/quality-audit.md"],
+      "blockers": [],
+      "next_action": "Аудит пройден; exact 200% zoom и отдельные Safari/Firefox отмечены NOT_VERIFIED, внешний CTA остаётся Q002/Q004."
+    },
+    {
+      "id": "13",
       "status": "active",
       "iterations": 0,
       "reports": [],
       "evidence": [],
       "blockers": [],
-      "next_action": "Прочитать stages/12-quality.md и выполнить полную матрицу функциональных, визуальных, responsive и accessibility проверок."
-    },
-    {
-      "id": "13",
-      "status": "pending",
-      "iterations": 0,
-      "reports": [],
-      "evidence": [],
-      "blockers": [],
-      "next_action": ""
+      "next_action": "Пройти короткий маршрут, подготовить устное объяснение, план полевой проверки, storyboard и release-blockers без публикации."
     },
     {
       "id": "14",

@@ -1,7 +1,7 @@
 import { iconSvg } from './icons.js?v=20260824-28';
 import { createProductDeviceMockup } from './product-device-mockup.js?v=20260906-1';
 import { homeContent } from '../data/home.js?v=refinement2';
-import { createPracticeStories } from './practice-flows.js?v=refinement1';
+import { createPracticeStories } from './practice-flows.js?v=refinement4';
 import { createPracticeAudience } from './practice-audience.js?v=refinement2';
 import { createPracticeOverview } from './practice-overview.js?v=refinement2';
 import { accessConfig } from '../data/access.js?v=refinement3';

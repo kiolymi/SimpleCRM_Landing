@@ -61,28 +61,85 @@ function createStory(scenario) {
       <figcaption>Пример интерфейса · вымышленные данные</figcaption>
     </figure>
     <div class="practice-flow__explore">
-      <p class="practice-flow__hint" id="${article.id}-hint">Посмотрите по шагам</p>
+      <p class="practice-flow__hint" id="${article.id}-hint">История меняется сама — любой шаг можно выбрать</p>
       <div class="practice-flow__steps" role="group" aria-labelledby="${article.id}-title" aria-describedby="${article.id}-hint">
-        ${scenario.steps.map((step, index) => `<button type="button" data-step="${index}" aria-pressed="${index === 0}" aria-controls="${article.id}-detail"><span aria-hidden="true">${index + 1}</span>${step.label}</button>`).join('')}
+        ${scenario.steps.map((step, index) => `<button type="button" data-step="${index}" aria-label="Шаг ${index + 1} из ${scenario.steps.length}: ${step.label}" aria-pressed="${index === 0}" aria-controls="${article.id}-detail"><span aria-hidden="true">${index + 1}</span>${step.label}</button>`).join('')}
       </div>
-      <div class="practice-flow__detail" id="${article.id}-detail" aria-live="polite" aria-atomic="true"><h4></h4><p></p></div>
+      <div class="practice-flow__detail" id="${article.id}-detail" aria-live="off" aria-atomic="true"><h4></h4><p></p></div>
       <p class="practice-flow__note">${scenario.note}</p>
       <a class="text-link" href="${scenario.href}">${scenario.link} ${iconSvg('arrow-right')}</a>
     </div>`;
   const phone = article.querySelector('.practice-flow__phone');
+  const detail = article.querySelector('.practice-flow__detail');
   const buttons = [...article.querySelectorAll('[data-step]')];
-  const display = (index, initial = false) => {
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  let current = 0;
+  let timer = 0;
+  let transitionTimer = 0;
+  let visible = false;
+  let paused = false;
+  const commit = (index, initial = false, announce = false) => {
     const step = scenario.steps[index];
     phone.replaceChildren(createPracticeScreen(step.screen, step.alt, { loading: initial ? 'lazy' : 'eager' }));
     article.querySelector('.practice-flow__role').textContent = step.role;
-    article.querySelector('.practice-flow__detail h4').textContent = step.title;
-    article.querySelector('.practice-flow__detail p').textContent = step.text;
+    detail.querySelector('h4').textContent = step.title;
+    detail.querySelector('p').textContent = step.text;
     buttons.forEach((button, position) => button.setAttribute('aria-pressed', String(position === index)));
+    current = index;
+    article.dataset.step = String(index + 1);
+    detail.setAttribute('aria-live', announce ? 'polite' : 'off');
+    article.classList.remove('is-changing');
+    requestAnimationFrame(() => article.classList.add('is-settled'));
+  };
+  const display = (index, { initial = false, announce = false } = {}) => {
+    window.clearTimeout(transitionTimer);
+    article.classList.remove('is-settled');
+    if (initial || reducedMotion.matches) {
+      commit(index, initial, announce);
+      return;
+    }
+    article.classList.add('is-changing');
+    transitionTimer = window.setTimeout(() => commit(index, false, announce), 260);
+  };
+  const stop = () => {
+    window.clearTimeout(timer);
+    timer = 0;
+    article.classList.add('is-paused');
+  };
+  const schedule = () => {
+    stop();
+    if (!visible || paused || document.hidden || reducedMotion.matches) return;
+    article.classList.remove('is-paused');
+    timer = window.setTimeout(() => {
+      display((current + 1) % scenario.steps.length);
+      schedule();
+    }, 5200);
   };
   buttons.forEach((button, index) => button.addEventListener('click', () => {
-    if (button.getAttribute('aria-pressed') !== 'true') display(index);
+    if (index !== current) display(index, { announce: true });
+    schedule();
   }));
-  display(0, true);
+  article.addEventListener('pointerenter', () => { paused = true; stop(); });
+  article.addEventListener('pointerleave', () => { paused = false; schedule(); });
+  article.addEventListener('focusin', () => { paused = true; stop(); });
+  article.addEventListener('focusout', event => {
+    if (article.contains(event.relatedTarget)) return;
+    paused = false;
+    schedule();
+  });
+  document.addEventListener('visibilitychange', schedule);
+  reducedMotion.addEventListener('change', schedule);
+  if ('IntersectionObserver' in window) {
+    const observer = new IntersectionObserver(entries => {
+      visible = entries[0]?.isIntersecting === true;
+      schedule();
+    }, { threshold: .35 });
+    observer.observe(article);
+  } else {
+    visible = true;
+  }
+  display(0, { initial: true });
+  schedule();
   return article;
 }
 

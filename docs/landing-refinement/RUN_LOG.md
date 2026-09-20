@@ -90,3 +90,10 @@
 - Удалены неподтверждённые 0 ₽/1490 ₽/14 дней/«всегда бесплатно», кнопка Pro и demo-форма поддержки. FAQ честно разделяет проектные сценарии и подтверждённые действия.
 - Browser audit PASS на 1440×900 и 390×844: 7 страниц без overflow, единая шапка, без resource dropdown и demo-form. 17 прямых маршрутов вернули HTTP 200; `node --check` и `git diff --check` PASS.
 - I004 closed; I001/I002 остаются внешними зависимостями. Сохранены `outputs/11-secondary-pages.md` и `evidence/11/secondary-pages-audit.md`. Публикации/push нет. Далее этап 12.
+
+### 2026-09-21 — этап 12
+
+- Выполнен функциональный, responsive, keyboard, media, console и визуальный аудит. 360/390/768/1024/1440 без horizontal overflow; hero/video не меняют геометрию при hover телефона.
+- Три истории теперь плавно продолжаются сами и приостанавливаются при hover/focus/hidden/reduced-motion. Фон и hero не входят в transform.
+- I005 FAQ search исправлен и повторно проверен. Console errors/warnings нет; hero video readyState4, loop, 2.78 MB; 30 practice assets 1.61 MB.
+- Exact 200% zoom и отдельные Safari/Firefox честно NOT_VERIFIED из-за ограничений browser surface. `validate.ps1` и JS syntax PASS. Публикации/push нет. Далее этап 13.

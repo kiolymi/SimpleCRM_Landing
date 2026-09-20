@@ -1,6 +1,6 @@
 import { addPageArtwork } from './components/page-art.js?v=20260908-83';
 import { createSiteShell } from './components/site-shell.js?v=refinement9';
-import { createHomePage } from './components/home-sections.js?v=refinement6';
+import { createHomePage } from './components/home-sections.js?v=refinement10';
 import { createAboutPage, createArticleLayout, createContentHubPage, createFaqPage, createPricingPage, createPrivacyPage, createReleasesPage, createSearchPage, createSupportPage } from './components/content-pages.js?v=refinement9';
 import { pageMeta } from './data/site.js?v=refinement9';
 import { createProductDeviceMockup } from './components/product-device-mockup.js?v=20260906-1';
@@ -9,11 +9,11 @@ const pageKey = document.body.dataset.page || 'home';
 if (pageKey === 'home') {
   const practiceStyles = document.createElement('link');
   practiceStyles.rel = 'stylesheet';
-  practiceStyles.href = new URL('../styles/private-practice.css?v=explore22', import.meta.url).href;
+  practiceStyles.href = new URL('../styles/private-practice.css?v=explore23', import.meta.url).href;
   document.head.append(practiceStyles);
   const flowStyles = document.createElement('link');
   flowStyles.rel = 'stylesheet';
-  flowStyles.href = new URL('../styles/practice-flows.css?v=refinement1', import.meta.url).href;
+  flowStyles.href = new URL('../styles/practice-flows.css?v=refinement5', import.meta.url).href;
   document.head.append(flowStyles);
 }
 if (pageKey === 'support') {
@@ -36,8 +36,8 @@ document.querySelectorAll('link[rel="stylesheet"][href*="styles/"]').forEach(lin
   const href = link.getAttribute('href');
   if (!href) return;
   const url = new URL(href, window.location.href);
-  url.searchParams.set('v', url.pathname.endsWith('/styles/private-practice.css') ? 'explore22' : styleRelease);
-  if (url.pathname.endsWith('/styles/practice-flows.css')) url.searchParams.set('v', 'refinement3');
+  url.searchParams.set('v', url.pathname.endsWith('/styles/private-practice.css') ? 'explore23' : styleRelease);
+  if (url.pathname.endsWith('/styles/practice-flows.css')) url.searchParams.set('v', 'refinement5');
   if (url.pathname.endsWith('/styles/about-layout.css')) url.searchParams.set('v', 'borderless-principles23');
   link.setAttribute('href', `${url.pathname}?${url.searchParams.toString()}`);
 });
@@ -564,17 +564,27 @@ function wireFaqSearch(root) {
   const items = [...root.querySelectorAll('[data-faq-item]')];
   const groups = [...root.querySelectorAll('[data-faq-group]')];
   const status = root.querySelector('[data-faq-status]');
+  const normalizeSearchText = value => value.toLocaleLowerCase('ru-RU').replaceAll('ё', 'е').trim();
+  const matchesSearch = (haystack, query) => {
+    if (!query) return true;
+    const searchable = normalizeSearchText(haystack);
+    return normalizeSearchText(query).split(/\s+/).every(term => {
+      if (searchable.includes(term)) return true;
+      const stem = term.length >= 5 ? term.slice(0, 5) : term;
+      return stem.length >= 3 && searchable.includes(stem);
+    });
+  };
   input.addEventListener('input', () => {
-    const query = input.value.trim().toLocaleLowerCase('ru-RU');
+    const query = normalizeSearchText(input.value);
     let matches = 0;
     items.forEach(item => {
-      const visible = !query || item.dataset.search.includes(query);
+      const visible = matchesSearch(item.dataset.search || item.textContent, query);
       item.hidden = !visible;
-      if (visible && query) item.classList.add('is-visible');
+      item.classList.toggle('is-visible', visible && Boolean(query));
       if (visible) matches += 1;
     });
     groups.forEach(group => { group.hidden = ![...group.querySelectorAll('[data-faq-item]')].some(item => !item.hidden); });
-    if (status) status.textContent = query ? (matches ? `Найдено ответов: ${matches}` : 'Подходящих ответов не найдено. Напишите в поддержку — разберём вопрос лично.') : '';
+    if (status) status.textContent = query ? (matches ? `Найдено ответов: ${matches}` : 'Подходящих ответов не найдено. Попробуйте другое слово.') : '';
   });
 }
 
