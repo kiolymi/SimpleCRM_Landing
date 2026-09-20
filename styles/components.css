@@ -2509,6 +2509,16 @@ body { font-weight: 400; }
   letter-spacing: 0;
 }
 
+.pricing-page__cards--single {
+  grid-template-columns: minmax(0, 1fr);
+  max-width: 900px;
+  padding-top: 24px;
+}
+
+.pricing-page__cards--single .pricing-plan {
+  min-height: auto;
+}
+
 .pricing-plan__timeline {
   display: grid;
   gap: 15px;

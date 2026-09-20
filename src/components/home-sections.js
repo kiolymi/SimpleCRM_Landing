@@ -35,7 +35,7 @@ function createHero(hero) {
         <h1 id="page-title">${title}</h1>
         <p class="home-hero__lead">${escapeHtml(hero.lead)}</p>
         <p class="home-hero__intro">${escapeHtml(hero.audience)}</p>
-        <div class="practice-hero-actions"><a class="button practice-hero-actions__primary" href="${escapeAttribute(accessConfig.primary.href)}">${escapeHtml(accessConfig.primary.label)} ${iconSvg('arrow-right')}</a><a class="practice-hero-actions__secondary" href="${escapeAttribute(accessConfig.secondary.href)}">${escapeHtml(accessConfig.secondary.label)}</a><small>Знакомство с продуктом на примерах</small></div>
+        <div class="practice-hero-actions"><a class="button practice-hero-actions__primary" href="${escapeAttribute(accessConfig.primary.href)}">${escapeHtml(accessConfig.primary.label)} ${iconSvg('arrow-right')}</a><a class="practice-hero-actions__secondary" href="${escapeAttribute(accessConfig.secondary.href)}">${escapeHtml(accessConfig.secondary.label)}</a><small>Знакомство с Simple CRM на примерах</small></div>
       </div>
       <div class="home-hero__visual" data-reveal="slide-right" data-delay="120">
         <div class="hero-device-aura" aria-hidden="true"><span></span><span></span></div>

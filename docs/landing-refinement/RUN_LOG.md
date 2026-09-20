@@ -83,3 +83,10 @@
 - Hero video и фон сохранены. Проверено: hero/video не меняют размер до/во время/после hover; увеличивается только внутренняя рамка телефона. На 360/390/768/1024/1440 нет горизонтального scroll, 3 истории видимы, min step height 44px.
 - Проверены все 10 шагов сценариев, history details, 4 FAQ items, mobile menu CTA, image lazy loading и fallback fixture. Browser errors: [].
 - I003 closed. I001/I002 остаются внешними зависимостями, I004 перенесён на этап 11. Сохранены outputs/10-landing.md и evidence/10/browser-audit.md. Публикации и push не выполнялись.
+
+### 2026-09-20 — этап 11
+
+- Синхронизированы about, pricing, FAQ, materials, support, releases и общая навигация. Полная шапка и App Store сохранены на всех страницах; «Материалы» стали обычной вкладкой desktop/mobile.
+- Удалены неподтверждённые 0 ₽/1490 ₽/14 дней/«всегда бесплатно», кнопка Pro и demo-форма поддержки. FAQ честно разделяет проектные сценарии и подтверждённые действия.
+- Browser audit PASS на 1440×900 и 390×844: 7 страниц без overflow, единая шапка, без resource dropdown и demo-form. 17 прямых маршрутов вернули HTTP 200; `node --check` и `git diff --check` PASS.
+- I004 closed; I001/I002 остаются внешними зависимостями. Сохранены `outputs/11-secondary-pages.md` и `evidence/11/secondary-pages-audit.md`. Публикации/push нет. Далее этап 12.

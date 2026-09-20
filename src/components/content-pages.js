@@ -1,6 +1,6 @@
 import { createArticleCard } from './article-card.js?v=catalog14';
-import { createMaterialsCatalog } from './materials-catalog.js?v=practice16';
-import { createSupportCenter } from './support-center.js?v=practice16';
+import { createMaterialsCatalog } from './materials-catalog.js?v=practice17';
+import { createSupportCenter } from './support-center.js?v=refinement1';
 import { iconSvg } from './icons.js?v=20260824-28';
 import { createProductDeviceMockup } from './product-device-mockup.js?v=20260906-1';
 import { createSearchForm } from './search-form.js';
@@ -93,34 +93,10 @@ export function createSearchPage(searchParams) {
 }
 
 export function createPricingPage() {
-  const plans = [
-    {
-      name: 'Бесплатно',
-      price: '0 ₽',
-      period: 'Всегда бесплатно',
-      description: 'Самые полезные возможности Simple CRM доступны сразу — можно собрать клиентов, встречи и задачи без подписки.',
-      cta: 'Начать',
-      features: [
-        ['Доступно сразу', 'Соберите всех клиентов в одном месте — без лимитов на знакомство с продуктом.'],
-        ['Сегодня', 'Откройте расписание и быстро увидьте, с кем нужно связаться.'],
-        ['Когда база растёт', 'Добавляйте контекст: статусы, встречи, задачи и документы.'],
-        ['Не теряйте связь', 'Фиксируйте следующий шаг, пока договорённость ещё свежая.'],
-      ],
-    },
-    {
-      name: 'Pro',
-      price: '1 490 ₽ / месяц',
-      period: 'Оплата помесячно',
-      description: 'Для расширенной работы с клиентами и помощниками: общая история, роли, документы и приоритетная поддержка.',
-      cta: 'Попробовать Pro',
-      featured: true,
-      features: [
-        ['Всё из бесплатного, плюс…', 'Командный контекст, роли сотрудников и общая история клиента.'],
-        ['После каждого разговора', 'Сохраняйте важные итоги, чтобы помнить, о чём договорились.'],
-        ['Когда появляется новый клиент', 'Создавайте карточку, встречу и задачу за несколько касаний.'],
-        ['Когда нужен обзор', 'Смотрите клиентов, задачи, документы и оплаты на большом рабочем экране.'],
-      ],
-    },
+  const steps = [
+    ['Посмотрите сценарии', 'На главной показаны три ситуации: следующий контакт, предоплата и выбор времени.'],
+    ['Сверьте с вашей практикой', 'Оцените, какие записи и договорённости вы хотите держать рядом с клиентом.'],
+    ['Следите за обновлением условий', 'Стоимость, состав доступа и способ установки появятся здесь после подтверждения.'],
   ];
   const section = document.createElement('section');
   section.className = 'inner-page pricing-page pricing-page--dextr';
@@ -128,31 +104,27 @@ export function createPricingPage() {
   section.innerHTML = `
     <div class="pricing-page__hero">
       <div class="container" data-reveal="scale">
-        <h1 id="pricing-title">Начните работать с Simple CRM</h1>
-        <p>Попробуйте все возможности Pro бесплатно 14 дней — без обязательств и сложного выбора на старте.</p>
+        <h1 id="pricing-title">Доступ и условия</h1>
+        <p>Стоимость и способ получения Simple CRM ещё уточняются. Здесь нет оплаты подписки или действующей регистрации.</p>
       </div>
     </div>
-    <div class="container pricing-page__cards pricing-page__cards--two">
-      ${plans.map(plan => `
-        <article class="pricing-plan${plan.featured ? ' pricing-plan--featured' : ''}" data-reveal="scale">
-          ${plan.badge ? `<p class="pricing-plan__badge">${escapeHtml(plan.badge)}</p>` : ''}
-          <p class="pricing-plan__name">${escapeHtml(plan.name)}</p>
-          <p class="pricing-plan__description">${escapeHtml(plan.description)}</p>
-          <h2>${escapeHtml(plan.price)}<small>${escapeHtml(plan.period)}</small></h2>
-          <a class="button ${plan.featured ? 'button--primary' : 'button--outline'}" href="/support/">${escapeHtml(plan.cta)}</a>
-          <div class="pricing-plan__timeline">
-            ${plan.features.map(([label, text]) => `<div><span>${iconSvg('check')}</span><p><strong>${escapeHtml(label)}</strong>${escapeHtml(text)}</p></div>`).join('')}
-          </div>
-        </article>
-      `).join('')}
+    <div class="container pricing-page__cards pricing-page__cards--single">
+      <article class="pricing-plan pricing-plan--featured" data-reveal="scale">
+        <p class="pricing-plan__name">Что можно сделать сейчас</p>
+        <p class="pricing-plan__description">Познакомиться с подходом без заявки, оплаты и переноса клиентской базы.</p>
+        <div class="pricing-plan__timeline">
+          ${steps.map(([label, text]) => `<div><span>${iconSvg('check')}</span><p><strong>${escapeHtml(label)}</strong>${escapeHtml(text)}</p></div>`).join('')}
+        </div>
+        <a class="button button--primary" href="/#practice">Посмотреть сценарии</a>
+      </article>
     </div>
     <section class="pricing-pledge">
       <div class="container">
         <div class="pricing-pledge__card" data-reveal="scale">
-          <p class="eyebrow">Обещание по безопасности данных</p>
-          <h2>Ваши данные остаются вашими</h2>
-          <p>Клиенты, встречи, задачи, документы и вся связанная информация хранятся внутри вашего рабочего пространства. Мы не продаём данные, не передаём клиентскую базу рекламным платформам и используем техническую аналитику только для улучшения продукта.</p>
-          <a class="text-link" href="/privacy/">Подробнее о конфиденциальности ${iconSvg('arrow-right')}</a>
+          <p class="eyebrow">Перед началом работы</p>
+          <h2>Уточните условия хранения и доступа</h2>
+          <p>Не переносите чувствительные сведения клиентов, пока не проверили актуальные условия обработки данных и права доступа для вашей практики.</p>
+          <a class="text-link" href="/privacy/">Прочитать о конфиденциальности ${iconSvg('arrow-right')}</a>
         </div>
       </div>
     </section>`;
@@ -169,9 +141,33 @@ export function createFaqPage() {
   ],
   [
     "Подойдёт ли Simple CRM, если я работаю один?",
-    "Да. Вы можете вести свои записи, клиентов и задачи самостоятельно. Если в работе участвует помощник, возможности совместной работы и роли можно посмотреть в тарифах.",
+    "Да. Основной сценарий рассчитан на специалиста частной практики: один человек ведёт клиентов, встречи и следующие шаги. Совместную работу и роли нужно сверить с вашей версией приложения.",
+    "about/",
+    "Как помогает Simple CRM"
+  ],
+  [
+    "На каких устройствах работает Simple CRM?",
+    "На сайте показаны мобильные и большие рабочие экраны, но доступные платформы и способ установки ещё уточняются. Не ориентируйтесь на макет как на подтверждение готовой версии.",
     "pricing/",
-    "Посмотреть тарифы"
+    "Условия доступа"
+  ],
+  [
+    "Нужно ли клиенту устанавливать приложение?",
+    "В проектном сценарии клиент выбирает время на отдельной странице. Требования к приложению для клиента и реальная доступность такого сценария ещё уточняются.",
+    "about/",
+    "Посмотреть сценарии"
+  ],
+  [
+    "Можно ли дать клиенту ссылку для записи?",
+    "Выбор времени по ссылке показан как проектируемый сценарий. Пока на этом сайте нельзя создать настоящую запись или отправить рабочую ссылку клиенту.",
+    "about/",
+    "Как может выглядеть запись"
+  ],
+  [
+    "Simple CRM сама отправляет напоминания?",
+    "В примерах специалист сохраняет следующий контакт и сам решает, что отправить клиенту. Автоматические сообщения и доступные каналы не подтверждены.",
+    "how-to/create-follow-up-task/",
+    "Запланировать следующий контакт"
   ],
   [
     "Клиент обещал записаться позже. Как не потерять связь?",
@@ -193,31 +189,31 @@ export function createFaqPage() {
   ],
   [
     "Simple CRM бесплатная?",
-    "Базовый режим можно использовать бесплатно. Pro открывает дополнительные возможности: роли, общую историю, документы и приоритетную поддержку. Актуальные условия собраны на странице тарифов.",
+    "Актуальные условия ещё уточняются. В этой версии сайта нет оплаты подписки или действующей регистрации. После подтверждения стоимость и способ получения доступа появятся на отдельной странице.",
     "pricing/",
-    "Сравнить тарифы"
+    "Условия доступа"
   ],
   [
     "Как добавить клиента?",
-    "Создайте карточку клиента вручную или импортируйте базу. После этого к клиенту можно привязывать встречи, задачи, сообщения, документы и счета.",
+    "В показанном сценарии можно начать с одной карточки клиента и связать с ней встречу и следующий шаг. Возможности переноса готовой базы и поддерживаемые форматы ещё уточняются.",
     "learn/client-context/",
     "Что хранить в карточке клиента"
   ],
   [
     "Можно ли объединять клиентов по группам и тегам?",
-    "Да. Используйте статусы и теги, чтобы находить нужные записи и различать рабочие группы клиентов.",
+    "Такой способ организации показан в проектных материалах. Набор доступных статусов, тегов и фильтров нужно сверить с вашей версией приложения.",
     "learn/client-context/",
     "Навести порядок в клиентской базе"
   ],
   [
     "Можно ли перенести данные?",
-    "Подготовьте таблицу с клиентами и проверьте поля перед переносом. Вопросы о формате и возможностях импорта можно найти в поддержке.",
+    "Форматы и порядок переноса готовой базы ещё уточняются. Не загружайте реальные сведения клиентов в демонстрационные формы на этом сайте.",
     "support/",
     "Помощь с переносом данных"
   ],
   [
     "Как Simple CRM относится к приватности?",
-    "Мы не продаём клиентскую базу и не используем содержимое карточек для рекламы. Какие данные обрабатывает сервис и как устроен доступ, описано в политике конфиденциальности.",
+    "Перед переносом чувствительной информации проверьте актуальные условия хранения, обработки и доступа. Общие сведения собраны в разделе о конфиденциальности; применимость для вашей практики нужно оценить отдельно.",
     "privacy/",
     "Политика конфиденциальности"
   ],
@@ -265,7 +261,7 @@ export function createAboutPage() {
         </div>
       </section>
       <section class="company-page__news" aria-labelledby="company-news-title">
-        <header data-reveal="scale"><h2 id="company-news-title">Новости продукта</h2><p>Новые возможности и заметки о развитии Simple CRM.</p></header>
+        <header data-reveal="scale"><h2 id="company-news-title">Обновления Simple CRM</h2><p>Новые возможности и заметки о том, что изменилось.</p></header>
         <div class="article-grid"></div>
       </section>
     </div>`;
@@ -408,7 +404,7 @@ export function createReleasesPage() {
   section.className = 'inner-page section releases-page releases-page--dextr-notes';
   section.dataset.reveal = 'scale';
   section.setAttribute('aria-labelledby', 'releases-title');
-section.innerHTML = `<div class="container releases-layout"><article class="releases-main"><header class="releases-header"><h1 id="releases-title">Заметки о релизах Simple CRM</h1></header><div class="release-list">${releases.map((release, index) => `<section class="release-entry" id="release-${escapeAttribute(release.version.replaceAll('.', '-'))}" data-reveal="slide-up"><div class="release-entry__heading"><div><h2>${escapeHtml(release.version)}</h2><p>${escapeHtml(release.date)}</p></div>${release.label ? `<span>${escapeHtml(release.label)}</span>` : ''}</div>${release.groups.map(([title, items]) => `<section class="release-group" id="release-${escapeAttribute(release.version.replaceAll('.', '-'))}-${slugify(title)}"><h3>${escapeHtml(title)}</h3><ul>${items.map(item => `<li><span>${escapeHtml(item)}</span></li>`).join('')}</ul></section>`).join('')}${index === 0 ? '<p><a class="text-link" href="/announcements/">Открыть объявления ' + iconSvg('arrow-right') + '</a></p>' : ''}</section>`).join('')}</div></article><aside class="releases-toc" data-reveal="slide-right"><details class="releases-toc__disclosure" open><summary>На этой странице</summary><nav aria-label="Оглавление релизов">${releases.map(release => `<a class="releases-toc__version" href="#release-${escapeAttribute(release.version.replaceAll('.', '-'))}">${escapeHtml(release.version)}</a>${release.groups.map(([title]) => `<a class="releases-toc__child" href="#release-${escapeAttribute(release.version.replaceAll('.', '-'))}-${slugify(title)}">${escapeHtml(title)}</a>`).join('')}`).join('')}</nav></details></aside></div>`;
+section.innerHTML = `<div class="container releases-layout"><article class="releases-main"><header class="releases-header"><h1 id="releases-title">Заметки о версиях Simple CRM</h1><p>История собрана по проектным материалам. Доступность отдельных функций зависит от версии приложения и требует подтверждения перед началом работы.</p></header><div class="release-list">${releases.map((release, index) => `<section class="release-entry" id="release-${escapeAttribute(release.version.replaceAll('.', '-'))}" data-reveal="slide-up"><div class="release-entry__heading"><div><h2>${escapeHtml(release.version)}</h2><p>${escapeHtml(release.date)}</p></div>${release.label ? `<span>${escapeHtml(release.label)}</span>` : ''}</div>${release.groups.map(([title, items]) => `<section class="release-group" id="release-${escapeAttribute(release.version.replaceAll('.', '-'))}-${slugify(title)}"><h3>${escapeHtml(title)}</h3><ul>${items.map(item => `<li><span>${escapeHtml(item)}</span></li>`).join('')}</ul></section>`).join('')}${index === 0 ? '<p><a class="text-link" href="/announcements/">Открыть обновления ' + iconSvg('arrow-right') + '</a></p>' : ''}</section>`).join('')}</div></article><aside class="releases-toc" data-reveal="slide-right"><details class="releases-toc__disclosure" open><summary>На этой странице</summary><nav aria-label="Оглавление релизов">${releases.map(release => `<a class="releases-toc__version" href="#release-${escapeAttribute(release.version.replaceAll('.', '-'))}">${escapeHtml(release.version)}</a>${release.groups.map(([title]) => `<a class="releases-toc__child" href="#release-${escapeAttribute(release.version.replaceAll('.', '-'))}-${slugify(title)}">${escapeHtml(title)}</a>`).join('')}`).join('')}</nav></details></aside></div>`;
   if (window.matchMedia('(max-width: 1023px)').matches) section.querySelector('.releases-toc__disclosure').open = false;
   return section;
 }

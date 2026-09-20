@@ -8,17 +8,14 @@ export function createSupportCenter() {
     <header class="support-center__intro"><p class="eyebrow">Поддержка Simple CRM</p><h1 id="support-title">С чем нужна помощь?</h1><p>Подсказки по клиентской базе, записям и задачам для вашей практики.</p></header>
     <div class="support-center__layout">
       <section class="support-compose" id="support-message" aria-labelledby="support-form-title">
-        <header><span class="support-center__icon">${iconSvg('message-square')}</span><div><h2 id="support-form-title">Написать команде</h2><p>Все детали обращения — в одной форме.</p></div></header>
-        <form data-demo-form novalidate id="support-message-form">
-          <div class="support-compose__row"><label>Ваше имя <span class="support-optional">(необязательно)</span><input name="name" autocomplete="name" placeholder="Как к вам обращаться"></label><label>Электронная почта <span aria-hidden="true">*</span><input name="email" type="email" autocomplete="email" placeholder="you@example.com" required></label></div>
-          <label>Тема обращения <span aria-hidden="true">*</span><select name="topic" required><option value="">Выберите, с чем нужна помощь</option><option>Начало работы и настройка</option><option>Клиенты и импорт данных</option><option>Записи, переносы и задачи</option><option>Счета и оплаты клиентов</option><option>Подписка и тарифы</option><option>Ошибка в приложении</option><option>Идея или другой вопрос</option></select></label>
-          <label>Ваш вопрос <span aria-hidden="true">*</span><textarea name="message" rows="5" required placeholder="Что вы хотели сделать и на каком шаге возник вопрос?" aria-describedby="support-message-hint"></textarea></label>
-          <p id="support-message-hint" class="support-field-hint">Если это ошибка, укажите версию приложения и модель устройства. Не добавляйте пароли и личные данные клиентов.</p>
-          <label class="support-consent"><input name="consent" type="checkbox" required><span>Согласен на обработку данных для ответа на обращение. <a href="/privacy/">Политика конфиденциальности</a></span></label>
-          <div class="support-demo-note">Форма пока работает в деморежиме: сообщение не отправится. Поля с * обязательны.</div>
-          <button class="button button--primary" type="submit">Проверить обращение ${iconSvg('arrow-right')}</button>
-          <p class="form-status" data-form-status role="status" aria-live="polite"></p>
-        </form>
+        <header><span class="support-center__icon">${iconSvg('message-square')}</span><div><h2 id="support-form-title">Подготовить вопрос</h2><p>Канал для отправки обращения ещё уточняется.</p></div></header>
+        <div class="support-demo-note">На этой странице сообщение не отправляется. Не вводите сюда личные данные клиентов.</div>
+        <div class="pricing-plan__timeline" aria-label="Что подготовить для обращения">
+          <div><span>${iconSvg('check')}</span><p><strong>Что вы хотели сделать</strong>Коротко опишите задачу без имён и контактов клиентов.</p></div>
+          <div><span>${iconSvg('check')}</span><p><strong>На каком шаге возник вопрос</strong>Укажите раздел приложения и последовательность действий.</p></div>
+          <div><span>${iconSvg('check')}</span><p><strong>Версия и устройство</strong>Эти данные помогут разобраться с ошибкой, когда канал поддержки будет подключён.</p></div>
+        </div>
+        <a class="button button--primary" href="/faq/">Посмотреть частые вопросы ${iconSvg('arrow-right')}</a>
       </section>
       <aside class="support-resources" aria-label="Самостоятельная помощь">
         <section class="support-help-card"><h2>Возможно, ответ уже есть</h2><p>Короткие ответы и инструкции — без ожидания.</p><a class="support-resource" href="/faq/"><span class="support-center__icon">${iconSvg('search')}</span><span><strong>Частые вопросы</strong><small>Возможности, подписка и данные</small></span>${iconSvg('arrow-right')}</a><a class="support-resource" href="/learn/?type=how-to"><span class="support-center__icon">${iconSvg('task-list')}</span><span><strong>Пошаговые инструкции</strong><small>Настройка, встречи и задачи</small></span>${iconSvg('arrow-right')}</a></section>

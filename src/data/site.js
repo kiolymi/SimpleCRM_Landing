@@ -11,11 +11,11 @@ export const siteConfig = {
     linkLabel: 'Что нового',
     href: '/releases/',
   },
-  primaryCta: { label: 'Обсудить запуск', href: '/support/' },
+  primaryCta: { label: 'Посмотреть сценарии', href: '/#practice' },
 };
 
 export const primaryNavigation = [
-  { label: 'О продукте', href: '/about/' },
+  { label: 'Как помогает', href: '/about/' },
   { label: 'Тарифы', href: '/pricing/' },
   { label: 'Вопросы', href: '/faq/' },
   { label: 'Конфиденциальность', href: '/privacy/' },
@@ -33,7 +33,7 @@ export const footerNavigation = [
   { label: 'Материалы', href: '/learn/' },
   { label: 'Инструкции', href: '/how-to/' },
   { label: 'Обновления', href: '/announcements/' },
-  { label: 'О продукте', href: '/about/' },
+  { label: 'Как помогает', href: '/about/' },
   { label: 'Тарифы', href: '/pricing/' },
   { label: 'Вопросы', href: '/faq/' },
   { label: 'Конфиденциальность', href: '/privacy/' },
@@ -43,14 +43,14 @@ export const footerNavigation = [
 
 export const pageMeta = {
   home: { eyebrow: 'Simple CRM', title: 'Клиентская база для частной практики', description: 'Клиенты, записи, переносы и оплаты для психологов, коучей, тренеров и других специалистов' },
-  pricing: { eyebrow: 'Simple CRM', title: 'Тарифы', description: 'Прозрачные условия для самостоятельной работы и команды' },
-  about: { eyebrow: 'Simple CRM', title: 'О продукте', description: 'Как Simple CRM помогает организовать частную практику и работу с клиентами' },
-  faq: { eyebrow: 'Simple CRM', title: 'Вопросы и ответы', description: 'Короткие ответы о том, что уже есть в продукте' },
-  support: { eyebrow: 'Simple CRM', title: 'Поддержка', description: 'Поможем с продуктом, настройкой и первым запуском' },
+  pricing: { eyebrow: 'Simple CRM', title: 'Доступ и условия', description: 'Что можно посмотреть сейчас и какие условия ещё уточняются' },
+  about: { eyebrow: 'Simple CRM', title: 'Как помогает', description: 'Как Simple CRM помогает организовать частную практику и работу с клиентами' },
+  faq: { eyebrow: 'Simple CRM', title: 'Вопросы и ответы', description: 'Короткие ответы о клиентах, встречах, оплатах и начале работы' },
+  support: { eyebrow: 'Simple CRM', title: 'Поддержка', description: 'Поможем с настройкой, клиентской базой и первым запуском' },
   learn: { eyebrow: 'Simple CRM', title: 'Материалы', description: 'Коротко о встречах, задачах и следующем шаге' },
-  'how-to': { eyebrow: 'Simple CRM', title: 'Инструкции', description: 'Пошаговые сценарии по работе в продукте' },
+  'how-to': { eyebrow: 'Simple CRM', title: 'Инструкции', description: 'Пошаговые сценарии по работе с клиентами' },
   announcements: { eyebrow: 'Simple CRM', title: 'Обновления', description: 'Новые возможности и улучшения Simple CRM' },
-  privacy: { eyebrow: 'Simple CRM', title: 'Конфиденциальность', description: 'Какие данные нужны сервису и как мы их защищаем' },
+  privacy: { eyebrow: 'Simple CRM', title: 'Конфиденциальность', description: 'Какие данные могут понадобиться сервису и что важно проверить до начала работы' },
   releases: { eyebrow: 'Simple CRM', title: 'История версий', description: 'Новые возможности, улучшения и исправления Simple CRM' },
   search: { eyebrow: 'Simple CRM', title: 'Поиск', description: 'Поиск по материалам Simple CRM' },
 };
