@@ -115,3 +115,9 @@
 - Расширенный truth-scan нашёл I006 P1: privacy заявляла неподтверждённые процессы сбора, защиты, передачи, хранения и удаления данных. Страница переписана как честная памятка; FAQ синхронизирован.
 - Audit A2/B2 повторены на code/assets fingerprint `7a9a8437...fd652`: 17 routes HTTP200, 7 key pages desktop/mobile без overflow/broken images/console warnings. Learn accessibility text и terminology исправлены.
 - I006 closed. Stage14 остаётся needs_input только из-за external CTA_DELIVERY и exact 200% zoom limitation. Stage15 не запущен; push/publish нет.
+
+### 2026-09-21 — этап 14, iteration 3
+
+- Повторно проверена возможность exact runtime 200% zoom. Во встроенном браузере `ctrl+plus`, `ctrl+equal` и `ctrl+KP_Add` не изменили DPR, CSS viewport или visual scale; Chrome/Edge не предоставили управляемый headless render.
+- Попытки и исходные метрики сохранены в `evidence/14/zoom-runtime-attempts.md`; узкие viewport не выданы за фактический browser zoom. Временные browser profiles удалены, пользовательские настройки не менялись.
+- ACCESS остаётся NOT_VERIFIED, CTA_DELIVERY — FAIL из-за Q002/Q004. Это третий последовательный проход с тем же внешним блокером; stage14 остаётся needs_input, stage15 не запущен, push/publish нет.

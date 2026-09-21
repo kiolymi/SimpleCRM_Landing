@@ -24,7 +24,7 @@
 | VISUALS | PASS | outputs/09-assets-manifest.json и browser visual QA |
 | COPY | PASS | evidence/14/audit-a2-content.md; редакционный scan без конфликтующих обещаний |
 | MOBILE | PASS | evidence/12/quality-audit.md: 360/390/768/1024/1440 без overflow |
-| ACCESS | **NOT_VERIFIED** | keyboard/focus/Escape/touch/reduced-motion code path PASS; точный runtime 200% zoom недоступен |
+| ACCESS | **NOT_VERIFIED** | keyboard/focus/Escape/touch/reduced-motion code path PASS; `evidence/14/zoom-runtime-attempts.md` фиксирует безрезультатные попытки точного runtime 200% zoom |
 | LINKS | PASS | 17 direct routes HTTP 200; публичный base path не проверялся без публикации |
 | FORMS | PASS | внешних форм нет; отправка не имитируется |
 | MEDIA | PASS | evidence/12/quality-audit.md: video, sizes, lazy assets, no console media errors |
@@ -36,7 +36,7 @@
 ## Что требуется для продолжения
 
 1. Владелец продукта должен дать один действующий разрешённый путь: точная App Store/регистрационная ссылка либо подтверждённый канал заявки и адресат. Нужен также ожидаемый результат после действия.
-2. Перед публикацией выполнить точный 200% zoom/reflow тест в управляемом браузере; желательно добавить Safari/Firefox smoke test.
+2. Перед публикацией выполнить точный 200% zoom/reflow тест в управляемом браузере по протоколу `evidence/14/zoom-runtime-attempts.md`; желательно добавить Safari/Firefox smoke test.
 3. После ввода заменить fail-closed CTA, проверить полную доставку без реальных персональных данных, повторить audits A/B затронутого пути и только затем переходить к stage15.
 
 На iteration 2 новых открытых локальных P0/P1/P2 нет: I006 исправлен и повторно проверен. Косметические изменения без доказанной проблемы не добавлялись.

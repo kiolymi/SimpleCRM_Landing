@@ -14,5 +14,4 @@
 - `node --check` PASS для main/content-pages/materials-catalog/practice-flows; `git diff --check` и package validator PASS.
 - Изменения не затрагивали hero/video CSS, phone motion или practice assets; сохранены подтверждённые измерения HERO из evidence/12.
 
-Exact runtime 200% zoom всё ещё NOT_VERIFIED: Ctrl+plus и deviceScaleFactor не меняют dpr/layout во встроенной browser surface. Ограничение не заменено симуляцией.
-
+Exact runtime 200% zoom всё ещё NOT_VERIFIED. Дополнительный протокол в `zoom-runtime-attempts.md`: три варианта browser shortcut не изменили runtime-метрики, а отдельные Chrome/Edge не дали управляемый рендер. Ограничение не заменено симуляцией.
