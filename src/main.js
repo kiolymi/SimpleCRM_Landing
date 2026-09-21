@@ -1,5 +1,5 @@
 import { addPageArtwork } from './components/page-art.js?v=20260908-83';
-import { createSiteShell } from './components/site-shell.js?v=refinement9';
+import { createSiteShell } from './components/site-shell.js?v=refinement10';
 import { createHomePage } from './components/home-sections.js?v=refinement10';
 import { createAboutPage, createArticleLayout, createContentHubPage, createFaqPage, createPricingPage, createPrivacyPage, createReleasesPage, createSearchPage, createSupportPage } from './components/content-pages.js?v=refinement10';
 import { pageMeta } from './data/site.js?v=refinement9';
@@ -165,8 +165,8 @@ function rewriteProjectPaths(root) {
 }
 
 function wireDownloadPlaceholder(root) {
-  const links = [...root.querySelectorAll('a[href="https://apps.apple.com/"]')];
-  if (!links.length) return;
+  const buttons = [...root.querySelectorAll('[data-download-placeholder]')];
+  if (!buttons.length) return;
   const dialog = document.createElement('dialog');
   let opener = null;
   dialog.className = 'download-placeholder';
@@ -182,15 +182,8 @@ function wireDownloadPlaceholder(root) {
     const rect = dialog.getBoundingClientRect();
     if (event.clientX < rect.left || event.clientX > rect.right || event.clientY < rect.top || event.clientY > rect.bottom) dialog.close();
   });
-  links.forEach(link => {
-    const button = document.createElement('button');
-    button.type = 'button';
-    button.className = link.className;
-    button.innerHTML = link.innerHTML;
-    button.setAttribute('aria-label', 'Скачать Simple CRM с App Store');
-    button.setAttribute('aria-haspopup', 'dialog');
+  buttons.forEach(button => {
     button.addEventListener('click', () => { opener = button; dialog.showModal(); });
-    link.replaceWith(button);
   });
 }
 

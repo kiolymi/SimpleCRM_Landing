@@ -121,3 +121,9 @@
 - Повторно проверена возможность exact runtime 200% zoom. Во встроенном браузере `ctrl+plus`, `ctrl+equal` и `ctrl+KP_Add` не изменили DPR, CSS viewport или visual scale; Chrome/Edge не предоставили управляемый headless render.
 - Попытки и исходные метрики сохранены в `evidence/14/zoom-runtime-attempts.md`; узкие viewport не выданы за фактический browser zoom. Временные browser profiles удалены, пользовательские настройки не менялись.
 - ACCESS остаётся NOT_VERIFIED, CTA_DELIVERY — FAIL из-за Q002/Q004. Это третий последовательный проход с тем же внешним блокером; stage14 остаётся needs_input, stage15 не запущен, push/publish нет.
+
+### 2026-09-21 — этап 14, iteration 4
+
+- Повторный CTA-scan нашёл I007 P1: исходная шапка содержала общий `apps.apple.com`, который лишь после запуска JS заменялся fail-closed кнопкой. Разметка исправлена: App Store изначально является кнопкой без `href`.
+- Audit A3/B3 выполнены на fingerprint `a963adb8...d2410`: 7 ключевых страниц × mobile/desktop без overflow/broken images, 17 routes HTTP200, диалог/кнопка/Escape/focus PASS, console и syntax clean.
+- I007 closed. Реальный CTA_DELIVERY всё ещё требует Q002/Q004; ACCESS 200% остаётся NOT_VERIFIED. Stage14 needs_input, stage15 не запущен; push/publish нет.

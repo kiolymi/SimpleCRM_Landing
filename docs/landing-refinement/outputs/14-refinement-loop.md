@@ -2,9 +2,9 @@
 
 Статус: **needs_input**. Оба внутренних аудита выполнены на одном состоянии, но строгие условия перехода не разрешают закрыть этап при открытом внешнем P1 `CTA_DELIVERY`.
 
-Итоговое проверенное состояние кода/assets после iteration 2: `7a9a8437720e6d1f8165bf16e8722283b71b0e67bb491c21f04b4976df8fd652`.
+Итоговое проверенное состояние кода/assets после iteration 4: `a963adb826ece4cb29223c647413ea909dad35f9738703f246c7956a8a9d2410`.
 
-Первый проход нашёл I006: неподтверждённую privacy-policy. После исправления оба аудита повторены; финальные evidence — `audit-a2-content.md` и `audit-b2-quality.md`.
+Первый расширенный проход нашёл I006: неподтверждённую privacy-policy. Поздний CTA-проход нашёл I007: общий App Store URL в исходной разметке. После каждого исправления затронутые проверки повторены; финальные полные evidence — `audit-a3-content.md` и `audit-b3-quality.md`.
 
 ## Матрица ACCEPTANCE
 
@@ -16,7 +16,7 @@
 | AUDIENCE | PASS | evidence/14/audit-a-content.md; внутренний walkthrough, без имитации интервью |
 | THREE_STORIES | PASS | evidence/10/browser-audit.md и evidence/12/quality-audit.md |
 | TWO_ROLES | PASS | outputs/07-flows.md, Figma states, подписи ролей в историях |
-| TRUTH | PASS | outputs/02-product-truth.md и evidence/14/audit-a2-content.md; I006 closed |
+| TRUTH | PASS | outputs/02-product-truth.md и evidence/14/audit-a3-content.md; I006/I007 closed |
 | COMMERCIAL | PASS | неподтверждённые цены/trial удалены; стоимость в сценарии подписана не тарифом |
 | CTA_MEANING | PASS | `Посмотреть сценарии` → `#practice`; walkthrough stage13 |
 | CTA_DELIVERY | **FAIL** | I001/I002, Q002/Q004: нет подтверждённого реального пути установки/регистрации/обращения |
@@ -30,7 +30,7 @@
 | MEDIA | PASS | evidence/12/quality-audit.md: video, sizes, lazy assets, no console media errors |
 | CONSISTENCY | PASS | evidence/11/secondary-pages-audit.md и audit A2 |
 | DEMO_SAFETY | PASS | платежи/сообщения/запись не отправляются; проектные границы видимы |
-| QA_FINAL | PASS | evidence/14/audit-a2-content.md и audit-b2-quality.md, один fingerprint `7a9a8437...fd652` |
+| QA_FINAL | PASS | evidence/14/audit-a3-content.md и audit-b3-quality.md, один fingerprint `a963adb8...d2410` |
 | HANDOFF | NOT_VERIFIED | этап 15 не может начаться, пока этап 14 не passed |
 
 ## Что требуется для продолжения
@@ -39,4 +39,4 @@
 2. Перед публикацией выполнить точный 200% zoom/reflow тест в управляемом браузере по протоколу `evidence/14/zoom-runtime-attempts.md`; желательно добавить Safari/Firefox smoke test.
 3. После ввода заменить fail-closed CTA, проверить полную доставку без реальных персональных данных, повторить audits A/B затронутого пути и только затем переходить к stage15.
 
-На iteration 2 новых открытых локальных P0/P1/P2 нет: I006 исправлен и повторно проверен. Косметические изменения без доказанной проблемы не добавлялись.
+На iteration 4 новых открытых локальных P0/P1/P2 нет: I007 исправлен и повторно проверен. Косметические изменения без доказанной проблемы не добавлялись.
