@@ -5,7 +5,7 @@
   "target_branch": "codex/landing-practice-refinement",
   "base_commit": "ae375a73e4eec2349167d191a773a76811cda97e",
   "current_stage": "14",
-  "next_action": "Для возобновления этапа 14 нужен подтверждённый реальный путь установки/регистрации/заявки (Q002/Q004), затем нужны интеграция и повторные audits A/B. Перед публикацией также проверить exact 200% zoom в управляемом браузере.",
+  "next_action": "Для возобновления этапа 14 нужен подтверждённый реальный путь установки/регистрации/заявки (Q002/Q004), затем нужны интеграция и повторные audits A/B.",
   "last_updated": "2026-09-21",
   "active_goal_started": true,
   "publication_allowed": false,
@@ -130,10 +130,10 @@
     {
       "id": "14",
       "status": "needs_input",
-      "iterations": 5,
+      "iterations": 6,
       "reports": ["outputs/14-refinement-loop.md"],
-      "evidence": ["evidence/14/audit-a-content.md", "evidence/14/audit-b-quality.md", "evidence/14/audit-a2-content.md", "evidence/14/audit-b2-quality.md", "evidence/14/zoom-runtime-attempts.md", "evidence/14/audit-a3-content.md", "evidence/14/audit-b3-quality.md", "evidence/14/audit-a4-content.md", "evidence/14/audit-b4-quality.md"],
-      "blockers": ["I001", "I002", "Q002", "Q004", "Exact runtime 200% zoom unavailable in current browser surface"],
+      "evidence": ["evidence/14/audit-a-content.md", "evidence/14/audit-b-quality.md", "evidence/14/audit-a2-content.md", "evidence/14/audit-b2-quality.md", "evidence/14/zoom-runtime-attempts.md", "evidence/14/zoom-200-results.json", "evidence/14/zoom-200-home.png", "evidence/14/audit-a3-content.md", "evidence/14/audit-b3-quality.md", "evidence/14/audit-a4-content.md", "evidence/14/audit-b4-quality.md"],
+      "blockers": ["I001", "I002", "Q002", "Q004"],
       "next_action": "Получить от владельца действующую ссылку или канал заявки и ожидаемый результат; после интеграции повторить A/B на новом fingerprint."
     },
     {

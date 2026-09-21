@@ -134,3 +134,10 @@
 - Формулировки заменены на проверяемый проектный статус и явную необходимость подтверждения разрешений/условий доступа. Cache-key обновлён на всех 17 маршрутах.
 - Audit A4/B4 выполнены на fingerprint `752ad5d1...0051`: `/releases/` desktop/mobile без overflow/broken images/console warnings, 17 routes HTTP 200, syntax/diff/validate PASS.
 - I008 closed. CTA_DELIVERY по-прежнему требует Q002/Q004; exact 200% zoom остаётся NOT_VERIFIED. Stage14 needs_input, stage15 не запущен; push/publish нет.
+
+### 2026-09-21 — этап 14, iteration 6
+
+- Найдена рабочая альтернатива недоступным browser shortcuts: Google Chrome 153 запущен headless с DevTools Protocol и двумя изолированными временными профилями, 100% и 200%.
+- Реальный page zoom 200% подтверждён: CSS viewport 1418→709, DPR 1→2, visual scale остаётся 1, media query 768 переключается, horizontal overflow и broken images отсутствуют.
+- Keyboard focus при 200% прошёл skip link, home, mobile menu и основной CTA. Сохранены `zoom-200-results.json` и `zoom-200-home.png`; временные профили удалены.
+- ACCESS теперь PASS. Stage14 всё ещё needs_input исключительно из-за внешнего CTA_DELIVERY (I001/I002, Q002/Q004); stage15 не запущен, push/publish нет.

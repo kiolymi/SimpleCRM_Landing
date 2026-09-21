@@ -18,6 +18,6 @@
 - `docs/landing-refinement/validate.ps1` PASS: 15 последовательных этапов, зависимости, outputs и control files структурно валидны.
 - Поиск не находит старых формулировок «Актуальная версия», «не читает документы» и «Pro-доступ».
 - Hero/video, practice stories, Figma assets и motion не менялись.
-- Exact runtime 200% zoom остаётся NOT_VERIFIED по `zoom-runtime-attempts.md`.
+- Последующая изолированная проверка Google Chrome 153 подтвердила exact runtime page zoom 200%: CSS viewport 1418→709, DPR 1→2, reflow без horizontal overflow, keyboard focus PASS. Доказательства: `zoom-runtime-attempts.md`, `zoom-200-results.json`, `zoom-200-home.png`.
 
 I008 исправлен и повторно проверен. Новых локальных P0/P1/P2 в этом проходе не обнаружено.

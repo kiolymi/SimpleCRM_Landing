@@ -1,0 +1,62 @@
+{
+  "date_msk": "2026-09-21",
+  "browser": {
+    "name": "Google Chrome Headless",
+    "version": "153.0.8010.50",
+    "profile": "isolated temporary profile",
+    "window_size_physical_px": "1440x900"
+  },
+  "url": "http://127.0.0.1:4173/?audit=chrome-zoom",
+  "zoom_100": {
+    "chromium_zoom_level": 0,
+    "device_pixel_ratio": 1,
+    "inner_width_css_px": 1418,
+    "inner_height_css_px": 746,
+    "visual_viewport_scale": 1,
+    "document_client_width": 1418,
+    "document_scroll_width": 1418,
+    "horizontal_overflow": false,
+    "broken_loaded_images": 0,
+    "video_ready_state": 4,
+    "max_width_768_matches": false,
+    "focus_sequence": [
+      "Перейти к содержанию",
+      "Simple CRM, на главную",
+      "Материалы",
+      "Как помогает"
+    ]
+  },
+  "zoom_200": {
+    "chromium_zoom_level": 3.8017840169239308,
+    "zoom_factor": 2,
+    "device_pixel_ratio": 2,
+    "inner_width_css_px": 709,
+    "inner_height_css_px": 373,
+    "visual_viewport_scale": 1,
+    "document_client_width": 709,
+    "document_scroll_width": 709,
+    "horizontal_overflow": false,
+    "broken_loaded_images": 0,
+    "video_ready_state": 4,
+    "max_width_768_matches": true,
+    "app_store_placeholder_button": true,
+    "external_app_store_links": 0,
+    "focus_sequence": [
+      "Перейти к содержанию",
+      "Simple CRM, на главную",
+      "Открыть меню",
+      "Посмотреть сценарии"
+    ]
+  },
+  "comparison": {
+    "css_width_ratio": 2,
+    "device_pixel_ratio": 2,
+    "actual_page_zoom_confirmed": true,
+    "responsive_reflow_confirmed": true,
+    "no_horizontal_overflow_at_200": true
+  },
+  "screenshot": {
+    "path": "evidence/14/zoom-200-home.png",
+    "sha256": "7cf5225b302438cb63bbdfc089e2967201eede316eee571034b81afe7ae62269"
+  }
+}
