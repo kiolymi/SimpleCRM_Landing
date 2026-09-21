@@ -127,3 +127,10 @@
 - Повторный CTA-scan нашёл I007 P1: исходная шапка содержала общий `apps.apple.com`, который лишь после запуска JS заменялся fail-closed кнопкой. Разметка исправлена: App Store изначально является кнопкой без `href`.
 - Audit A3/B3 выполнены на fingerprint `a963adb8...d2410`: 7 ключевых страниц × mobile/desktop без overflow/broken images, 17 routes HTTP200, диалог/кнопка/Escape/focus PASS, console и syntax clean.
 - I007 closed. Реальный CTA_DELIVERY всё ещё требует Q002/Q004; ACCESS 200% остаётся NOT_VERIFIED. Stage14 needs_input, stage15 не запущен; push/publish нет.
+
+### 2026-09-21 — этап 14, iteration 5
+
+- Повторный truth-scan `/releases/` нашёл I008 P1: проектная версия, обработка документов и возможный Pro-доступ были сформулированы как подтверждённые свойства доступного продукта.
+- Формулировки заменены на проверяемый проектный статус и явную необходимость подтверждения разрешений/условий доступа. Cache-key обновлён на всех 17 маршрутах.
+- Audit A4/B4 выполнены на fingerprint `752ad5d1...0051`: `/releases/` desktop/mobile без overflow/broken images/console warnings, 17 routes HTTP 200, syntax/diff/validate PASS.
+- I008 closed. CTA_DELIVERY по-прежнему требует Q002/Q004; exact 200% zoom остаётся NOT_VERIFIED. Stage14 needs_input, stage15 не запущен; push/publish нет.

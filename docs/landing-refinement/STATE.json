@@ -130,9 +130,9 @@
     {
       "id": "14",
       "status": "needs_input",
-      "iterations": 4,
+      "iterations": 5,
       "reports": ["outputs/14-refinement-loop.md"],
-      "evidence": ["evidence/14/audit-a-content.md", "evidence/14/audit-b-quality.md", "evidence/14/audit-a2-content.md", "evidence/14/audit-b2-quality.md", "evidence/14/zoom-runtime-attempts.md", "evidence/14/audit-a3-content.md", "evidence/14/audit-b3-quality.md"],
+      "evidence": ["evidence/14/audit-a-content.md", "evidence/14/audit-b-quality.md", "evidence/14/audit-a2-content.md", "evidence/14/audit-b2-quality.md", "evidence/14/zoom-runtime-attempts.md", "evidence/14/audit-a3-content.md", "evidence/14/audit-b3-quality.md", "evidence/14/audit-a4-content.md", "evidence/14/audit-b4-quality.md"],
       "blockers": ["I001", "I002", "Q002", "Q004", "Exact runtime 200% zoom unavailable in current browser surface"],
       "next_action": "Получить от владельца действующую ссылку или канал заявки и ожидаемый результат; после интеграции повторить A/B на новом fingerprint."
     },
