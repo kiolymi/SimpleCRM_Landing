@@ -130,9 +130,9 @@
     {
       "id": "14",
       "status": "needs_input",
-      "iterations": 1,
+      "iterations": 2,
       "reports": ["outputs/14-refinement-loop.md"],
-      "evidence": ["evidence/14/audit-a-content.md", "evidence/14/audit-b-quality.md"],
+      "evidence": ["evidence/14/audit-a-content.md", "evidence/14/audit-b-quality.md", "evidence/14/audit-a2-content.md", "evidence/14/audit-b2-quality.md"],
       "blockers": ["I001", "I002", "Q002", "Q004", "Exact runtime 200% zoom unavailable in current browser surface"],
       "next_action": "Получить от владельца действующую ссылку или канал заявки и ожидаемый результат; после интеграции повторить A/B на новом fingerprint."
     },

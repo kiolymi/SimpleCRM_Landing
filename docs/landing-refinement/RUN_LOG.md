@@ -109,3 +109,9 @@
 - Audit A (содержание/путь) и audit B (визуальное/функциональное качество) выполнены на одном code/assets fingerprint `42a76de0...13c0c`.
 - 17 direct routes HTTP200, 6 ключевых страниц повторно без overflow/broken loaded images/console errors. JS syntax и diff check PASS.
 - Новых локальных P0/P1/P2 нет. Этап не может стать passed: CTA_DELIVERY остаётся FAIL до ввода владельца, exact 200% zoom NOT_VERIFIED. Stage14 needs_input; stage15 не запущен. Push/publish нет.
+
+### 2026-09-21 — этап 14, iteration 2
+
+- Расширенный truth-scan нашёл I006 P1: privacy заявляла неподтверждённые процессы сбора, защиты, передачи, хранения и удаления данных. Страница переписана как честная памятка; FAQ синхронизирован.
+- Audit A2/B2 повторены на code/assets fingerprint `7a9a8437...fd652`: 17 routes HTTP200, 7 key pages desktop/mobile без overflow/broken images/console warnings. Learn accessibility text и terminology исправлены.
+- I006 closed. Stage14 остаётся needs_input только из-за external CTA_DELIVERY и exact 200% zoom limitation. Stage15 не запущен; push/publish нет.
