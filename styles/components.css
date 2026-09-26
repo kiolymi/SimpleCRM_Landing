@@ -3273,8 +3273,9 @@ body[data-page="releases"] .desktop-nav > a.is-current::after {
   }
 }
 
-/* Финальные продуктовые скриншоты уже содержат собственную геометрию экрана.
-   Показываем их без дополнительной рамки, фона или тени со стороны лендинга. */
+/* Актуальные экспорты интерфейса показываем внутри цельного корпуса iPhone.
+   Экран остаётся виден полностью, а рамка, Dynamic Island и индикатор Home
+   отделяют продукт от фоновой композиции. */
 .device-mockup--image,
 .device-mockup--image:hover,
 .device-mockup--image:focus-within,
@@ -3285,24 +3286,49 @@ body[data-page="releases"] .desktop-nav > a.is-current::after {
 .about-hero__visual .device-mockup--image,
 .about-guide__visual .device-mockup--image,
 .article-body__mockup .device-mockup--image {
-  filter: none !important;
+  position: relative;
+  overflow: visible;
+  filter: drop-shadow(0 26px 28px rgb(19 48 76 / 22%)) !important;
   box-shadow: none !important;
 }
 
 .device-mockup--image .device-mockup__frame,
 .device-mockup--image:hover .device-mockup__frame,
 .device-mockup--image:focus-within .device-mockup__frame {
-  overflow: visible;
-  border: 0 !important;
-  border-radius: 0 !important;
-  background: transparent !important;
-  box-shadow: none !important;
+  position: relative;
+  overflow: hidden;
+  border: 7px solid #122a40 !important;
+  border-radius: 44px !important;
+  background: #122a40 !important;
+  box-shadow: 0 2px 0 #071727 !important;
 }
 
 .device-mockup--image .device-mockup__frame::before,
 .device-mockup--image .device-mockup__frame::after {
-  display: none !important;
-  content: none !important;
+  position: absolute;
+  z-index: 3;
+  left: 50%;
+  display: block !important;
+  content: '' !important;
+  pointer-events: none;
+  transform: translateX(-50%);
+}
+
+.device-mockup--image .device-mockup__frame::before {
+  top: 10px;
+  width: 31%;
+  height: 22px;
+  border-radius: 999px;
+  background: #02070b;
+  box-shadow: inset 0 -1px rgb(255 255 255 / 8%);
+}
+
+.device-mockup--image .device-mockup__frame::after {
+  bottom: 9px;
+  width: 32%;
+  height: 5px;
+  border-radius: 999px;
+  background: #070b0f;
 }
 
 .device-mockup--image .device-mockup__image {
@@ -3310,7 +3336,7 @@ body[data-page="releases"] .desktop-nav > a.is-current::after {
   width: 100%;
   height: 100%;
   border: 0;
-  border-radius: 0;
+  border-radius: 35px;
   object-fit: contain;
   object-position: center;
   filter: none !important;

@@ -1,10 +1,10 @@
-import { createArticleCard } from './article-card.js?v=catalog14';
+import { createArticleCard } from './article-card.js?v=catalog15';
 import { createMaterialsCatalog } from './materials-catalog.js?v=practice18';
-import { createSupportCenter } from './support-center.js?v=refinement1';
+import { createSupportCenter } from './support-center.js?v=refinement2';
 import { iconSvg } from './icons.js?v=20260824-28';
-import { createProductDeviceMockup } from './product-device-mockup.js?v=20260906-1';
+import { createProductDeviceMockup } from './product-device-mockup.js?v=20260927-2';
 import { createSearchForm } from './search-form.js';
-import { articles, categoryMeta, findArticles, getArticleBySlug, getArticlesByCategory } from '../data/articles.js?v=practice16';
+import { articles, categoryMeta, findArticles, getArticleBySlug, getArticlesByCategory } from '../data/articles.js?v=practice18';
 
 export function createContentHubPage(category) {
   return createMaterialsCatalog(category);
@@ -93,10 +93,34 @@ export function createSearchPage(searchParams) {
 }
 
 export function createPricingPage() {
-  const steps = [
-    ['Посмотрите сценарии', 'На главной показаны три ситуации: следующий контакт, предоплата и выбор времени.'],
-    ['Сверьте с вашей практикой', 'Оцените, какие записи и договорённости вы хотите держать рядом с клиентом.'],
-    ['Следите за обновлением условий', 'Стоимость, состав доступа и способ установки появятся здесь после подтверждения.'],
+  const plans = [
+    {
+      name: 'Бесплатно',
+      price: '0 ₽',
+      period: 'Всегда бесплатно',
+      description: 'Самые полезные возможности Simple CRM доступны сразу — можно собрать клиентов, встречи и задачи без подписки.',
+      cta: 'Начать',
+      features: [
+        ['Доступно сразу', 'Соберите всех клиентов в одном месте — без лимитов на знакомство с продуктом.'],
+        ['Сегодня', 'Откройте расписание и быстро увидьте, с кем нужно связаться.'],
+        ['Когда база растёт', 'Добавляйте контекст: статусы, встречи, задачи и документы.'],
+        ['Не теряйте связь', 'Фиксируйте следующий шаг, пока договорённость ещё свежая.'],
+      ],
+    },
+    {
+      name: 'Pro',
+      price: '1 490 ₽ / месяц',
+      period: 'Оплата помесячно',
+      description: 'Для расширенной работы с клиентами и помощниками: общая история, роли, документы и приоритетная поддержка.',
+      cta: 'Попробовать Pro',
+      featured: true,
+      features: [
+        ['Всё из бесплатного, плюс…', 'Командный контекст, роли сотрудников и общая история клиента.'],
+        ['После каждого разговора', 'Сохраняйте важные итоги, чтобы помнить, о чём договорились.'],
+        ['Когда появляется новый клиент', 'Создавайте карточку, встречу и задачу за несколько касаний.'],
+        ['Когда нужен обзор', 'Смотрите клиентов, задачи, документы и оплаты на большом рабочем экране.'],
+      ],
+    },
   ];
   const section = document.createElement('section');
   section.className = 'inner-page pricing-page pricing-page--dextr';
@@ -104,19 +128,22 @@ export function createPricingPage() {
   section.innerHTML = `
     <div class="pricing-page__hero">
       <div class="container" data-reveal="scale">
-        <h1 id="pricing-title">Доступ и условия</h1>
-        <p>Стоимость и способ получения Simple CRM ещё уточняются. Здесь нет оплаты подписки или действующей регистрации.</p>
+        <h1 id="pricing-title">Тарифы Simple CRM</h1>
+        <p>Попробуйте все возможности Pro бесплатно 14 дней — без обязательств и сложного выбора на старте.</p>
       </div>
     </div>
-    <div class="container pricing-page__cards pricing-page__cards--single">
-      <article class="pricing-plan pricing-plan--featured" data-reveal="scale">
-        <p class="pricing-plan__name">Что можно сделать сейчас</p>
-        <p class="pricing-plan__description">Познакомиться с подходом без заявки, оплаты и переноса клиентской базы.</p>
-        <div class="pricing-plan__timeline">
-          ${steps.map(([label, text]) => `<div><span>${iconSvg('check')}</span><p><strong>${escapeHtml(label)}</strong>${escapeHtml(text)}</p></div>`).join('')}
-        </div>
-        <a class="button button--primary" href="/#practice">Посмотреть сценарии</a>
-      </article>
+    <div class="container pricing-page__cards pricing-page__cards--two">
+      ${plans.map(plan => `
+        <article class="pricing-plan${plan.featured ? ' pricing-plan--featured' : ''}" data-reveal="scale">
+          <p class="pricing-plan__name">${escapeHtml(plan.name)}</p>
+          <p class="pricing-plan__description">${escapeHtml(plan.description)}</p>
+          <h2>${escapeHtml(plan.price)}<small>${escapeHtml(plan.period)}</small></h2>
+          <a class="button ${plan.featured ? 'button--primary' : 'button--outline'}" href="/support/#support-message">${escapeHtml(plan.cta)}</a>
+          <div class="pricing-plan__timeline">
+            ${plan.features.map(([label, text]) => `<div><span>${iconSvg('check')}</span><p><strong>${escapeHtml(label)}</strong>${escapeHtml(text)}</p></div>`).join('')}
+          </div>
+        </article>
+      `).join('')}
     </div>
     <section class="pricing-pledge">
       <div class="container">
@@ -189,9 +216,9 @@ export function createFaqPage() {
   ],
   [
     "Simple CRM бесплатная?",
-    "Актуальные условия ещё уточняются. В этой версии сайта нет оплаты подписки или действующей регистрации. После подтверждения стоимость и способ получения доступа появятся на отдельной странице.",
+    "Базовый режим можно использовать бесплатно. Pro стоит 1 490 ₽ в месяц и открывает дополнительные возможности: роли, общую историю, документы и приоритетную поддержку. Pro можно попробовать бесплатно 14 дней.",
     "pricing/",
-    "Условия доступа"
+    "Сравнить тарифы"
   ],
   [
     "Как добавить клиента?",
@@ -266,10 +293,10 @@ export function createAboutPage() {
       </section>
     </div>`;
   [
-    ['15-client-overview.png', 'Карточка клиента'],
-    ['01-today-schedule.png', 'Расписание встреч'],
+    ['client-overview.jpg', 'Актуальная карточка клиента'],
+    ['today-schedule.jpg', 'Актуальное расписание встреч'],
   ].forEach(([file, alt], index) => {
-    const src = new URL(`../../simple-crm-landing-screens/${file}`, import.meta.url).href;
+    const src = new URL(`../../assets/product-screens/${file}`, import.meta.url).href;
     const device = createProductDeviceMockup({ mode: 'image', device: 'phone', image: { src, alt } });
     device.dataset.reveal = 'rise';
     device.dataset.delay = String(index * 140);
@@ -426,7 +453,7 @@ function createArticleBlock(block) {
   if (block.type === 'mockup') {
     const wrapper = document.createElement('div');
     wrapper.className = 'article-body__mockup';
-    const image = new URL(`../../simple-crm-landing-screens/${block.screen || '15-client-overview.png'}`, import.meta.url).href;
+    const image = new URL(`../../assets/product-screens/${block.screen || 'client-overview.jpg'}`, import.meta.url).href;
     wrapper.append(createProductDeviceMockup({ mode: 'image', device: 'phone', image: { src: image }, alt: `${block.label} в Simple CRM` }));
     return wrapper;
   }

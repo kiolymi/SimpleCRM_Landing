@@ -1,4 +1,4 @@
-import { createPracticeScreen } from './practice-media.js?v=refinement2';
+import { createPracticeScreen } from './practice-media.js?v=product-screens2';
 import { iconSvg } from './icons.js?v=20260824-28';
 
 export function createPracticeOverview() {

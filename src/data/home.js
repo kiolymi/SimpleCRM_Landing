@@ -3,6 +3,6 @@ export const homeContent = {
     title: 'Больше внимания клиентам. Меньше забот между встречами.',
     lead: 'Когда следующая встреча, о чём договорились и что с оплатой — не хочется каждый раз искать это в разных чатах. Simple CRM — приложение для организации частной практики.',
     audience: 'Для психологов, коучей, тренеров и других специалистов, которые работают с постоянными клиентами.',
-    mockup: { device: 'phone', label: 'Сегодня', screen: 'today', image: { src: '/simple-crm-landing-screens/01-today-schedule.png', alt: 'Расписание встреч на сегодня в Simple CRM' } },
+    mockup: { device: 'phone', label: 'Сегодня', screen: 'today', image: { src: '/assets/product-screens/today-schedule.jpg', alt: 'Актуальное расписание встреч на сегодня в Simple CRM' } },
   },
 };

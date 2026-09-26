@@ -1,20 +1,16 @@
 import { addPageArtwork } from './components/page-art.js?v=20260908-83';
 import { createSiteShell } from './components/site-shell.js?v=refinement10';
-import { createHomePage } from './components/home-sections.js?v=refinement10';
-import { createAboutPage, createArticleLayout, createContentHubPage, createFaqPage, createPricingPage, createPrivacyPage, createReleasesPage, createSearchPage, createSupportPage } from './components/content-pages.js?v=refinement11';
-import { pageMeta } from './data/site.js?v=refinement9';
-import { createProductDeviceMockup } from './components/product-device-mockup.js?v=20260906-1';
+import { createHomePage } from './components/home-sections.js?v=home-story21';
+import { createAboutPage, createArticleLayout, createContentHubPage, createFaqPage, createPricingPage, createPrivacyPage, createReleasesPage, createSearchPage, createSupportPage } from './components/content-pages.js?v=refinement15';
+import { pageMeta } from './data/site.js?v=refinement11';
+import { createProductDeviceMockup } from './components/product-device-mockup.js?v=20260927-2';
 
 const pageKey = document.body.dataset.page || 'home';
 if (pageKey === 'home') {
-  const practiceStyles = document.createElement('link');
-  practiceStyles.rel = 'stylesheet';
-  practiceStyles.href = new URL('../styles/private-practice.css?v=explore23', import.meta.url).href;
-  document.head.append(practiceStyles);
-  const flowStyles = document.createElement('link');
-  flowStyles.rel = 'stylesheet';
-  flowStyles.href = new URL('../styles/practice-flows.css?v=refinement5', import.meta.url).href;
-  document.head.append(flowStyles);
+  const storyStyles = document.createElement('link');
+  storyStyles.rel = 'stylesheet';
+  storyStyles.href = new URL('../styles/home-story-redesign-v3.css?v=23', import.meta.url).href;
+  document.head.append(storyStyles);
 }
 if (pageKey === 'support') {
   const supportStyles = document.createElement('link');
@@ -31,13 +27,14 @@ if (['learn', 'how-to', 'announcements', 'article'].includes(pageKey)) {
 const page = pageMeta[pageKey] || pageMeta.home;
 // Replace stylesheet URLs after a visual release so GitHub Pages/Yandex cannot
 // keep mixing a fresh component file with an older cached theme file.
-const styleRelease = '20260920-refinement8';
+const styleRelease = '20260927-phone-frame-clean1';
 document.querySelectorAll('link[rel="stylesheet"][href*="styles/"]').forEach(link => {
   const href = link.getAttribute('href');
   if (!href) return;
   const url = new URL(href, window.location.href);
   url.searchParams.set('v', url.pathname.endsWith('/styles/private-practice.css') ? 'explore23' : styleRelease);
   if (url.pathname.endsWith('/styles/practice-flows.css')) url.searchParams.set('v', 'refinement5');
+  if (url.pathname.endsWith('/styles/home-story-redesign-v3.css')) url.searchParams.set('v', '23');
   if (url.pathname.endsWith('/styles/about-layout.css')) url.searchParams.set('v', 'borderless-principles23');
   link.setAttribute('href', `${url.pathname}?${url.searchParams.toString()}`);
 });
@@ -87,13 +84,15 @@ protectProductName(app);
 markCurrentNavigation(app);
 prepareRevealSequences(app);
 wireScrollReveals(app);
-wireScrollMotion(app);
 wireInteractiveComponents(app);
-wireScrollProgress();
-wireSectionNavigation(app);
 wireTableOfContents(app);
-wireBackToTop(app);
-wireSmoothAnchorNavigation(app);
+if (pageKey !== 'home') {
+  wireScrollMotion(app);
+  wireScrollProgress();
+  wireSectionNavigation(app);
+  wireBackToTop(app);
+  wireSmoothAnchorNavigation(app);
+}
 wireStablePageNavigation(app);
 wireHistoryScrollRestoration();
 

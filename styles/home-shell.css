@@ -1,0 +1,72 @@
+/* Lean shell styles for the home page. Other routes keep their existing bundles. */
+.site-shell { display: flex; min-height: 100vh; flex-direction: column; background: #f3f7fc; }
+.site-main { flex: 1 0 auto; }
+
+.site-header { position: relative; z-index: 30; border-bottom: 1px solid rgb(255 255 255 / 8%); background: #07182a; color: #fff; }
+.site-header__inner { display: flex; min-height: 72px; align-items: center; justify-content: space-between; gap: 24px; }
+.brand { display: inline-flex; align-items: center; gap: 9px; color: inherit; font-size: 15px; font-weight: 700; letter-spacing: -.02em; text-decoration: none; white-space: nowrap; }
+.brand__logo { width: 34px; height: 34px; border-radius: 9px; object-fit: cover; }
+.desktop-nav { display: none; align-items: center; gap: 24px; margin-left: auto; }
+.desktop-nav > a { position: relative; padding: 10px 0; color: #aebdcd; font-size: 13px; font-weight: 550; text-decoration: none; }
+.desktop-nav > a:hover, .desktop-nav > a:focus-visible { color: #fff; }
+.desktop-nav > a::after { position: absolute; right: 50%; bottom: 3px; left: 50%; height: 2px; border-radius: 2px; background: #1684f8; content: ''; opacity: 0; transition: right 240ms ease, left 240ms ease, opacity 180ms ease; }
+.desktop-nav > a:hover::after, .desktop-nav > a:focus-visible::after { right: 0; left: 0; opacity: 1; }
+
+.header-app-store { display: none; min-width: 144px; min-height: 48px; align-items: center; justify-content: center; gap: 8px; padding: 6px 12px; border: 0; border-radius: 8px; background: #fff; color: #07182a; }
+.header-app-store:hover, .header-app-store:focus-visible { background: #dcecff; }
+.header-app-store svg { width: 24px; height: 24px; flex: 0 0 auto; fill: currentColor; }
+.header-app-store span { display: grid; line-height: 1; text-align: left; }
+.header-app-store small { font-size: 8px; font-weight: 500; }
+.header-app-store strong { font-size: 17px; font-weight: 650; letter-spacing: -.025em; }
+
+.menu-toggle { display: grid; width: 42px; height: 42px; padding: 0; place-items: center; border: 1px solid rgb(255 255 255 / 20%); border-radius: 8px; background: transparent; color: #fff; }
+.menu-toggle__bar, .menu-toggle__bar::before, .menu-toggle__bar::after { display: block; width: 17px; height: 1px; background: currentColor; content: ''; }
+.menu-toggle__bar { position: relative; }
+.menu-toggle__bar::before { position: absolute; top: -5px; }
+.menu-toggle__bar::after { position: absolute; top: 5px; }
+
+.mobile-menu { width: min(100%, 430px); max-width: none; min-height: 100%; margin: 0 0 0 auto; padding: 0; border: 0; background: #0b1d30; color: #edf4fb; opacity: 0; transform: translateX(32px); transition: opacity 260ms ease, transform 360ms cubic-bezier(.16, 1, .3, 1); }
+.mobile-menu.is-visible { opacity: 1; transform: translateX(0); }
+.mobile-menu.is-closing { opacity: 0; transform: translateX(22px); }
+.mobile-menu::backdrop { background: rgb(4 13 27 / 58%); backdrop-filter: blur(4px); }
+.mobile-menu__inner { display: flex; min-height: 100vh; flex-direction: column; padding: 24px; }
+.mobile-menu__top { display: flex; align-items: center; justify-content: space-between; }
+.mobile-menu .icon-button { display: inline-grid; width: 44px; height: 44px; padding: 0; place-items: center; border: 0; border-radius: 50%; background: rgb(255 255 255 / 8%); color: #fff; }
+.mobile-menu .icon-button .ui-icon { width: 20px; height: 20px; }
+.mobile-menu__nav { display: grid; gap: 2px; margin-top: 34px; }
+.mobile-menu__nav > a { padding: 13px 0; border-bottom: 1px solid rgb(255 255 255 / 9%); color: #edf4fb; font-size: 18px; font-weight: 600; text-decoration: none; }
+.mobile-menu__cta { margin-top: auto; }
+.search-form { display: flex; width: 100%; align-items: center; gap: 8px; margin-top: 24px; padding: 5px 5px 5px 14px; border: 1px solid #c5d5e4; border-radius: 24px; background: #fff; }
+.search-form input { width: 100%; min-width: 0; border: 0; outline: 0; background: transparent; color: #172d47; }
+.search-form .icon-button { flex: 0 0 auto; width: 38px; height: 38px; background: #1677e8; }
+
+.button { display: inline-flex; min-height: 46px; align-items: center; justify-content: center; gap: 8px; padding: 11px 18px; border: 0; border-radius: 10px; font-size: 14px; font-weight: 650; text-decoration: none; }
+.button--primary { background: #1677e8; color: #fff; }
+
+.site-footer { margin-top: auto; background: #07182a; color: #fff; }
+.site-footer[data-reveal] { opacity: 1; transform: none; }
+.site-footer__inner { display: grid; justify-items: center; gap: 34px; padding-block: 52px 34px; text-align: center; }
+.site-footer__nav { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px 28px; width: min(100%, 620px); }
+.site-footer__nav a { color: #aebdcd; font-size: 13px; line-height: 1.5; text-decoration: none; }
+.site-footer__nav a:hover, .site-footer__nav a:focus-visible { color: #fff; }
+.site-footer__brand .brand { color: #fff; }
+.site-footer__legal { margin: 0; color: #718196; font-size: 12px; }
+
+.download-placeholder { width: min(calc(100% - 32px), 520px); padding: 32px; border: 1px solid #cbdceb; border-radius: 16px; background: #fff; color: #0b2035; box-shadow: 0 32px 80px rgb(4 13 27 / 24%); }
+.download-placeholder::backdrop { background: rgb(4 13 27 / 64%); backdrop-filter: blur(5px); }
+.download-placeholder h2 { margin: 0 0 16px; font-size: 28px; line-height: 1.2; letter-spacing: -.025em; }
+.download-placeholder p { margin: 0 0 24px; color: #485e76; font-size: 17px; line-height: 1.6; }
+.download-placeholder .button { width: 100%; }
+
+@media (min-width: 640px) {
+  .site-footer__nav { display: flex; flex-wrap: wrap; justify-content: center; }
+}
+
+@media (min-width: 1024px) {
+  .desktop-nav, .header-app-store { display: inline-flex; }
+  .menu-toggle { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mobile-menu, .desktop-nav > a::after { transition: none; }
+}

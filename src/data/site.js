@@ -1,7 +1,7 @@
 export const siteConfig = {
   name: 'Simple CRM',
   logo: {
-    src: '/simple-crm-logo-refined.png?v=20260824-2',
+    src: '/favicon-64.png?v=20260824-1',
     alt: 'Логотип Simple CRM',
     width: 36,
     height: 36,
@@ -42,8 +42,8 @@ export const footerNavigation = [
 ];
 
 export const pageMeta = {
-  home: { eyebrow: 'Simple CRM', title: 'Клиентская база для частной практики', description: 'Клиенты, записи, переносы и оплаты для психологов, коучей, тренеров и других специалистов' },
-  pricing: { eyebrow: 'Simple CRM', title: 'Доступ и условия', description: 'Что можно посмотреть сейчас и какие условия ещё уточняются' },
+  home: { eyebrow: 'Simple CRM', title: 'Клиентская база для частной практики', description: 'Всё для работы с клиентами: база, встречи, договорённости, задачи и оплаты для любой самостоятельной практики' },
+  pricing: { eyebrow: 'Simple CRM', title: 'Тарифы', description: 'Бесплатный режим и Pro для расширенной работы с клиентами' },
   about: { eyebrow: 'Simple CRM', title: 'Как помогает', description: 'Как Simple CRM помогает организовать частную практику и работу с клиентами' },
   faq: { eyebrow: 'Simple CRM', title: 'Вопросы и ответы', description: 'Короткие ответы о клиентах, встречах, оплатах и начале работы' },
   support: { eyebrow: 'Simple CRM', title: 'Поддержка', description: 'Поможем с настройкой, клиентской базой и первым запуском' },

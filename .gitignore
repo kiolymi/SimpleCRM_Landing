@@ -9,3 +9,19 @@ dist/
 .video-tools/
 __pycache__/
 *.pyc
+
+# Local research, transcription, QA output, and review artifacts.
+.local_transcription/
+.whisper_models/
+meeting_work/
+meeting_review_render*/
+outputs/
+build_meeting_review.py
+build_simplecrm_report.mjs
+inspect_mp4.py
+render_with_word.ps1
+style_vibecodelab_hours.mjs
+transcribe_meeting.py
+video-background/hex-wave-loop-*.mp4
+Идея видео для главной/
+Ревью встречи*.docx

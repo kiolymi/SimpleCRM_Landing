@@ -1,4 +1,4 @@
-import { categoryMeta } from '../data/articles.js?v=20260908-84';
+import { categoryMeta } from '../data/articles.js?v=practice18';
 import { iconSvg } from './icons.js?v=20260824-28';
 
 export function createArticleCard(article) {
@@ -38,12 +38,18 @@ export function createArticleCard(article) {
     backdrop.loading = 'lazy';
     backdrop.width = 1254;
     backdrop.height = 1254;
+    const phone = document.createElement('span');
+    phone.className = 'article-card__real-screen';
+    phone.setAttribute('aria-hidden', 'true');
     const screen = document.createElement('img');
-    screen.className = 'article-card__real-screen';
+    screen.className = 'article-card__real-screen-image';
     screen.src = article.cover.image.src;
     screen.alt = article.cover.image.alt;
     screen.loading = 'lazy';
-    coverLink.append(backdrop, screen);
+    screen.width = 591;
+    screen.height = 1280;
+    phone.append(screen);
+    coverLink.append(backdrop, phone);
   } else if (editorialCover) {
     coverLink.classList.add('article-card__cover--editorial');
     coverLink.style.aspectRatio = '3 / 2';

@@ -1,5 +1,5 @@
-import { articles } from '../data/articles.js?v=practice16';
-import { createArticleCard } from './article-card.js?v=catalog14';
+import { articles } from '../data/articles.js?v=practice18';
+import { createArticleCard } from './article-card.js?v=catalog15';
 import { iconSvg } from './icons.js?v=20260824-28';
 
 export function createMaterialsCatalog(category) {

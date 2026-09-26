@@ -1,5 +1,5 @@
 import { iconSvg } from './icons.js?v=20260824-28';
-import { createPracticeScreen } from './practice-media.js?v=refinement1';
+import { createPracticeScreen } from './practice-media.js?v=product-screens2';
 
 // Local, fictional walkthroughs. No network actions, payment or booking APIs.
 export const practiceScenarios = [

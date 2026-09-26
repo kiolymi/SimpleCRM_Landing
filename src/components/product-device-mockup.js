@@ -17,10 +17,10 @@ export function createProductDeviceMockup({ mode = 'placeholder', device = 'phon
     img.loading = priority ? 'eager' : 'lazy';
     img.decoding = 'async';
     if (priority) img.setAttribute('fetchpriority', 'high');
-    // All supplied phone exports share these intrinsic dimensions.
-    const isSuppliedScreen = image.src.includes('/simple-crm-landing-screens/');
-    if (image.width || isSuppliedScreen) img.width = image.width || 1170;
-    if (image.height || isSuppliedScreen) img.height = image.height || 2532;
+    // All current supplied phone exports share these intrinsic dimensions.
+    const isSuppliedScreen = image.src.includes('/assets/product-screens/');
+    if (image.width || isSuppliedScreen) img.width = image.width || 591;
+    if (image.height || isSuppliedScreen) img.height = image.height || 1280;
     const projectPrefix = window.location.hostname.endsWith('github.io') && window.location.pathname.startsWith('/SimpleCRM_Landing/') ? '/SimpleCRM_Landing' : '';
     img.src = projectPrefix && image.src.startsWith('/') && !image.src.startsWith('//') ? `${projectPrefix}${image.src}` : image.src;
     img.alt = alt || image.alt || '';

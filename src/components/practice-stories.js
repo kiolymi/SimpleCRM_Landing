@@ -1,5 +1,5 @@
 import { iconSvg } from './icons.js?v=20260824-28';
-import { createProductDeviceMockup } from './product-device-mockup.js?v=20260906-1';
+import { createProductDeviceMockup } from './product-device-mockup.js?v=20260927-2';
 
 const appointment = new URL('../../assets/editorial/private-practice-appointments.png', import.meta.url).href;
 const payments = new URL('../../assets/editorial/private-practice-payments.png', import.meta.url).href;
@@ -13,7 +13,7 @@ export const practiceScenarios = [
     action: 'Запишите задачу с датой прямо у клиента.',
     href: '/learn/follow-up-after-meeting/', link: 'Как сохранить договорённости',
     artwork: appointment, variant: 'appointments',
-    image: new URL('../../simple-crm-landing-screens/23-task-detail.png', import.meta.url).href,
+    image: new URL('../../assets/product-screens/new-task-details.jpg', import.meta.url).href,
     alt: 'Задача в Simple CRM: что сделать, для какого клиента и когда напомнить',
   },
   {
@@ -23,7 +23,7 @@ export const practiceScenarios = [
     action: 'Обновите встречу: дата, место и клиент будут рядом.',
     href: '/how-to/prepare-meeting/', link: 'Как оформить встречу',
     artwork: appointment, variant: 'appointments',
-    image: new URL('../../simple-crm-landing-screens/12-meeting-detail.png', import.meta.url).href,
+    image: new URL('../../assets/product-screens/meeting-details.jpg', import.meta.url).href,
     alt: 'Детали встречи в Simple CRM: клиент, время и формат',
   },
   {
@@ -33,8 +33,8 @@ export const practiceScenarios = [
     action: 'Проверьте счёт и последнюю оплату в карточке клиента.',
     href: '/learn/client-context/', link: 'Что хранить у клиента',
     artwork: payments, variant: 'payments',
-    image: new URL('../../simple-crm-landing-screens/25-payments.png', import.meta.url).href,
-    alt: 'Платежи в Simple CRM: неоплаченный счёт и история оплат',
+    image: new URL('../../assets/product-screens/reports.jpg', import.meta.url).href,
+    alt: 'Актуальный отчёт по завершённым, перенесённым и отменённым встречам в Simple CRM',
   },
   {
     id: 'reconnect', label: 'Связаться снова', icon: 'message-square',
@@ -43,7 +43,7 @@ export const practiceScenarios = [
     action: 'Поставьте себе задачу — кому и когда написать.',
     href: '/how-to/create-follow-up-task/', link: 'Как запланировать контакт',
     artwork: payments, variant: 'payments',
-    image: new URL('../../simple-crm-landing-screens/24-create-task.png', import.meta.url).href,
+    image: new URL('../../assets/product-screens/new-task-details.jpg', import.meta.url).href,
     alt: 'Создание задачи в Simple CRM: действие, дата и клиент',
   },
 ];

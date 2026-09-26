@@ -2136,7 +2136,8 @@ body:has(#mobile-menu[open], .download-placeholder[open]) {
 }
 .article-card .article-card__cover--composite { display: block; min-height: 0; padding: 0; position: relative; }
 .article-card .article-card__cover--composite > .article-card__scene { display: block; width: 100%; height: 100%; object-fit: contain; border: 0; border-radius: 0; }
-.article-card .article-card__cover--composite > .article-card__real-screen { position: absolute; z-index: 1; top: 8%; right: 6%; height: 84%; width: auto; max-width: 41%; object-fit: contain; border: 3px solid #33475d; border-radius: 12% / 5.5%; background: #fff; box-shadow: none; }
+.article-card .article-card__cover--composite > .article-card__real-screen { position: absolute; z-index: 1; top: 8%; right: 6%; width: auto; height: 84%; max-width: 41%; }
+.article-card .article-card__cover--composite > .article-card__real-screen > img { display: block; width: 100%; height: 100%; object-fit: contain; }
 .article-card .article-card__cover--composite::after { display: none; }
 .article-card .article-card__cover--editorial > img {
   display: block;
