@@ -81,7 +81,7 @@ body[data-page="home"] .recognition__continuity h3 { max-width: none; margin: 0 
 .recognition__headline-lead { white-space: nowrap; }
 .recognition__moments { display: flex; flex-direction: column; gap: clamp(32px, 3.2vw, 44px); }
 .recognition__moment { width: min(100%, 430px); max-width: none; }
-.recognition__moment--second { align-self: flex-end; width: min(calc(100% - 28px), 420px); }
+.recognition__moment--second { --recognition-second-offset: clamp(80px, 8vw, 104px); align-self: flex-start; width: min(calc(100% - var(--recognition-second-offset)), 420px); margin-left: var(--recognition-second-offset); }
 .recognition__moment--third { align-self: flex-start; width: min(calc(100% - 14px), 430px); margin-left: clamp(14px, 1.8vw, 26px); }
 .recognition__moment strong, .recognition__moment span { display: block; }
 .recognition__moment strong { margin-bottom: 9px; color: var(--story-blue-strong); font-size: clamp(1.2rem, 1.65vw, 1.52rem); line-height: 1.1; letter-spacing: -.02em; }
@@ -277,7 +277,7 @@ html.story-motion-ready [data-story-reveal="cluster"].is-visible .story-trust__p
   body[data-page="home"] .recognition__continuity h3 { max-width: none; margin-bottom: 30px; font-size: clamp(2rem, 8.6vw, 2.7rem); }
   .recognition__moments { gap: 30px; }
   .recognition__moment, .recognition__moment--second, .recognition__moment--third { align-self: auto; width: auto; max-width: 31rem; }
-  .recognition__moment--second { margin-left: 12vw; }
+  .recognition__moment--second { --recognition-second-offset: clamp(64px, 20vw, 92px); width: calc(100% - var(--recognition-second-offset)); margin-left: var(--recognition-second-offset); }
   .recognition__moment--third { margin-left: 4vw; }
   .client-story { padding-block: 52px; }
   .client-story__intro { margin-bottom: 28px; }
