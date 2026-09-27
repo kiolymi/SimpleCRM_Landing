@@ -458,14 +458,17 @@ function createProductProof() {
   section.className = 'product-proof';
   section.setAttribute('aria-labelledby', 'product-proof-title');
   section.innerHTML = `
-    <div class="container product-proof__layout">
-      <div class="product-proof__copy" data-story-reveal>
-        <h2 id="product-proof-title">Открыли клиента. Контекст уже рядом.</h2>
-        <p>Вместо поиска по календарю, переписке и таблице вы возвращаетесь к одной истории. На экране видно, что было, что запланировано и что требует внимания.</p>
-        <div class="product-proof__rhythm" role="group" aria-label="Что видно в карточке клиента">
-          <p><strong>Видно</strong><span>следующую встречу и открытые задачи</span></p>
-          <p><strong>Связано</strong><span>история, договорённости и оплаты</span></p>
-          <p><strong>Запланировано</strong><span>следующий контакт и новая встреча</span></p>
+    <div class="product-proof__backdrop" aria-hidden="true" data-story-reveal="proof-photo">
+      <img src="${assetUrl('editorial/client-planning-background.webp')}" alt="" width="1680" height="945" loading="lazy">
+    </div>
+    <div class="container product-proof__layout" data-story-reveal="proof-group">
+      <div class="product-proof__copy">
+        <h2 id="product-proof-title">Открыли клиента<br><span>всё уже рядом</span></h2>
+        <p>Ближайшая встреча, актуальные задачи и договорённости собраны в карточке клиента. Откройте её и продолжайте с нужного места.</p>
+        <div class="product-proof__signals" role="group" aria-label="Что собрано в карточке клиента">
+          <p class="product-proof__signal product-proof__signal--now"><strong>Сейчас</strong><span>Ближайшая встреча и открытые задачи</span></p>
+          <p class="product-proof__signal product-proof__signal--context"><strong>История</strong><span>Контакты и важные договорённости</span></p>
+          <p class="product-proof__signal product-proof__signal--next"><strong>Дальше</strong><span>Следующая встреча и новый шаг</span></p>
         </div>
       </div>
       <figure class="product-proof__visual" data-story-reveal="fan">
