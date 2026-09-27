@@ -5,8 +5,43 @@ import { createSearchForm } from './search-form.js';
 export function createSiteShell(mainContent) {
   const shell = document.createElement('div');
   shell.className = 'site-shell';
-  shell.append(createHeader(), mainContent, createFooter());
+  const header = createHeader();
+  shell.append(header, mainContent, createFooter());
+  wireMobileSafeArea(header);
   return shell;
+}
+
+function wireMobileSafeArea(header) {
+  const mobileViewport = window.matchMedia('(max-width: 1023px)');
+  let themeColor = document.querySelector('meta[name="theme-color"]');
+
+  if (!themeColor) {
+    themeColor = document.createElement('meta');
+    themeColor.name = 'theme-color';
+    document.head.append(themeColor);
+  }
+
+  const update = () => {
+    if (!mobileViewport.matches) {
+      document.documentElement.style.removeProperty('--mobile-safe-area-color');
+      return;
+    }
+
+    const surfaceColor = window.getComputedStyle(header).backgroundColor;
+    const bodyColor = window.getComputedStyle(document.body).backgroundColor;
+    const headerColor = surfaceColor === 'rgba(0, 0, 0, 0)' || surfaceColor === 'transparent'
+      ? (bodyColor === 'rgba(0, 0, 0, 0)' || bodyColor === 'transparent' ? '#ffffff' : bodyColor)
+      : surfaceColor;
+    document.documentElement.style.setProperty('--mobile-safe-area-color', headerColor);
+    themeColor.content = headerColor;
+  };
+
+  window.requestAnimationFrame(update);
+  window.addEventListener('load', update, { once: true });
+  document.querySelectorAll('link[rel="stylesheet"]').forEach((stylesheet) => {
+    if (!stylesheet.sheet) stylesheet.addEventListener('load', update, { once: true });
+  });
+  mobileViewport.addEventListener?.('change', update);
 }
 
 function createHeader() {

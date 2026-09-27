@@ -2371,3 +2371,91 @@ body[data-page="faq"] .faq-page--dextr .faq-list-wrap { padding-top: 14px; }
   }
   .site-footer__legal { max-width: 260px; margin-inline: auto; }
 }
+
+/* Keep the compact navigation and its iPhone safe area attached to the viewport. */
+@media (max-width: 1023px) {
+  body[data-page] .site-header {
+    position: sticky !important;
+    top: 0 !important;
+    z-index: 90;
+    padding-top: env(safe-area-inset-top, 0px);
+  }
+
+  body[data-page] .mobile-menu__inner {
+    min-height: 100dvh;
+    padding-top: max(24px, env(safe-area-inset-top, 0px));
+    padding-right: max(24px, env(safe-area-inset-right, 0px));
+    padding-bottom: max(24px, env(safe-area-inset-bottom, 0px));
+    padding-left: max(24px, env(safe-area-inset-left, 0px));
+  }
+}
+
+/* Multi-card compositions stay compact on phones and are explored sideways. */
+@media (max-width: 700px) {
+  body[data-page] :is(
+    .feature-grid,
+    .testimonial-grid,
+    .testimonials-grid,
+    .article-grid,
+    .cross-promo-grid,
+    .pricing-grid,
+    .pricing-page__cards,
+    .about-page__grid,
+    .support-page__grid,
+    .product-panorama__benefits,
+    .archive-categories,
+    .company-page__principles,
+    .company-page__news .article-grid
+  ) {
+    display: grid !important;
+    grid-template-columns: none !important;
+    grid-template-rows: minmax(0, 1fr);
+    grid-auto-flow: column;
+    grid-auto-columns: min(84vw, 340px);
+    max-width: none;
+    gap: 16px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    overscroll-behavior-inline: contain;
+    scroll-padding-inline: 2px;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  body[data-page] :is(
+    .feature-grid,
+    .testimonial-grid,
+    .testimonials-grid,
+    .article-grid,
+    .cross-promo-grid,
+    .pricing-grid,
+    .pricing-page__cards,
+    .about-page__grid,
+    .support-page__grid,
+    .product-panorama__benefits,
+    .archive-categories,
+    .company-page__principles,
+    .company-page__news .article-grid
+  )::-webkit-scrollbar { display: none; }
+
+  body[data-page] :is(
+    .feature-grid,
+    .testimonial-grid,
+    .testimonials-grid,
+    .article-grid,
+    .cross-promo-grid,
+    .pricing-grid,
+    .pricing-page__cards,
+    .about-page__grid,
+    .support-page__grid,
+    .product-panorama__benefits,
+    .archive-categories,
+    .company-page__principles,
+    .company-page__news .article-grid
+  ) > * {
+    min-width: 0;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+  }
+}

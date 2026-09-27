@@ -553,7 +553,7 @@ function createTrustSection() {
         <h2 id="story-trust-title"><span>Работа с клиентами</span><em>без лишней суеты</em></h2>
         <p>Весь рабочий ритм складывается в понятный маршрут: от плана на день до сохранённого итога и следующего шага.</p>
       </header>
-      <div class="story-trust__bento" data-story-reveal="cluster">
+      <div class="story-trust__bento" data-story-reveal="cluster" role="region" aria-label="Преимущества. Проведите влево, чтобы посмотреть следующие карточки" tabindex="0">
         <article class="story-trust__card story-trust__card--session">
           <img src="${assetUrl('editorial/trust-planning-still-life.png')}" alt="Планировщик, календарь и карточки этапов работы с клиентом" width="1536" height="1024" loading="lazy">
           <div class="story-trust__photo-shade" aria-hidden="true"></div>
@@ -600,7 +600,7 @@ function createReviewsSection() {
       <header class="story-reviews__intro" data-story-reveal>
         <h2 id="story-reviews-title">Отзывы</h2>
       </header>
-      <div class="story-reviews__wall" role="group" aria-label="Отзывы специалистов">
+      <div class="story-reviews__wall" role="region" aria-label="Отзывы специалистов. Проведите влево, чтобы посмотреть следующие отзывы" tabindex="0">
         ${draftReviews.map((review, index) => `
           <article class="story-review story-review--${review.tone}" style="--review-index:${index}">
             <div class="story-review__stars" role="img" aria-label="5 из 5">
