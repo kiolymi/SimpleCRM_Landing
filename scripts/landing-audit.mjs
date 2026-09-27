@@ -108,6 +108,7 @@ async function settleFullPage(page) {
 
 for (const viewport of viewports) {
   const context = await browser.newContext({ viewport: { width: viewport.width, height: viewport.height }, deviceScaleFactor: 1 });
+  await context.route(/\.(mp4|webm)(\?.*)?$/i, route => route.abort());
   const page = await context.newPage();
   const consoleErrors = [];
   const failedRequests = [];
@@ -115,7 +116,7 @@ for (const viewport of viewports) {
     if (message.type() === 'error') consoleErrors.push(message.text());
   });
   page.on('requestfailed', request => failedRequests.push({ url: request.url(), error: request.failure()?.errorText || 'unknown' }));
-  await page.goto(url, { waitUntil: 'networkidle' });
+  await page.goto(url, { waitUntil: 'domcontentloaded' });
   await page.emulateMedia({ reducedMotion: 'reduce' });
   await settleFullPage(page);
   await page.screenshot({ path: path.join(outputDir, `${viewport.name}.png`), fullPage: true });
@@ -145,8 +146,9 @@ for (const viewport of viewports) {
 
 {
   const context = await browser.newContext({ viewport: { width: 720, height: 450 }, deviceScaleFactor: 2 });
+  await context.route(/\.(mp4|webm)(\?.*)?$/i, route => route.abort());
   const page = await context.newPage();
-  await page.goto(url, { waitUntil: 'networkidle' });
+  await page.goto(url, { waitUntil: 'domcontentloaded' });
   await page.emulateMedia({ reducedMotion: 'reduce' });
   await settleFullPage(page);
   await page.screenshot({ path: path.join(outputDir, 'zoom-200.png'), fullPage: true });
