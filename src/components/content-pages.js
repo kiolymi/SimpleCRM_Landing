@@ -1,10 +1,10 @@
-import { createArticleCard } from './article-card.js?v=catalog15';
-import { createMaterialsCatalog } from './materials-catalog.js?v=practice18';
+import { createArticleCard } from './article-card.js?v=catalog16';
+import { createMaterialsCatalog } from './materials-catalog.js?v=practice19';
 import { createSupportCenter } from './support-center.js?v=refinement2';
 import { iconSvg } from './icons.js?v=20260824-28';
 import { createProductDeviceMockup } from './product-device-mockup.js?v=20260927-2';
 import { createSearchForm } from './search-form.js';
-import { articles, categoryMeta, findArticles, getArticleBySlug, getArticlesByCategory } from '../data/articles.js?v=practice18';
+import { articles, categoryMeta, findArticles, getArticleBySlug, getArticlesByCategory } from '../data/articles.js?v=practice19';
 
 export function createContentHubPage(category) {
   return createMaterialsCatalog(category);

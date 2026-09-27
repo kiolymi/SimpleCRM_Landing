@@ -1,70 +1,72 @@
 import { iconSvg } from './icons.js?v=20260824-28';
 import { accessConfig } from '../data/access.js?v=refinement3';
 
+const assetUrl = path => new URL(`../../assets/${path}`, import.meta.url).href;
+
 const recognitionSlides = [
   {
-    src: '/assets/practice-refinement/practice-psychologist-960.webp',
-    srcSmall: '/assets/practice-refinement/practice-psychologist-640.webp',
+    src: assetUrl('practice-refinement/practice-psychologist-960.webp'),
+    srcSmall: assetUrl('practice-refinement/practice-psychologist-640.webp'),
     alt: 'Специалист обсуждает с клиентом итоги встречи',
     title: 'История работы с клиентом сохраняется от встречи к встрече',
   },
   {
-    src: '/assets/practice-refinement/practice-mentor-960.webp',
-    srcSmall: '/assets/practice-refinement/practice-mentor-640.webp',
+    src: assetUrl('practice-refinement/practice-mentor-960.webp'),
+    srcSmall: assetUrl('practice-refinement/practice-mentor-640.webp'),
     alt: 'Специалист обсуждает с клиентом записи и дальнейший план',
     title: 'Договорённости находятся без долгих поисков',
   },
   {
-    src: '/assets/practice-refinement/practice-trainer-960.webp',
-    srcSmall: '/assets/practice-refinement/practice-trainer-640.webp',
+    src: assetUrl('practice-refinement/practice-trainer-960.webp'),
+    srcSmall: assetUrl('practice-refinement/practice-trainer-640.webp'),
     alt: 'Специалист обсуждает с клиентом план следующей встречи',
     title: 'Расписание и важные детали клиента всегда рядом',
   },
   {
-    src: '/assets/practice-slideshow/manicure-960.webp',
-    srcSmall: '/assets/practice-slideshow/manicure-640.webp',
+    src: assetUrl('practice-slideshow/manicure-960.webp'),
+    srcSmall: assetUrl('practice-slideshow/manicure-640.webp'),
     alt: 'Мастер маникюра работает с клиенткой за рабочим столом',
     title: 'Мастер маникюра видит пожелания клиента и следующий визит',
   },
   {
-    src: '/assets/practice-slideshow/massage-960.webp',
-    srcSmall: '/assets/practice-slideshow/massage-640.webp',
+    src: assetUrl('practice-slideshow/massage-960.webp'),
+    srcSmall: assetUrl('practice-slideshow/massage-640.webp'),
     alt: 'Массажист проводит профессиональный сеанс для клиента',
     title: 'Массажист сохраняет особенности сеанса и план следующих встреч',
   },
   {
-    src: '/assets/practice-slideshow/tutor-960.webp',
-    srcSmall: '/assets/practice-slideshow/tutor-640.webp',
+    src: assetUrl('practice-slideshow/tutor-960.webp'),
+    srcSmall: assetUrl('practice-slideshow/tutor-640.webp'),
     alt: 'Репетитор объясняет ученице задачу по геометрии',
     title: 'Репетитор связывает программу, задания и расписание ученика',
   },
   {
-    src: '/assets/practice-slideshow/hairstylist-960.webp',
-    srcSmall: '/assets/practice-slideshow/hairstylist-640.webp',
+    src: assetUrl('practice-slideshow/hairstylist-960.webp'),
+    srcSmall: assetUrl('practice-slideshow/hairstylist-640.webp'),
     alt: 'Парикмахер делает укладку клиентке перед зеркалом',
     title: 'Парикмахер помнит пожелания клиента и дату следующего визита',
   },
   {
-    src: '/assets/practice-slideshow/nutritionist-960.webp',
-    srcSmall: '/assets/practice-slideshow/nutritionist-640.webp',
+    src: assetUrl('practice-slideshow/nutritionist-960.webp'),
+    srcSmall: assetUrl('practice-slideshow/nutritionist-640.webp'),
     alt: 'Диетолог с яблоком объясняет клиенту выбор продуктов',
     title: 'Диетолог фиксирует рекомендации и следующий шаг клиента',
   },
   {
-    src: '/assets/practice-slideshow/physiotherapist-960.webp',
-    srcSmall: '/assets/practice-slideshow/physiotherapist-640.webp',
+    src: assetUrl('practice-slideshow/physiotherapist-960.webp'),
+    srcSmall: assetUrl('practice-slideshow/physiotherapist-640.webp'),
     alt: 'Физиотерапевт помогает клиенту выполнить упражнение с лентой',
     title: 'Физиотерапевт видит прогресс клиента и план ближайших занятий',
   },
   {
-    src: '/assets/practice-slideshow/language-teacher-960.webp',
-    srcSmall: '/assets/practice-slideshow/language-teacher-640.webp',
+    src: assetUrl('practice-slideshow/language-teacher-960.webp'),
+    srcSmall: assetUrl('practice-slideshow/language-teacher-640.webp'),
     alt: 'Преподаватель объясняет материал ученику у доски',
     title: 'Преподаватель связывает уроки, задания и следующую встречу',
   },
   {
-    src: '/assets/practice-slideshow/photographer-960.webp',
-    srcSmall: '/assets/practice-slideshow/photographer-640.webp',
+    src: assetUrl('practice-slideshow/photographer-960.webp'),
+    srcSmall: assetUrl('practice-slideshow/photographer-640.webp'),
     alt: 'Фотограф снимает клиентку в профессиональной студии',
     title: 'Фотограф хранит задачи, детали съёмки и контакты клиента вместе',
   },
@@ -75,28 +77,28 @@ const storySteps = [
     label: 'После встречи',
     title: 'Сохранить договорённость сразу',
     text: 'Контекст встречи, следующий шаг и дата нового контакта остаются в карточке клиента.',
-    image: '/assets/product-screens/tasks-list.jpg',
+    image: assetUrl('product-screens/tasks-list.jpg'),
     alt: 'Экран задач Simple CRM со следующими действиями после встречи',
   },
   {
     label: 'В нужный день',
     title: 'Проверить расписание на нужную дату',
     text: 'Встречи собраны в календаре списком: сразу видно время, клиента и план на выбранный день.',
-    image: '/assets/product-screens/calendar-list.jpg',
+    image: assetUrl('product-screens/calendar-list.jpg'),
     alt: 'Календарь Simple CRM со списком встреч на выбранный день',
   },
   {
     label: 'Перед встречей',
     title: 'Увидеть план на сегодня',
     text: 'Ближайшие встречи и свободные интервалы видны на одном экране — к следующему разговору легко подготовиться заранее.',
-    image: '/assets/product-screens/today-schedule.jpg',
+    image: assetUrl('product-screens/today-schedule.jpg'),
     alt: 'Экран Сегодня в Simple CRM с расписанием ближайших встреч',
   },
   {
     label: 'В конце периода',
     title: 'Закрыть встречу с понятным итогом',
     text: 'В деталях встречи остаются формат, клиент и результат работы — всё необходимое для завершения периода.',
-    image: '/assets/product-screens/meeting-details.jpg',
+    image: assetUrl('product-screens/meeting-details.jpg'),
     alt: 'Детали встречи в Simple CRM с данными клиента и итоговыми действиями',
   },
 ];
@@ -394,8 +396,8 @@ function createProductProof() {
       <figure class="product-proof__visual" data-story-reveal="fan">
         <div class="product-proof__overscan">
           <div class="product-proof__fan">
-            <div class="product-proof__screen product-proof__screen--back"><img src="/assets/product-screens/today-schedule.jpg" alt="Актуальное расписание на сегодня в Simple CRM" width="591" height="1280" loading="lazy"></div>
-            <div class="product-proof__screen product-proof__screen--front"><img src="/assets/product-screens/client-overview.jpg" alt="Актуальная карточка клиента в Simple CRM с ближайшей встречей, задачами и данными" width="591" height="1280" loading="lazy"></div>
+            <div class="product-proof__screen product-proof__screen--back"><img src="${assetUrl('product-screens/today-schedule.jpg')}" alt="Актуальное расписание на сегодня в Simple CRM" width="591" height="1280" loading="lazy"></div>
+            <div class="product-proof__screen product-proof__screen--front"><img src="${assetUrl('product-screens/client-overview.jpg')}" alt="Актуальная карточка клиента в Simple CRM с ближайшей встречей, задачами и данными" width="591" height="1280" loading="lazy"></div>
           </div>
         </div>
       </figure>

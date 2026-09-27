@@ -1,4 +1,4 @@
-import { categoryMeta } from '../data/articles.js?v=practice18';
+import { categoryMeta } from '../data/articles.js?v=practice19';
 import { iconSvg } from './icons.js?v=20260824-28';
 
 export function createArticleCard(article) {
