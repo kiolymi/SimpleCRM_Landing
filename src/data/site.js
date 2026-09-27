@@ -1,7 +1,7 @@
 export const siteConfig = {
   name: 'Simple CRM',
   logo: {
-    src: '/favicon-64.png?v=20260824-1',
+    src: '/favicon-64.png?v=20260927-appicon1',
     alt: 'Логотип Simple CRM',
     width: 36,
     height: 36,

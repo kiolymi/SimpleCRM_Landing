@@ -202,9 +202,21 @@ function createObjectHero() {
   section.innerHTML = `
     <div class="container story-hero__layout">
       <div class="story-hero__visual" data-story-reveal="hero-visual">
-        <img class="story-hero__composition" src="${assetUrl('hero-objects/hero-left-composition.png')}" alt="Рабочее пространство Simple CRM: экран Сегодня, канбан задач, список клиентов и рабочие инструменты" width="2069" height="1969" loading="eager" fetchpriority="high">
+        <div class="story-hero__scene" role="img" aria-label="Рабочее пространство Simple CRM: экран Сегодня, канбан задач, список клиентов и рабочие инструменты">
+          <img class="story-hero__piece story-hero__piece--kanban" src="${assetUrl('hero-objects/object-filled-kanban-board.png')}" alt="" width="1536" height="1024" loading="eager" aria-hidden="true">
+          <img class="story-hero__piece story-hero__piece--clock" src="${assetUrl('hero-objects/blue-clock.png')}" alt="" width="1321" height="1191" loading="eager" aria-hidden="true">
+          <img class="story-hero__piece story-hero__piece--clients" src="${assetUrl('hero-objects/object-client-contact-list.png')}" alt="" width="1214" height="1295" loading="eager" aria-hidden="true">
+          <img class="story-hero__piece story-hero__piece--planner" src="${assetUrl('hero-objects/planner-pen.png')}" alt="" width="1536" height="1024" loading="eager" aria-hidden="true">
+          <img class="story-hero__piece story-hero__piece--laptop" src="${assetUrl('hero-objects/object-crm-laptop.png')}" alt="" width="1536" height="1024" loading="eager" aria-hidden="true">
+          <img class="story-hero__piece story-hero__piece--notes" src="${assetUrl('hero-objects/sticky-notes-clips.png')}" alt="" width="1312" height="1199" loading="eager" aria-hidden="true">
+          <img class="story-hero__piece story-hero__piece--phone" src="${assetUrl('hero-objects/iphone-today-full.png')}" alt="" width="890" height="1545" loading="eager" fetchpriority="high" aria-hidden="true">
+        </div>
       </div>
       <div class="story-hero__copy" data-story-reveal="hero-copy">
+        <div class="story-hero__brand" aria-label="Simple CRM">
+          <img src="${assetUrl('brand-simplecrm-s.png')}" alt="" width="1024" height="1024" aria-hidden="true">
+          <span>Simple<strong>CRM</strong></span>
+        </div>
         <h1 id="page-title"><span class="story-hero__lead">Всё для работы</span><span class="story-hero__highlight">с клиентами</span></h1>
         <p>Расписание, задачи и договорённости собраны в одном приложении</p>
         <button class="header-app-store story-hero__app-store" type="button" data-download-placeholder aria-haspopup="dialog">
@@ -339,18 +351,18 @@ function createClientStory() {
   section.className = 'client-story';
   section.setAttribute('aria-labelledby', 'client-story-title');
   section.innerHTML = `
-    <div class="container client-story__layout">
+    <div class="client-story__layout">
       <header class="client-story__intro" data-story-reveal>
         <h2 id="client-story-title"><span>Вся работа с клиентом</span><br><em>в одной истории</em></h2>
       </header>
-      <div class="client-story__carousel" data-client-story data-story-reveal="stage" role="region" aria-roledescription="карусель" aria-label="Возможности Simple CRM">
+      <div class="client-story__carousel" data-client-story role="region" aria-roledescription="карусель" aria-label="Возможности Simple CRM">
         <button class="client-story__arrow client-story__arrow--previous" type="button" aria-label="Предыдущий экран" data-story-previous>${iconSvg('arrow-right')}</button>
         <div class="client-story__viewport" data-story-viewport role="group" tabindex="0" aria-label="Карусель экранов приложения. Используйте стрелки влево и вправо для переключения">
           ${storySteps.map((step, index) => `
             <article class="client-story__slide${index === 0 ? ' is-active' : ''}" data-story-slide="${index}" data-slot="${index <= 2 ? index : index >= storySteps.length - 2 ? index - storySteps.length : 3}" aria-hidden="${index > 2 && index < storySteps.length - 2 ? 'true' : 'false'}">
               <a class="client-story__screen-card" href="${escapeAttribute(step.href)}" aria-label="${escapeAttribute(`${step.title}. Узнать подробнее`)}">
                 <div class="client-story__phone">
-                  <img src="${escapeAttribute(step.image)}" alt="${escapeAttribute(step.alt)}" width="591" height="1280" loading="lazy" data-story-image>
+                  <img src="${escapeAttribute(step.image)}" alt="${escapeAttribute(step.alt)}" width="591" height="1280" loading="eager" decoding="async" data-story-image>
                   <div class="client-story__screen-detail">
                     <p>${escapeHtml(step.hoverText)}</p>
                     <span class="client-story__screen-link">Узнать подробнее ${iconSvg('arrow-right')}</span>
@@ -383,7 +395,6 @@ function createClientStory() {
   const next = section.querySelector('[data-story-next]');
   const duration = 4000;
   const compactViewport = window.matchMedia('(max-width: 700px)');
-  const pauseReasons = new Set();
   let current = 0;
   let timer = null;
   let inView = !('IntersectionObserver' in window);
@@ -405,18 +416,13 @@ function createClientStory() {
   };
   const start = () => {
     stop();
-    if (reducedMotion() || document.hidden || !inView || pauseReasons.size) return;
+    if (reducedMotion() || document.hidden || !inView) return;
     restartProgress();
     timer = window.setTimeout(() => activate(current + 1, false), duration);
   };
   const sync = () => {
-    if (reducedMotion() || document.hidden || !inView || pauseReasons.size) stop();
+    if (reducedMotion() || document.hidden || !inView) stop();
     else start();
-  };
-  const setReason = (reason, active) => {
-    if (active) pauseReasons.add(reason);
-    else pauseReasons.delete(reason);
-    sync();
   };
   const updateDetails = step => {
     title.textContent = step.title;
@@ -426,27 +432,34 @@ function createClientStory() {
     void content.offsetWidth;
     content.classList.add('is-entering');
   };
-  const settleActivePhone = slide => {
+  const animateFlow = (slide, fromSlot, toSlot, direction) => {
     const phone = slide?.querySelector('.client-story__phone');
-    if (!phone || reducedMotion() || typeof phone.animate !== 'function') return;
+    if (!phone || reducedMotion() || typeof phone.animate !== 'function' || (Math.abs(fromSlot) > 2 && Math.abs(toSlot) > 2)) return;
     phone.getAnimations().forEach(animation => {
-      if (animation.id === 'client-story-settle') animation.cancel();
+      if (animation.id === 'client-story-flow') animation.cancel();
     });
+    const prominence = toSlot === 0 ? 1 : .52;
+    const drift = direction * (toSlot <= 0 ? -1 : 1);
     const animation = phone.animate([
-      { transform: 'translateY(14px) scale(.965)', offset: 0 },
-      { transform: 'translateY(-4px) scale(1.012)', offset: .72 },
+      { transform: `translate3d(${drift * 10}px, ${12 * prominence}px, 0) rotate(${drift * .8}deg) scale(${1 - .025 * prominence})`, offset: 0 },
+      { transform: `translate3d(${drift * -3}px, ${-5 * prominence}px, 0) rotate(${drift * -.22}deg) scale(${1 + .009 * prominence})`, offset: .7 },
       { transform: 'translateY(0) scale(1)', offset: 1 },
     ], {
-      duration: 920,
-      easing: 'cubic-bezier(.16, 1, .3, 1)',
+      duration: 1260,
+      easing: 'cubic-bezier(.22, .61, .36, 1)',
     });
-    animation.id = 'client-story-settle';
+    animation.id = 'client-story-flow';
   };
   const activate = (index, userInitiated = true) => {
     const previousIndex = current;
     current = (index + storySteps.length) % storySteps.length;
-    let activeSlide = null;
+    let direction = current - previousIndex;
+    if (direction > storySteps.length / 2) direction -= storySteps.length;
+    if (direction < -storySteps.length / 2) direction += storySteps.length;
+    direction = Math.sign(direction) || 1;
+    carousel.dataset.direction = direction > 0 ? 'next' : 'previous';
     slides.forEach((slide, position) => {
+      const previousSlot = Number(slide.dataset.slot);
       const slot = slotFor(position);
       const visible = Math.abs(slot) <= (compactViewport.matches ? 1 : 2);
       const active = slot === 0;
@@ -454,11 +467,10 @@ function createClientStory() {
       slide.classList.toggle('is-active', active);
       slide.setAttribute('aria-hidden', String(!visible));
       slide.querySelector('a').tabIndex = visible ? 0 : -1;
-      if (active) activeSlide = slide;
+      if (current !== previousIndex || userInitiated) animateFlow(slide, previousSlot, slot, direction);
     });
     const step = storySteps[current];
     updateDetails(step);
-    if (current !== previousIndex || userInitiated) settleActivePhone(activeSlide);
     start();
   };
 
@@ -478,12 +490,6 @@ function createClientStory() {
     if (event.key !== 'ArrowLeft' && event.key !== 'ArrowRight') return;
     event.preventDefault();
     activate(current + (event.key === 'ArrowRight' ? 1 : -1));
-  });
-  carousel.addEventListener('mouseenter', () => setReason('hover', true));
-  carousel.addEventListener('mouseleave', () => setReason('hover', false));
-  carousel.addEventListener('focusin', () => setReason('focus', true));
-  carousel.addEventListener('focusout', event => {
-    if (!carousel.contains(event.relatedTarget)) setReason('focus', false);
   });
   document.addEventListener('visibilitychange', sync);
   compactViewport.addEventListener?.('change', () => activate(current, false));
@@ -587,12 +593,12 @@ function createTrustSection() {
           </div>
         </article>
         <article class="story-trust__card story-trust__card--flow">
-          <img class="story-trust__flow-photo" src="${assetUrl('editorial/trust-photo-session.jpg')}" alt="Фотограф проводит съёмку для клиентки в студии" width="1664" height="936" loading="lazy">
+          <img class="story-trust__flow-art" src="${assetUrl('editorial/trust-workflow-illustration.png')}" alt="Абстрактный маршрут работы: встреча, сохранённый итог и следующий шаг" width="1664" height="936" loading="lazy">
           <div class="story-trust__flow-shade" aria-hidden="true"></div>
           <div class="story-trust__card-copy">
             <span class="story-trust__label">От встречи к результату</span>
-            <h3>Работайте с людьми, а не с таблицами</h3>
-            <p>Итоги встречи и следующий шаг сохраняются там, где вы продолжите работу с клиентом.</p>
+            <h3>Весь путь клиента — перед глазами</h3>
+            <p>Встреча, сохранённый итог и следующий шаг складываются в один понятный маршрут.</p>
           </div>
           <div class="story-trust__mini-phone story-trust__mini-phone--meeting">
             <img src="${assetUrl('product-screens/meeting-details.jpg')}" alt="Детали завершённой встречи в Simple CRM" width="591" height="1280" loading="lazy">
