@@ -74,30 +74,30 @@ const recognitionSlides = [
 
 const storySteps = [
   {
+    label: 'Перед встречей',
+    title: 'Встреча начинается с ясного плана',
+    text: 'Экран «Сегодня» собирает ближайшие встречи и свободные интервалы. Перед разговором видно, кто следующий и когда начинается работа.',
+    image: assetUrl('product-screens/today-schedule.jpg'),
+    alt: 'Экран Сегодня в Simple CRM с расписанием ближайших встреч',
+  },
+  {
     label: 'После встречи',
-    title: 'Сохранить договорённость сразу',
-    text: 'Контекст встречи, следующий шаг и дата нового контакта остаются в карточке клиента.',
+    title: 'Закрепите следующий шаг',
+    text: 'После встречи задача остаётся рядом с клиентом: что сделать, к какому сроку и к какой договорённости вернуться.',
     image: assetUrl('product-screens/tasks-list.jpg'),
     alt: 'Экран задач Simple CRM со следующими действиями после встречи',
   },
   {
     label: 'В нужный день',
-    title: 'Проверить расписание на нужную дату',
-    text: 'Встречи собраны в календаре списком: сразу видно время, клиента и план на выбранный день.',
+    title: 'Откройте нужный день',
+    text: 'Календарь показывает встречи списком — с клиентом, временем и форматом. Нужный контакт находится без поиска по перепискам.',
     image: assetUrl('product-screens/calendar-list.jpg'),
     alt: 'Календарь Simple CRM со списком встреч на выбранный день',
   },
   {
-    label: 'Перед встречей',
-    title: 'Увидеть план на сегодня',
-    text: 'Ближайшие встречи и свободные интервалы видны на одном экране — к следующему разговору легко подготовиться заранее.',
-    image: assetUrl('product-screens/today-schedule.jpg'),
-    alt: 'Экран Сегодня в Simple CRM с расписанием ближайших встреч',
-  },
-  {
     label: 'В конце периода',
-    title: 'Закрыть встречу с понятным итогом',
-    text: 'В деталях встречи остаются формат, клиент и результат работы — всё необходимое для завершения периода.',
+    title: 'Завершите встречу без хвостов',
+    text: 'В деталях остаются формат, клиент и итоговые действия. Период закрывается с понятным результатом и сохранённым контекстом.',
     image: assetUrl('product-screens/meeting-details.jpg'),
     alt: 'Детали встречи в Simple CRM с данными клиента и итоговыми действиями',
   },
@@ -312,46 +312,103 @@ function createClientStory() {
   section.innerHTML = `
     <div class="container">
       <header class="client-story__intro" data-story-reveal>
-        <h2 id="client-story-title">Вся работа с клиентом в одной истории</h2>
-        <p>Договорённости, задачи, встречи и оплаты связаны между собой и доступны из карточки клиента.</p>
+        <h2 id="client-story-title"><span>Вся работа с клиентом</span><br>в одной истории</h2>
+        <p>Встречи, задачи и договорённости проходят один маршрут — от плана на сегодня до сохранённого итога.</p>
       </header>
-      <div class="client-story__stage" data-story-reveal="stage">
-        <figure class="client-story__device" data-story-reveal="phone">
-          <div class="client-story__overscan">
+      <div class="client-story__stage" data-client-story data-active-step="0" data-story-reveal="stage">
+        <div class="client-story__route-glow" aria-hidden="true"></div>
+        <div class="client-story__traveller" data-story-traveller>
+          <figure class="client-story__device" data-story-reveal="phone">
             <div class="client-story__phone">
               <img src="${storySteps[0].image}" alt="${storySteps[0].alt}" width="591" height="1280" loading="lazy" data-story-image>
             </div>
-          </div>
-        </figure>
-        <div class="client-story__content">
-          <div class="client-story__choices" role="tablist" aria-label="Этапы работы с клиентом">
-            ${storySteps.map((step, index) => `<button type="button" role="tab" aria-selected="${index === 0}" tabindex="${index === 0 ? '0' : '-1'}" class="${index === 0 ? 'is-active' : ''}" data-story-step="${index}">${escapeHtml(step.label)}</button>`).join('')}
-          </div>
+          </figure>
+        </div>
+        <div class="client-story__content" data-story-content>
+          <span class="client-story__sequence" data-story-sequence aria-hidden="true">01 / 04</span>
           <div class="client-story__explanation" role="tabpanel" aria-live="polite">
             <h3 data-story-title>${escapeHtml(storySteps[0].title)}</h3>
             <p data-story-copy>${escapeHtml(storySteps[0].text)}</p>
           </div>
-          <p class="client-story__principle">Следующая задача связана с клиентом, встречей и предыдущей договорённостью.</p>
+        </div>
+        <div class="client-story__timeline" role="tablist" aria-label="Маршрут работы с клиентом">
+          ${storySteps.map((step, index) => `
+            <button type="button" role="tab" aria-selected="${index === 0}" tabindex="${index === 0 ? '0' : '-1'}" class="client-story__stop${index === 0 ? ' is-active' : ''}" data-story-step="${index}">
+              <span class="client-story__stop-dot" aria-hidden="true"></span>
+              <span>${escapeHtml(step.label)}</span>
+            </button>`).join('')}
         </div>
       </div>
-      <p class="client-story__note">Отправка сообщений, запись по ссылке и приём оплаты подключаются отдельно.</p>
     </div>`;
 
+  const stage = section.querySelector('[data-client-story]');
+  const traveller = section.querySelector('[data-story-traveller]');
   const image = section.querySelector('[data-story-image]');
   const title = section.querySelector('[data-story-title]');
   const copy = section.querySelector('[data-story-copy]');
+  const sequence = section.querySelector('[data-story-sequence]');
+  const content = section.querySelector('[data-story-content]');
   const steps = [...section.querySelectorAll('[data-story-step]')];
+  const duration = 4400;
+  const pauseReasons = new Set();
   let current = 0;
-  const activate = index => {
+  let timer = null;
+  let swapTimer = null;
+  let inView = !('IntersectionObserver' in window);
+
+  const positionTraveller = () => {
+    if (!stage || !traveller) return;
+    if (matchMedia('(max-width: 700px)').matches) {
+      stage.style.setProperty('--story-travel-x', '0px');
+      return;
+    }
+    const inset = Math.max(28, Math.min(52, stage.clientWidth * .042));
+    const available = Math.max(0, stage.clientWidth - traveller.offsetWidth - inset * 2);
+    const x = inset + available * (current / Math.max(1, steps.length - 1));
+    stage.style.setProperty('--story-travel-x', `${x}px`);
+  };
+
+  const stop = () => {
+    window.clearTimeout(timer);
+    timer = null;
+    stage.classList.add('is-paused');
+  };
+  const restart = () => {
+    stop();
+    if (reducedMotion() || document.hidden || !inView || pauseReasons.size) return;
+    stage.classList.remove('is-paused');
+    timer = window.setTimeout(() => {
+      activate((current + 1) % storySteps.length, false);
+      restart();
+    }, duration);
+  };
+  const sync = () => {
+    if (reducedMotion() || document.hidden || !inView || pauseReasons.size) stop();
+    else restart();
+  };
+  const setReason = (reason, active) => {
+    if (active) pauseReasons.add(reason);
+    else pauseReasons.delete(reason);
+    sync();
+  };
+  const activate = (index, userInitiated = true) => {
     if (index === current && image.getAttribute('src') === storySteps[index].image) return;
     const step = storySteps[index];
+    window.clearTimeout(swapTimer);
+    content.classList.add('is-changing');
     image.classList.add('is-changing');
-    window.setTimeout(() => {
+    current = index;
+    stage.dataset.activeStep = String(index);
+    stage.style.setProperty('--client-story-step', String(index));
+    positionTraveller();
+    swapTimer = window.setTimeout(() => {
       image.src = step.image;
       image.alt = step.alt;
       title.textContent = step.title;
       copy.textContent = step.text;
+      sequence.textContent = `${String(index + 1).padStart(2, '0')} / ${String(storySteps.length).padStart(2, '0')}`;
       image.classList.remove('is-changing');
+      content.classList.remove('is-changing');
     }, reducedMotion() ? 0 : 180);
     steps.forEach((element, position) => {
       const active = position === index;
@@ -359,7 +416,7 @@ function createClientStory() {
       element.setAttribute('aria-selected', String(active));
       element.tabIndex = active ? 0 : -1;
     });
-    current = index;
+    if (userInitiated) restart();
   };
   steps.forEach((step, index) => {
     step.addEventListener('click', () => activate(index));
@@ -375,6 +432,24 @@ function createClientStory() {
       steps[next].focus();
     });
   });
+  stage.addEventListener('mouseenter', () => setReason('hover', true));
+  stage.addEventListener('mouseleave', () => setReason('hover', false));
+  stage.addEventListener('focusin', () => setReason('focus', true));
+  stage.addEventListener('focusout', event => {
+    if (!stage.contains(event.relatedTarget)) setReason('focus', false);
+  });
+  document.addEventListener('visibilitychange', sync);
+  window.addEventListener('resize', positionTraveller, { passive: true });
+
+  if ('IntersectionObserver' in window) {
+    const observer = new IntersectionObserver(entries => {
+      inView = entries.some(entry => entry.isIntersecting);
+      sync();
+    }, { threshold: .35 });
+    observer.observe(stage);
+  }
+  requestAnimationFrame(positionTraveller);
+  sync();
   return section;
 }
 
