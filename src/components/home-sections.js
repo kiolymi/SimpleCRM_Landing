@@ -511,24 +511,15 @@ function createProductProof() {
   section.className = 'product-proof';
   section.setAttribute('aria-labelledby', 'product-proof-title');
   section.innerHTML = `
-    <div class="product-proof__wash product-proof__wash--blue" aria-hidden="true"></div>
-    <div class="product-proof__wash product-proof__wash--pink" aria-hidden="true"></div>
-    <div class="container product-proof__layout" data-story-reveal="proof-group">
+    <div class="container product-proof__layout">
       <div class="product-proof__copy">
         <h2 id="product-proof-title">Вся работа<br>с клиентом —<br><span>в одном месте</span></h2>
         <p>Расписание, карточка клиента и следующий шаг связаны между собой. Нужный контекст открывается сразу — без поиска по чатам и таблицам.</p>
-        <a class="product-proof__cta" href="/learn/client-context/">Посмотреть возможности ${iconSvg('arrow-right')}</a>
-        <dl class="product-proof__proofs" aria-label="Преимущества Simple CRM">
-          <div><dt>Один экран</dt><dd>весь контекст клиента</dd></div>
-          <div><dt>Всегда понятно</dt><dd>что делать дальше</dd></div>
-        </dl>
       </div>
-      <figure class="product-proof__visual" data-story-reveal="proof-visual" aria-label="Расписание и карточка клиента в приложении Simple CRM">
-        <img class="product-proof__ribbons" src="${assetUrl('editorial/product-proof-ribbons.png')}" alt="" width="1536" height="1024" loading="lazy" aria-hidden="true">
-        <div class="product-proof__orbit" aria-hidden="true"></div>
+      <figure class="product-proof__visual" aria-label="Расписание и карточка клиента в приложении Simple CRM">
         <div class="product-proof__fan">
-          <div class="product-proof__screen product-proof__screen--back"><img src="${assetUrl('product-screens/today-schedule.jpg')}" alt="Актуальное расписание на сегодня в Simple CRM" width="591" height="1280" loading="lazy"></div>
-          <div class="product-proof__screen product-proof__screen--front"><img src="${assetUrl('product-screens/client-overview.jpg')}" alt="Карточка клиента в Simple CRM с ближайшей встречей, задачами и данными" width="591" height="1280" loading="lazy"></div>
+          <div class="product-proof__screen product-proof__screen--back"><img src="${assetUrl('product-screens/today-schedule.jpg')}" alt="Актуальное расписание на сегодня в Simple CRM" width="591" height="1280" loading="eager" decoding="async"></div>
+          <div class="product-proof__screen product-proof__screen--front"><img src="${assetUrl('product-screens/client-overview.jpg')}" alt="Карточка клиента в Simple CRM с ближайшей встречей, задачами и данными" width="591" height="1280" loading="eager" decoding="async"></div>
         </div>
         <div class="product-proof__badge product-proof__badge--meeting">
           <span class="product-proof__badge-icon">${iconSvg('calendar')}</span>
@@ -559,51 +550,40 @@ function createTrustSection() {
     <div class="story-trust__wash story-trust__wash--pink" aria-hidden="true"></div>
     <div class="container story-trust__layout">
       <header class="story-trust__intro" data-story-reveal>
-        <h2 id="story-trust-title">Работа с клиентами — <span>без лишней суеты</span></h2>
-        <p>Simple CRM берёт на себя порядок: встречи, задачи и контекст собраны в одном месте. Вы сохраняете внимание для самой работы.</p>
+        <h2 id="story-trust-title"><span>Работа с клиентами</span><em>без лишней суеты</em></h2>
+        <p>Весь рабочий ритм складывается в понятный маршрут: от плана на день до сохранённого итога и следующего шага.</p>
       </header>
       <div class="story-trust__bento" data-story-reveal="cluster">
         <article class="story-trust__card story-trust__card--session">
-          <img src="${assetUrl('editorial/trust-nutrition-session.jpg')}" alt="Диетолог вместе с клиентом составляет план работы" width="1536" height="1024" loading="lazy">
+          <img src="${assetUrl('editorial/trust-planning-still-life.png')}" alt="Планировщик, календарь и карточки этапов работы с клиентом" width="1536" height="1024" loading="lazy">
           <div class="story-trust__photo-shade" aria-hidden="true"></div>
           <div class="story-trust__card-copy">
-            <span class="story-trust__label">План на день</span>
-            <h3>Начинайте с ясной картины</h3>
-            <p>Ближайшие встречи и свободное время видны заранее.</p>
+            <span class="story-trust__label">Рабочий день</span>
+            <h3>План виден целиком</h3>
+            <p>Встречи, свободные интервалы и важные дела складываются в спокойный ритм.</p>
           </div>
         </article>
         <article class="story-trust__card story-trust__card--client">
-          <div class="story-trust__mini-phone story-trust__mini-phone--client">
-            <img src="${assetUrl('product-screens/client-overview.jpg')}" alt="Карточка клиента в Simple CRM" width="591" height="1280" loading="lazy">
+          <div class="story-trust__context-visual" aria-hidden="true">
+            <span class="story-trust__context-line"></span>
+            <span class="story-trust__context-note story-trust__context-note--one"><i></i><b></b><b></b></span>
+            <span class="story-trust__context-note story-trust__context-note--two"><i></i><b></b><b></b></span>
+            <span class="story-trust__context-note story-trust__context-note--three"><i></i><b></b><b></b></span>
           </div>
           <div class="story-trust__card-copy">
-            <span class="story-trust__label">Карточка клиента</span>
-            <h3>Контекст уже рядом</h3>
-            <p>Контакты, встреча и важные детали открываются вместе.</p>
-          </div>
-        </article>
-        <article class="story-trust__card story-trust__card--tasks">
-          <div class="story-trust__mini-phone story-trust__mini-phone--tasks">
-            <img src="${assetUrl('product-screens/tasks-list.jpg')}" alt="Список задач по клиентам в Simple CRM" width="591" height="1280" loading="lazy">
-          </div>
-          <div class="story-trust__card-copy">
-            <span class="story-trust__label">Следующий шаг</span>
-            <h3>Ничего не теряется</h3>
-            <p>Задача остаётся связана с клиентом и сроком.</p>
+            <span class="story-trust__label">История клиента</span>
+            <h3>Контекст складывается сам</h3>
+            <p>Заметки и договорённости остаются связаны — ничего не приходится вспоминать заново.</p>
           </div>
         </article>
         <article class="story-trust__card story-trust__card--flow">
-          <img class="story-trust__flow-art" src="${assetUrl('editorial/trust-workflow-illustration.png')}" alt="Абстрактный маршрут работы: встреча, сохранённый итог и следующий шаг" width="1664" height="936" loading="lazy">
+          <img class="story-trust__flow-art" src="${assetUrl('editorial/trust-client-journey.png')}" alt="Абстрактный маршрут от документов и встречи к выполненному действию" width="1536" height="1024" loading="lazy">
           <div class="story-trust__flow-shade" aria-hidden="true"></div>
           <div class="story-trust__card-copy">
-            <span class="story-trust__label">От встречи к результату</span>
-            <h3>Весь путь клиента — перед глазами</h3>
-            <p>Встреча, сохранённый итог и следующий шаг складываются в один понятный маршрут.</p>
+            <span class="story-trust__label">Следующий шаг</span>
+            <h3>От встречи — к действию</h3>
+            <p>Итог превращается в понятный следующий шаг, связанный с клиентом и сроком.</p>
           </div>
-          <div class="story-trust__mini-phone story-trust__mini-phone--meeting">
-            <img src="${assetUrl('product-screens/meeting-details.jpg')}" alt="Детали завершённой встречи в Simple CRM" width="591" height="1280" loading="lazy">
-          </div>
-          <div class="story-trust__flow-badge">${iconSvg('check')}<span>Итог сохранён</span></div>
         </article>
       </div>
     </div>`;
@@ -620,7 +600,7 @@ function createReviewsSection() {
       <header class="story-reviews__intro" data-story-reveal>
         <h2 id="story-reviews-title">Отзывы</h2>
       </header>
-      <div class="story-reviews__wall" role="group" aria-label="Отзывы специалистов" data-story-reveal="cluster">
+      <div class="story-reviews__wall" role="group" aria-label="Отзывы специалистов">
         ${draftReviews.map((review, index) => `
           <article class="story-review story-review--${review.tone}" style="--review-index:${index}">
             <div class="story-review__stars" role="img" aria-label="5 из 5">
