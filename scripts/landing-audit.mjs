@@ -140,6 +140,7 @@ for (const viewport of viewports) {
       ['scenario', '.client-story'],
       ['product', '.product-proof'],
       ['trust', '.story-trust'],
+      ['reviews', '.story-reviews'],
       ['cta', '.story-start'],
     ];
     for (const [name, selector] of sections) {

@@ -161,7 +161,7 @@ const draftReviews = [
   {
     role: 'Бизнес-консультант',
     quote: 'Вижу историю работы с клиентом и следующий шаг. Подготовка к созвону занимает заметно меньше внимания.',
-    tone: 'ice',
+    tone: 'white',
   },
   {
     role: 'Фитнес-тренер',
@@ -176,7 +176,7 @@ const draftReviews = [
   {
     role: 'Карьерный консультант',
     quote: 'Нравится, что приложение не перегружает работу. Оно помогает помнить главное и не забирает внимание у клиента.',
-    tone: 'soft',
+    tone: 'blue',
   },
 ];
 
@@ -202,20 +202,10 @@ function createObjectHero() {
   section.innerHTML = `
     <div class="container story-hero__layout">
       <div class="story-hero__visual" data-story-reveal="hero-visual">
-        <div class="story-hero__halo" aria-hidden="true"></div>
-        <img class="story-hero__object story-hero__object--board" src="${assetUrl('hero-objects/planning-whiteboard.png')}" alt="" width="1536" height="1024" loading="eager" aria-hidden="true">
-        <img class="story-hero__object story-hero__object--calendar" src="${assetUrl('hero-objects/desk-calendar.png')}" alt="" width="1312" height="1199" loading="eager" aria-hidden="true">
-        <img class="story-hero__object story-hero__object--clock" src="${assetUrl('hero-objects/blue-clock.png')}" alt="" width="1321" height="1191" loading="eager" aria-hidden="true">
-        <img class="story-hero__object story-hero__object--planner" src="${assetUrl('hero-objects/planner-pen.png')}" alt="" width="1536" height="1024" loading="eager" aria-hidden="true">
-        <img class="story-hero__object story-hero__object--notes" src="${assetUrl('hero-objects/sticky-notes-clips.png')}" alt="" width="1312" height="1199" loading="eager" aria-hidden="true">
-        <img class="story-hero__object story-hero__object--cup" src="${assetUrl('hero-objects/pencil-cup.png')}" alt="" width="1024" height="1536" loading="eager" aria-hidden="true">
-        <img class="story-hero__object story-hero__object--cards" src="${assetUrl('hero-objects/appointment-cards.png')}" alt="" width="1536" height="1024" loading="eager" aria-hidden="true">
-        <figure class="story-hero__phone">
-          <img src="${assetUrl('product-screens/today-schedule.jpg')}" alt="Экран Сегодня в Simple CRM с расписанием встреч" width="591" height="1280" fetchpriority="high">
-        </figure>
+        <img class="story-hero__composition" src="${assetUrl('hero-objects/hero-left-composition.png')}" alt="Рабочее пространство Simple CRM: экран Сегодня, канбан задач, список клиентов и рабочие инструменты" width="2069" height="1969" loading="eager" fetchpriority="high">
       </div>
       <div class="story-hero__copy" data-story-reveal="hero-copy">
-        <h1 id="page-title"><span class="story-hero__lead">Всё для работы</span><br><span class="story-hero__highlight">с клиентами</span></h1>
+        <h1 id="page-title"><span class="story-hero__lead">Всё для работы</span><span class="story-hero__highlight">с клиентами</span></h1>
         <p>Расписание, задачи и договорённости собраны в одном приложении</p>
         <button class="header-app-store story-hero__app-store" type="button" data-download-placeholder aria-haspopup="dialog">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15.4 3.2c-.9.1-2 .7-2.6 1.4-.6.7-1.1 1.8-.9 2.8 1 .1 2-.5 2.6-1.2.6-.8 1-1.8.9-3Zm3.4 9.1c0-2.5 2-3.7 2.1-3.8-1.1-1.7-2.9-1.9-3.6-1.9-1.5-.2-3 .9-3.8.9-.8 0-2-.9-3.3-.9-1.7 0-3.3 1-4.2 2.6-1.8 3.1-.5 7.7 1.3 10.2.9 1.2 1.9 2.6 3.3 2.6 1.3-.1 1.8-.8 3.4-.8s2 .8 3.4.8c1.4 0 2.3-1.3 3.1-2.5 1.1-1.6 1.6-3.2 1.6-3.3-.1 0-3.1-1.2-3.1-4.7Z" /></svg>
@@ -436,8 +426,26 @@ function createClientStory() {
     void content.offsetWidth;
     content.classList.add('is-entering');
   };
+  const settleActivePhone = slide => {
+    const phone = slide?.querySelector('.client-story__phone');
+    if (!phone || reducedMotion() || typeof phone.animate !== 'function') return;
+    phone.getAnimations().forEach(animation => {
+      if (animation.id === 'client-story-settle') animation.cancel();
+    });
+    const animation = phone.animate([
+      { transform: 'translateY(14px) scale(.965)', offset: 0 },
+      { transform: 'translateY(-4px) scale(1.012)', offset: .72 },
+      { transform: 'translateY(0) scale(1)', offset: 1 },
+    ], {
+      duration: 920,
+      easing: 'cubic-bezier(.16, 1, .3, 1)',
+    });
+    animation.id = 'client-story-settle';
+  };
   const activate = (index, userInitiated = true) => {
+    const previousIndex = current;
     current = (index + storySteps.length) % storySteps.length;
+    let activeSlide = null;
     slides.forEach((slide, position) => {
       const slot = slotFor(position);
       const visible = Math.abs(slot) <= (compactViewport.matches ? 1 : 2);
@@ -446,9 +454,11 @@ function createClientStory() {
       slide.classList.toggle('is-active', active);
       slide.setAttribute('aria-hidden', String(!visible));
       slide.querySelector('a').tabIndex = visible ? 0 : -1;
+      if (active) activeSlide = slide;
     });
     const step = storySteps[current];
     updateDetails(step);
+    if (current !== previousIndex || userInitiated) settleActivePhone(activeSlide);
     start();
   };
 
@@ -491,29 +501,43 @@ function createClientStory() {
 
 function createProductProof() {
   const section = document.createElement('section');
+  section.id = 'client-workspace';
   section.className = 'product-proof';
   section.setAttribute('aria-labelledby', 'product-proof-title');
   section.innerHTML = `
-    <div class="product-proof__backdrop" aria-hidden="true" data-story-reveal="proof-photo">
-      <img src="${assetUrl('editorial/client-planning-background.webp')}" alt="" width="1680" height="945" loading="lazy">
-    </div>
+    <div class="product-proof__wash product-proof__wash--blue" aria-hidden="true"></div>
+    <div class="product-proof__wash product-proof__wash--pink" aria-hidden="true"></div>
     <div class="container product-proof__layout" data-story-reveal="proof-group">
       <div class="product-proof__copy">
-        <h2 id="product-proof-title">Открыли клиента<br><span>всё уже рядом</span></h2>
-        <p>Ближайшая встреча, актуальные задачи и договорённости собраны в карточке клиента. Откройте её и продолжайте с нужного места.</p>
-        <div class="product-proof__signals" role="group" aria-label="Что собрано в карточке клиента">
-          <p class="product-proof__signal product-proof__signal--now"><strong>Сейчас</strong><span>Ближайшая встреча и открытые задачи</span></p>
-          <p class="product-proof__signal product-proof__signal--context"><strong>История</strong><span>Контакты и важные договорённости</span></p>
-          <p class="product-proof__signal product-proof__signal--next"><strong>Дальше</strong><span>Следующая встреча и новый шаг</span></p>
-        </div>
+        <h2 id="product-proof-title">Вся работа<br>с клиентом —<br><span>в одном месте</span></h2>
+        <p>Расписание, карточка клиента и следующий шаг связаны между собой. Нужный контекст открывается сразу — без поиска по чатам и таблицам.</p>
+        <a class="product-proof__cta" href="/learn/client-context/">Посмотреть возможности ${iconSvg('arrow-right')}</a>
+        <dl class="product-proof__proofs" aria-label="Преимущества Simple CRM">
+          <div><dt>Один экран</dt><dd>весь контекст клиента</dd></div>
+          <div><dt>Всегда понятно</dt><dd>что делать дальше</dd></div>
+        </dl>
       </div>
-      <figure class="product-proof__visual" data-story-reveal="fan">
-        <div class="product-proof__overscan">
-          <div class="product-proof__fan">
-            <div class="product-proof__screen product-proof__screen--back"><img src="${assetUrl('product-screens/today-schedule.jpg')}" alt="Актуальное расписание на сегодня в Simple CRM" width="591" height="1280" loading="lazy"></div>
-            <div class="product-proof__screen product-proof__screen--front"><img src="${assetUrl('product-screens/client-overview.jpg')}" alt="Актуальная карточка клиента в Simple CRM с ближайшей встречей, задачами и данными" width="591" height="1280" loading="lazy"></div>
-          </div>
+      <figure class="product-proof__visual" data-story-reveal="proof-visual" aria-label="Расписание и карточка клиента в приложении Simple CRM">
+        <img class="product-proof__ribbons" src="${assetUrl('editorial/product-proof-ribbons.png')}" alt="" width="1536" height="1024" loading="lazy" aria-hidden="true">
+        <div class="product-proof__orbit" aria-hidden="true"></div>
+        <div class="product-proof__fan">
+          <div class="product-proof__screen product-proof__screen--back"><img src="${assetUrl('product-screens/today-schedule.jpg')}" alt="Актуальное расписание на сегодня в Simple CRM" width="591" height="1280" loading="lazy"></div>
+          <div class="product-proof__screen product-proof__screen--front"><img src="${assetUrl('product-screens/client-overview.jpg')}" alt="Карточка клиента в Simple CRM с ближайшей встречей, задачами и данными" width="591" height="1280" loading="lazy"></div>
         </div>
+        <div class="product-proof__badge product-proof__badge--meeting">
+          <span class="product-proof__badge-icon">${iconSvg('calendar')}</span>
+          <span><small>Ближайшая встреча</small><strong>Сегодня, 14:30</strong></span>
+        </div>
+        <div class="product-proof__badge product-proof__badge--client">
+          <small>В карточке клиента</small>
+          <strong>Встречи · задачи · заметки</strong>
+        </div>
+        <div class="product-proof__badge product-proof__badge--chart">
+          <span class="product-proof__chart-copy"><small>Рабочий ритм</small><strong>От плана к результату</strong></span>
+          <span class="product-proof__bars" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>
+          <span class="product-proof__chart-labels" aria-hidden="true"><small>план</small><small>контекст</small><small>итог</small></span>
+        </div>
+        <div class="product-proof__status">${iconSvg('check')}<span>Контекст собран</span></div>
       </figure>
     </div>`;
   return section;
@@ -521,18 +545,60 @@ function createProductProof() {
 
 function createTrustSection() {
   const section = document.createElement('section');
+  section.id = 'work-without-routine';
   section.className = 'story-trust';
   section.setAttribute('aria-labelledby', 'story-trust-title');
   section.innerHTML = `
+    <div class="story-trust__wash story-trust__wash--blue" aria-hidden="true"></div>
+    <div class="story-trust__wash story-trust__wash--pink" aria-hidden="true"></div>
     <div class="container story-trust__layout">
-      <header data-story-reveal>
-        <h2 id="story-trust-title">Порядок без лишнего контроля</h2>
-        <p>Simple CRM остаётся рабочим инструментом. Решения, тон общения и отношения с клиентом остаются за вами.</p>
+      <header class="story-trust__intro" data-story-reveal>
+        <h2 id="story-trust-title">Работа с клиентами — <span>без лишней суеты</span></h2>
+        <p>Simple CRM берёт на себя порядок: встречи, задачи и контекст собраны в одном месте. Вы сохраняете внимание для самой работы.</p>
       </header>
-      <div class="story-trust__canvas" data-story-reveal="cluster">
-        <article class="story-trust__point story-trust__point--lead"><h3>Начать с малого</h3><p>Добавьте одного клиента, встречу и следующий шаг. Базу можно переносить постепенно.</p></article>
-        <article class="story-trust__point story-trust__point--plain"><h3>Понятно с первого дня</h3><p>Основные действия находятся рядом с клиентом. Долгая настройка не требуется.</p></article>
-        <article class="story-trust__point story-trust__point--privacy"><h3>Данные под контролем</h3><p>Доступ и правила хранения чувствительной информации всегда должны быть прозрачными.</p></article>
+      <div class="story-trust__bento" data-story-reveal="cluster">
+        <article class="story-trust__card story-trust__card--session">
+          <img src="${assetUrl('editorial/trust-nutrition-session.jpg')}" alt="Диетолог вместе с клиентом составляет план работы" width="1536" height="1024" loading="lazy">
+          <div class="story-trust__photo-shade" aria-hidden="true"></div>
+          <div class="story-trust__card-copy">
+            <span class="story-trust__label">План на день</span>
+            <h3>Начинайте с ясной картины</h3>
+            <p>Ближайшие встречи и свободное время видны заранее.</p>
+          </div>
+        </article>
+        <article class="story-trust__card story-trust__card--client">
+          <div class="story-trust__mini-phone story-trust__mini-phone--client">
+            <img src="${assetUrl('product-screens/client-overview.jpg')}" alt="Карточка клиента в Simple CRM" width="591" height="1280" loading="lazy">
+          </div>
+          <div class="story-trust__card-copy">
+            <span class="story-trust__label">Карточка клиента</span>
+            <h3>Контекст уже рядом</h3>
+            <p>Контакты, встреча и важные детали открываются вместе.</p>
+          </div>
+        </article>
+        <article class="story-trust__card story-trust__card--tasks">
+          <div class="story-trust__mini-phone story-trust__mini-phone--tasks">
+            <img src="${assetUrl('product-screens/tasks-list.jpg')}" alt="Список задач по клиентам в Simple CRM" width="591" height="1280" loading="lazy">
+          </div>
+          <div class="story-trust__card-copy">
+            <span class="story-trust__label">Следующий шаг</span>
+            <h3>Ничего не теряется</h3>
+            <p>Задача остаётся связана с клиентом и сроком.</p>
+          </div>
+        </article>
+        <article class="story-trust__card story-trust__card--flow">
+          <img class="story-trust__flow-photo" src="${assetUrl('editorial/trust-photo-session.jpg')}" alt="Фотограф проводит съёмку для клиентки в студии" width="1664" height="936" loading="lazy">
+          <div class="story-trust__flow-shade" aria-hidden="true"></div>
+          <div class="story-trust__card-copy">
+            <span class="story-trust__label">От встречи к результату</span>
+            <h3>Работайте с людьми, а не с таблицами</h3>
+            <p>Итоги встречи и следующий шаг сохраняются там, где вы продолжите работу с клиентом.</p>
+          </div>
+          <div class="story-trust__mini-phone story-trust__mini-phone--meeting">
+            <img src="${assetUrl('product-screens/meeting-details.jpg')}" alt="Детали завершённой встречи в Simple CRM" width="591" height="1280" loading="lazy">
+          </div>
+          <div class="story-trust__flow-badge">${iconSvg('check')}<span>Итог сохранён</span></div>
+        </article>
       </div>
     </div>`;
   return section;
@@ -540,13 +606,13 @@ function createTrustSection() {
 
 function createReviewsSection() {
   const section = document.createElement('section');
+  section.id = 'reviews';
   section.className = 'story-reviews';
   section.setAttribute('aria-labelledby', 'story-reviews-title');
   section.innerHTML = `
     <div class="container">
       <header class="story-reviews__intro" data-story-reveal>
-        <h2 id="story-reviews-title">Что ценят специалисты</h2>
-        <p>Расписание, договорённости и следующий шаг остаются рядом в ежедневной работе с клиентами.</p>
+        <h2 id="story-reviews-title">Отзывы</h2>
       </header>
       <div class="story-reviews__wall" role="group" aria-label="Отзывы специалистов" data-story-reveal="cluster">
         ${draftReviews.map((review, index) => `
