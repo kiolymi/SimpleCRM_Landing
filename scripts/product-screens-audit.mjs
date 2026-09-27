@@ -2,7 +2,7 @@ import { mkdir, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { chromium } from 'playwright';
 
-const baseUrl = 'http://127.0.0.1:4173';
+const baseUrl = (process.env.AUDIT_BASE_URL || 'http://127.0.0.1:4173').replace(/\/$/, '');
 const browserPath = 'C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe';
 const outputDir = path.join(process.cwd(), 'outputs', 'product-screens-audit');
 const routes = [
@@ -60,6 +60,10 @@ for (const viewport of viewports) {
       }
       window.scrollTo(0, 0);
     });
+    await page.waitForFunction(
+      () => [...document.images].every(image => image.complete),
+      { timeout: 15_000 },
+    ).catch(() => {});
     await page.waitForTimeout(350);
     const metrics = await page.evaluate(() => {
       const productImages = [...document.images]
