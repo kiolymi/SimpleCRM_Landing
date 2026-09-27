@@ -513,8 +513,8 @@ function createProductProof() {
   section.innerHTML = `
     <div class="container product-proof__layout">
       <div class="product-proof__copy">
-        <h2 id="product-proof-title">Вся работа<br>с клиентом —<br><span>в одном месте</span></h2>
-        <p>Расписание, карточка клиента и следующий шаг связаны между собой. Нужный контекст открывается сразу — без поиска по чатам и таблицам.</p>
+        <h2 id="product-proof-title">Меньше поиска<br><span>больше внимания</span></h2>
+        <p>Расписание, карточка клиента и следующий шаг уже связаны. Вы быстрее возвращаетесь к сути — без поисков по чатам и таблицам.</p>
       </div>
       <figure class="product-proof__visual" aria-label="Расписание и карточка клиента в приложении Simple CRM">
         <div class="product-proof__fan">
