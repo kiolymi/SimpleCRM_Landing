@@ -121,11 +121,17 @@ for (const viewport of viewports) {
   await settleFullPage(page);
   await page.screenshot({ path: path.join(outputDir, `${viewport.name}.png`), fullPage: true });
   const functional = {};
-  if (await page.locator('[data-story-step="3"]').count()) {
-    await page.locator('[data-story-step="3"]').click();
+  if (await page.locator('[data-story-slide]').count()) {
+    const before = await page.locator('[data-story-slide][data-slot="0"] [data-story-image]').getAttribute('src');
+    await page.locator('[data-story-next]').click();
     await page.waitForTimeout(220);
-    functional.storyPaymentsScreen = (await page.locator('[data-story-image]').getAttribute('src'))?.includes('25-payments.png') || false;
-    await page.locator('[data-story-step="0"]').click();
+    const after = await page.locator('[data-story-slide][data-slot="0"] [data-story-image]').getAttribute('src');
+    functional.storyCarousel = {
+      slideCount: await page.locator('[data-story-slide]').count(),
+      visibleCount: await page.locator('[data-story-slide][aria-hidden="false"]').count(),
+      switched: before !== after,
+      activeImage: await page.locator('[data-story-slide][data-slot="0"] [data-story-image]').getAttribute('src'),
+    };
   }
   if (['1440x900', '390x844'].includes(viewport.name)) {
     await page.addStyleTag({ content: '.skip-link { transform: translateY(-180%) !important; }' });

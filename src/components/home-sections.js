@@ -74,32 +74,76 @@ const recognitionSlides = [
 
 const storySteps = [
   {
-    label: 'Перед встречей',
-    title: 'Встреча начинается с ясного плана',
-    text: 'Экран «Сегодня» собирает ближайшие встречи и свободные интервалы. Перед разговором видно, кто следующий и когда начинается работа.',
+    label: 'Сегодня',
+    title: 'День начинается с ясного плана',
+    text: 'Ближайшие встречи и свободные интервалы собраны в одном расписании. Перед началом работы сразу видно, кто следующий.',
+    hoverText: 'Проверьте расписание, время и клиента перед первой встречей дня.',
     image: assetUrl('product-screens/today-schedule.jpg'),
     alt: 'Экран Сегодня в Simple CRM с расписанием ближайших встреч',
+    href: '/how-to/prepare-meeting/',
   },
   {
-    label: 'После встречи',
-    title: 'Закрепите следующий шаг',
-    text: 'После встречи задача остаётся рядом с клиентом: что сделать, к какому сроку и к какой договорённости вернуться.',
-    image: assetUrl('product-screens/tasks-list.jpg'),
-    alt: 'Экран задач Simple CRM со следующими действиями после встречи',
+    label: 'Календарь',
+    title: 'Неделя складывается в понятный ритм',
+    text: 'Календарь помогает оценить загрузку, увидеть свободное время и распределить встречи без пересечений.',
+    hoverText: 'Смотрите неделю целиком и выбирайте подходящее время для новой записи.',
+    image: assetUrl('product-screens/calendar-week.jpg'),
+    alt: 'Недельный календарь Simple CRM со встречами и свободными интервалами',
+    href: '/how-to/prepare-meeting/',
   },
   {
-    label: 'В нужный день',
-    title: 'Откройте нужный день',
-    text: 'Календарь показывает встречи списком — с клиентом, временем и форматом. Нужный контакт находится без поиска по перепискам.',
+    label: 'Список встреч',
+    title: 'Нужный день читается с первого взгляда',
+    text: 'Встречи показаны списком с клиентом, временем и форматом. К нужной записи можно перейти без поиска по перепискам.',
+    hoverText: 'Откройте выбранный день и быстро перейдите к деталям каждой встречи.',
     image: assetUrl('product-screens/calendar-list.jpg'),
     alt: 'Календарь Simple CRM со списком встреч на выбранный день',
+    href: '/how-to/prepare-meeting/',
   },
   {
-    label: 'В конце периода',
-    title: 'Завершите встречу без хвостов',
-    text: 'В деталях остаются формат, клиент и итоговые действия. Период закрывается с понятным результатом и сохранённым контекстом.',
+    label: 'Карточка клиента',
+    title: 'Главное о клиенте находится рядом',
+    text: 'Контакты, ближайшая встреча и рабочие действия доступны из одной карточки. Продолжить работу можно с нужного места.',
+    hoverText: 'Откройте обзор клиента, чтобы увидеть ближайшую встречу и актуальные данные.',
+    image: assetUrl('product-screens/client-overview.jpg'),
+    alt: 'Обзор карточки клиента в Simple CRM',
+    href: '/learn/client-context/',
+  },
+  {
+    label: 'История',
+    title: 'Контекст сохраняется от встречи к встрече',
+    text: 'Активность клиента выстроена по времени: встречи, задачи и изменения остаются в последовательной рабочей истории.',
+    hoverText: 'Просматривайте события по порядку и возвращайтесь к важным договорённостям.',
+    image: assetUrl('product-screens/client-activity.jpg'),
+    alt: 'История активности клиента в Simple CRM',
+    href: '/learn/client-context/',
+  },
+  {
+    label: 'Задачи',
+    title: 'Следующие действия не теряются',
+    text: 'Новые, текущие и завершённые задачи собраны в одном списке. Срок и клиент видны без дополнительных переходов.',
+    hoverText: 'Следите за открытыми действиями и завершайте их в понятном порядке.',
+    image: assetUrl('product-screens/tasks-list.jpg'),
+    alt: 'Список задач Simple CRM со статусами и сроками',
+    href: '/how-to/create-follow-up-task/',
+  },
+  {
+    label: 'Новая задача',
+    title: 'Договорённость превращается в конкретный шаг',
+    text: 'Название, срок, приоритет и клиент сохраняются вместе. Задача сразу объясняет, что нужно сделать дальше.',
+    hoverText: 'Зафиксируйте действие, срок и приоритет сразу после разговора с клиентом.',
+    image: assetUrl('product-screens/new-task-details.jpg'),
+    alt: 'Форма новой задачи в Simple CRM со сроком и приоритетом',
+    href: '/how-to/create-follow-up-task/',
+  },
+  {
+    label: 'Итоги встречи',
+    title: 'Каждая встреча завершается понятным итогом',
+    text: 'Формат, клиент, заметки и итоговые действия остаются в деталях встречи и помогают подготовиться к следующему контакту.',
+    hoverText: 'Сохраните результат встречи и оставьте следующий шаг рядом с клиентом.',
     image: assetUrl('product-screens/meeting-details.jpg'),
     alt: 'Детали встречи в Simple CRM с данными клиента и итоговыми действиями',
+    href: '/learn/follow-up-after-meeting/',
   },
 ];
 
@@ -139,7 +183,7 @@ const draftReviews = [
 export function createHomePage() {
   const fragment = document.createDocumentFragment();
   fragment.append(
-    createVideoHero(),
+    createObjectHero(),
     createRecognitionSection(),
     createClientStory(),
     createProductProof(),
@@ -151,40 +195,35 @@ export function createHomePage() {
   return fragment;
 }
 
-function createVideoHero() {
+function createObjectHero() {
   const section = document.createElement('section');
   section.className = 'story-hero';
   section.setAttribute('aria-labelledby', 'page-title');
   section.innerHTML = `
-    <div class="story-hero__media" aria-hidden="true">
-      <video class="story-hero__video" muted loop autoplay playsinline preload="none" data-promo-placeholder></video>
+    <div class="container story-hero__layout">
+      <div class="story-hero__visual" data-story-reveal="hero-visual">
+        <div class="story-hero__halo" aria-hidden="true"></div>
+        <img class="story-hero__object story-hero__object--board" src="${assetUrl('hero-objects/planning-whiteboard.png')}" alt="" width="1536" height="1024" loading="eager" aria-hidden="true">
+        <img class="story-hero__object story-hero__object--calendar" src="${assetUrl('hero-objects/desk-calendar.png')}" alt="" width="1312" height="1199" loading="eager" aria-hidden="true">
+        <img class="story-hero__object story-hero__object--clock" src="${assetUrl('hero-objects/blue-clock.png')}" alt="" width="1321" height="1191" loading="eager" aria-hidden="true">
+        <img class="story-hero__object story-hero__object--planner" src="${assetUrl('hero-objects/planner-pen.png')}" alt="" width="1536" height="1024" loading="eager" aria-hidden="true">
+        <img class="story-hero__object story-hero__object--notes" src="${assetUrl('hero-objects/sticky-notes-clips.png')}" alt="" width="1312" height="1199" loading="eager" aria-hidden="true">
+        <img class="story-hero__object story-hero__object--cup" src="${assetUrl('hero-objects/pencil-cup.png')}" alt="" width="1024" height="1536" loading="eager" aria-hidden="true">
+        <img class="story-hero__object story-hero__object--cards" src="${assetUrl('hero-objects/appointment-cards.png')}" alt="" width="1536" height="1024" loading="eager" aria-hidden="true">
+        <figure class="story-hero__phone">
+          <img src="${assetUrl('product-screens/today-schedule.jpg')}" alt="Экран Сегодня в Simple CRM с расписанием встреч" width="591" height="1280" fetchpriority="high">
+        </figure>
+      </div>
+      <div class="story-hero__copy" data-story-reveal="hero-copy">
+        <h1 id="page-title"><span class="story-hero__lead">Всё для работы</span><br><span class="story-hero__highlight">с клиентами</span></h1>
+        <p>Расписание, задачи и договорённости собраны в одном приложении</p>
+        <button class="header-app-store story-hero__app-store" type="button" data-download-placeholder aria-haspopup="dialog">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15.4 3.2c-.9.1-2 .7-2.6 1.4-.6.7-1.1 1.8-.9 2.8 1 .1 2-.5 2.6-1.2.6-.8 1-1.8.9-3Zm3.4 9.1c0-2.5 2-3.7 2.1-3.8-1.1-1.7-2.9-1.9-3.6-1.9-1.5-.2-3 .9-3.8.9-.8 0-2-.9-3.3-.9-1.7 0-3.3 1-4.2 2.6-1.8 3.1-.5 7.7 1.3 10.2.9 1.2 1.9 2.6 3.3 2.6 1.3-.1 1.8-.8 3.4-.8s2 .8 3.4.8c1.4 0 2.3-1.3 3.1-2.5 1.1-1.6 1.6-3.2 1.6-3.3-.1 0-3.1-1.2-3.1-4.7Z" /></svg>
+          <span><small>Скачайте с</small><strong>App Store</strong></span>
+        </button>
+      </div>
     </div>
-    <div class="story-hero__prototype" role="note">ЭТО ВСЕ ПРОТОТИП!</div>
-    <h1 id="page-title" class="visually-hidden">Simple CRM — всё для работы с клиентами</h1>`;
-
-  const video = section.querySelector('video');
-  video.poster = new URL('../../video-background/home-prototype-poster.png', import.meta.url).href;
-  video.defaultMuted = true;
-  video.muted = true;
-  video.volume = 0;
-  const reducedMotionQuery = matchMedia('(prefers-reduced-motion: reduce)');
-  const syncPlayback = () => {
-    if (document.hidden || reducedMotionQuery.matches) video.pause();
-    else video.play().catch(() => {});
-  };
-  const loadVideo = () => {
-    if (reducedMotionQuery.matches || video.dataset.loaded === 'true') return;
-    video.dataset.loaded = 'true';
-    video.src = new URL('../../video-background/home-prototype.mp4', import.meta.url).href;
-    syncPlayback();
-  };
-  const handleMotionPreference = () => {
-    if (!reducedMotionQuery.matches) loadVideo();
-    syncPlayback();
-  };
-  reducedMotionQuery.addEventListener('change', handleMotionPreference);
-  document.addEventListener('visibilitychange', syncPlayback);
-  loadVideo();
+  `;
   return section;
 }
 
@@ -310,146 +349,143 @@ function createClientStory() {
   section.className = 'client-story';
   section.setAttribute('aria-labelledby', 'client-story-title');
   section.innerHTML = `
-    <div class="container">
+    <div class="container client-story__layout">
       <header class="client-story__intro" data-story-reveal>
-        <h2 id="client-story-title"><span>Вся работа с клиентом</span><br>в одной истории</h2>
-        <p>Встречи, задачи и договорённости проходят один маршрут — от плана на сегодня до сохранённого итога.</p>
+        <h2 id="client-story-title"><span>Вся работа с клиентом</span><br><em>в одной истории</em></h2>
       </header>
-      <div class="client-story__stage" data-client-story data-active-step="0" data-story-reveal="stage">
-        <div class="client-story__route-glow" aria-hidden="true"></div>
-        <div class="client-story__traveller" data-story-traveller>
-          <figure class="client-story__device" data-story-reveal="phone">
-            <div class="client-story__phone">
-              <img src="${storySteps[0].image}" alt="${storySteps[0].alt}" width="591" height="1280" loading="lazy" data-story-image>
-            </div>
-          </figure>
-        </div>
-        <div class="client-story__content" data-story-content>
-          <span class="client-story__sequence" data-story-sequence aria-hidden="true">01 / 04</span>
-          <div class="client-story__explanation" role="tabpanel" aria-live="polite">
-            <h3 data-story-title>${escapeHtml(storySteps[0].title)}</h3>
-            <p data-story-copy>${escapeHtml(storySteps[0].text)}</p>
-          </div>
-        </div>
-        <div class="client-story__timeline" role="tablist" aria-label="Маршрут работы с клиентом">
+      <div class="client-story__carousel" data-client-story data-story-reveal="stage" role="region" aria-roledescription="карусель" aria-label="Возможности Simple CRM">
+        <button class="client-story__arrow client-story__arrow--previous" type="button" aria-label="Предыдущий экран" data-story-previous>${iconSvg('arrow-right')}</button>
+        <div class="client-story__viewport" data-story-viewport role="group" tabindex="0" aria-label="Карусель экранов приложения. Используйте стрелки влево и вправо для переключения">
           ${storySteps.map((step, index) => `
-            <button type="button" role="tab" aria-selected="${index === 0}" tabindex="${index === 0 ? '0' : '-1'}" class="client-story__stop${index === 0 ? ' is-active' : ''}" data-story-step="${index}">
-              <span class="client-story__stop-dot" aria-hidden="true"></span>
-              <span>${escapeHtml(step.label)}</span>
-            </button>`).join('')}
+            <article class="client-story__slide${index === 0 ? ' is-active' : ''}" data-story-slide="${index}" data-slot="${index <= 2 ? index : index >= storySteps.length - 2 ? index - storySteps.length : 3}" aria-hidden="${index > 2 && index < storySteps.length - 2 ? 'true' : 'false'}">
+              <a class="client-story__screen-card" href="${escapeAttribute(step.href)}" aria-label="${escapeAttribute(`${step.title}. Узнать подробнее`)}">
+                <div class="client-story__phone">
+                  <img src="${escapeAttribute(step.image)}" alt="${escapeAttribute(step.alt)}" width="591" height="1280" loading="lazy" data-story-image>
+                  <div class="client-story__screen-detail">
+                    <p>${escapeHtml(step.hoverText)}</p>
+                    <span class="client-story__screen-link">Узнать подробнее ${iconSvg('arrow-right')}</span>
+                  </div>
+                </div>
+              </a>
+            </article>`).join('')}
         </div>
+        <button class="client-story__arrow client-story__arrow--next" type="button" aria-label="Следующий экран" data-story-next>${iconSvg('arrow-right')}</button>
+      </div>
+      <div class="client-story__details" aria-live="polite" aria-atomic="true" data-story-content>
+        <div class="client-story__explanation">
+          <h3 data-story-title>${escapeHtml(storySteps[0].title)}</h3>
+          <p data-story-copy>${escapeHtml(storySteps[0].text)}</p>
+          <a class="client-story__more" href="${escapeAttribute(storySteps[0].href)}" data-story-link>Узнать подробнее ${iconSvg('arrow-right')}</a>
+        </div>
+        <div class="client-story__progress" aria-hidden="true"><span data-story-progress></span></div>
       </div>
     </div>`;
 
-  const stage = section.querySelector('[data-client-story]');
-  const traveller = section.querySelector('[data-story-traveller]');
-  const image = section.querySelector('[data-story-image]');
+  const carousel = section.querySelector('[data-client-story]');
+  const viewport = section.querySelector('[data-story-viewport]');
+  const slides = [...section.querySelectorAll('[data-story-slide]')];
   const title = section.querySelector('[data-story-title]');
   const copy = section.querySelector('[data-story-copy]');
-  const sequence = section.querySelector('[data-story-sequence]');
+  const link = section.querySelector('[data-story-link]');
   const content = section.querySelector('[data-story-content]');
-  const steps = [...section.querySelectorAll('[data-story-step]')];
-  const duration = 4400;
+  const progress = section.querySelector('[data-story-progress]');
+  const previous = section.querySelector('[data-story-previous]');
+  const next = section.querySelector('[data-story-next]');
+  const duration = 4000;
+  const compactViewport = window.matchMedia('(max-width: 700px)');
   const pauseReasons = new Set();
   let current = 0;
   let timer = null;
-  let swapTimer = null;
   let inView = !('IntersectionObserver' in window);
 
-  const positionTraveller = () => {
-    if (!stage || !traveller) return;
-    if (matchMedia('(max-width: 700px)').matches) {
-      stage.style.setProperty('--story-travel-x', '0px');
-      return;
-    }
-    const inset = Math.max(28, Math.min(52, stage.clientWidth * .042));
-    const available = Math.max(0, stage.clientWidth - traveller.offsetWidth - inset * 2);
-    const x = inset + available * (current / Math.max(1, steps.length - 1));
-    stage.style.setProperty('--story-travel-x', `${x}px`);
+  const slotFor = index => {
+    let distance = (index - current + storySteps.length) % storySteps.length;
+    if (distance > storySteps.length / 2) distance -= storySteps.length;
+    return distance;
   };
-
   const stop = () => {
     window.clearTimeout(timer);
     timer = null;
-    stage.classList.add('is-paused');
+    carousel.classList.add('is-paused');
   };
-  const restart = () => {
+  const restartProgress = () => {
+    carousel.classList.remove('is-running', 'is-paused');
+    void progress.offsetWidth;
+    carousel.classList.add('is-running');
+  };
+  const start = () => {
     stop();
     if (reducedMotion() || document.hidden || !inView || pauseReasons.size) return;
-    stage.classList.remove('is-paused');
-    timer = window.setTimeout(() => {
-      activate((current + 1) % storySteps.length, false);
-      restart();
-    }, duration);
+    restartProgress();
+    timer = window.setTimeout(() => activate(current + 1, false), duration);
   };
   const sync = () => {
     if (reducedMotion() || document.hidden || !inView || pauseReasons.size) stop();
-    else restart();
+    else start();
   };
   const setReason = (reason, active) => {
     if (active) pauseReasons.add(reason);
     else pauseReasons.delete(reason);
     sync();
   };
-  const activate = (index, userInitiated = true) => {
-    if (index === current && image.getAttribute('src') === storySteps[index].image) return;
-    const step = storySteps[index];
-    window.clearTimeout(swapTimer);
-    content.classList.add('is-changing');
-    image.classList.add('is-changing');
-    current = index;
-    stage.dataset.activeStep = String(index);
-    stage.style.setProperty('--client-story-step', String(index));
-    positionTraveller();
-    swapTimer = window.setTimeout(() => {
-      image.src = step.image;
-      image.alt = step.alt;
-      title.textContent = step.title;
-      copy.textContent = step.text;
-      sequence.textContent = `${String(index + 1).padStart(2, '0')} / ${String(storySteps.length).padStart(2, '0')}`;
-      image.classList.remove('is-changing');
-      content.classList.remove('is-changing');
-    }, reducedMotion() ? 0 : 180);
-    steps.forEach((element, position) => {
-      const active = position === index;
-      element.classList.toggle('is-active', active);
-      element.setAttribute('aria-selected', String(active));
-      element.tabIndex = active ? 0 : -1;
-    });
-    if (userInitiated) restart();
+  const updateDetails = step => {
+    title.textContent = step.title;
+    copy.textContent = step.text;
+    link.href = step.href;
+    content.classList.remove('is-entering');
+    void content.offsetWidth;
+    content.classList.add('is-entering');
   };
-  steps.forEach((step, index) => {
-    step.addEventListener('click', () => activate(index));
-    step.addEventListener('focus', () => activate(index));
-    step.addEventListener('keydown', event => {
-      let next = null;
-      if (event.key === 'ArrowRight' || event.key === 'ArrowDown') next = (index + 1) % steps.length;
-      if (event.key === 'ArrowLeft' || event.key === 'ArrowUp') next = (index - 1 + steps.length) % steps.length;
-      if (event.key === 'Home') next = 0;
-      if (event.key === 'End') next = steps.length - 1;
-      if (next === null) return;
+  const activate = (index, userInitiated = true) => {
+    current = (index + storySteps.length) % storySteps.length;
+    slides.forEach((slide, position) => {
+      const slot = slotFor(position);
+      const visible = Math.abs(slot) <= (compactViewport.matches ? 1 : 2);
+      const active = slot === 0;
+      slide.dataset.slot = String(slot);
+      slide.classList.toggle('is-active', active);
+      slide.setAttribute('aria-hidden', String(!visible));
+      slide.querySelector('a').tabIndex = visible ? 0 : -1;
+    });
+    const step = storySteps[current];
+    updateDetails(step);
+    start();
+  };
+
+  previous.addEventListener('click', () => activate(current - 1));
+  next.addEventListener('click', () => activate(current + 1));
+  slides.forEach((slide, index) => {
+    slide.addEventListener('click', event => {
+      if (index === current) return;
       event.preventDefault();
-      steps[next].focus();
+      activate(index);
+    });
+    slide.addEventListener('focusin', () => {
+      if (index !== current) activate(index, false);
     });
   });
-  stage.addEventListener('mouseenter', () => setReason('hover', true));
-  stage.addEventListener('mouseleave', () => setReason('hover', false));
-  stage.addEventListener('focusin', () => setReason('focus', true));
-  stage.addEventListener('focusout', event => {
-    if (!stage.contains(event.relatedTarget)) setReason('focus', false);
+  viewport.addEventListener('keydown', event => {
+    if (event.key !== 'ArrowLeft' && event.key !== 'ArrowRight') return;
+    event.preventDefault();
+    activate(current + (event.key === 'ArrowRight' ? 1 : -1));
+  });
+  carousel.addEventListener('mouseenter', () => setReason('hover', true));
+  carousel.addEventListener('mouseleave', () => setReason('hover', false));
+  carousel.addEventListener('focusin', () => setReason('focus', true));
+  carousel.addEventListener('focusout', event => {
+    if (!carousel.contains(event.relatedTarget)) setReason('focus', false);
   });
   document.addEventListener('visibilitychange', sync);
-  window.addEventListener('resize', positionTraveller, { passive: true });
+  compactViewport.addEventListener?.('change', () => activate(current, false));
 
   if ('IntersectionObserver' in window) {
     const observer = new IntersectionObserver(entries => {
       inView = entries.some(entry => entry.isIntersecting);
       sync();
-    }, { threshold: .35 });
-    observer.observe(stage);
+    }, { threshold: .25 });
+    observer.observe(carousel);
   }
-  requestAnimationFrame(positionTraveller);
-  sync();
+  activate(0, false);
   return section;
 }
 
