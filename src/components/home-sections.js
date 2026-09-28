@@ -213,7 +213,7 @@ function createObjectHero() {
         </div>
       </div>
       <div class="story-hero__copy" data-story-reveal="hero-copy">
-        <div class="story-hero__brand" aria-label="Simple CRM">
+        <div class="story-hero__brand">
           <img src="${assetUrl('brand-simplecrm-s.png')}" alt="" width="1024" height="1024" aria-hidden="true">
           <span>Simple<strong>CRM</strong></span>
         </div>
@@ -610,7 +610,7 @@ function createTrustSection() {
           </div>
         </article>
         <article class="story-trust__card story-trust__card--flow">
-          <img class="story-trust__flow-art" src="${assetUrl('editorial/trust-client-journey.png')}" alt="Абстрактный маршрут от документов и встречи к выполненному действию" width="1536" height="1024" loading="lazy">
+          <img class="story-trust__flow-art" src="${assetUrl('editorial/trust-client-journey.png')}" alt="Абстрактный маршрут от документов и встречи к выполненному действию" width="1536" height="1024" loading="eager" decoding="async" fetchpriority="low">
           <div class="story-trust__flow-shade" aria-hidden="true"></div>
           <div class="story-trust__card-copy">
             <span class="story-trust__label">Следующий шаг</span>

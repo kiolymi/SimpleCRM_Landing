@@ -123,7 +123,13 @@ for (const viewport of viewports) {
   const functional = {};
   if (await page.locator('[data-story-slide]').count()) {
     const before = await page.locator('[data-story-slide][data-slot="0"] [data-story-image]').getAttribute('src');
-    await page.locator('[data-story-next]').click();
+    const nextButton = page.locator('[data-story-next]');
+    if (await nextButton.isVisible()) await nextButton.click();
+    else {
+      const storyViewport = page.locator('[data-story-viewport]');
+      await storyViewport.focus();
+      await storyViewport.press('ArrowRight');
+    }
     await page.waitForTimeout(220);
     const after = await page.locator('[data-story-slide][data-slot="0"] [data-story-image]').getAttribute('src');
     functional.storyCarousel = {

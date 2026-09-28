@@ -15,6 +15,12 @@ function wireMobileSafeArea(header) {
   const mobileViewport = window.matchMedia('(max-width: 1023px)');
   let themeColor = document.querySelector('meta[name="theme-color"]');
 
+  const isTransparent = color => {
+    if (!color || color === 'transparent') return true;
+    const rgba = color.match(/^rgba\([^,]+,[^,]+,[^,]+,\s*([\d.]+)\)$/);
+    return rgba ? Number(rgba[1]) < 1 : false;
+  };
+
   if (!themeColor) {
     themeColor = document.createElement('meta');
     themeColor.name = 'theme-color';
@@ -29,8 +35,8 @@ function wireMobileSafeArea(header) {
 
     const surfaceColor = window.getComputedStyle(header).backgroundColor;
     const bodyColor = window.getComputedStyle(document.body).backgroundColor;
-    const headerColor = surfaceColor === 'rgba(0, 0, 0, 0)' || surfaceColor === 'transparent'
-      ? (bodyColor === 'rgba(0, 0, 0, 0)' || bodyColor === 'transparent' ? '#ffffff' : bodyColor)
+    const headerColor = isTransparent(surfaceColor)
+      ? (isTransparent(bodyColor) ? '#ffffff' : bodyColor)
       : surfaceColor;
     document.documentElement.style.setProperty('--mobile-safe-area-color', headerColor);
     themeColor.content = headerColor;

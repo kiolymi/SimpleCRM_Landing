@@ -1,0 +1,131 @@
+:root {
+  --motion-quick: 140ms;
+  --motion-standard: 280ms;
+  --motion-slow: 560ms;
+  --motion-focal: 760ms;
+  --motion-ease-enter: cubic-bezier(.16, 1, .3, 1);
+  --motion-ease-standard: cubic-bezier(.2, 0, 0, 1);
+  --motion-ease-exit: cubic-bezier(.4, 0, 1, 1);
+}
+
+body { font-kerning: normal; }
+body #main-content :is(h1, h2, h3, h4) { letter-spacing: clamp(-.04em, -.025em, -.015em); }
+body #main-content :is(p, li, blockquote) { text-wrap: pretty; }
+:is(.section-heading, .inner-page-header, [class*="hero__copy"], [class*="hero-copy"], .article-header, .document-header) > p { max-inline-size: 72ch; }
+.article-body :is(p, li), .document-body :is(p, li) { max-inline-size: 72ch; }
+
+::selection { background: #cfe6ff; color: #08213b; }
+:where(a:not(.button):not(.brand)) { text-decoration-thickness: .08em; text-underline-offset: .18em; }
+:where(button, .button, input, select, textarea, summary) { -webkit-tap-highlight-color: transparent; }
+
+@media (prefers-reduced-motion: no-preference) {
+  html.motion-paused *, html.motion-paused *::before, html.motion-paused *::after { animation-play-state: paused !important; }
+
+  .motion-system-ready .site-header { animation: crm-header-arrive 480ms var(--motion-ease-enter) both; }
+
+  .has-js [data-reveal] {
+    opacity: 0;
+    filter: none;
+    clip-path: none;
+    transform: translate3d(0, 18px, 0);
+    transition:
+      opacity var(--motion-slow) ease-out,
+      transform var(--motion-slow) var(--motion-ease-enter),
+      clip-path var(--motion-slow) var(--motion-ease-enter),
+      filter var(--motion-standard) ease-out;
+    animation: none;
+    will-change: opacity, transform;
+  }
+
+  .has-js [data-reveal].is-visible {
+    opacity: 1;
+    filter: none;
+    clip-path: inset(0 0 0 0 round 0);
+    transform: translate3d(0, 0, 0) scale(1) rotate(0);
+    animation: none;
+    will-change: auto;
+  }
+
+  .has-js [data-motion="focal-title"] {
+    clip-path: inset(0 0 24% 0);
+    filter: blur(3px);
+    transform: translate3d(0, 32px, 0);
+    transition-duration: var(--motion-focal), var(--motion-focal), var(--motion-focal), var(--motion-standard);
+  }
+  .has-js [data-motion="focal-copy"] { transform: translate3d(0, 14px, 0); transition-duration: var(--motion-slow); }
+  .has-js [data-motion="focal-action"] { transform: translate3d(0, 10px, 0) scale(.985); transition-duration: 480ms; }
+  .has-js [data-motion="focal-visual"] {
+    clip-path: inset(3% 5% 3% 5% round 22px);
+    filter: blur(2px);
+    transform: translate3d(22px, 16px, 0) scale(1.025);
+    transition-duration: 840ms, 840ms, 840ms, var(--motion-standard);
+  }
+  .has-js [data-motion="title"] { clip-path: inset(0 0 18% 0); transform: translate3d(0, 24px, 0); transition-duration: 650ms; }
+  .has-js [data-motion="copy"] { transform: translate3d(0, 12px, 0); transition-duration: 480ms; }
+  .has-js [data-motion="device"] { clip-path: inset(5% 2% 1% round 18px); transform: translate3d(0, 34px, 0) rotate(.8deg) scale(.97); transition-duration: 720ms; }
+  .has-js [data-motion="card"] { transform: translate3d(0, 26px, 0) scale(.985); transition-duration: 600ms; }
+  .has-js [data-motion="detail"] { transform: translate3d(-14px, 0, 0); transition-duration: 440ms; }
+  .has-js [data-motion="art"] { transform: scale(1.035); transition-duration: 820ms; }
+
+  :is(.button, .header-app-store, .app-store-badge, .menu-toggle) {
+    transition:
+      color var(--motion-standard) var(--motion-ease-standard),
+      background-color var(--motion-standard) var(--motion-ease-standard),
+      border-color var(--motion-standard) var(--motion-ease-standard),
+      box-shadow var(--motion-standard) var(--motion-ease-standard),
+      scale var(--motion-quick) ease-out,
+      translate var(--motion-standard) var(--motion-ease-enter);
+  }
+  :is(.button, .header-app-store, .app-store-badge, .menu-toggle):active { scale: .975; transition-duration: 90ms; }
+  :is(.button, .text-link, .article-category-link) .ui-icon { transition: transform var(--motion-standard) var(--motion-ease-enter); }
+  :is(.button, .text-link, .article-category-link):is(:hover, :focus-visible) .ui-icon { transform: translateX(4px); }
+
+  :is(.article-card, .testimonial-card, .pricing-plan, .use-case-card, .story-review) {
+    transition:
+      translate var(--motion-standard) var(--motion-ease-enter),
+      box-shadow var(--motion-standard) var(--motion-ease-standard),
+      border-color var(--motion-standard) var(--motion-ease-standard);
+  }
+  @media (hover: hover) and (pointer: fine) {
+    :is(.article-card, .testimonial-card, .pricing-plan, .use-case-card, .story-review):is(:hover, :focus-within) { translate: 0 -4px; }
+  }
+
+  :is(input, textarea, select):focus { transition: border-color var(--motion-quick) ease, box-shadow var(--motion-standard) var(--motion-ease-enter), background-color var(--motion-standard) ease; }
+
+  .page-ambient::before, .story-hero__piece { animation-play-state: paused; }
+  .page-ambient-host.is-motion-active .page-ambient::before,
+  .story-hero.is-motion-active .story-hero__piece { animation-play-state: running; }
+}
+
+@keyframes crm-header-arrive {
+  from { opacity: 0; transform: translate3d(0, -10px, 0); }
+  to { opacity: 1; transform: none; }
+}
+
+@media (max-width: 767px), (pointer: coarse) {
+  .has-js [data-reveal] {
+    filter: none !important;
+    clip-path: none !important;
+    transform: translate3d(0, 13px, 0) !important;
+    transition-duration: 440ms !important;
+    will-change: auto;
+  }
+  .has-js [data-reveal].is-visible { transform: none !important; }
+  .has-js [data-motion="focal-visual"] { transform: translate3d(0, 16px, 0) scale(.99) !important; transition-duration: 560ms !important; }
+  .has-js [data-motion="card"] { transform: translate3d(0, 15px, 0) scale(.992) !important; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .motion-system-ready .site-header { animation: none; }
+  .has-js [data-reveal], .has-js [data-reveal].is-visible {
+    opacity: 1 !important;
+    filter: none !important;
+    clip-path: none !important;
+    transform: none !important;
+    transition: none !important;
+  }
+  .page-ambient::before, .story-hero__piece { animation: none !important; }
+  :is(.button, .header-app-store, .app-store-badge, .menu-toggle, input, textarea, select) {
+    transition: color 120ms ease, background-color 120ms ease, border-color 120ms ease, box-shadow 120ms ease !important;
+  }
+}

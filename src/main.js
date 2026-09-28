@@ -1,9 +1,10 @@
 import { addPageArtwork } from './components/page-art.js?v=20260908-83';
-import { createSiteShell } from './components/site-shell.js?v=refinement12';
-import { createHomePage } from './components/home-sections.js?v=home-story44';
+import { createSiteShell } from './components/site-shell.js?v=refinement13';
+import { createHomePage } from './components/home-sections.js?v=home-story45';
 import { createAboutPage, createArticleLayout, createContentHubPage, createFaqPage, createPricingPage, createPrivacyPage, createReleasesPage, createSearchPage, createSupportPage } from './components/content-pages.js?v=refinement16';
 import { pageMeta } from './data/site.js?v=refinement11';
 import { createProductDeviceMockup } from './components/product-device-mockup.js?v=20260927-2';
+import { prepareSiteMotion, wireMotionLifecycle } from './site-motion.js?v=motion2';
 
 const pageKey = document.body.dataset.page || 'home';
 if (pageKey === 'home') {
@@ -24,10 +25,14 @@ if (['learn', 'how-to', 'announcements', 'article'].includes(pageKey)) {
   catalogStyles.href = new URL('../styles/materials-catalog.css?v=catalog14', import.meta.url).href;
   document.head.append(catalogStyles);
 }
+const motionStyles = document.createElement('link');
+motionStyles.rel = 'stylesheet';
+motionStyles.href = new URL('../styles/site-polish-motion.css?v=motion2', import.meta.url).href;
+document.head.append(motionStyles);
 const page = pageMeta[pageKey] || pageMeta.home;
 // Replace stylesheet URLs after a visual release so GitHub Pages/Yandex cannot
 // keep mixing a fresh component file with an older cached theme file.
-const styleRelease = '20260928-mobile-swipe1';
+const styleRelease = '20260928-motion2';
 document.querySelectorAll('link[rel="stylesheet"][href*="styles/"]').forEach(link => {
   const href = link.getAttribute('href');
   if (!href) return;
@@ -82,8 +87,10 @@ wireDownloadPlaceholder(app);
 wireAmbientBackground(app);
 protectProductName(app);
 markCurrentNavigation(app);
+prepareSiteMotion(app, pageKey);
 prepareRevealSequences(app);
 wireScrollReveals(app);
+wireMotionLifecycle(app);
 wireInteractiveComponents(app);
 wireTableOfContents(app);
 if (pageKey !== 'home') {
@@ -282,6 +289,12 @@ function prepareRevealSequences(root) {
   });
   root.querySelectorAll('.release-entry').forEach(element => element.removeAttribute('data-reveal'));
   root.querySelectorAll('.article-header, .article-body > *, .article-pagination, .article-related-inline, .document-header, .document-body > section, .company-page__team > h2, .company-page__team > p, .company-page .newsletter-card').forEach(element => {
+    if (element.querySelector('[data-motion="focal-title"]')) {
+      element.removeAttribute('data-reveal');
+      element.removeAttribute('data-delay');
+      element.removeAttribute('data-motion');
+      return;
+    }
     if (!element.hasAttribute('data-reveal')) element.dataset.reveal = 'rise';
     element.dataset.delay = '0';
   });
@@ -337,13 +350,13 @@ function prepareRevealSequences(root) {
     });
   });
   root.querySelectorAll('[data-reveal]').forEach(element => {
-    let motion = 'default';
-    if (element.matches('.article-card,.testimonial-card,.use-case-card,.empty-state')) motion = 'card';
-    else if (element.matches('.page-art')) motion = 'art';
-    else if (element.matches('.device-mockup,.article-body__mockup') || element.querySelector(':scope > .device-mockup')) motion = 'device';
-    else if (element.matches('h1,h2,h3,.feature-card__heading,.release-entry__heading')) motion = 'title';
-    else if (element.matches('p,blockquote')) motion = 'copy';
-    else if (element.matches('li,.faq-item,.company-page__principles > div')) motion = 'detail';
+    let motion = element.dataset.motion || 'default';
+    if (!element.dataset.motion && element.matches('.article-card,.testimonial-card,.use-case-card,.empty-state')) motion = 'card';
+    else if (!element.dataset.motion && element.matches('.page-art')) motion = 'art';
+    else if (!element.dataset.motion && (element.matches('.device-mockup,.article-body__mockup') || element.querySelector(':scope > .device-mockup'))) motion = 'device';
+    else if (!element.dataset.motion && element.matches('h1,h2,h3,.feature-card__heading,.release-entry__heading')) motion = 'title';
+    else if (!element.dataset.motion && element.matches('p,blockquote')) motion = 'copy';
+    else if (!element.dataset.motion && element.matches('li,.faq-item,.company-page__principles > div')) motion = 'detail';
     element.dataset.motion = motion;
   });
 }
