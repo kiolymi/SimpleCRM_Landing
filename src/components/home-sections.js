@@ -357,7 +357,7 @@ function createClientStory() {
       </header>
       <div class="client-story__carousel" data-client-story role="region" aria-roledescription="карусель" aria-label="Возможности Simple CRM">
         <button class="client-story__arrow client-story__arrow--previous" type="button" aria-label="Предыдущий экран" data-story-previous>${iconSvg('arrow-right')}</button>
-        <div class="client-story__viewport" data-story-viewport role="group" tabindex="0" aria-label="Карусель экранов приложения. Используйте стрелки влево и вправо для переключения">
+        <div class="client-story__viewport" data-story-viewport role="group" tabindex="0" aria-label="Карусель экранов приложения. Проведите влево или вправо либо используйте клавиши со стрелками">
           ${storySteps.map((step, index) => `
             <article class="client-story__slide${index === 0 ? ' is-active' : ''}" data-story-slide="${index}" data-slot="${index <= 2 ? index : index >= storySteps.length - 2 ? index - storySteps.length : 3}" aria-hidden="${index > 2 && index < storySteps.length - 2 ? 'true' : 'false'}">
               <a class="client-story__screen-card" href="${escapeAttribute(step.href)}" aria-label="${escapeAttribute(`${step.title}. Узнать подробнее`)}">
@@ -394,7 +394,7 @@ function createClientStory() {
   const previous = section.querySelector('[data-story-previous]');
   const next = section.querySelector('[data-story-next]');
   const duration = 4000;
-  const compactViewport = window.matchMedia('(max-width: 700px)');
+  const compactViewport = window.matchMedia('(max-width: 700px), (pointer: coarse)');
   let current = 0;
   let timer = null;
   let inView = !('IntersectionObserver' in window);
@@ -474,8 +474,14 @@ function createClientStory() {
     start();
   };
 
-  previous.addEventListener('click', () => activate(current - 1));
-  next.addEventListener('click', () => activate(current + 1));
+  previous.addEventListener('click', event => {
+    activate(current - 1);
+    event.currentTarget.blur();
+  });
+  next.addEventListener('click', event => {
+    activate(current + 1);
+    event.currentTarget.blur();
+  });
   slides.forEach((slide, index) => {
     slide.addEventListener('click', event => {
       if (index === current) return;
@@ -491,6 +497,33 @@ function createClientStory() {
     event.preventDefault();
     activate(current + (event.key === 'ArrowRight' ? 1 : -1));
   });
+
+  let pointerGesture = null;
+  let suppressClick = false;
+  const resetPointerGesture = () => { pointerGesture = null; };
+  viewport.addEventListener('pointerdown', event => {
+    if (!compactViewport.matches || event.isPrimary === false) return;
+    pointerGesture = { id: event.pointerId, x: event.clientX, y: event.clientY };
+  });
+  viewport.addEventListener('pointerup', event => {
+    if (!pointerGesture || pointerGesture.id !== event.pointerId) return;
+    const deltaX = event.clientX - pointerGesture.x;
+    const deltaY = event.clientY - pointerGesture.y;
+    const swipeThreshold = Math.max(42, viewport.clientWidth * .12);
+    resetPointerGesture();
+    if (Math.abs(deltaX) < swipeThreshold || Math.abs(deltaX) <= Math.abs(deltaY) * 1.2) return;
+    event.preventDefault();
+    suppressClick = true;
+    activate(current + (deltaX < 0 ? 1 : -1));
+    window.setTimeout(() => { suppressClick = false; }, 0);
+  }, { passive: false });
+  viewport.addEventListener('pointercancel', resetPointerGesture);
+  viewport.addEventListener('click', event => {
+    if (!suppressClick) return;
+    event.preventDefault();
+    event.stopImmediatePropagation();
+    suppressClick = false;
+  }, true);
   document.addEventListener('visibilitychange', sync);
   compactViewport.addEventListener?.('change', () => activate(current, false));
 

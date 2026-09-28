@@ -148,7 +148,10 @@ body[data-page="home"] .client-story__screen-detail p { margin: 0 0 13px; color:
 .client-story__arrow--next { right: clamp(14px, 3vw, 48px); }
 .client-story__arrow--previous .ui-icon { transform: rotate(180deg); }
 .client-story__arrow .ui-icon { width: 25px; height: 25px; }
-.client-story__arrow:hover { border-color: var(--story-blue); background: var(--story-blue); color: #fff; transform: translateY(-50%) scale(1.06); }
+.client-story__arrow:active { border-color: var(--story-blue); background: var(--story-blue); color: #fff; transform: translateY(-50%) scale(.96); transition-duration: 90ms; }
+@media (hover: hover) and (pointer: fine) {
+  .client-story__arrow:hover { border-color: var(--story-blue); background: rgb(255 255 255 / 96%); color: var(--story-blue); transform: translateY(-50%) scale(1.06); }
+}
 .client-story__arrow:focus-visible, .client-story__screen-card:focus-visible, .client-story__more:focus-visible { outline: 3px solid rgb(24 127 235 / 42%); outline-offset: 4px; }
 .client-story__details { position: relative; z-index: 120; width: min(820px, calc(100% - 128px)); margin: clamp(12px, 1.8svh, 20px) auto 0; text-align: center; }
 .client-story__explanation h3 { margin-bottom: 7px; font-size: clamp(1.45rem, 2vw, 1.9rem); line-height: 1.08; }
@@ -474,7 +477,7 @@ html.story-motion-ready [data-story-reveal="hero-visual"].is-visible .story-hero
   .client-story__intro h2 { line-height: .98; }
   .client-story__intro h2 span { white-space: normal; }
   .client-story__carousel { grid-template-rows: minmax(500px, 59svh) auto; }
-  .client-story__viewport { min-height: 500px; }
+  .client-story__viewport { min-height: 500px; touch-action: pan-y; }
   .client-story__slide { width: min(60vw, 232px); }
   .client-story__slide[data-slot="-1"] { --story-x: calc(-1 * min(43vw, 166px)); --story-y: 0px; --story-scale: .76; opacity: 1; }
   .client-story__slide[data-slot="1"] { --story-x: min(43vw, 166px); --story-y: 0px; --story-scale: .76; opacity: 1; }
@@ -485,11 +488,8 @@ html.story-motion-ready [data-story-reveal="hero-visual"].is-visible .story-hero
   .client-story__phone::after { bottom: 7px; height: 4px; }
   .client-story__screen-detail { padding: 72px 15px 20px; }
   .client-story__screen-detail p { font-size: .77rem; }
-  .client-story__arrow { top: 50%; width: 48px; height: 48px; }
-  .client-story__arrow--previous { left: -2px; }
-  .client-story__arrow--next { right: -2px; }
-  .client-story__arrow .ui-icon { width: 21px; height: 21px; }
-  .client-story__details { width: calc(100% - 76px); margin-top: 9px; }
+  .client-story__arrow { display: none; }
+  .client-story__details { width: calc(100% - 32px); margin-top: 9px; }
   .client-story__explanation h3 { font-size: clamp(1.34rem, 6vw, 1.65rem); }
   .client-story__explanation p { font-size: .95rem; }
   .product-proof__layout { gap: 20px; }
@@ -543,6 +543,12 @@ html.story-motion-ready [data-story-reveal="hero-visual"].is-visible .story-hero
   .story-review:nth-child(1) blockquote, .story-review:nth-child(4) blockquote, .story-review:nth-child(6) blockquote { max-width: none; font-size: clamp(1.08rem, 5.2vw, 1.32rem); line-height: 1.34; }
   .story-start__panel { padding: 34px 24px; }
   .story-button { width: 100%; padding-inline: 16px; }
+}
+
+@media (pointer: coarse) {
+  .client-story__viewport { touch-action: pan-y; }
+  .client-story__arrow { display: none; }
+  .client-story__details { width: calc(100% - 32px); }
 }
 
 @media (prefers-reduced-motion: reduce) {

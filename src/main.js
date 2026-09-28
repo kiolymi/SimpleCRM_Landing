@@ -1,6 +1,6 @@
 import { addPageArtwork } from './components/page-art.js?v=20260908-83';
 import { createSiteShell } from './components/site-shell.js?v=refinement12';
-import { createHomePage } from './components/home-sections.js?v=home-story43';
+import { createHomePage } from './components/home-sections.js?v=home-story44';
 import { createAboutPage, createArticleLayout, createContentHubPage, createFaqPage, createPricingPage, createPrivacyPage, createReleasesPage, createSearchPage, createSupportPage } from './components/content-pages.js?v=refinement16';
 import { pageMeta } from './data/site.js?v=refinement11';
 import { createProductDeviceMockup } from './components/product-device-mockup.js?v=20260927-2';
@@ -9,7 +9,7 @@ const pageKey = document.body.dataset.page || 'home';
 if (pageKey === 'home') {
   const storyStyles = document.createElement('link');
   storyStyles.rel = 'stylesheet';
-  storyStyles.href = new URL('../styles/home-story-redesign-v3.css?v=49', import.meta.url).href;
+  storyStyles.href = new URL('../styles/home-story-redesign-v3.css?v=50', import.meta.url).href;
   document.head.append(storyStyles);
 }
 if (pageKey === 'support') {
