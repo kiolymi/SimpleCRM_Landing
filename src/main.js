@@ -34,7 +34,7 @@ document.querySelectorAll('link[rel="stylesheet"][href*="styles/"]').forEach(lin
   const url = new URL(href, window.location.href);
   url.searchParams.set('v', url.pathname.endsWith('/styles/private-practice.css') ? 'explore23' : styleRelease);
   if (url.pathname.endsWith('/styles/practice-flows.css')) url.searchParams.set('v', 'refinement5');
-  if (url.pathname.endsWith('/styles/home-story-redesign-v3.css')) url.searchParams.set('v', '48');
+  if (url.pathname.endsWith('/styles/home-story-redesign-v3.css')) url.searchParams.set('v', '50');
   if (url.pathname.endsWith('/styles/about-layout.css')) url.searchParams.set('v', 'borderless-principles23');
   link.setAttribute('href', `${url.pathname}?${url.searchParams.toString()}`);
 });
