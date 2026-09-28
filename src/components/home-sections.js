@@ -187,6 +187,7 @@ export function createHomePage() {
     createRecognitionSection(),
     createClientStory(),
     createProductProof(),
+    createPaymentGrowthSection(),
     createTrustSection(),
     createReviewsSection(),
     createStartSection(),
@@ -569,6 +570,44 @@ function createProductProof() {
         </div>
         <div class="product-proof__status">${iconSvg('check')}<span>Контекст собран</span></div>
       </figure>
+    </div>`;
+  return section;
+}
+
+function createPaymentGrowthSection() {
+  const section = document.createElement('section');
+  section.id = 'payments-and-growth';
+  section.className = 'payment-growth';
+  section.setAttribute('aria-labelledby', 'payment-growth-title');
+  section.innerHTML = `
+    <div class="container payment-growth__layout" data-story-reveal="payment-group">
+      <div class="payment-growth__copy">
+        <h2 id="payment-growth-title"><span class="payment-growth__headline-lead">Оплаты вовремя</span><span class="payment-growth__headline-highlight">доход растёт</span></h2>
+        <p>Клиент получает SMS со ссылкой на оплату, а вы сразу видите сумму и статус платежа. Всё быстро, понятно и без лишней переписки.</p>
+        <div class="payment-growth__metric" aria-label="Плюс 30 процентов к доходу и продуктивности">
+          <strong>+30%</strong>
+          <span>к доходу и продуктивности</span>
+        </div>
+      </div>
+
+      <figure class="payment-growth__visual">
+        <img src="${assetUrl('editorial/payment-growth-3d.png')}" alt="Оплата, рост дохода и продуктивности в Simple CRM" width="1536" height="1024" loading="eager" decoding="async" fetchpriority="low">
+        <figcaption class="payment-growth__status">
+          <span class="payment-growth__status-icon">${iconSvg('check')}</span>
+          <span><small>Оплата подтверждена</small><strong>Доход учтён</strong></span>
+        </figcaption>
+      </figure>
+
+      <div class="payment-growth__rail" aria-label="Преимущества учёта оплат в Simple CRM">
+        <div class="payment-growth__benefit">
+          <span class="payment-growth__benefit-icon">${iconSvg('receipt')}</span>
+          <span><strong>Каждый платёж на виду</strong><small>Сразу видно, что оплачено и какой остаток.</small></span>
+        </div>
+        <div class="payment-growth__benefit">
+          <span class="payment-growth__benefit-icon">${iconSvg('calendar')}</span>
+          <span><strong>Больше записей в графике</strong><small>Рутина больше не забирает время у клиентов.</small></span>
+        </div>
+      </div>
     </div>`;
   return section;
 }

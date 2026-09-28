@@ -1,6 +1,6 @@
 import { addPageArtwork } from './components/page-art.js?v=20260908-83';
 import { createSiteShell } from './components/site-shell.js?v=refinement13';
-import { createHomePage } from './components/home-sections.js?v=home-story45';
+import { createHomePage } from './components/home-sections.js?v=home-story47';
 import { createAboutPage, createArticleLayout, createContentHubPage, createFaqPage, createPricingPage, createPrivacyPage, createReleasesPage, createSearchPage, createSupportPage } from './components/content-pages.js?v=refinement16';
 import { pageMeta } from './data/site.js?v=refinement11';
 import { createProductDeviceMockup } from './components/product-device-mockup.js?v=20260927-2';
@@ -10,7 +10,7 @@ const pageKey = document.body.dataset.page || 'home';
 if (pageKey === 'home') {
   const storyStyles = document.createElement('link');
   storyStyles.rel = 'stylesheet';
-  storyStyles.href = new URL('../styles/home-story-redesign-v3.css?v=50', import.meta.url).href;
+  storyStyles.href = new URL('../styles/home-story-redesign-v3.css?v=52', import.meta.url).href;
   document.head.append(storyStyles);
 }
 if (pageKey === 'support') {
@@ -32,14 +32,14 @@ document.head.append(motionStyles);
 const page = pageMeta[pageKey] || pageMeta.home;
 // Replace stylesheet URLs after a visual release so GitHub Pages/Yandex cannot
 // keep mixing a fresh component file with an older cached theme file.
-const styleRelease = '20260928-motion2';
+const styleRelease = '20260928-payment2';
 document.querySelectorAll('link[rel="stylesheet"][href*="styles/"]').forEach(link => {
   const href = link.getAttribute('href');
   if (!href) return;
   const url = new URL(href, window.location.href);
   url.searchParams.set('v', url.pathname.endsWith('/styles/private-practice.css') ? 'explore23' : styleRelease);
   if (url.pathname.endsWith('/styles/practice-flows.css')) url.searchParams.set('v', 'refinement5');
-  if (url.pathname.endsWith('/styles/home-story-redesign-v3.css')) url.searchParams.set('v', '50');
+  if (url.pathname.endsWith('/styles/home-story-redesign-v3.css')) url.searchParams.set('v', '52');
   if (url.pathname.endsWith('/styles/about-layout.css')) url.searchParams.set('v', 'borderless-principles23');
   link.setAttribute('href', `${url.pathname}?${url.searchParams.toString()}`);
 });
