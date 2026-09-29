@@ -2,6 +2,7 @@ import { iconSvg } from './icons.js?v=20260824-28';
 import { accessConfig } from '../data/access.js?v=refinement3';
 
 const assetUrl = path => new URL(`../../assets/${path}`, import.meta.url).href;
+const pageUrl = path => new URL(`../../${path.replace(/^\/+/, '')}`, import.meta.url).href;
 
 const recognitionSlides = [
   {
@@ -80,7 +81,7 @@ const storySteps = [
     hoverText: 'Проверьте расписание, время и клиента перед первой встречей дня.',
     image: assetUrl('product-screens/today-schedule.jpg'),
     alt: 'Экран Сегодня в Simple CRM с расписанием ближайших встреч',
-    href: '/how-to/prepare-meeting/',
+    href: pageUrl('how-to/prepare-meeting/'),
   },
   {
     label: 'Календарь',
@@ -89,7 +90,7 @@ const storySteps = [
     hoverText: 'Смотрите неделю целиком и выбирайте подходящее время для новой записи.',
     image: assetUrl('product-screens/calendar-week.jpg'),
     alt: 'Недельный календарь Simple CRM со встречами и свободными интервалами',
-    href: '/how-to/prepare-meeting/',
+    href: pageUrl('how-to/prepare-meeting/'),
   },
   {
     label: 'Список встреч',
@@ -98,7 +99,7 @@ const storySteps = [
     hoverText: 'Откройте выбранный день и быстро перейдите к деталям каждой встречи.',
     image: assetUrl('product-screens/calendar-list.jpg'),
     alt: 'Календарь Simple CRM со списком встреч на выбранный день',
-    href: '/how-to/prepare-meeting/',
+    href: pageUrl('how-to/prepare-meeting/'),
   },
   {
     label: 'Карточка клиента',
@@ -107,7 +108,7 @@ const storySteps = [
     hoverText: 'Откройте обзор клиента, чтобы увидеть ближайшую встречу и актуальные данные.',
     image: assetUrl('product-screens/client-overview.jpg'),
     alt: 'Обзор карточки клиента в Simple CRM',
-    href: '/learn/client-context/',
+    href: pageUrl('learn/client-context/'),
   },
   {
     label: 'История',
@@ -116,7 +117,7 @@ const storySteps = [
     hoverText: 'Просматривайте события по порядку и возвращайтесь к важным договорённостям.',
     image: assetUrl('product-screens/client-activity.jpg'),
     alt: 'История активности клиента в Simple CRM',
-    href: '/learn/client-context/',
+    href: pageUrl('learn/client-context/'),
   },
   {
     label: 'Задачи',
@@ -125,7 +126,7 @@ const storySteps = [
     hoverText: 'Следите за открытыми действиями и завершайте их в понятном порядке.',
     image: assetUrl('product-screens/tasks-list.jpg'),
     alt: 'Список задач Simple CRM со статусами и сроками',
-    href: '/how-to/create-follow-up-task/',
+    href: pageUrl('how-to/create-follow-up-task/'),
   },
   {
     label: 'Новая задача',
@@ -134,7 +135,7 @@ const storySteps = [
     hoverText: 'Зафиксируйте действие, срок и приоритет сразу после разговора с клиентом.',
     image: assetUrl('product-screens/new-task-details.jpg'),
     alt: 'Форма новой задачи в Simple CRM со сроком и приоритетом',
-    href: '/how-to/create-follow-up-task/',
+    href: pageUrl('how-to/create-follow-up-task/'),
   },
   {
     label: 'Итоги встречи',
@@ -143,7 +144,7 @@ const storySteps = [
     hoverText: 'Сохраните результат встречи и оставьте следующий шаг рядом с клиентом.',
     image: assetUrl('product-screens/meeting-details.jpg'),
     alt: 'Детали встречи в Simple CRM с данными клиента и итоговыми действиями',
-    href: '/learn/follow-up-after-meeting/',
+    href: pageUrl('learn/follow-up-after-meeting/'),
   },
 ];
 
@@ -204,13 +205,12 @@ function createObjectHero() {
     <div class="container story-hero__layout">
       <div class="story-hero__visual" data-story-reveal="hero-visual">
         <div class="story-hero__scene" role="img" aria-label="Рабочее пространство Simple CRM: экран Сегодня, канбан задач, список клиентов и рабочие инструменты">
+          <img class="story-hero__piece story-hero__piece--clients" src="${assetUrl('hero-objects/object-client-contact-list.png')}" alt="" width="1214" height="1295" loading="eager" aria-hidden="true">
           <img class="story-hero__piece story-hero__piece--kanban" src="${assetUrl('hero-objects/object-filled-kanban-board.png')}" alt="" width="1536" height="1024" loading="eager" aria-hidden="true">
           <img class="story-hero__piece story-hero__piece--clock" src="${assetUrl('hero-objects/blue-clock.png')}" alt="" width="1321" height="1191" loading="eager" aria-hidden="true">
-          <img class="story-hero__piece story-hero__piece--clients" src="${assetUrl('hero-objects/object-client-contact-list.png')}" alt="" width="1214" height="1295" loading="eager" aria-hidden="true">
-          <img class="story-hero__piece story-hero__piece--planner" src="${assetUrl('hero-objects/planner-pen.png')}" alt="" width="1536" height="1024" loading="eager" aria-hidden="true">
           <img class="story-hero__piece story-hero__piece--laptop" src="${assetUrl('hero-objects/object-crm-laptop.png')}" alt="" width="1536" height="1024" loading="eager" aria-hidden="true">
           <img class="story-hero__piece story-hero__piece--notes" src="${assetUrl('hero-objects/sticky-notes-clips.png')}" alt="" width="1312" height="1199" loading="eager" aria-hidden="true">
-          <img class="story-hero__piece story-hero__piece--phone" src="${assetUrl('hero-objects/iphone-today-full.png')}" alt="" width="890" height="1545" loading="eager" fetchpriority="high" aria-hidden="true">
+          <img class="story-hero__piece story-hero__piece--phone" src="${assetUrl('hero-objects/iphone-today-monday.png')}" alt="" width="1002" height="1569" loading="eager" fetchpriority="high" aria-hidden="true">
         </div>
       </div>
       <div class="story-hero__copy" data-story-reveal="hero-copy">
@@ -285,7 +285,7 @@ function wireRecognitionSlideshow(section) {
   const progress = section.querySelector('[data-recognition-progress]');
   if (!slider || slides.length < 2 || !progress) return;
 
-  const duration = 4800;
+  const duration = 2500;
   const pauseReasons = new Set();
   let current = 0;
   let timer = null;
@@ -581,33 +581,19 @@ function createPaymentGrowthSection() {
   section.setAttribute('aria-labelledby', 'payment-growth-title');
   section.innerHTML = `
     <div class="container payment-growth__layout" data-story-reveal="payment-group">
+      <div class="payment-growth__metric" aria-label="Плюс 30 процентов к доходу и продуктивности">
+        <strong>+30%</strong>
+        <span>к доходу и продуктивности</span>
+      </div>
+
       <div class="payment-growth__copy">
-        <h2 id="payment-growth-title"><span class="payment-growth__headline-lead">Оплаты вовремя</span><span class="payment-growth__headline-highlight">доход растёт</span></h2>
-        <p>Клиент получает SMS со ссылкой на оплату, а вы сразу видите сумму и статус платежа. Всё быстро, понятно и без лишней переписки.</p>
-        <div class="payment-growth__metric" aria-label="Плюс 30 процентов к доходу и продуктивности">
-          <strong>+30%</strong>
-          <span>к доходу и продуктивности</span>
-        </div>
+        <h2 id="payment-growth-title">Платежи без рутины</h2>
+        <p>Клиент получает SMS со ссылкой. Вы сразу видите предоплату, остаток и статус — без напоминаний и ручной сверки.</p>
       </div>
 
       <figure class="payment-growth__visual">
-        <img src="${assetUrl('editorial/payment-growth-3d.png')}" alt="Оплата, рост дохода и продуктивности в Simple CRM" width="1536" height="1024" loading="eager" decoding="async" fetchpriority="low">
-        <figcaption class="payment-growth__status">
-          <span class="payment-growth__status-icon">${iconSvg('check')}</span>
-          <span><small>Оплата подтверждена</small><strong>Доход учтён</strong></span>
-        </figcaption>
+        <img src="${assetUrl('editorial/payment-hub-platform-v2.png')}" alt="Платёжный центр Simple CRM: SMS, счёт, подтверждение и рост поступлений" width="1536" height="1024" loading="lazy" decoding="async">
       </figure>
-
-      <div class="payment-growth__rail" aria-label="Преимущества учёта оплат в Simple CRM">
-        <div class="payment-growth__benefit">
-          <span class="payment-growth__benefit-icon">${iconSvg('receipt')}</span>
-          <span><strong>Каждый платёж на виду</strong><small>Сразу видно, что оплачено и какой остаток.</small></span>
-        </div>
-        <div class="payment-growth__benefit">
-          <span class="payment-growth__benefit-icon">${iconSvg('calendar')}</span>
-          <span><strong>Больше записей в графике</strong><small>Рутина больше не забирает время у клиентов.</small></span>
-        </div>
-      </div>
     </div>`;
   return section;
 }
@@ -693,14 +679,19 @@ function createStartSection() {
   section.setAttribute('aria-labelledby', 'story-start-title');
   section.innerHTML = `
     <div class="container story-start__panel" data-story-reveal="panel">
-      <div>
-        <h2 id="story-start-title">Начните с одного клиента</h2>
+      <div class="story-start__copy">
+        <h2 id="story-start-title">Готовые сценарии для каждого шага</h2>
+        <p>Подготовьтесь к встрече, сохраните итог и поставьте следующую задачу по коротким инструкциям Simple CRM.</p>
       </div>
       <div class="story-start__action">
-        <p>Откройте рабочие сценарии и посмотрите, как Simple CRM связывает клиента, встречу и следующий шаг.</p>
-        <a class="button story-button story-button--dark" href="${escapeAttribute(accessConfig.primary.href)}">${escapeHtml(accessConfig.primary.label)} ${iconSvg('arrow-right')}</a>
-        <small>Способ получения приложения и условия доступа будут опубликованы отдельно.</small>
+        <a class="button story-button story-button--light" href="learn/">Открыть материалы ${iconSvg('arrow-right')}</a>
+        <small>${iconSvg('check')} Без сложных настроек — сразу к работе</small>
       </div>
+      <nav class="story-start__paths" aria-label="Популярные материалы Simple CRM">
+        <a href="how-to/prepare-meeting/"><span>Подготовить встречу</span>${iconSvg('arrow-right')}</a>
+        <a href="learn/follow-up-after-meeting/"><span>Сохранить итог</span>${iconSvg('arrow-right')}</a>
+        <a href="how-to/create-follow-up-task/"><span>Поставить следующий шаг</span>${iconSvg('arrow-right')}</a>
+      </nav>
     </div>`;
   return section;
 }
