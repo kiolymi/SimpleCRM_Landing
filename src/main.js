@@ -1,6 +1,6 @@
 import { addPageArtwork } from './components/page-art.js?v=20260908-83';
 import { createSiteShell } from './components/site-shell.js?v=refinement13';
-import { createHomePage } from './components/home-sections.js?v=home-story59';
+import { createHomePage } from './components/home-sections.js?v=home-story61';
 import { createAboutPage, createArticleLayout, createContentHubPage, createFaqPage, createPricingPage, createPrivacyPage, createReleasesPage, createSearchPage, createSupportPage } from './components/content-pages.js?v=refinement16';
 import { pageMeta } from './data/site.js?v=refinement11';
 import { createProductDeviceMockup } from './components/product-device-mockup.js?v=20260927-2';
@@ -32,7 +32,7 @@ document.head.append(motionStyles);
 const page = pageMeta[pageKey] || pageMeta.home;
 // Replace stylesheet URLs after a visual release so GitHub Pages/Yandex cannot
 // keep mixing a fresh component file with an older cached theme file.
-const styleRelease = '20260929-hero-monday1';
+const styleRelease = '20260929-payment-copy2';
 document.querySelectorAll('link[rel="stylesheet"][href*="styles/"]').forEach(link => {
   const href = link.getAttribute('href');
   if (!href) return;

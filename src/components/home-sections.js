@@ -219,7 +219,7 @@ function createObjectHero() {
           <span>Simple<strong>CRM</strong></span>
         </div>
         <h1 id="page-title"><span class="story-hero__lead">Всё для работы</span><span class="story-hero__highlight">с клиентами</span></h1>
-        <p>Расписание, задачи и договорённости собраны в одном приложении</p>
+        <p>Расписание, задачи, договорённости и оплаты — в одном приложении</p>
         <button class="header-app-store story-hero__app-store" type="button" data-download-placeholder aria-haspopup="dialog">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15.4 3.2c-.9.1-2 .7-2.6 1.4-.6.7-1.1 1.8-.9 2.8 1 .1 2-.5 2.6-1.2.6-.8 1-1.8.9-3Zm3.4 9.1c0-2.5 2-3.7 2.1-3.8-1.1-1.7-2.9-1.9-3.6-1.9-1.5-.2-3 .9-3.8.9-.8 0-2-.9-3.3-.9-1.7 0-3.3 1-4.2 2.6-1.8 3.1-.5 7.7 1.3 10.2.9 1.2 1.9 2.6 3.3 2.6 1.3-.1 1.8-.8 3.4-.8s2 .8 3.4.8c1.4 0 2.3-1.3 3.1-2.5 1.1-1.6 1.6-3.2 1.6-3.3-.1 0-3.1-1.2-3.1-4.7Z" /></svg>
           <span><small>Скачайте с</small><strong>App Store</strong></span>
@@ -587,8 +587,8 @@ function createPaymentGrowthSection() {
       </div>
 
       <div class="payment-growth__copy">
-        <h2 id="payment-growth-title">Платежи без рутины</h2>
-        <p>Клиент получает SMS со ссылкой. Вы сразу видите предоплату, остаток и статус — без напоминаний и ручной сверки.</p>
+        <h2 id="payment-growth-title">Оплата прямо в приложении</h2>
+        <p>Клиент получает SMS со ссылкой и оплачивает в пару касаний. Предоплата, остаток и статус сразу остаются в карточке — без ожидания подтверждений, ручной сверки и забытых платежей.</p>
       </div>
 
       <figure class="payment-growth__visual">
