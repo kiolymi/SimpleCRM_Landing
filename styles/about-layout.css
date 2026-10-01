@@ -7,13 +7,28 @@
   }
 }
 body[data-page="about"] .company-page__hero-screens {
+  position: relative;
+  z-index: 20;
   max-width: 552px;
   gap: 32px;
+  overflow: visible;
+  isolation: isolate;
 }
 body[data-page="about"] .company-page__hero-screens > .device-mockup {
+  position: relative;
+  z-index: 1;
   flex: 0 1 260px;
   width: calc((100% - 32px) / 2);
   max-width: 260px;
+  overflow: visible;
+  background: transparent;
+  contain: none;
+  transition: z-index 0s linear 180ms;
+}
+body[data-page="about"] .company-page__hero-screens > .device-mockup:hover,
+body[data-page="about"] .company-page__hero-screens > .device-mockup:focus-within {
+  z-index: 100;
+  transition-delay: 0s;
 }
 @media (max-width: 1000px) {
   body[data-page="about"] .company-page__hero { grid-template-columns: 1fr; gap: 24px; }
@@ -26,6 +41,9 @@ body[data-page="about"] .company-page__hero-screens > .device-mockup {
 
 /* Main product statement: a calm, high-contrast pause in the light page. */
 body[data-page="about"] .company-page__team {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
   display: grid;
   grid-template-columns: 1fr;
   gap: 44px;
@@ -36,6 +54,25 @@ body[data-page="about"] .company-page__team {
   background: #0e253d !important;
   color: #f7fbff;
   box-shadow: 0 24px 64px rgb(14 37 61 / 16%);
+}
+body[data-page="about"] .company-page__team::before,
+body[data-page="about"] .company-page__team::after {
+  position: absolute;
+  inset: 0;
+  content: '';
+  pointer-events: none;
+}
+body[data-page="about"] .company-page__team::before {
+  z-index: -2;
+  background: url('../assets/editorial/about-team.png') center 44% / cover no-repeat;
+  opacity: .62;
+  transform: scale(1.025);
+}
+body[data-page="about"] .company-page__team::after {
+  z-index: -1;
+  background:
+    linear-gradient(90deg, rgb(9 29 49 / 82%) 0%, rgb(14 37 61 / 60%) 34%, rgb(14 37 61 / 58%) 66%, rgb(9 29 49 / 82%) 100%),
+    linear-gradient(180deg, rgb(8 27 46 / 20%) 0%, rgb(8 27 46 / 82%) 100%);
 }
 body[data-page="about"] #main-content .company-page__team-intro {
   text-align: center;
@@ -89,7 +126,16 @@ body[data-page="about"] #main-content .company-page__principles p {
 }
 @media (max-width: 650px) {
   body[data-page="about"] .company-page__team { padding: 36px 24px; gap: 30px; margin-block: 24px 56px; border-radius: 24px; }
-  body[data-page="about"] .company-page__principles { grid-template-columns: 1fr; gap: 26px; padding-top: 26px; }
+  body[data-page="about"] .company-page__team::before { background-position: center 42%; opacity: .42; }
+  body[data-page="about"] .company-page__team::after {
+    background: linear-gradient(180deg, rgb(8 27 46 / 52%) 0%, rgb(8 27 46 / 90%) 52%, rgb(8 27 46 / 96%) 100%);
+  }
+  body[data-page="about"] .company-page__principles {
+    grid-template-columns: none;
+    grid-auto-columns: 100% !important;
+    gap: 26px;
+    padding-top: 26px;
+  }
   body[data-page="about"] #main-content .company-page__team-intro { text-align: left; }
   body[data-page="about"] #main-content .company-page__team-intro p { font-size: 16px; }
 }

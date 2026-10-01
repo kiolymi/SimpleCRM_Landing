@@ -32,7 +32,7 @@ document.head.append(motionStyles);
 const page = pageMeta[pageKey] || pageMeta.home;
 // Replace stylesheet URLs after a visual release so GitHub Pages/Yandex cannot
 // keep mixing a fresh component file with an older cached theme file.
-const styleRelease = '20260929-payment-copy2';
+const styleRelease = '20261001-about-layer3';
 document.querySelectorAll('link[rel="stylesheet"][href*="styles/"]').forEach(link => {
   const href = link.getAttribute('href');
   if (!href) return;
