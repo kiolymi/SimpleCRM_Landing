@@ -269,7 +269,6 @@ export function createAboutPage() {
         <h1 id="about-title">Для практики, в которой важен каждый человек</h1>
         <p>Simple CRM — клиентская база для психологов, коучей, тренеров и других специалистов частной практики. Записи, задачи, переписка и расчёты собраны рядом: для самостоятельной работы и работы с помощником.</p>
         </div>
-        <div class="company-page__hero-screens" aria-label="Возможности Simple CRM"></div>
       </header>
       <section class="company-page__team" aria-labelledby="team-title" data-reveal="scale">
         <div class="company-page__team-intro">
@@ -292,9 +291,10 @@ export function createAboutPage() {
   ].forEach(([file, alt], index) => {
     const src = new URL(`../../assets/product-screens/${file}`, import.meta.url).href;
     const device = createProductDeviceMockup({ mode: 'image', device: 'phone', image: { src, alt } });
+    device.classList.add('company-page__hero-screen');
     device.dataset.reveal = 'rise';
     device.dataset.delay = String(index * 140);
-    section.querySelector('.company-page__hero-screens').append(device);
+    section.querySelector('.company-page__hero').append(device);
   });
   getArticlesByCategory('announcements').slice(0, 3).forEach(article => {
     section.querySelector('.article-grid').append(createArticleCard(article));

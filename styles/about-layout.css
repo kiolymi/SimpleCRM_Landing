@@ -1,5 +1,5 @@
-/* The two phones live on the page surface: no reveal mask or ancestor clips
-   their hover scale and shadow. */
+/* The phones are direct grid items. There is deliberately no visual wrapper
+   around them, so reveal masks cannot crop their hover scale or shadow. */
 body[data-page="about"] .site-shell,
 body[data-page="about"] .site-main,
 body[data-page="about"] .company-page,
@@ -13,48 +13,47 @@ body[data-page="about"] .company-page__hero {
 }
 @media (min-width: 1001px) {
   body[data-page="about"] .company-page__hero {
-    grid-template-columns: minmax(0, 1fr) minmax(0, 552px);
-    gap: 40px;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 260px) minmax(0, 260px);
+    gap: 32px;
     padding-right: 20px;
   }
 }
-body[data-page="about"] .company-page__hero-screens {
+body[data-page="about"] .company-page__hero > .company-page__hero-screen {
   position: relative;
-  z-index: 50;
-  max-width: 552px;
-  gap: 32px;
+  z-index: 60;
+  align-self: center;
+  width: 100%;
+  max-width: 260px;
+  margin: 0;
   overflow: visible !important;
   clip-path: none !important;
   contain: none !important;
-  isolation: auto;
-}
-body[data-page="about"] .company-page__hero-screens > .device-mockup {
-  position: relative;
-  z-index: 60;
-  flex: 0 1 260px;
-  width: calc((100% - 32px) / 2);
-  max-width: 260px;
-  overflow: visible;
+  isolation: auto !important;
   background: transparent;
-  contain: none;
   transition: z-index 0s linear 180ms;
 }
-body[data-page="about"] .company-page__hero-screens > .device-mockup:hover,
-body[data-page="about"] .company-page__hero-screens > .device-mockup:focus-within {
+body[data-page="about"] .company-page__hero > .company-page__hero-screen:first-of-type { margin-top: 64px; }
+body[data-page="about"] .company-page__hero > .company-page__hero-screen:last-of-type { margin-bottom: 64px; }
+body[data-page="about"] .company-page__hero > .company-page__hero-screen:hover,
+body[data-page="about"] .company-page__hero > .company-page__hero-screen:focus-within {
   z-index: 1000;
   transition-delay: 0s;
 }
-body[data-page="about"] .company-page__hero-screens .device-mockup__frame {
+body[data-page="about"] .company-page__hero > .company-page__hero-screen .device-mockup__frame {
   z-index: 1;
   backface-visibility: hidden;
 }
 @media (max-width: 1000px) {
-  body[data-page="about"] .company-page__hero { grid-template-columns: 1fr; gap: 24px; }
-  body[data-page="about"] .company-page__hero-screens { width: min(100%, 552px); margin-inline: auto; justify-self: center; }
+  body[data-page="about"] .company-page__hero {
+    grid-template-columns: repeat(2, minmax(0, 260px));
+    justify-content: center;
+    gap: 24px;
+  }
+  body[data-page="about"] .company-page__hero-copy { grid-column: 1 / -1; }
+  body[data-page="about"] .company-page__hero > .company-page__hero-screen { justify-self: center; }
 }
 @media (max-width: 480px) {
-  body[data-page="about"] .company-page__hero-screens { gap: 24px; }
-  body[data-page="about"] .company-page__hero-screens > .device-mockup { width: calc((100% - 24px) / 2); }
+  body[data-page="about"] .company-page__hero { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
 }
 
 /* Main product statement: a calm, high-contrast pause in the light page. */

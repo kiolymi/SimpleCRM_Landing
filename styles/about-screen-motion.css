@@ -1,15 +1,15 @@
 /* Animate each phone's inner frame, never the shared background or layout. */
-body[data-page="about"] .company-page__hero-screens .device-mockup__frame {
+body[data-page="about"] .company-page__hero > .company-page__hero-screen .device-mockup__frame {
   transform: scale(var(--screen-scale, 1)) rotate(var(--screen-roll, 0deg)) !important;
   transform-origin: center;
   transition: none !important;
   animation: none !important;
 }
-body[data-page="about"] .company-page__hero-screens .device-mockup__image {
+body[data-page="about"] .company-page__hero > .company-page__hero-screen .device-mockup__image {
   transform: none !important;
 }
 @media (prefers-reduced-motion: reduce) {
-  body[data-page="about"] .company-page__hero-screens .device-mockup__frame {
+  body[data-page="about"] .company-page__hero > .company-page__hero-screen .device-mockup__frame {
     transform: none !important;
   }
 }

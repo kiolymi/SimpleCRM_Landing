@@ -1,7 +1,7 @@
 const motion = matchMedia('(hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference)');
 
 function connectScreens() {
-  const screens = document.querySelectorAll('.company-page__hero-screens .device-mockup, .home-hero .hero-device--soft-hover');
+  const screens = document.querySelectorAll('.company-page__hero > .company-page__hero-screen, .home-hero .hero-device--soft-hover');
   screens.forEach((screen, index) => {
     if (screen.dataset.softMotion) return;
     screen.dataset.softMotion = 'ready';

@@ -42,7 +42,7 @@ export function prepareSiteMotion(root, pageKey) {
 
   const visual = firstSurface.querySelector([
     '.page-art',
-    '.company-page__hero-screens',
+    '.company-page__hero-screen',
     '.support-contact-hero__visual',
     '.materials-hero__visual',
     '.pricing-page__visual',

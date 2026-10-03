@@ -1,10 +1,10 @@
 import { addPageArtwork } from './components/page-art.js?v=remove-releases2';
 import { createSiteShell } from './components/site-shell.js?v=remove-releases2';
 import { createHomePage } from './components/home-sections.js?v=home-story61';
-import { createAboutPage, createArticleLayout, createContentHubPage, createFaqPage, createPricingPage, createPrivacyPage, createSearchPage, createSupportPage } from './components/content-pages.js?v=remove-releases1';
+import { createAboutPage, createArticleLayout, createContentHubPage, createFaqPage, createPricingPage, createPrivacyPage, createSearchPage, createSupportPage } from './components/content-pages.js?v=about-surface1';
 import { pageMeta } from './data/site.js?v=remove-releases1';
 import { createProductDeviceMockup } from './components/product-device-mockup.js?v=20260927-2';
-import { prepareSiteMotion, wireMotionLifecycle } from './site-motion.js?v=motion2';
+import { prepareSiteMotion, wireMotionLifecycle } from './site-motion.js?v=about-surface1';
 
 const pageKey = document.body.dataset.page || 'home';
 if (pageKey === 'home') {
@@ -40,7 +40,8 @@ document.querySelectorAll('link[rel="stylesheet"][href*="styles/"]').forEach(lin
   url.searchParams.set('v', url.pathname.endsWith('/styles/private-practice.css') ? 'explore23' : styleRelease);
   if (url.pathname.endsWith('/styles/practice-flows.css')) url.searchParams.set('v', 'refinement5');
   if (url.pathname.endsWith('/styles/home-story-redesign-v3.css')) url.searchParams.set('v', '71');
-  if (url.pathname.endsWith('/styles/about-layout.css')) url.searchParams.set('v', 'free-hover-layers24');
+  if (url.pathname.endsWith('/styles/about-layout.css')) url.searchParams.set('v', 'screen-surface25');
+  if (url.pathname.endsWith('/styles/about-screen-motion.css')) url.searchParams.set('v', 'screen-surface2');
   link.setAttribute('href', `${url.pathname}?${url.searchParams.toString()}`);
 });
 document.documentElement.classList.add('has-js');
