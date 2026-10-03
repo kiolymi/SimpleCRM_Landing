@@ -1,4 +1,16 @@
-/* Two larger phones with a stable gap, independent of hover transforms. */
+/* The two phones live on the page surface: no reveal mask or ancestor clips
+   their hover scale and shadow. */
+body[data-page="about"] .site-shell,
+body[data-page="about"] .site-main,
+body[data-page="about"] .company-page,
+body[data-page="about"] .company-page__inner,
+body[data-page="about"] .company-page__hero {
+  overflow: visible !important;
+}
+body[data-page="about"] .company-page__hero {
+  position: relative;
+  z-index: 30;
+}
 @media (min-width: 1001px) {
   body[data-page="about"] .company-page__hero {
     grid-template-columns: minmax(0, 1fr) minmax(0, 552px);
@@ -8,15 +20,17 @@
 }
 body[data-page="about"] .company-page__hero-screens {
   position: relative;
-  z-index: 20;
+  z-index: 50;
   max-width: 552px;
   gap: 32px;
-  overflow: visible;
-  isolation: isolate;
+  overflow: visible !important;
+  clip-path: none !important;
+  contain: none !important;
+  isolation: auto;
 }
 body[data-page="about"] .company-page__hero-screens > .device-mockup {
   position: relative;
-  z-index: 1;
+  z-index: 60;
   flex: 0 1 260px;
   width: calc((100% - 32px) / 2);
   max-width: 260px;
@@ -27,8 +41,12 @@ body[data-page="about"] .company-page__hero-screens > .device-mockup {
 }
 body[data-page="about"] .company-page__hero-screens > .device-mockup:hover,
 body[data-page="about"] .company-page__hero-screens > .device-mockup:focus-within {
-  z-index: 100;
+  z-index: 1000;
   transition-delay: 0s;
+}
+body[data-page="about"] .company-page__hero-screens .device-mockup__frame {
+  z-index: 1;
+  backface-visibility: hidden;
 }
 @media (max-width: 1000px) {
   body[data-page="about"] .company-page__hero { grid-template-columns: 1fr; gap: 24px; }

@@ -40,7 +40,7 @@ document.querySelectorAll('link[rel="stylesheet"][href*="styles/"]').forEach(lin
   url.searchParams.set('v', url.pathname.endsWith('/styles/private-practice.css') ? 'explore23' : styleRelease);
   if (url.pathname.endsWith('/styles/practice-flows.css')) url.searchParams.set('v', 'refinement5');
   if (url.pathname.endsWith('/styles/home-story-redesign-v3.css')) url.searchParams.set('v', '71');
-  if (url.pathname.endsWith('/styles/about-layout.css')) url.searchParams.set('v', 'borderless-principles23');
+  if (url.pathname.endsWith('/styles/about-layout.css')) url.searchParams.set('v', 'free-hover-layers24');
   link.setAttribute('href', `${url.pathname}?${url.searchParams.toString()}`);
 });
 document.documentElement.classList.add('has-js');
