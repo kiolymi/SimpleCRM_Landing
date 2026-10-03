@@ -20,7 +20,6 @@ const routes = [
   ['announcement-history', '/announcements/unified-client-history/'],
   ['faq', '/faq/'],
   ['privacy', '/privacy/'],
-  ['releases', '/releases/'],
   ['search', '/search/?q=клиент'],
   ['support', '/support/'],
 ];

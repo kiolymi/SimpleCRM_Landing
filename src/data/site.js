@@ -7,9 +7,9 @@ export const siteConfig = {
     height: 36,
   },
   announcement: {
-    text: 'Вышла Simple CRM 1.4: новая доска задач и единая история клиента',
-    linkLabel: 'Что нового',
-    href: '/releases/',
+    text: 'Новые возможности Simple CRM: задачи, оплаты и единая история клиента',
+    linkLabel: 'Открыть обновления',
+    href: '/announcements/',
   },
   primaryCta: { label: 'Посмотреть сценарии', href: '/#practice' },
 };
@@ -19,7 +19,6 @@ export const primaryNavigation = [
   { label: 'Тарифы', href: '/pricing/' },
   { label: 'Вопросы', href: '/faq/' },
   { label: 'Конфиденциальность', href: '/privacy/' },
-  { label: 'Версии', href: '/releases/' },
   { label: 'Поддержка', href: '/support/' },
 ];
 
@@ -37,7 +36,6 @@ export const footerNavigation = [
   { label: 'Тарифы', href: '/pricing/' },
   { label: 'Вопросы', href: '/faq/' },
   { label: 'Конфиденциальность', href: '/privacy/' },
-  { label: 'История версий', href: '/releases/' },
   { label: 'Поддержка', href: '/support/' },
 ];
 
@@ -51,6 +49,5 @@ export const pageMeta = {
   'how-to': { eyebrow: 'Simple CRM', title: 'Инструкции', description: 'Пошаговые сценарии по работе с клиентами' },
   announcements: { eyebrow: 'Simple CRM', title: 'Обновления', description: 'Новые возможности и улучшения Simple CRM' },
   privacy: { eyebrow: 'Simple CRM', title: 'Конфиденциальность', description: 'Какие данные могут понадобиться сервису и что важно проверить до начала работы' },
-  releases: { eyebrow: 'Simple CRM', title: 'История версий', description: 'Новые возможности, улучшения и исправления Simple CRM' },
   search: { eyebrow: 'Simple CRM', title: 'Поиск', description: 'Поиск по материалам Simple CRM' },
 };

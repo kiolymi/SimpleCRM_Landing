@@ -180,7 +180,7 @@ function createFooter() {
   const footer = document.createElement('footer');
   footer.className = 'site-footer';
   footer.dataset.reveal = 'fade';
-  footer.innerHTML = `<div class="container site-footer__inner"><nav class="site-footer__nav" aria-label="Навигация в подвале"><a href="/about/">Как помогает</a><a href="/pricing/">Тарифы</a><a href="/learn/">Материалы</a><a href="/announcements/">Обновления</a><a href="/faq/">Вопросы</a><a href="/privacy/">Конфиденциальность</a><a href="/releases/">Версии</a><a href="/support/">Поддержка</a></nav><div class="site-footer__brand">${brandMarkup()}</div><p class="site-footer__legal">© ${new Date().getFullYear()} Simple CRM. Все права защищены.</p></div>`;
+  footer.innerHTML = `<div class="container site-footer__inner"><nav class="site-footer__nav" aria-label="Навигация в подвале"><a href="/about/">Как помогает</a><a href="/pricing/">Тарифы</a><a href="/learn/">Материалы</a><a href="/announcements/">Обновления</a><a href="/faq/">Вопросы</a><a href="/privacy/">Конфиденциальность</a><a href="/support/">Поддержка</a></nav><div class="site-footer__brand">${brandMarkup()}</div><p class="site-footer__legal">© ${new Date().getFullYear()} Simple CRM. Все права защищены.</p></div>`;
   return footer;
 }
 

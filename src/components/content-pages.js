@@ -243,12 +243,6 @@ export function createFaqPage() {
     "Официальные условия хранения, обработки и удаления данных ещё не подтверждены. До их публикации не вносите реальные сведения клиентов. На отдельной странице перечислено, что именно нужно проверить до начала работы.",
     "privacy/",
     "Что проверить о данных"
-  ],
-  [
-    "Где посмотреть изменения и новые версии?",
-    "В разделе «Версии» собраны изменения по выпускам: новые возможности, улучшения и исправления.",
-    "releases/",
-    "История обновлений"
   ]
 ];
   const section = document.createElement('section');
@@ -353,58 +347,6 @@ export function createPrivacyPage() {
   section.setAttribute('aria-labelledby', 'privacy-title');
   section.innerHTML = `<div class="container document-single editorial-layout"><article class="document-main"><header class="document-header"><h1 id="privacy-title">Конфиденциальность и данные</h1><p class="document-updated">Статус: условия ещё уточняются</p><p class="document-lead">Здесь собрано, что нужно проверить до того, как в Simple CRM можно будет передавать реальные данные клиентов. До утверждения официальной политики используйте только вымышленные примеры.</p></header><div class="document-body">${chapters.map(chapter => `<section id="${escapeAttribute(chapter.id)}"><h2>${escapeHtml(chapter.title)}</h2>${chapter.paragraphs.map(paragraph => `<p>${escapeHtml(paragraph)}</p>`).join('')}${chapter.items ? `<ul>${chapter.items.map(item => `<li>${escapeHtml(item)}</li>`).join('')}</ul>` : ''}</section>`).join('')}</div></article><aside class="editorial-sidebar"><details class="editorial-toc" open><summary>На этой странице</summary><nav aria-label="Разделы о данных">${chapters.map(c => `<a href="#${escapeAttribute(c.id)}">${escapeHtml(c.title)}</a>`).join('')}</nav></details></aside></div>`;
   if (window.matchMedia('(max-width: 900px)').matches) section.querySelector('.editorial-toc').open = false;
-  return section;
-}
-
-export function createReleasesPage() {
-  const releases = [
-    {
-      version: '2.2.3', date: '14 апреля 2026', label: 'Проектная версия',
-      groups: [
-        ['Новое', ['Добавили массовую привязку клиентов к месту встречи, офису или выбранной локации прямо из экрана деталей.']],
-      ],
-    },
-    {
-      version: '2.2.0', date: '9 апреля 2026',
-      groups: [
-        ['Новое', ['Обновили главный экран со статистикой: встречи, задачи, клиенты, документы и оплаты теперь видны быстрее.', 'Добавили компактный блок быстрых действий для создания клиента, встречи, задачи и сообщения.', 'Раздел задач стал плотнее и показывает общий прогресс по договорённостям.']],
-        ['Изменения', ['Заголовки разделов стали ближе к iOS-паттернам и лучше читаются на светлом фоне.']],
-      ],
-    },
-    {
-      version: '2.1.0', date: '1 апреля 2026',
-      groups: [
-        ['Новое', ['Даты клиента теперь можно редактировать из карточки и видеть рядом с расписанием.', 'Напоминания по важным датам можно быстро создать из карточки клиента.']],
-        ['Улучшения', ['Встречу можно завершить вручную из меню действий.', 'Действия на главном экране стали быстрее и понятнее.']],
-      ],
-    },
-    {
-      version: '2.0.4', date: '26 марта 2026',
-      groups: [
-        ['Улучшения', ['Настройки синхронизации теперь показывают подсказки, если часть клиентов не была импортирована из-за неполных данных.', 'Поиск стал возвращать более релевантные результаты и лучше работает с длинной клиентской базой.']],
-      ],
-    },
-    {
-      version: '2.0.1', date: '8 марта 2026',
-      groups: [
-        ['Новое', ['Добавили быстрый просмотр материалов и документов, связанных с клиентом, прямо из карточки.', 'При открытии документа сохраняется связь с клиентом и задачей, чтобы команда не теряла контекст.']],
-        ['Примечание', ['Работа с файлами показана в проектных материалах. Какие разрешения запрашивает доступная сборка и как обрабатывает документы, нужно подтвердить перед использованием.']],
-      ],
-    },
-    {
-      version: '2.0.0', date: '6 марта 2026',
-      groups: [
-        ['Новое', ['Обновили рабочую модель Simple CRM: клиенты, встречи, задачи, сообщения и документы теперь собираются в одну связанную историю.', 'Добавили большой экран для ежедневной работы с клиентами и быстрых действий.', 'Сделали удобнее работу с событиями, локациями и следующим шагом после встречи.']],
-        ['Статус', ['Доступность функций и условия доступа к ним требуют подтверждения владельца продукта.']],
-      ],
-    },
-  ];
-  const section = document.createElement('section');
-  section.className = 'inner-page section releases-page releases-page--dextr-notes';
-  section.dataset.reveal = 'scale';
-  section.setAttribute('aria-labelledby', 'releases-title');
-section.innerHTML = `<div class="container releases-layout"><article class="releases-main"><header class="releases-header"><h1 id="releases-title">Заметки о версиях Simple CRM</h1><p>История собрана по проектным материалам. Доступность отдельных функций зависит от версии приложения и требует подтверждения перед началом работы.</p></header><div class="release-list">${releases.map((release, index) => `<section class="release-entry" id="release-${escapeAttribute(release.version.replaceAll('.', '-'))}" data-reveal="slide-up"><div class="release-entry__heading"><div><h2>${escapeHtml(release.version)}</h2><p>${escapeHtml(release.date)}</p></div>${release.label ? `<span>${escapeHtml(release.label)}</span>` : ''}</div>${release.groups.map(([title, items]) => `<section class="release-group" id="release-${escapeAttribute(release.version.replaceAll('.', '-'))}-${slugify(title)}"><h3>${escapeHtml(title)}</h3><ul>${items.map(item => `<li><span>${escapeHtml(item)}</span></li>`).join('')}</ul></section>`).join('')}${index === 0 ? '<p><a class="text-link" href="/announcements/">Открыть обновления ' + iconSvg('arrow-right') + '</a></p>' : ''}</section>`).join('')}</div></article><aside class="releases-toc" data-reveal="slide-right"><details class="releases-toc__disclosure" open><summary>На этой странице</summary><nav aria-label="Оглавление релизов">${releases.map(release => `<a class="releases-toc__version" href="#release-${escapeAttribute(release.version.replaceAll('.', '-'))}">${escapeHtml(release.version)}</a>${release.groups.map(([title]) => `<a class="releases-toc__child" href="#release-${escapeAttribute(release.version.replaceAll('.', '-'))}-${slugify(title)}">${escapeHtml(title)}</a>`).join('')}`).join('')}</nav></details></aside></div>`;
-  if (window.matchMedia('(max-width: 1023px)').matches) section.querySelector('.releases-toc__disclosure').open = false;
   return section;
 }
 

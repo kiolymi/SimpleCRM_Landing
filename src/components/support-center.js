@@ -23,7 +23,7 @@ export function createSupportCenter() {
       <aside class="support-resources" aria-label="Самостоятельная помощь">
         <section class="support-help-card"><h2>Возможно, ответ уже есть</h2><p>Короткие ответы и инструкции — без ожидания.</p><a class="support-resource" href="/faq/"><span class="support-center__icon">${iconSvg('search')}</span><span><strong>Частые вопросы</strong><small>Возможности, подписка и данные</small></span>${iconSvg('arrow-right')}</a><a class="support-resource" href="/learn/?type=how-to"><span class="support-center__icon">${iconSvg('task-list')}</span><span><strong>Пошаговые инструкции</strong><small>Настройка, встречи и задачи</small></span>${iconSvg('arrow-right')}</a></section>
         <section class="support-guides"><p class="eyebrow">С чего начать</p><h2>Разберёмся шаг за шагом</h2><a href="/how-to/prepare-meeting/">Подготовить встречу ${iconSvg('arrow-right')}</a><a href="/how-to/create-follow-up-task/">Создать задачу после разговора ${iconSvg('arrow-right')}</a><a href="/learn/client-context/">Навести порядок в карточке клиента ${iconSvg('arrow-right')}</a></section>
-        <a class="support-updates" href="/releases/">Что нового в приложении ${iconSvg('arrow-right')}</a>
+        <a class="support-updates" href="/announcements/">Обновления Simple CRM ${iconSvg('arrow-right')}</a>
       </aside>
     </div>
   </div>`;

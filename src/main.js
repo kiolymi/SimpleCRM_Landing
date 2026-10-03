@@ -1,8 +1,8 @@
 import { addPageArtwork } from './components/page-art.js?v=20260908-83';
 import { createSiteShell } from './components/site-shell.js?v=refinement13';
 import { createHomePage } from './components/home-sections.js?v=home-story61';
-import { createAboutPage, createArticleLayout, createContentHubPage, createFaqPage, createPricingPage, createPrivacyPage, createReleasesPage, createSearchPage, createSupportPage } from './components/content-pages.js?v=refinement16';
-import { pageMeta } from './data/site.js?v=refinement11';
+import { createAboutPage, createArticleLayout, createContentHubPage, createFaqPage, createPricingPage, createPrivacyPage, createSearchPage, createSupportPage } from './components/content-pages.js?v=remove-releases1';
+import { pageMeta } from './data/site.js?v=remove-releases1';
 import { createProductDeviceMockup } from './components/product-device-mockup.js?v=20260927-2';
 import { prepareSiteMotion, wireMotionLifecycle } from './site-motion.js?v=motion2';
 
@@ -72,8 +72,6 @@ if (pageKey === 'home') {
   main.append(createSupportPage());
 } else if (pageKey === 'privacy') {
   main.append(createPrivacyPage());
-} else if (pageKey === 'releases') {
-  main.append(createReleasesPage());
 } else {
   main.append(createShellIntro(page));
 }
@@ -280,10 +278,10 @@ function wireScrollReveals(root) {
 
 function prepareRevealSequences(root) {
   // Long reading pages reveal individual blocks, not one oversized container.
-  root.querySelectorAll('.article-page--editorial, .document-page--dextr, .releases-page--dextr-notes, .search-page, .company-page__team').forEach(element => {
+  root.querySelectorAll('.article-page--editorial, .document-page--dextr, .search-page, .company-page__team').forEach(element => {
     element.removeAttribute('data-reveal');
   });
-  root.querySelectorAll('.releases-header, .release-entry__heading, .release-group, .search-page .inner-page-header, .search-page__form, .search-page .empty-state').forEach(element => {
+  root.querySelectorAll('.search-page .inner-page-header, .search-page__form, .search-page .empty-state').forEach(element => {
     element.dataset.reveal = 'rise';
     element.dataset.delay = '0';
   });
@@ -757,7 +755,7 @@ function wireSectionNavigation(root) {
 }
 
 function wireTableOfContents(root) {
-  const groups = [...root.querySelectorAll('.editorial-toc nav, .releases-toc nav')].map(nav => {
+  const groups = [...root.querySelectorAll('.editorial-toc nav')].map(nav => {
     const entries = [...nav.querySelectorAll('a[href^="#"]')].map(link => {
       let id;
       try { id = decodeURIComponent(link.hash.slice(1)); } catch { return null; }

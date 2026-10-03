@@ -3,7 +3,6 @@ const artwork = {
   about: ['about-team', '.company-page__mission', 'Команда за круглым синим столом'],
   pricing: ['pricing-value', '.pricing-page__hero .container', 'Стеклянные ступени и весы — выбор возможностей'],
   privacy: ['privacy-shield', '.document-header', 'Синий стеклянный щит и замок'],
-  releases: ['releases-evolution', '.releases-header', 'Стеклянная лестница развития продукта'],
   support: ['support-care', '.support-message', 'Гарнитура вокруг символа диалога'],
   learn: ['learn-library', '.archive-heading', 'Открытая книга со стеклянными страницами'],
   'how-to': ['howto-guide', '.archive-heading', 'Синий компас и путь по ступеням'],
