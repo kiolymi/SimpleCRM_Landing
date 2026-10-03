@@ -1,5 +1,5 @@
-import { addPageArtwork } from './components/page-art.js?v=20260908-83';
-import { createSiteShell } from './components/site-shell.js?v=refinement13';
+import { addPageArtwork } from './components/page-art.js?v=remove-releases2';
+import { createSiteShell } from './components/site-shell.js?v=remove-releases2';
 import { createHomePage } from './components/home-sections.js?v=home-story61';
 import { createAboutPage, createArticleLayout, createContentHubPage, createFaqPage, createPricingPage, createPrivacyPage, createSearchPage, createSupportPage } from './components/content-pages.js?v=remove-releases1';
 import { pageMeta } from './data/site.js?v=remove-releases1';

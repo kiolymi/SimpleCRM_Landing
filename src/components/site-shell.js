@@ -1,4 +1,4 @@
-import { primaryNavigation, siteConfig } from '../data/site.js?v=refinement10';
+import { primaryNavigation, siteConfig } from '../data/site.js?v=remove-releases2';
 import { iconSvg } from './icons.js?v=20260824-28';
 import { createSearchForm } from './search-form.js';
 
