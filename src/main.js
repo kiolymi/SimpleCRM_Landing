@@ -1,6 +1,6 @@
 import { addPageArtwork } from './components/page-art.js?v=remove-releases2';
 import { createSiteShell } from './components/site-shell.js?v=header-unified1';
-import { createHomePage } from './components/home-sections.js?v=home-story61';
+import { createHomePage } from './components/home-sections.js?v=home-story62';
 import { createAboutPage, createArticleLayout, createContentHubPage, createFaqPage, createPricingPage, createPrivacyPage, createSearchPage, createSupportPage } from './components/content-pages.js?v=about-surface1';
 import { pageMeta } from './data/site.js?v=header-unified1';
 import { createProductDeviceMockup } from './components/product-device-mockup.js?v=20260927-2';
@@ -10,7 +10,7 @@ const pageKey = document.body.dataset.page || 'home';
 if (pageKey === 'home') {
   const storyStyles = document.createElement('link');
   storyStyles.rel = 'stylesheet';
-  storyStyles.href = new URL('../styles/home-story-redesign-v3.css?v=71', import.meta.url).href;
+  storyStyles.href = new URL('../styles/home-story-redesign-v3.css?v=72', import.meta.url).href;
   document.head.append(storyStyles);
 }
 if (pageKey === 'support') {
@@ -39,14 +39,14 @@ document.querySelectorAll('link[rel="stylesheet"][href*="styles/"]').forEach(lin
   const url = new URL(href, window.location.href);
   url.searchParams.set('v', url.pathname.endsWith('/styles/private-practice.css') ? 'explore23' : styleRelease);
   if (url.pathname.endsWith('/styles/practice-flows.css')) url.searchParams.set('v', 'refinement5');
-  if (url.pathname.endsWith('/styles/home-story-redesign-v3.css')) url.searchParams.set('v', '71');
+  if (url.pathname.endsWith('/styles/home-story-redesign-v3.css')) url.searchParams.set('v', '72');
   if (url.pathname.endsWith('/styles/about-layout.css')) url.searchParams.set('v', 'screen-surface25');
   if (url.pathname.endsWith('/styles/about-screen-motion.css')) url.searchParams.set('v', 'screen-surface2');
   link.setAttribute('href', `${url.pathname}?${url.searchParams.toString()}`);
 });
 const headerStyles = document.createElement('link');
 headerStyles.rel = 'stylesheet';
-headerStyles.href = new URL('../styles/header-unified.css?v=header-unified1', import.meta.url).href;
+headerStyles.href = new URL('../styles/header-unified.css?v=header-unified2', import.meta.url).href;
 document.head.append(headerStyles);
 document.documentElement.classList.add('has-js');
 document.documentElement.classList.remove('is-navigating');

@@ -685,12 +685,24 @@ function createStartSection() {
       </div>
       <div class="story-start__action">
         <a class="button story-button story-button--light" href="learn/">Открыть материалы ${iconSvg('arrow-right')}</a>
-        <small>${iconSvg('check')} Без сложных настроек — сразу к работе</small>
+        <small>${iconSvg('check')} Коротко, понятно и без сложной настройки</small>
       </div>
       <nav class="story-start__paths" aria-label="Популярные материалы Simple CRM">
-        <a href="how-to/prepare-meeting/"><span>Подготовить встречу</span>${iconSvg('arrow-right')}</a>
-        <a href="learn/follow-up-after-meeting/"><span>Сохранить итог</span>${iconSvg('arrow-right')}</a>
-        <a href="how-to/create-follow-up-task/"><span>Поставить следующий шаг</span>${iconSvg('arrow-right')}</a>
+        <a href="how-to/prepare-meeting/">
+          <span class="story-start__path-icon">${iconSvg('calendar')}</span>
+          <span class="story-start__path-copy"><small>До встречи</small><strong>Подготовить встречу</strong></span>
+          ${iconSvg('arrow-right')}
+        </a>
+        <a href="learn/follow-up-after-meeting/">
+          <span class="story-start__path-icon">${iconSvg('document')}</span>
+          <span class="story-start__path-copy"><small>После разговора</small><strong>Сохранить итог</strong></span>
+          ${iconSvg('arrow-right')}
+        </a>
+        <a href="how-to/create-follow-up-task/">
+          <span class="story-start__path-icon">${iconSvg('task-list')}</span>
+          <span class="story-start__path-copy"><small>Следующее действие</small><strong>Поставить задачу</strong></span>
+          ${iconSvg('arrow-right')}
+        </a>
       </nav>
     </div>`;
   return section;
