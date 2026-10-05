@@ -1,8 +1,8 @@
 import { addPageArtwork } from './components/page-art.js?v=remove-releases2';
-import { createSiteShell } from './components/site-shell.js?v=remove-releases2';
+import { createSiteShell } from './components/site-shell.js?v=header-unified1';
 import { createHomePage } from './components/home-sections.js?v=home-story61';
 import { createAboutPage, createArticleLayout, createContentHubPage, createFaqPage, createPricingPage, createPrivacyPage, createSearchPage, createSupportPage } from './components/content-pages.js?v=about-surface1';
-import { pageMeta } from './data/site.js?v=remove-releases1';
+import { pageMeta } from './data/site.js?v=header-unified1';
 import { createProductDeviceMockup } from './components/product-device-mockup.js?v=20260927-2';
 import { prepareSiteMotion, wireMotionLifecycle } from './site-motion.js?v=about-surface1';
 
@@ -44,6 +44,10 @@ document.querySelectorAll('link[rel="stylesheet"][href*="styles/"]').forEach(lin
   if (url.pathname.endsWith('/styles/about-screen-motion.css')) url.searchParams.set('v', 'screen-surface2');
   link.setAttribute('href', `${url.pathname}?${url.searchParams.toString()}`);
 });
+const headerStyles = document.createElement('link');
+headerStyles.rel = 'stylesheet';
+headerStyles.href = new URL('../styles/header-unified.css?v=header-unified1', import.meta.url).href;
+document.head.append(headerStyles);
 document.documentElement.classList.add('has-js');
 document.documentElement.classList.remove('is-navigating');
 

@@ -1,0 +1,155 @@
+/*
+ * One header structure for every route.
+ * The home page only inverts the palette; dimensions and spacing stay shared.
+ */
+body[data-page] .site-header {
+  position: relative;
+  z-index: 90;
+  border-bottom: 1px solid #d5e1ed;
+  background: #edf4fa;
+  color: #111827;
+  box-shadow: 0 1px 0 rgb(15 23 42 / 2%);
+}
+
+body[data-page] .site-header__inner {
+  display: flex;
+  width: 100%;
+  min-height: 72px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  margin: 0;
+  padding-inline: 24px;
+}
+
+body[data-page] .site-header .brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  color: #152b45;
+  font-size: 18px;
+  font-weight: 800;
+  letter-spacing: -.02em;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+body[data-page] .site-header .brand__logo {
+  width: 40px;
+  height: 40px;
+  border-radius: 11px;
+  background: transparent;
+  object-fit: cover;
+}
+
+body[data-page] .site-header .desktop-nav {
+  display: none;
+  align-items: center;
+  gap: 32px;
+  margin-left: auto;
+}
+
+body[data-page] .site-header .desktop-nav > a {
+  position: relative;
+  padding: 13px 0;
+  color: #152b45;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: 0;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: color 220ms ease;
+}
+
+body[data-page] .site-header .desktop-nav > a:hover,
+body[data-page] .site-header .desktop-nav > a:focus-visible { color: #075eac; }
+
+body[data-page] .site-header .header-app-store {
+  display: none;
+  min-width: 144px;
+  min-height: 48px;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-left: 20px;
+  padding: 6px 12px;
+  border: 0;
+  border-radius: 8px;
+  background: #101c2e;
+  color: #fff;
+}
+
+body[data-page] .site-header .header-app-store:hover,
+body[data-page] .site-header .header-app-store:focus-visible { background: #172033; }
+
+body[data-page] .site-header .menu-toggle {
+  display: grid;
+  width: 44px;
+  height: 44px;
+  flex: 0 0 auto;
+  color: #152b45;
+}
+
+body[data-page="home"] .site-header {
+  border-bottom-color: rgb(255 255 255 / 8%);
+  background: #07182a;
+  color: #fff;
+  box-shadow: none;
+}
+
+body[data-page="home"] .site-header .brand { color: #fff; }
+body[data-page="home"] .site-header .desktop-nav > a { color: #aebdcd; }
+body[data-page="home"] .site-header .desktop-nav > a:hover,
+body[data-page="home"] .site-header .desktop-nav > a:focus-visible { color: #fff; }
+body[data-page="home"] .site-header .desktop-nav > a.is-current { color: #9bd5ff; }
+body[data-page="home"] .site-header .header-app-store {
+  background: #fff;
+  color: #07182a;
+}
+body[data-page="home"] .site-header .header-app-store:hover,
+body[data-page="home"] .site-header .header-app-store:focus-visible { background: #dcecff; }
+body[data-page="home"] .site-header .menu-toggle { color: #fff; }
+
+@media (max-width: 1023px) {
+  body[data-page] .site-header {
+    position: sticky;
+    top: 0;
+    padding-top: env(safe-area-inset-top, 0px);
+  }
+
+  body[data-page] .site-header__inner,
+  body[data-page].is-scrolled .site-header__inner {
+    min-height: 72px;
+    margin: 0;
+    padding-inline: 24px;
+  }
+
+  body[data-page] .site-header .brand { font-size: 16px; }
+}
+
+@media (min-width: 1024px) {
+  body[data-page] .site-header__inner { padding-inline: 32px; }
+}
+
+@media (min-width: 1240px) {
+  body[data-page] .site-header__inner {
+    width: 100%;
+    max-width: none;
+    min-height: 94px;
+    justify-content: flex-start;
+    gap: 14px;
+    margin: 0;
+    padding-inline: 32px;
+  }
+
+  body[data-page].is-scrolled .site-header__inner { min-height: 94px; }
+  body[data-page] .site-header .desktop-nav,
+  body[data-page] .site-header .header-app-store { display: inline-flex; }
+  body[data-page] .site-header .menu-toggle { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body[data-page] .site-header .desktop-nav > a,
+  body[data-page] .site-header .header-app-store { transition: none; }
+}

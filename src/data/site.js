@@ -15,6 +15,8 @@ export const siteConfig = {
 };
 
 export const primaryNavigation = [
+  { label: 'Главная', href: '/' },
+  { label: 'Материалы', href: '/learn/' },
   { label: 'Как помогает', href: '/about/' },
   { label: 'Тарифы', href: '/pricing/' },
   { label: 'Вопросы', href: '/faq/' },
