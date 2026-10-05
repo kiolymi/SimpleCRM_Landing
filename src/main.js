@@ -1,6 +1,6 @@
 import { addPageArtwork } from './components/page-art.js?v=remove-releases2';
 import { createSiteShell } from './components/site-shell.js?v=app-store-official1';
-import { createHomePage } from './components/home-sections.js?v=app-store-official1';
+import { createHomePage } from './components/home-sections.js?v=payment-cutout1';
 import { createAboutPage, createArticleLayout, createContentHubPage, createFaqPage, createPricingPage, createPrivacyPage, createSearchPage, createSupportPage } from './components/content-pages.js?v=materials-motion3';
 import { pageMeta } from './data/site.js?v=header-unified1';
 import { createProductDeviceMockup } from './components/product-device-mockup.js?v=20260927-2';
@@ -10,7 +10,7 @@ const pageKey = document.body.dataset.page || 'home';
 if (pageKey === 'home') {
   const storyStyles = document.createElement('link');
   storyStyles.rel = 'stylesheet';
-  storyStyles.href = new URL('../styles/home-story-redesign-v3.css?v=74', import.meta.url).href;
+  storyStyles.href = new URL('../styles/home-story-redesign-v3.css?v=75', import.meta.url).href;
   document.head.append(storyStyles);
 }
 if (pageKey === 'support') {
@@ -39,7 +39,7 @@ document.querySelectorAll('link[rel="stylesheet"][href*="styles/"]').forEach(lin
   const url = new URL(href, window.location.href);
   url.searchParams.set('v', url.pathname.endsWith('/styles/private-practice.css') ? 'explore23' : styleRelease);
   if (url.pathname.endsWith('/styles/practice-flows.css')) url.searchParams.set('v', 'refinement5');
-  if (url.pathname.endsWith('/styles/home-story-redesign-v3.css')) url.searchParams.set('v', '74');
+  if (url.pathname.endsWith('/styles/home-story-redesign-v3.css')) url.searchParams.set('v', '75');
   if (url.pathname.endsWith('/styles/about-layout.css')) url.searchParams.set('v', 'screen-surface25');
   if (url.pathname.endsWith('/styles/about-screen-motion.css')) url.searchParams.set('v', 'screen-surface2');
   if (url.pathname.endsWith('/styles/materials-catalog.css')) url.searchParams.set('v', 'catalog-motion2');

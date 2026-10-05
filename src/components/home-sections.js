@@ -590,7 +590,7 @@ function createPaymentGrowthSection() {
       </div>
 
       <figure class="payment-growth__visual">
-        <img src="${assetUrl('editorial/payment-hub-platform-v2.png')}" alt="Платёжный центр Simple CRM: SMS, счёт, подтверждение и рост поступлений" width="1536" height="1024" loading="lazy" decoding="async">
+        <img src="${assetUrl('editorial/payment-hub-platform-transparent.png')}" alt="Платёжный центр Simple CRM: SMS, счёт, подтверждение и рост поступлений" width="1536" height="1024" loading="lazy" decoding="async">
       </figure>
     </div>`;
   return section;
