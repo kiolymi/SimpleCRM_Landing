@@ -1,0 +1,73 @@
+/* Official Apple-provided Russian App Store badge. Keep the artwork intact. */
+button.app-store-badge {
+  display: inline-block;
+  width: 180px;
+  min-width: 0;
+  min-height: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent !important;
+  box-shadow: none !important;
+  color: inherit;
+  line-height: 0;
+  overflow: visible;
+  cursor: pointer;
+  transform: none !important;
+  transition: none !important;
+}
+
+button.app-store-badge::after { content: none !important; }
+
+button.app-store-badge > img {
+  display: block;
+  width: 100%;
+  height: auto;
+  min-height: 40px;
+}
+
+button.app-store-badge:hover,
+button.app-store-badge:focus-visible,
+button.app-store-badge:active {
+  background: transparent !important;
+  box-shadow: none !important;
+  transform: none !important;
+}
+
+button.app-store-badge:focus-visible {
+  outline: 3px solid #59b9ff;
+  outline-offset: 5px;
+}
+
+body[data-page] .site-header button.header-app-store.app-store-badge {
+  display: none;
+  width: 144px;
+  min-width: 0;
+  min-height: 0;
+  margin-left: 20px;
+  padding: 0;
+  border-radius: 0;
+  background: transparent !important;
+}
+
+body[data-page="home"] .story-hero button.story-hero__app-store.app-store-badge {
+  display: inline-block;
+  width: 198px;
+  min-width: 0;
+  min-height: 0;
+  padding: 0;
+  border-radius: 0;
+  background: transparent !important;
+}
+
+@media (min-width: 1240px) {
+  body[data-page] .site-header button.header-app-store.app-store-badge { display: inline-block; }
+}
+
+@media (max-width: 767px) {
+  body[data-page="home"] .story-hero button.story-hero__app-store.app-store-badge {
+    width: 180px;
+    margin-inline: auto;
+  }
+}

@@ -1,6 +1,6 @@
 import { addPageArtwork } from './components/page-art.js?v=remove-releases2';
-import { createSiteShell } from './components/site-shell.js?v=header-unified1';
-import { createHomePage } from './components/home-sections.js?v=home-story62';
+import { createSiteShell } from './components/site-shell.js?v=app-store-official1';
+import { createHomePage } from './components/home-sections.js?v=app-store-official1';
 import { createAboutPage, createArticleLayout, createContentHubPage, createFaqPage, createPricingPage, createPrivacyPage, createSearchPage, createSupportPage } from './components/content-pages.js?v=about-surface1';
 import { pageMeta } from './data/site.js?v=header-unified1';
 import { createProductDeviceMockup } from './components/product-device-mockup.js?v=20260927-2';
@@ -48,6 +48,10 @@ const headerStyles = document.createElement('link');
 headerStyles.rel = 'stylesheet';
 headerStyles.href = new URL('../styles/header-unified.css?v=header-unified2', import.meta.url).href;
 document.head.append(headerStyles);
+const appStoreBadgeStyles = document.createElement('link');
+appStoreBadgeStyles.rel = 'stylesheet';
+appStoreBadgeStyles.href = new URL('../styles/app-store-badge.css?v=official1', import.meta.url).href;
+document.head.append(appStoreBadgeStyles);
 document.documentElement.classList.add('has-js');
 document.documentElement.classList.remove('is-navigating');
 

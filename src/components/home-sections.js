@@ -1,5 +1,6 @@
 import { iconSvg } from './icons.js?v=20260824-28';
 import { accessConfig } from '../data/access.js?v=refinement3';
+import { appStoreBadgeMarkup } from './app-store-badge.js?v=official1';
 
 const assetUrl = path => new URL(`../../assets/${path}`, import.meta.url).href;
 const pageUrl = path => new URL(`../../${path.replace(/^\/+/, '')}`, import.meta.url).href;
@@ -220,10 +221,7 @@ function createObjectHero() {
         </div>
         <h1 id="page-title"><span class="story-hero__lead">Всё для работы</span><span class="story-hero__highlight">с клиентами</span></h1>
         <p>Расписание, задачи, договорённости и оплаты — в одном приложении</p>
-        <button class="header-app-store story-hero__app-store" type="button" data-download-placeholder aria-haspopup="dialog">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15.4 3.2c-.9.1-2 .7-2.6 1.4-.6.7-1.1 1.8-.9 2.8 1 .1 2-.5 2.6-1.2.6-.8 1-1.8.9-3Zm3.4 9.1c0-2.5 2-3.7 2.1-3.8-1.1-1.7-2.9-1.9-3.6-1.9-1.5-.2-3 .9-3.8.9-.8 0-2-.9-3.3-.9-1.7 0-3.3 1-4.2 2.6-1.8 3.1-.5 7.7 1.3 10.2.9 1.2 1.9 2.6 3.3 2.6 1.3-.1 1.8-.8 3.4-.8s2 .8 3.4.8c1.4 0 2.3-1.3 3.1-2.5 1.1-1.6 1.6-3.2 1.6-3.3-.1 0-3.1-1.2-3.1-4.7Z" /></svg>
-          <span><small>Скачайте с</small><strong>App Store</strong></span>
-        </button>
+        ${appStoreBadgeMarkup('story-hero__app-store')}
       </div>
     </div>
   `;
