@@ -1,7 +1,7 @@
 import { addPageArtwork } from './components/page-art.js?v=remove-releases2';
 import { createSiteShell } from './components/site-shell.js?v=app-store-official1';
 import { createHomePage } from './components/home-sections.js?v=app-store-official1';
-import { createAboutPage, createArticleLayout, createContentHubPage, createFaqPage, createPricingPage, createPrivacyPage, createSearchPage, createSupportPage } from './components/content-pages.js?v=about-surface1';
+import { createAboutPage, createArticleLayout, createContentHubPage, createFaqPage, createPricingPage, createPrivacyPage, createSearchPage, createSupportPage } from './components/content-pages.js?v=materials-motion3';
 import { pageMeta } from './data/site.js?v=header-unified1';
 import { createProductDeviceMockup } from './components/product-device-mockup.js?v=20260927-2';
 import { prepareSiteMotion, wireMotionLifecycle } from './site-motion.js?v=about-surface1';
@@ -22,12 +22,12 @@ if (pageKey === 'support') {
 if (['learn', 'how-to', 'announcements', 'article'].includes(pageKey)) {
   const catalogStyles = document.createElement('link');
   catalogStyles.rel = 'stylesheet';
-  catalogStyles.href = new URL('../styles/materials-catalog.css?v=catalog14', import.meta.url).href;
+  catalogStyles.href = new URL('../styles/materials-catalog.css?v=catalog-motion2', import.meta.url).href;
   document.head.append(catalogStyles);
 }
 const motionStyles = document.createElement('link');
 motionStyles.rel = 'stylesheet';
-motionStyles.href = new URL('../styles/site-polish-motion.css?v=motion2', import.meta.url).href;
+motionStyles.href = new URL('../styles/site-polish-motion.css?v=motion4', import.meta.url).href;
 document.head.append(motionStyles);
 const page = pageMeta[pageKey] || pageMeta.home;
 // Replace stylesheet URLs after a visual release so GitHub Pages/Yandex cannot
@@ -42,6 +42,8 @@ document.querySelectorAll('link[rel="stylesheet"][href*="styles/"]').forEach(lin
   if (url.pathname.endsWith('/styles/home-story-redesign-v3.css')) url.searchParams.set('v', '74');
   if (url.pathname.endsWith('/styles/about-layout.css')) url.searchParams.set('v', 'screen-surface25');
   if (url.pathname.endsWith('/styles/about-screen-motion.css')) url.searchParams.set('v', 'screen-surface2');
+  if (url.pathname.endsWith('/styles/materials-catalog.css')) url.searchParams.set('v', 'catalog-motion2');
+  if (url.pathname.endsWith('/styles/site-polish-motion.css')) url.searchParams.set('v', 'motion4');
   link.setAttribute('href', `${url.pathname}?${url.searchParams.toString()}`);
 });
 const headerStyles = document.createElement('link');
@@ -480,10 +482,13 @@ function wireSmoothAnchorNavigation(root) {
 function wireStablePageNavigation(root) {
   let navigationLocked = false;
   let navigationTimer = 0;
+  let navigationAnimation = null;
 
   const resetNavigationState = () => {
     navigationLocked = false;
     window.clearTimeout(navigationTimer);
+    navigationAnimation?.cancel();
+    navigationAnimation = null;
     document.documentElement.classList.remove('is-navigating');
     document.documentElement.classList.add('is-page-ready');
     root.removeAttribute('aria-busy');
@@ -513,9 +518,22 @@ function wireStablePageNavigation(root) {
     document.documentElement.classList.add('is-navigating');
     document.documentElement.classList.remove('is-page-ready');
 
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const transitionSurface = root.querySelector('.site-main');
+    if (!reduceMotion && transitionSurface?.animate) {
+      navigationAnimation = transitionSurface.animate([
+        { opacity: 1, transform: 'translate3d(0, 0, 0) scale(1)' },
+        { opacity: 0, transform: 'translate3d(0, -10px, 0) scale(.995)' },
+      ], {
+        duration: 220,
+        easing: 'cubic-bezier(.4,0,1,1)',
+        fill: 'forwards',
+      });
+    }
+
     navigationTimer = window.setTimeout(() => {
       window.location.assign(target.href);
-    }, window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 240);
+    }, reduceMotion ? 0 : 240);
   }, { capture: true });
 }
 

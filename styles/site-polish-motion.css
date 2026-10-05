@@ -21,6 +21,28 @@ body #main-content :is(p, li, blockquote) { text-wrap: pretty; }
 @media (prefers-reduced-motion: no-preference) {
   html.motion-paused *, html.motion-paused *::before, html.motion-paused *::after { animation-play-state: paused !important; }
 
+  /* Keep the anchored header stable; only the page surface travels between routes. */
+  .has-js .site-shell { opacity: 1; transition: none; }
+  .has-js .site-main {
+    opacity: 0;
+    transform: translate3d(0, 12px, 0) scale(.998);
+    transform-origin: 50% 20%;
+    transition: opacity 280ms ease-out, transform 440ms var(--motion-ease-enter);
+  }
+
+  .has-js.is-page-ready .site-main {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+
+  .has-js.is-navigating .site-main {
+    opacity: 0;
+    pointer-events: none;
+    transform: translate3d(0, -10px, 0) scale(.995);
+    transition-duration: 180ms, 220ms;
+    transition-timing-function: var(--motion-ease-exit);
+  }
+
   .motion-system-ready .site-header { animation: crm-header-arrive 480ms var(--motion-ease-enter) both; }
 
   .has-js [data-reveal] {
@@ -125,6 +147,10 @@ body #main-content :is(p, li, blockquote) { text-wrap: pretty; }
     transition: none !important;
   }
   .page-ambient::before, .story-hero__piece { animation: none !important; }
+  .has-js .site-shell,
+  .has-js .site-main,
+  .has-js.is-page-ready .site-main,
+  .has-js.is-navigating .site-main { opacity: 1; transform: none; transition: none; }
   :is(.button, .header-app-store, .app-store-badge, .menu-toggle, input, textarea, select) {
     transition: color 120ms ease, background-color 120ms ease, border-color 120ms ease, box-shadow 120ms ease !important;
   }

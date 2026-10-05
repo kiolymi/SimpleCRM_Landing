@@ -1,5 +1,5 @@
 import { createArticleCard } from './article-card.js?v=catalog16';
-import { createMaterialsCatalog } from './materials-catalog.js?v=practice19';
+import { createMaterialsCatalog } from './materials-catalog.js?v=motion4';
 import { createSupportCenter } from './support-center.js?v=remove-releases2';
 import { iconSvg } from './icons.js?v=20260824-28';
 import { createProductDeviceMockup } from './product-device-mockup.js?v=20260927-2';
