@@ -614,7 +614,6 @@ function createTrustSection() {
           <img src="${assetUrl('editorial/trust-planning-still-life.png')}" alt="Планировщик, календарь и карточки этапов работы с клиентом" width="1536" height="1024" loading="lazy">
           <div class="story-trust__photo-shade" aria-hidden="true"></div>
           <div class="story-trust__card-copy">
-            <span class="story-trust__label">Рабочий день</span>
             <h3>План виден целиком</h3>
             <p>Встречи, свободные интервалы и важные дела складываются в спокойный ритм.</p>
           </div>
@@ -627,7 +626,6 @@ function createTrustSection() {
             <span class="story-trust__context-note story-trust__context-note--three"><i></i><b></b><b></b></span>
           </div>
           <div class="story-trust__card-copy">
-            <span class="story-trust__label">История клиента</span>
             <h3>Контекст складывается сам</h3>
             <p>Заметки и договорённости остаются связаны — ничего не приходится вспоминать заново.</p>
           </div>
@@ -636,7 +634,6 @@ function createTrustSection() {
           <img class="story-trust__flow-art" src="${assetUrl('editorial/trust-client-journey.png')}" alt="Абстрактный маршрут от документов и встречи к выполненному действию" width="1536" height="1024" loading="eager" decoding="async" fetchpriority="low">
           <div class="story-trust__flow-shade" aria-hidden="true"></div>
           <div class="story-trust__card-copy">
-            <span class="story-trust__label">Следующий шаг</span>
             <h3>От встречи — к действию</h3>
             <p>Итог превращается в понятный следующий шаг, связанный с клиентом и сроком.</p>
           </div>
