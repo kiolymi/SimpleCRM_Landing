@@ -606,8 +606,8 @@ function createTrustSection() {
     <div class="story-trust__wash story-trust__wash--pink" aria-hidden="true"></div>
     <div class="container story-trust__layout">
       <header class="story-trust__intro" data-story-reveal>
-        <h2 id="story-trust-title"><span>Работа с клиентами</span><em>без лишней суеты</em></h2>
-        <p>Весь рабочий ритм складывается в понятный маршрут: от плана на день до сохранённого итога и следующего шага.</p>
+        <h2 id="story-trust-title"><span>Системная работа</span><em>с каждым клиентом</em></h2>
+        <p>Планируйте встречи, фиксируйте договорённости и назначайте следующие действия в едином рабочем процессе.</p>
       </header>
       <div class="story-trust__bento" data-story-reveal="cluster" role="region" aria-label="Преимущества. Проведите влево, чтобы посмотреть следующие карточки" tabindex="0">
         <article class="story-trust__card story-trust__card--session">
@@ -675,27 +675,31 @@ function createStartSection() {
   section.innerHTML = `
     <div class="container story-start__panel" data-story-reveal="panel">
       <div class="story-start__copy">
-        <h2 id="story-start-title">Готовые сценарии для каждого шага</h2>
-        <p>Подготовьтесь к встрече, сохраните итог и поставьте следующую задачу по коротким инструкциям Simple CRM.</p>
+        <h2 id="story-start-title">Весь путь клиента — по шагам</h2>
+        <p>От подготовки встречи до оплаты: короткие инструкции помогают вести клиента последовательно и ничего не упускать.</p>
       </div>
       <div class="story-start__action">
-        <a class="button story-button story-button--light" href="learn/">Открыть материалы ${iconSvg('arrow-right')}</a>
-        <small>${iconSvg('check')} Коротко, понятно и без сложной настройки</small>
+        <a class="button story-button story-button--light" href="learn/">Посмотреть все материалы ${iconSvg('arrow-right')}</a>
       </div>
       <nav class="story-start__paths" aria-label="Популярные материалы Simple CRM">
         <a href="how-to/prepare-meeting/">
-          <span class="story-start__path-icon">${iconSvg('calendar')}</span>
-          <span class="story-start__path-copy"><small>До встречи</small><strong>Подготовить встречу</strong></span>
+          <span class="story-start__path-top"><span class="story-start__path-icon">${iconSvg('calendar')}</span><small>01</small></span>
+          <span class="story-start__path-copy"><strong>Подготовить встречу</strong><span>Клиент, время и детали</span></span>
           ${iconSvg('arrow-right')}
         </a>
         <a href="learn/follow-up-after-meeting/">
-          <span class="story-start__path-icon">${iconSvg('document')}</span>
-          <span class="story-start__path-copy"><small>После разговора</small><strong>Сохранить итог</strong></span>
+          <span class="story-start__path-top"><span class="story-start__path-icon">${iconSvg('document')}</span><small>02</small></span>
+          <span class="story-start__path-copy"><strong>Сохранить итог</strong><span>Заметки и договорённости</span></span>
           ${iconSvg('arrow-right')}
         </a>
         <a href="how-to/create-follow-up-task/">
-          <span class="story-start__path-icon">${iconSvg('task-list')}</span>
-          <span class="story-start__path-copy"><small>Следующее действие</small><strong>Поставить задачу</strong></span>
+          <span class="story-start__path-top"><span class="story-start__path-icon">${iconSvg('task-list')}</span><small>03</small></span>
+          <span class="story-start__path-copy"><strong>Поставить задачу</strong><span>Действие и срок</span></span>
+          ${iconSvg('arrow-right')}
+        </a>
+        <a class="story-start__path--payment" href="learn/?q=оплата">
+          <span class="story-start__path-top"><span class="story-start__path-icon">${iconSvg('receipt')}</span><small>04</small></span>
+          <span class="story-start__path-copy"><strong>Проверить оплату</strong><span>Сумма, предоплата и остаток</span></span>
           ${iconSvg('arrow-right')}
         </a>
       </nav>
