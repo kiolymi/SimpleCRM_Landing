@@ -675,30 +675,43 @@ function createStartSection() {
   section.innerHTML = `
     <div class="container story-start__panel" data-story-reveal="panel">
       <div class="story-start__copy">
-        <h2 id="story-start-title">Весь путь клиента — по шагам</h2>
-        <p>От подготовки встречи до оплаты: короткие инструкции помогают вести клиента последовательно и ничего не упускать.</p>
+        <h2 id="story-start-title">Ведите клиента уверенно — от встречи до оплаты</h2>
+        <p>Simple CRM связывает расписание, договорённости, задачи и расчёты в одном рабочем процессе.</p>
+        <div class="story-start__action">
+          <strong>Освойте ключевые сценарии по коротким практическим инструкциям</strong>
+          <a class="button story-button story-button--light" href="learn/">Открыть материалы ${iconSvg('arrow-right')}</a>
+        </div>
       </div>
-      <div class="story-start__action">
-        <a class="button story-button story-button--light" href="learn/">Посмотреть все материалы ${iconSvg('arrow-right')}</a>
+      <div class="story-start__visual">
+        <figure class="story-start__photo">
+          <img src="${assetUrl('editorial/client-journey-consultation.png')}" alt="Специалист обсуждает с клиентом план дальнейшей работы" width="1536" height="1024" loading="lazy" decoding="async">
+        </figure>
+        <div class="story-start__context">
+          <span class="story-start__context-icon">${iconSvg('contact')}</span>
+          <div>
+            <strong>Контекст всегда рядом</strong>
+            <p>Перед каждой встречей видно, на чём остановились и что важно сделать дальше.</p>
+          </div>
+        </div>
       </div>
       <nav class="story-start__paths" aria-label="Популярные материалы Simple CRM">
         <a href="how-to/prepare-meeting/">
-          <span class="story-start__path-top"><span class="story-start__path-icon">${iconSvg('calendar')}</span><small>01</small></span>
+          <span class="story-start__path-number">01</span>
           <span class="story-start__path-copy"><strong>Подготовить встречу</strong><span>Клиент, время и детали</span></span>
           ${iconSvg('arrow-right')}
         </a>
         <a href="learn/follow-up-after-meeting/">
-          <span class="story-start__path-top"><span class="story-start__path-icon">${iconSvg('document')}</span><small>02</small></span>
-          <span class="story-start__path-copy"><strong>Сохранить итог</strong><span>Заметки и договорённости</span></span>
+          <span class="story-start__path-number">02</span>
+          <span class="story-start__path-copy"><strong>Сохранить договорённость</strong><span>Итог и важные заметки</span></span>
           ${iconSvg('arrow-right')}
         </a>
         <a href="how-to/create-follow-up-task/">
-          <span class="story-start__path-top"><span class="story-start__path-icon">${iconSvg('task-list')}</span><small>03</small></span>
-          <span class="story-start__path-copy"><strong>Поставить задачу</strong><span>Действие и срок</span></span>
+          <span class="story-start__path-number">03</span>
+          <span class="story-start__path-copy"><strong>Назначить следующий шаг</strong><span>Задача, срок и приоритет</span></span>
           ${iconSvg('arrow-right')}
         </a>
         <a class="story-start__path--payment" href="learn/?q=оплата">
-          <span class="story-start__path-top"><span class="story-start__path-icon">${iconSvg('receipt')}</span><small>04</small></span>
+          <span class="story-start__path-number">04</span>
           <span class="story-start__path-copy"><strong>Проверить оплату</strong><span>Сумма, предоплата и остаток</span></span>
           ${iconSvg('arrow-right')}
         </a>
