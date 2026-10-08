@@ -2055,7 +2055,7 @@ body[data-page] .site-header .desktop-nav a.is-current {
   text-decoration-thickness: 2px;
   text-underline-offset: 8px;
 }
-body:is([data-page="home"], [data-page="privacy"], [data-page="releases"], [data-page="search"]) .site-header .desktop-nav a.is-current {
+body:is([data-page="home"], [data-page="releases"], [data-page="search"]) .site-header .desktop-nav a.is-current {
   color: #9bd5ff;
 }
 body[data-page] .site-header .mobile-menu__nav a.is-current {
