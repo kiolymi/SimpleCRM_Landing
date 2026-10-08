@@ -1,7 +1,7 @@
 import { addPageArtwork } from './components/page-art.js?v=remove-releases2';
 import { createSiteShell } from './components/site-shell.js?v=app-store-official1';
 import { createHomePage } from './components/home-sections.js?v=start-editorial-photo1';
-import { createAboutPage, createArticleLayout, createContentHubPage, createFaqPage, createPricingPage, createPrivacyPage, createSearchPage, createSupportPage } from './components/content-pages.js?v=materials-motion3';
+import { createAboutPage, createArticleLayout, createContentHubPage, createFaqPage, createPricingPage, createPrivacyPage, createSearchPage, createSupportPage } from './components/content-pages.js?v=support-system1-privacy-ready2';
 import { pageMeta } from './data/site.js?v=header-unified1';
 import { createProductDeviceMockup } from './components/product-device-mockup.js?v=20260927-2';
 import { prepareSiteMotion, wireMotionLifecycle } from './site-motion.js?v=about-surface1';
@@ -16,7 +16,7 @@ if (pageKey === 'home') {
 if (pageKey === 'support') {
   const supportStyles = document.createElement('link');
   supportStyles.rel = 'stylesheet';
-  supportStyles.href = new URL('../styles/support-center.css?v=support15', import.meta.url).href;
+  supportStyles.href = new URL('../styles/support-center.css?v=support-system1', import.meta.url).href;
   document.head.append(supportStyles);
 }
 if (['learn', 'how-to', 'announcements', 'article'].includes(pageKey)) {
@@ -43,6 +43,7 @@ document.querySelectorAll('link[rel="stylesheet"][href*="styles/"]').forEach(lin
   if (url.pathname.endsWith('/styles/about-layout.css')) url.searchParams.set('v', 'screen-surface25');
   if (url.pathname.endsWith('/styles/about-screen-motion.css')) url.searchParams.set('v', 'screen-surface2');
   if (url.pathname.endsWith('/styles/materials-catalog.css')) url.searchParams.set('v', 'catalog-motion2');
+  if (url.pathname.endsWith('/styles/support-center.css')) url.searchParams.set('v', 'support-system1');
   if (url.pathname.endsWith('/styles/site-polish-motion.css')) url.searchParams.set('v', 'motion4');
   link.setAttribute('href', `${url.pathname}?${url.searchParams.toString()}`);
 });

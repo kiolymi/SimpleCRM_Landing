@@ -50,6 +50,6 @@ export const pageMeta = {
   learn: { eyebrow: 'Simple CRM', title: 'Материалы', description: 'Коротко о встречах, задачах и следующем шаге' },
   'how-to': { eyebrow: 'Simple CRM', title: 'Инструкции', description: 'Пошаговые сценарии по работе с клиентами' },
   announcements: { eyebrow: 'Simple CRM', title: 'Обновления', description: 'Новые возможности и улучшения Simple CRM' },
-  privacy: { eyebrow: 'Simple CRM', title: 'Конфиденциальность', description: 'Какие данные могут понадобиться сервису и что важно проверить до начала работы' },
+  privacy: { eyebrow: 'Simple CRM', title: 'Политика конфиденциальности', description: 'Как Simple CRM обрабатывает и защищает данные пользователей и их клиентов' },
   search: { eyebrow: 'Simple CRM', title: 'Поиск', description: 'Поиск по материалам Simple CRM' },
 };

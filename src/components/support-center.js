@@ -5,25 +5,21 @@ export function createSupportCenter() {
   section.className = 'support-center';
   section.setAttribute('aria-labelledby', 'support-title');
   section.innerHTML = `<div class="container">
-    <header class="support-center__intro"><p class="eyebrow">Поддержка Simple CRM</p><h1 id="support-title">С чем нужна помощь?</h1><p>Подсказки по клиентской базе, записям и задачам для вашей практики.</p></header>
+    <header class="support-center__intro"><h1 id="support-title">Поддержка</h1><p>Опишите вопрос — форма подскажет, какие данные нужны.</p></header>
     <div class="support-center__layout">
       <section class="support-compose" id="support-message" aria-labelledby="support-form-title">
-        <header><span class="support-center__icon">${iconSvg('message-square')}</span><div><h2 id="support-form-title">Написать команде</h2><p>Все детали обращения — в одной форме.</p></div></header>
+        <header><h2 id="support-form-title">Написать в поддержку</h2></header>
         <form data-demo-form novalidate id="support-message-form">
-          <div class="support-compose__row"><label>Ваше имя <span class="support-optional">(необязательно)</span><input name="name" autocomplete="name" placeholder="Как к вам обращаться"></label><label>Электронная почта <span aria-hidden="true">*</span><input name="email" type="email" autocomplete="email" placeholder="you@example.com" required></label></div>
-          <label>Тема обращения <span aria-hidden="true">*</span><select name="topic" required><option value="">Выберите, с чем нужна помощь</option><option>Начало работы и настройка</option><option>Клиенты и импорт данных</option><option>Записи, переносы и задачи</option><option>Счета и оплаты клиентов</option><option>Подписка и тарифы</option><option>Ошибка в приложении</option><option>Идея или другой вопрос</option></select></label>
-          <label>Ваш вопрос <span aria-hidden="true">*</span><textarea name="message" rows="5" required placeholder="Что вы хотели сделать и на каком шаге возник вопрос?" aria-describedby="support-message-hint"></textarea></label>
-          <p id="support-message-hint" class="support-field-hint">Если это ошибка, укажите версию приложения и модель устройства. Не добавляйте пароли и личные данные клиентов.</p>
-          <label class="support-consent"><input name="consent" type="checkbox" required><span>Понимаю, что это демонстрационная проверка: введённые данные не отправляются.</span></label>
-          <div class="support-demo-note">Форма пока работает в деморежиме: сообщение не отправится. Поля с * обязательны.</div>
-          <button class="button button--primary" type="submit">Проверить обращение ${iconSvg('arrow-right')}</button>
+          <div class="support-compose__row"><label>Имя <span class="support-optional">необязательно</span><input name="name" autocomplete="name" placeholder="Ваше имя"></label><label>Электронная почта <span aria-hidden="true">*</span><input name="email" type="email" autocomplete="email" placeholder="name@example.com" required></label></div>
+          <label>Тема <span aria-hidden="true">*</span><select name="topic" required><option value="">Выберите тему</option><option>Начало работы и настройка</option><option>Клиенты и импорт данных</option><option>Записи, переносы и задачи</option><option>Счета и оплаты клиентов</option><option>Подписка и тарифы</option><option>Ошибка в приложении</option><option>Идея или другой вопрос</option></select></label>
+          <label>Сообщение <span aria-hidden="true">*</span><textarea name="message" rows="6" required placeholder="Коротко опишите вопрос"></textarea></label>
+          <div class="support-compose__actions"><button class="button button--primary" type="submit">Проверить форму ${iconSvg('arrow-right')}</button><p class="support-demo-note">Данные не отправляются: форма работает в деморежиме.</p></div>
           <p class="form-status" data-form-status role="status" aria-live="polite"></p>
         </form>
       </section>
       <aside class="support-resources" aria-label="Самостоятельная помощь">
-        <section class="support-help-card"><h2>Возможно, ответ уже есть</h2><p>Короткие ответы и инструкции — без ожидания.</p><a class="support-resource" href="/faq/"><span class="support-center__icon">${iconSvg('search')}</span><span><strong>Частые вопросы</strong><small>Возможности, подписка и данные</small></span>${iconSvg('arrow-right')}</a><a class="support-resource" href="/learn/?type=how-to"><span class="support-center__icon">${iconSvg('task-list')}</span><span><strong>Пошаговые инструкции</strong><small>Настройка, встречи и задачи</small></span>${iconSvg('arrow-right')}</a></section>
-        <section class="support-guides"><p class="eyebrow">С чего начать</p><h2>Разберёмся шаг за шагом</h2><a href="/how-to/prepare-meeting/">Подготовить встречу ${iconSvg('arrow-right')}</a><a href="/how-to/create-follow-up-task/">Создать задачу после разговора ${iconSvg('arrow-right')}</a><a href="/learn/client-context/">Навести порядок в карточке клиента ${iconSvg('arrow-right')}</a></section>
-        <a class="support-updates" href="/announcements/">Обновления Simple CRM ${iconSvg('arrow-right')}</a>
+        <h2>Ответы и инструкции</h2>
+        <nav aria-label="Материалы поддержки"><a class="support-resource" href="/faq/"><span class="support-center__icon">${iconSvg('search')}</span><strong>Частые вопросы</strong>${iconSvg('arrow-right')}</a><a class="support-resource" href="/learn/?type=how-to"><span class="support-center__icon">${iconSvg('task-list')}</span><strong>Инструкции</strong>${iconSvg('arrow-right')}</a></nav>
       </aside>
     </div>
   </div>`;
