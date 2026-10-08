@@ -387,7 +387,7 @@ body[data-page="faq"] .faq-page--dextr .faq-rich-item {
   border: 1px solid #c9dceb !important;
   border-radius: 18px !important;
   background: rgb(255 255 255 / 88%) !important;
-  box-shadow: 0 12px 30px rgb(37 83 125 / 7%) !important;
+  box-shadow: none !important;
 }
 body[data-page="faq"] .faq-page--dextr .faq-rich-item[open] {
   border-color: #a9c9e7 !important;
@@ -486,7 +486,7 @@ body[data-page="faq"] .faq-page--dextr .faq-rich-item > p {
 @media (hover: hover) {
   body[data-page="faq"] .faq-page--dextr .faq-rich-item:hover {
     transform: translateY(-2px);
-    box-shadow: 0 16px 34px rgb(37 83 125 / 10%) !important;
+    box-shadow: none !important;
   }
 }
 @media (max-width: 600px) {

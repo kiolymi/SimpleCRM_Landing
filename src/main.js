@@ -44,6 +44,7 @@ document.querySelectorAll('link[rel="stylesheet"][href*="styles/"]').forEach(lin
   if (url.pathname.endsWith('/styles/about-screen-motion.css')) url.searchParams.set('v', 'screen-surface2');
   if (url.pathname.endsWith('/styles/materials-catalog.css')) url.searchParams.set('v', 'catalog-motion2');
   if (url.pathname.endsWith('/styles/dextr-audit.css')) url.searchParams.set('v', '20261008-privacy-nav1');
+  if (url.pathname.endsWith('/styles/design-system.css')) url.searchParams.set('v', '20261008-faq-corners1');
   if (url.pathname.endsWith('/styles/support-center.css')) url.searchParams.set('v', 'support-system1');
   if (url.pathname.endsWith('/styles/site-polish-motion.css')) url.searchParams.set('v', 'motion4');
   link.setAttribute('href', `${url.pathname}?${url.searchParams.toString()}`);
