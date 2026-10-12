@@ -1,7 +1,7 @@
 import { addPageArtwork } from './components/page-art.js?v=remove-releases2';
 import { createSiteShell } from './components/site-shell.js?v=app-store-official1';
 import { createHomePage } from './components/home-sections.js?v=start-editorial-photo1';
-import { createAboutPage, createArticleLayout, createContentHubPage, createFaqPage, createPricingPage, createPrivacyPage, createSearchPage, createSupportPage } from './components/content-pages.js?v=support-system1-privacy-ready2';
+import { createAboutPage, createArticleLayout, createContentHubPage, createFaqPage, createPricingPage, createPrivacyPage, createSearchPage, createSupportPage } from './components/content-pages.js?v=support-form3-privacy-ready2';
 import { pageMeta } from './data/site.js?v=header-unified1';
 import { createProductDeviceMockup } from './components/product-device-mockup.js?v=20260927-2';
 import { prepareSiteMotion, wireMotionLifecycle } from './site-motion.js?v=about-surface1';
@@ -16,7 +16,7 @@ if (pageKey === 'home') {
 if (pageKey === 'support') {
   const supportStyles = document.createElement('link');
   supportStyles.rel = 'stylesheet';
-  supportStyles.href = new URL('../styles/support-center.css?v=support-system1', import.meta.url).href;
+  supportStyles.href = new URL('../styles/support-center.css?v=support-form3', import.meta.url).href;
   document.head.append(supportStyles);
 }
 if (['learn', 'how-to', 'announcements', 'article'].includes(pageKey)) {
@@ -45,7 +45,7 @@ document.querySelectorAll('link[rel="stylesheet"][href*="styles/"]').forEach(lin
   if (url.pathname.endsWith('/styles/materials-catalog.css')) url.searchParams.set('v', 'catalog-motion2');
   if (url.pathname.endsWith('/styles/dextr-audit.css')) url.searchParams.set('v', '20261008-privacy-nav1');
   if (url.pathname.endsWith('/styles/design-system.css')) url.searchParams.set('v', '20261008-faq-corners1');
-  if (url.pathname.endsWith('/styles/support-center.css')) url.searchParams.set('v', 'support-system1');
+  if (url.pathname.endsWith('/styles/support-center.css')) url.searchParams.set('v', 'support-form3');
   if (url.pathname.endsWith('/styles/site-polish-motion.css')) url.searchParams.set('v', 'motion4');
   link.setAttribute('href', `${url.pathname}?${url.searchParams.toString()}`);
 });
@@ -931,7 +931,7 @@ function wireWorkflow(root) {
 }
 
 function wireForms(root) {
-  root.querySelectorAll('[data-newsletter-form], [data-demo-form]').forEach((form, index) => {
+  root.querySelectorAll('[data-newsletter-form], [data-support-form]').forEach((form, index) => {
     const status = form.querySelector('[data-form-status]');
     if (!status.id) status.id = `form-feedback-${index}`;
     form.addEventListener('input', event => {
@@ -992,15 +992,16 @@ function wireForms(root) {
     });
   });
 
-  root.querySelectorAll('[data-demo-form]').forEach(form => {
+  root.querySelectorAll('[data-support-form]').forEach(form => {
     form.addEventListener('submit', event => {
       event.preventDefault();
       const status = form.querySelector('[data-form-status]');
       if (!validate(form, status)) return;
-      status.textContent = 'Демонстрационная форма: поля заполнены корректно. Заявка не отправлена, данные остались на этой странице.';
+      status.textContent = 'Данные заполнены корректно.';
       status.className = 'form-status';
     });
   });
+
 }
 
 function createShellIntro({ eyebrow, title, description }) {

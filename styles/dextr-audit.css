@@ -1522,9 +1522,6 @@ body:is([data-page="about"], [data-page="privacy"], [data-page="pricing"]) .head
 .pricing-page--dextr .pricing-plan__timeline > div { background: transparent; box-shadow: none; border: 0; }
 .pricing-page--dextr .pricing-plan .button { background: #a6c9e1; color: #102235; border: 0; border-radius: 28px; box-shadow: none; }
 .pricing-page--dextr .pricing-plan__badge { background: #a6c9e1; color: #102235; }
-.pricing-page--dextr .pricing-pledge__card { background: transparent; box-shadow: none; border-color: #2d3c4f; }
-.pricing-page--dextr .pricing-pledge__card h2 { color: #edf2f8; }
-.pricing-page--dextr .pricing-pledge__card p:not(.eyebrow) { color: #c6d0dc; }
 @media (max-width: 767px) {
   .pricing-page--dextr .pricing-page__cards { grid-template-columns: 1fr; }
   .pricing-page--dextr .pricing-plan { padding: 26px; }
@@ -1808,14 +1805,14 @@ body:is([data-page="about"],[data-page="pricing"],[data-page="support"]) .header
 .pricing-page--dextr .pricing-plan { background: #fafdff; border-color: #cfdeec; }
 .pricing-page--dextr .pricing-plan--featured { border-color: #6b9cc4; }
 .pricing-page--dextr .pricing-plan__name,.pricing-page--dextr .pricing-plan__timeline strong { color: #172d47; }
-.pricing-page--dextr .pricing-plan h2 small,.pricing-page--dextr .pricing-plan__timeline p,.pricing-page--dextr .pricing-plan__description,.pricing-page--dextr .pricing-pledge p { color: #4a5f77; }
+.pricing-page--dextr .pricing-plan h2 small,.pricing-page--dextr .pricing-plan__timeline p,.pricing-page--dextr .pricing-plan__description { color: #4a5f77; }
 .company-page .article-card,.company-page .article-card__body { background: #fafdff; border-color: #cfdeec; }
 .company-page .article-card__body p { color: #4a5f77; }
 .company-page .article-card__body a { color: #245b87; }
 .company-page .newsletter-card :is(h2,p,label),.pricing-page--dextr .newsletter-card :is(h2,p,label),.support-page--contact .newsletter-card :is(h2,p,label) { color: #172d47; }
 .company-page .newsletter-card input,.pricing-page--dextr .newsletter-card input,.support-page--contact .newsletter-card input { background: #fafdff; border-color: #bfcede; color: #172d47; }
 .support-page--contact .support-newsletter { background: transparent; }
-.pricing-page--dextr .pricing-page__hero h1,.pricing-page--dextr .pricing-plan h2,.pricing-page--dextr .pricing-pledge h2 { color: #172d47; }
+.pricing-page--dextr .pricing-page__hero h1,.pricing-page--dextr .pricing-plan h2 { color: #172d47; }
 .pricing-page--dextr .pricing-page__hero p { color: #4a5f77; }
 .support-page--contact .support-message > summary { color: #245b87; }
 
@@ -1823,7 +1820,6 @@ body:is([data-page="about"],[data-page="pricing"],[data-page="support"]) .header
 .home-features .feature-card .feature-card__description { color: #4a6078; }
 .search-page .inner-page-header p,.search-page .article-card .article-card__body p,.search-page .empty-state p { color: #4a5f77; }
 .search-page .empty-state { background: #fafdff; border-color: #cfdeec; }
-.pricing-page--dextr .pricing-pledge__card p:not(.eyebrow) { color: #4a5f77; }
 .support-page--contact .support-message > details > summary { color: #245b87; }
 .article-page--editorial .eyebrow { color: #a6b7cb; }
 .article-card:nth-child(n) .article-card__cover { background-color: #eef7ff; }

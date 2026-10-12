@@ -14,7 +14,7 @@ body[data-page] .site-main > :is(.home-features,.trust-section,.testimonials-sec
   border-top: 0;
   border-bottom: 0;
 }
-body[data-page] :is(.company-page__mission,.company-page__team,.company-page__news,.pricing-page__hero,.pricing-pledge,.support-contact-hero,.support-form-section,.support-newsletter,.faq-page__hero,.faq-list-wrap,.archive-newsletter) {
+body[data-page] :is(.company-page__mission,.company-page__team,.company-page__news,.pricing-page__hero,.support-contact-hero,.support-form-section,.support-newsletter,.faq-page__hero,.faq-list-wrap,.archive-newsletter) {
   background: transparent;
   border-top: 0;
   border-bottom: 0;

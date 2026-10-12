@@ -1,6 +1,6 @@
 import { createArticleCard } from './article-card.js?v=catalog16';
 import { createMaterialsCatalog } from './materials-catalog.js?v=motion4';
-import { createSupportCenter } from './support-center.js?v=support-system1';
+import { createSupportCenter } from './support-center.js?v=support-form3';
 import { iconSvg } from './icons.js?v=20260824-28';
 import { createProductDeviceMockup } from './product-device-mockup.js?v=20260927-2';
 import { createSearchForm } from './search-form.js';
@@ -99,7 +99,7 @@ export function createPricingPage() {
       price: '0 ₽',
       period: 'Всегда бесплатно',
       description: 'Самые полезные возможности Simple CRM доступны сразу — можно собрать клиентов, встречи и задачи без подписки.',
-      cta: 'Начать',
+      cta: 'Как начать',
       features: [
         ['Доступно сразу', 'Соберите всех клиентов в одном месте — без лимитов на знакомство с продуктом.'],
         ['Сегодня', 'Откройте расписание и быстро увидьте, с кем нужно связаться.'],
@@ -112,7 +112,7 @@ export function createPricingPage() {
       price: '1 490 ₽ / месяц',
       period: 'Оплата помесячно',
       description: 'Для расширенной работы с клиентами и помощниками: общая история, роли, документы и приоритетная поддержка.',
-      cta: 'Попробовать Pro',
+      cta: 'Условия Pro',
       featured: true,
       features: [
         ['Всё из бесплатного, плюс…', 'Командный контекст, роли сотрудников и общая история клиента.'],
@@ -138,23 +138,13 @@ export function createPricingPage() {
           <p class="pricing-plan__name">${escapeHtml(plan.name)}</p>
           <p class="pricing-plan__description">${escapeHtml(plan.description)}</p>
           <h2>${escapeHtml(plan.price)}<small>${escapeHtml(plan.period)}</small></h2>
-          <a class="button ${plan.featured ? 'button--primary' : 'button--outline'}" href="/support/#support-message">${escapeHtml(plan.cta)}</a>
+          <a class="button ${plan.featured ? 'button--primary' : 'button--outline'}" href="/faq/">${escapeHtml(plan.cta)}</a>
           <div class="pricing-plan__timeline">
             ${plan.features.map(([label, text]) => `<div><span>${iconSvg('check')}</span><p><strong>${escapeHtml(label)}</strong>${escapeHtml(text)}</p></div>`).join('')}
           </div>
         </article>
       `).join('')}
-    </div>
-    <section class="pricing-pledge">
-      <div class="container">
-        <div class="pricing-pledge__card" data-reveal="scale">
-          <p class="eyebrow">Перед началом работы</p>
-          <h2>Уточните условия хранения и доступа</h2>
-          <p>Не переносите чувствительные сведения клиентов, пока не проверили актуальные условия обработки данных и права доступа для вашей практики.</p>
-          <a class="text-link" href="/privacy/">Прочитать о конфиденциальности ${iconSvg('arrow-right')}</a>
-        </div>
-      </div>
-    </section>`;
+    </div>`;
   return section;
 }
 
