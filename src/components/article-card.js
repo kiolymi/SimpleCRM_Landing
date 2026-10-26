@@ -1,4 +1,4 @@
-import { categoryMeta } from '../data/articles.js?v=practice19';
+import { categoryMeta } from '../data/articles.js?v=client-value1';
 import { iconSvg } from './icons.js?v=20260824-28';
 
 export function createArticleCard(article) {
@@ -22,6 +22,8 @@ export function createArticleCard(article) {
     'follow-up-after-meeting': 'cover-followup.png',
     'client-context': 'cover-client.png',
     'prepare-meeting': 'cover-meeting.png',
+    'payment-reminders': 'private-practice-payments.png',
+    'client-reminders': 'cover-followup.png',
     'create-follow-up-task': 'article-nextstep.png',
   };
   // Use the same editorial scene treatment on archive cards as on the home

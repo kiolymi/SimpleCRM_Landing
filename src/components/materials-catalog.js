@@ -1,12 +1,17 @@
-import { articles } from '../data/articles.js?v=practice19';
-import { createArticleCard } from './article-card.js?v=catalog16';
+import { articles, findArticles } from '../data/articles.js?v=client-value1';
+import { createArticleCard } from './article-card.js?v=client-value1';
 import { iconSvg } from './icons.js?v=20260824-28';
 
 export function createMaterialsCatalog(category) {
   const section = document.createElement('section');
   section.className = 'materials-catalog';
   section.setAttribute('aria-labelledby', 'hub-title');
-  section.innerHTML = `<div class="container"><header class="materials-intro"><p class="eyebrow">База знаний Simple CRM</p><h1 id="hub-title">Меньше искать. <br>Проще работать.</h1><p>Как подготовить встречу, вернуться к клиенту и записать следующий шаг. Инструкции и обновления Simple CRM — в одном месте.</p></header><div class="materials-tools" data-reveal="rise" data-motion="focal-action" data-delay="150"><label class="materials-search">${iconSvg('search')}<span class="visually-hidden">Найти материал</span><input type="search" placeholder="Например, встреча или карточка клиента" autocomplete="off"></label><div class="materials-filters" role="group" aria-label="Тип материала"></div></div><div class="materials-results" data-reveal="rise" data-motion="copy" data-delay="210"><h2>Все материалы</h2><span role="status" aria-live="polite"></span></div><div class="materials-grid"></div><div class="materials-empty" hidden><h2>Ничего не нашлось</h2><p>Попробуйте другое слово или посмотрите все материалы.</p><button type="button" class="button button--secondary">Сбросить поиск и фильтры</button></div></div>`;
+  const intro = {
+    learn: ['Решения для работы с клиентами', 'Клиент не оплатил, пропустил встречу или давно не записывался? Найдите подходящий сценарий и инструкцию.'],
+    'how-to': ['Настройте работу без лишней рутины', 'Встречи, автоматические напоминания, оплаты и личные задачи — понятные инструкции для ежедневной работы.'],
+    announcements: ['Что нового в Simple CRM', 'Изменения в истории клиента и задачах: что стало удобнее и как использовать это в работе.'],
+  }[category];
+  section.innerHTML = `<div class="container"><header class="materials-intro"><h1 id="hub-title">${intro[0]}</h1><p>${intro[1]}</p></header><div class="materials-tools" data-reveal="rise" data-motion="focal-action" data-delay="150"><label class="materials-search">${iconSvg('search')}<span class="visually-hidden">Найти материал</span><input type="search" placeholder="Например, не оплатил или повторная запись" autocomplete="off"></label><div class="materials-filters" role="group" aria-label="Тип материала"></div></div><div class="materials-results" data-reveal="rise" data-motion="copy" data-delay="210"><h2>Все материалы</h2><span role="status" aria-live="polite"></span></div><div class="materials-grid"></div><div class="materials-empty" hidden><h2>Ничего не нашлось</h2><p>Попробуйте другое слово или посмотрите все материалы.</p><button type="button" class="button button--secondary">Сбросить поиск и фильтры</button></div></div>`;
   const labels = { all: 'Все материалы', learn: 'Практика', 'how-to': 'Инструкции', announcements: 'Обновления' };
   const params = new URLSearchParams(location.search);
   const fallback = category === 'learn' ? 'all' : category;
@@ -24,7 +29,7 @@ export function createMaterialsCatalog(category) {
     card.removeAttribute('data-reveal');
     card.querySelector('.article-card__category').textContent = labels[post.category];
     grid.append(card);
-    return { post, card, text: [post.title, post.excerpt, ...post.tags].join(' ').toLocaleLowerCase('ru').replaceAll('ё', 'е') };
+    return { post, card };
   });
   const buttons = Object.entries(labels).map(([key, label]) => {
     const button = document.createElement('button');
@@ -59,9 +64,10 @@ export function createMaterialsCatalog(category) {
       cards.filter(({ card }) => !card.hidden).map(({ card }) => [card, card.getBoundingClientRect()]),
     );
     const words = input.value.trim().toLocaleLowerCase('ru').replaceAll('ё', 'е').split(/\s+/).filter(Boolean);
+    const matches = new Set(findArticles(input.value).map(post => post.slug));
     let count = 0;
-    cards.forEach(({ post, card, text }) => {
-      card.hidden = !(active === 'all' || post.category === active) || !words.every(word => text.includes(word));
+    cards.forEach(({ post, card }) => {
+      card.hidden = !(active === 'all' || post.category === active) || (words.length > 0 && !matches.has(post.slug));
       if (!card.hidden) count++;
     });
     buttons.forEach(({ key, button }) => button.setAttribute('aria-pressed', String(key === active)));

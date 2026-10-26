@@ -10,75 +10,75 @@ const recognitionSlides = [
     src: assetUrl('practice-refinement/practice-psychologist-960.webp'),
     srcSmall: assetUrl('practice-refinement/practice-psychologist-640.webp'),
     alt: 'Специалист обсуждает с клиентом итоги встречи',
-    title: 'История работы с клиентом сохраняется от встречи к встрече',
+    title: 'Провели консультацию, а оплата не пришла? CRM напомнит клиенту',
   },
   {
     src: assetUrl('practice-refinement/practice-mentor-960.webp'),
     srcSmall: assetUrl('practice-refinement/practice-mentor-640.webp'),
     alt: 'Специалист обсуждает с клиентом записи и дальнейший план',
-    title: 'Договорённости находятся без долгих поисков',
+    title: 'Клиент попросил вернуться к вопросу позже? Сохраните следующий контакт',
   },
   {
     src: assetUrl('practice-refinement/practice-trainer-960.webp'),
     srcSmall: assetUrl('practice-refinement/practice-trainer-640.webp'),
     alt: 'Специалист обсуждает с клиентом план следующей встречи',
-    title: 'Расписание и важные детали клиента всегда рядом',
+    title: 'Клиент забыл о занятии? Напоминание придёт заранее',
   },
   {
     src: assetUrl('practice-slideshow/manicure-960.webp'),
     srcSmall: assetUrl('practice-slideshow/manicure-640.webp'),
     alt: 'Мастер маникюра работает с клиенткой за рабочим столом',
-    title: 'Мастер маникюра видит пожелания клиента и следующий визит',
+    title: 'Клиент давно не записывался? CRM напомнит о следующем визите',
   },
   {
     src: assetUrl('practice-slideshow/massage-960.webp'),
     srcSmall: assetUrl('practice-slideshow/massage-640.webp'),
     alt: 'Массажист проводит профессиональный сеанс для клиента',
-    title: 'Массажист сохраняет особенности сеанса и план следующих встреч',
+    title: 'Сеанс завершён. Напоминание об оплате отправит Simple CRM',
   },
   {
     src: assetUrl('practice-slideshow/tutor-960.webp'),
     srcSmall: assetUrl('practice-slideshow/tutor-640.webp'),
     alt: 'Репетитор объясняет ученице задачу по геометрии',
-    title: 'Репетитор связывает программу, задания и расписание ученика',
+    title: 'Уроки, переносы и оплаты — больше не нужно сверять всё по чатам',
   },
   {
     src: assetUrl('practice-slideshow/hairstylist-960.webp'),
     srcSmall: assetUrl('practice-slideshow/hairstylist-640.webp'),
     alt: 'Парикмахер делает укладку клиентке перед зеркалом',
-    title: 'Парикмахер помнит пожелания клиента и дату следующего визита',
+    title: 'Пожелания клиента сохранены, напоминание о визите придёт вовремя',
   },
   {
     src: assetUrl('practice-slideshow/nutritionist-960.webp'),
     srcSmall: assetUrl('practice-slideshow/nutritionist-640.webp'),
     alt: 'Диетолог с яблоком объясняет клиенту выбор продуктов',
-    title: 'Диетолог фиксирует рекомендации и следующий шаг клиента',
+    title: 'Рекомендации и следующий контакт не потеряются после консультации',
   },
   {
     src: assetUrl('practice-slideshow/physiotherapist-960.webp'),
     srcSmall: assetUrl('practice-slideshow/physiotherapist-640.webp'),
     alt: 'Физиотерапевт помогает клиенту выполнить упражнение с лентой',
-    title: 'Физиотерапевт видит прогресс клиента и план ближайших занятий',
+    title: 'Договорились продолжить занятия? CRM напомнит о новой записи',
   },
   {
     src: assetUrl('practice-slideshow/language-teacher-960.webp'),
     srcSmall: assetUrl('practice-slideshow/language-teacher-640.webp'),
     alt: 'Преподаватель объясняет материал ученику у доски',
-    title: 'Преподаватель связывает уроки, задания и следующую встречу',
+    title: 'Напоминания об уроках и оплате — без ежедневной переписки',
   },
   {
     src: assetUrl('practice-slideshow/photographer-960.webp'),
     srcSmall: assetUrl('practice-slideshow/photographer-640.webp'),
     alt: 'Фотограф снимает клиентку в профессиональной студии',
-    title: 'Фотограф хранит задачи, детали съёмки и контакты клиента вместе',
+    title: 'Предоплата, детали съёмки и остаток к оплате — в одной истории',
   },
 ];
 
 const storySteps = [
   {
     label: 'Сегодня',
-    title: 'День начинается с ясного плана',
-    text: 'Ближайшие встречи и свободные интервалы собраны в одном расписании. Перед началом работы сразу видно, кто следующий.',
+    title: 'Кто следующий — видно сразу',
+    text: 'Приём, урок или созвон: откройте день и увидьте ближайшего клиента. Simple CRM заранее напомнит ему о встрече.',
     hoverText: 'Проверьте расписание, время и клиента перед первой встречей дня.',
     image: assetUrl('product-screens/today-schedule.jpg'),
     alt: 'Экран Сегодня в Simple CRM с расписанием ближайших встреч',
@@ -86,8 +86,8 @@ const storySteps = [
   },
   {
     label: 'Календарь',
-    title: 'Неделя складывается в понятный ритм',
-    text: 'Календарь помогает оценить загрузку, увидеть свободное время и распределить встречи без пересечений.',
+    title: 'Найдите время без долгой переписки',
+    text: 'Свободные интервалы видны на неделю вперёд. Подберите время для нового клиента или повторной встречи.',
     hoverText: 'Смотрите неделю целиком и выбирайте подходящее время для новой записи.',
     image: assetUrl('product-screens/calendar-week.jpg'),
     alt: 'Недельный календарь Simple CRM со встречами и свободными интервалами',
@@ -95,8 +95,8 @@ const storySteps = [
   },
   {
     label: 'Список встреч',
-    title: 'Нужный день читается с первого взгляда',
-    text: 'Встречи показаны списком с клиентом, временем и форматом. К нужной записи можно перейти без поиска по перепискам.',
+    title: 'Переносы не теряются в чатах',
+    text: 'Клиент перенёс запись? Сохраните новую дату в расписании. Время, формат и участники встречи останутся под рукой.',
     hoverText: 'Откройте выбранный день и быстро перейдите к деталям каждой встречи.',
     image: assetUrl('product-screens/calendar-list.jpg'),
     alt: 'Календарь Simple CRM со списком встреч на выбранный день',
@@ -104,8 +104,8 @@ const storySteps = [
   },
   {
     label: 'Карточка клиента',
-    title: 'Главное о клиенте находится рядом',
-    text: 'Контакты, ближайшая встреча и рабочие действия доступны из одной карточки. Продолжить работу можно с нужного места.',
+    title: 'Не просите клиента повторять всё заново',
+    text: 'Перед звонком или встречей откройте карточку: контакты, договорённости и ближайшие действия уже собраны вместе.',
     hoverText: 'Откройте обзор клиента, чтобы увидеть ближайшую встречу и актуальные данные.',
     image: assetUrl('product-screens/client-overview.jpg'),
     alt: 'Обзор карточки клиента в Simple CRM',
@@ -113,8 +113,8 @@ const storySteps = [
   },
   {
     label: 'История',
-    title: 'Контекст сохраняется от встречи к встрече',
-    text: 'Активность клиента выстроена по времени: встречи, задачи и изменения остаются в последовательной рабочей истории.',
+    title: 'Вспомните договорённость за один взгляд',
+    text: 'Что обсуждали, когда встречались и что обещали сделать — история помогает продолжить работу даже после долгой паузы.',
     hoverText: 'Просматривайте события по порядку и возвращайтесь к важным договорённостям.',
     image: assetUrl('product-screens/client-activity.jpg'),
     alt: 'История активности клиента в Simple CRM',
@@ -122,8 +122,8 @@ const storySteps = [
   },
   {
     label: 'Задачи',
-    title: 'Следующие действия не теряются',
-    text: 'Новые, текущие и завершённые задачи собраны в одном списке. Срок и клиент видны без дополнительных переходов.',
+    title: 'Клиент ждёт предложение? Не забудьте ответить',
+    text: 'Отправить расчёт, уточнить решение, подготовить документы: личные задачи собраны со сроками и привязаны к клиентам.',
     hoverText: 'Следите за открытыми действиями и завершайте их в понятном порядке.',
     image: assetUrl('product-screens/tasks-list.jpg'),
     alt: 'Список задач Simple CRM со статусами и сроками',
@@ -131,8 +131,8 @@ const storySteps = [
   },
   {
     label: 'Новая задача',
-    title: 'Договорённость превращается в конкретный шаг',
-    text: 'Название, срок, приоритет и клиент сохраняются вместе. Задача сразу объясняет, что нужно сделать дальше.',
+    title: '«Свяжитесь через неделю» — уже в плане',
+    text: 'Назначьте следующий контакт сразу после разговора. Когда придёт время, рядом будут клиент, срок и детали договорённости.',
     hoverText: 'Зафиксируйте действие, срок и приоритет сразу после разговора с клиентом.',
     image: assetUrl('product-screens/new-task-details.jpg'),
     alt: 'Форма новой задачи в Simple CRM со сроком и приоритетом',
@@ -140,8 +140,8 @@ const storySteps = [
   },
   {
     label: 'Итоги встречи',
-    title: 'Каждая встреча завершается понятным итогом',
-    text: 'Формат, клиент, заметки и итоговые действия остаются в деталях встречи и помогают подготовиться к следующему контакту.',
+    title: 'После встречи не начинайте с чистого листа',
+    text: 'Сохраните результат консультации или переговоров. На следующей встрече не придётся собирать договорённости по памяти.',
     hoverText: 'Сохраните результат встречи и оставьте следующий шаг рядом с клиентом.',
     image: assetUrl('product-screens/meeting-details.jpg'),
     alt: 'Детали встречи в Simple CRM с данными клиента и итоговыми действиями',
@@ -219,8 +219,8 @@ function createObjectHero() {
           <img src="${assetUrl('brand-simplecrm-s.png')}" alt="" width="1024" height="1024" aria-hidden="true">
           <span>Simple<strong>CRM</strong></span>
         </div>
-        <h1 id="page-title"><span class="story-hero__lead">Всё для работы</span><span class="story-hero__highlight">с клиентами</span></h1>
-        <p>Расписание, задачи, договорённости и оплаты — в одном приложении</p>
+        <h1 id="page-title"><span class="story-hero__lead">Клиенты и оплаты</span><span class="story-hero__highlight">под контролем</span></h1>
+        <p>Встречи, договорённости и оплаты — в одном приложении. Simple CRM сама напоминает клиентам через Telegram, MAX и SMS.</p>
         ${appStoreBadgeMarkup('story-hero__app-store')}
       </div>
     </div>
@@ -236,8 +236,8 @@ function createRecognitionSection() {
   section.innerHTML = `
     <div class="container recognition__layout">
       <header class="recognition__intro" data-story-reveal>
-        <h2 id="recognition-title">Важное не должно теряться <span>между встречами</span></h2>
-        <p>Simple CRM подходит для консультаций, занятий, услуг и сопровождения. Договорённости, следующий контакт и важные детали по каждому клиенту остаются рядом.</p>
+        <h2 id="recognition-title">Знакомые ситуации. <span>Меньше ручной работы.</span></h2>
+        <p>Сеанс не оплачен, клиент давно не записывался, после предложения нет ответа. Для услуг, консультаций и продаж — напоминания и история работы в Simple CRM.</p>
       </header>
       <figure class="recognition__showcase" data-story-reveal="media" data-recognition-slider aria-roledescription="слайд-шоу" aria-label="Специалисты работают с клиентами">
         <div class="recognition__slides">
@@ -256,19 +256,19 @@ function createRecognitionSection() {
         </div>
       </figure>
       <div class="recognition__continuity" data-story-reveal="cluster">
-        <h3><span class="recognition__headline-lead">Всё о клиенте&nbsp;—</span> <span>под рукой</span></h3>
+        <h3><span class="recognition__headline-lead">Рутина&nbsp;— CRM.</span> <span>Внимание — клиенту.</span></h3>
         <div class="recognition__moments" role="list" aria-label="Как сохраняется контекст клиента">
           <article class="recognition__moment recognition__moment--first" role="listitem">
-            <strong>Зафиксировать итог</strong>
-            <span>Краткая запись после встречи сохраняет договорённость и следующий шаг.</span>
+            <strong>Оплата не пришла?</strong>
+            <span>CRM сама напомнит клиенту и узнает о поступлении оплаты.</span>
           </article>
           <article class="recognition__moment recognition__moment--second" role="listitem">
-            <strong>Обновить план</strong>
-            <span>Перенос или новая задача сразу отражаются в работе с клиентом.</span>
+            <strong>Клиент не вернулся?</strong>
+            <span>Автоматическое напоминание предложит записаться после перерыва.</span>
           </article>
           <article class="recognition__moment recognition__moment--third" role="listitem">
-            <strong>Продолжить с контекста</strong>
-            <span>Перед контактом доступны предыдущая встреча, заметки и актуальные задачи.</span>
+            <strong>Обещали написать позже?</strong>
+            <span>Сохраните задачу: контакты и договорённости будут рядом в нужный момент.</span>
           </article>
         </div>
       </div>
@@ -352,7 +352,7 @@ function createClientStory() {
   section.innerHTML = `
     <div class="client-story__layout">
       <header class="client-story__intro" data-story-reveal>
-        <h2 id="client-story-title"><span>Вся работа с клиентом</span><br><em>в одной истории</em></h2>
+        <h2 id="client-story-title"><span>От первого контакта</span><br><em>до следующей встречи</em></h2>
       </header>
       <div class="client-story__carousel" data-client-story role="region" aria-roledescription="карусель" aria-label="Возможности Simple CRM">
         <button class="client-story__arrow client-story__arrow--previous" type="button" aria-label="Предыдущий экран" data-story-previous>${iconSvg('arrow-right')}</button>
@@ -545,8 +545,8 @@ function createProductProof() {
   section.innerHTML = `
     <div class="container product-proof__layout">
       <div class="product-proof__copy">
-        <h2 id="product-proof-title">Меньше поиска<br><span>больше внимания</span></h2>
-        <p>Расписание, карточка клиента и следующий шаг уже связаны. Вы быстрее возвращаетесь к сути — без поисков по чатам и таблицам.</p>
+        <h2 id="product-proof-title">Продолжайте разговор<br><span>с нужного места</span></h2>
+        <p>Клиент возвращается через месяц или ждёт ответ по предложению? В карточке сохранены встречи, задачи и заметки — не придётся перечитывать всю переписку.</p>
       </div>
       <figure class="product-proof__visual" aria-label="Расписание и карточка клиента в приложении Simple CRM">
         <div class="product-proof__fan">
@@ -562,11 +562,11 @@ function createProductProof() {
           <strong>Встречи · задачи · заметки</strong>
         </div>
         <div class="product-proof__badge product-proof__badge--chart">
-          <span class="product-proof__chart-copy"><small>Рабочий ритм</small><strong>От плана к результату</strong></span>
+          <span class="product-proof__chart-copy"><small>Следующий контакт</small><strong>Уточнить решение</strong></span>
           <span class="product-proof__bars" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>
-          <span class="product-proof__chart-labels" aria-hidden="true"><small>план</small><small>контекст</small><small>итог</small></span>
+          <span class="product-proof__chart-labels" aria-hidden="true"><small>звонок</small><small>встреча</small><small>оплата</small></span>
         </div>
-        <div class="product-proof__status">${iconSvg('check')}<span>Контекст собран</span></div>
+        <div class="product-proof__status">${iconSvg('check')}<span>Договорённости сохранены</span></div>
       </figure>
     </div>`;
   return section;
@@ -579,14 +579,14 @@ function createPaymentGrowthSection() {
   section.setAttribute('aria-labelledby', 'payment-growth-title');
   section.innerHTML = `
     <div class="container payment-growth__layout" data-story-reveal="payment-group">
-      <div class="payment-growth__metric" aria-label="Плюс 30 процентов к доходу и продуктивности">
+      <div class="payment-growth__metric" aria-label="Плюс 30 процентов к продуктивности">
         <strong>+30%</strong>
-        <span>к доходу и продуктивности</span>
+        <span>к продуктивности</span>
       </div>
 
       <div class="payment-growth__copy">
-        <h2 id="payment-growth-title">Оплата прямо в приложении</h2>
-        <p>Клиент получает SMS со ссылкой и оплачивает в пару касаний. Предоплата, остаток и статус сразу остаются в карточке — без ожидания подтверждений, ручной сверки и забытых платежей.</p>
+        <h2 id="payment-growth-title">Об оплате напомнит CRM</h2>
+        <p>Сеанс закончился, а деньги не пришли? Simple CRM сама отправит напоминание в Telegram, MAX или по SMS. Клиент оплачивает по ссылке, приложение узнаёт об оплате и обновляет статус.</p>
       </div>
 
       <figure class="payment-growth__visual">
@@ -606,16 +606,16 @@ function createTrustSection() {
     <div class="story-trust__wash story-trust__wash--pink" aria-hidden="true"></div>
     <div class="container story-trust__layout">
       <header class="story-trust__intro" data-story-reveal>
-        <h2 id="story-trust-title"><span>Системная работа</span><em>с каждым клиентом</em></h2>
-        <p>Планируйте встречи, фиксируйте договорённости и назначайте следующие действия в едином рабочем процессе.</p>
+        <h2 id="story-trust-title"><span>Клиенту удобно.</span><em>Вам — меньше забот.</em></h2>
+        <p>Клиент получает напоминания и открывает ссылки без установки CRM. Вы ведёте встречи, повторные контакты и оплаты в одном приложении.</p>
       </header>
       <div class="story-trust__bento" data-story-reveal="cluster" role="region" aria-label="Преимущества. Проведите влево, чтобы посмотреть следующие карточки" tabindex="0">
         <article class="story-trust__card story-trust__card--session">
           <img src="${assetUrl('editorial/trust-planning-still-life.png')}" alt="Планировщик, календарь и карточки этапов работы с клиентом" width="1536" height="1024" loading="lazy">
           <div class="story-trust__photo-shade" aria-hidden="true"></div>
           <div class="story-trust__card-copy">
-            <h3>План виден целиком</h3>
-            <p>Встречи, свободные интервалы и важные дела складываются в спокойный ритм.</p>
+            <h3>Встреча не забудется</h3>
+            <p>Simple CRM заранее напомнит клиенту о встрече. Вам не нужно писать каждому накануне.</p>
           </div>
         </article>
         <article class="story-trust__card story-trust__card--client">
@@ -626,16 +626,16 @@ function createTrustSection() {
             <span class="story-trust__context-note story-trust__context-note--three"><i></i><b></b><b></b></span>
           </div>
           <div class="story-trust__card-copy">
-            <h3>Контекст складывается сам</h3>
-            <p>Заметки и договорённости остаются связаны — ничего не приходится вспоминать заново.</p>
+            <h3>Клиенту — привычный канал</h3>
+            <p>Напоминания приходят в Telegram, MAX или по SMS. Важное сообщение не требует установки ещё одного приложения.</p>
           </div>
         </article>
         <article class="story-trust__card story-trust__card--flow">
           <img class="story-trust__flow-art" src="${assetUrl('editorial/trust-client-journey.png')}" alt="Абстрактный маршрут от документов и встречи к выполненному действию" width="1536" height="1024" loading="eager" decoding="async" fetchpriority="low">
           <div class="story-trust__flow-shade" aria-hidden="true"></div>
           <div class="story-trust__card-copy">
-            <h3>От встречи — к действию</h3>
-            <p>Итог превращается в понятный следующий шаг, связанный с клиентом и сроком.</p>
+            <h3>Повод вернуться</h3>
+            <p>После перерыва CRM напомнит о повторной записи. Клиент сможет вернуться, когда ему удобно.</p>
           </div>
         </article>
       </div>
@@ -675,11 +675,11 @@ function createStartSection() {
   section.innerHTML = `
     <div class="container story-start__panel" data-story-reveal="panel">
       <div class="story-start__copy">
-        <h2 id="story-start-title">Ведите клиента уверенно — от встречи до оплаты</h2>
-        <p>Simple CRM связывает расписание, договорённости, задачи и расчёты в одном рабочем процессе.</p>
+        <h2 id="story-start-title">Начните с клиента, которому нужно напомнить</h2>
+        <p>Встреча завтра, неоплаченный сеанс или пауза между визитами — выберите свою ситуацию и настройте напоминание.</p>
         <div class="story-start__action">
-          <strong>Освойте ключевые сценарии по коротким практическим инструкциям</strong>
-          <a class="button story-button story-button--light" href="learn/">Открыть материалы ${iconSvg('arrow-right')}</a>
+          <strong>Меньше ручных сообщений. Больше времени на клиентов.</strong>
+          <a class="button story-button story-button--light" href="how-to/client-reminders/">Настроить напоминания ${iconSvg('arrow-right')}</a>
         </div>
       </div>
       <div class="story-start__visual">
@@ -689,8 +689,8 @@ function createStartSection() {
         <div class="story-start__context">
           <span class="story-start__context-icon">${iconSvg('contact')}</span>
           <div>
-            <strong>Контекст всегда рядом</strong>
-            <p>Перед каждой встречей видно, на чём остановились и что важно сделать дальше.</p>
+            <strong>Для услуг и продаж</strong>
+            <p>Консультация, занятие или обсуждение предложения: история клиента помогает вовремя продолжить работу.</p>
           </div>
         </div>
       </div>
@@ -710,9 +710,9 @@ function createStartSection() {
           <span class="story-start__path-copy"><strong>Назначить следующий шаг</strong><span>Задача, срок и приоритет</span></span>
           ${iconSvg('arrow-right')}
         </a>
-        <a class="story-start__path--payment" href="learn/?q=оплата">
+        <a class="story-start__path--payment" href="how-to/payment-reminders/">
           <span class="story-start__path-number">04</span>
-          <span class="story-start__path-copy"><strong>Проверить оплату</strong><span>Сумма, предоплата и остаток</span></span>
+          <span class="story-start__path-copy"><strong>Напомнить об оплате</strong><span>Сообщение клиенту и статус платежа</span></span>
           ${iconSvg('arrow-right')}
         </a>
       </nav>

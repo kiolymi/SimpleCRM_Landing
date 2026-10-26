@@ -1,4 +1,4 @@
-import { primaryNavigation, siteConfig } from '../data/site.js?v=header-unified1';
+import { primaryNavigation, siteConfig } from '../data/site.js?v=client-value1';
 import { iconSvg } from './icons.js?v=20260824-28';
 import { createSearchForm } from './search-form.js';
 import { appStoreBadgeMarkup } from './app-store-badge.js?v=official1';

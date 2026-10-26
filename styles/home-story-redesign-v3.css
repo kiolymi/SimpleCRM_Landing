@@ -62,14 +62,16 @@ body[data-page="home"] ::selection { background: var(--story-blue); color: var(-
   from { translate: 0 0; rotate: var(--piece-angle, 0deg); }
   to { translate: var(--piece-x, 0) var(--piece-y, -6px); rotate: var(--piece-angle-end, 1deg); }
 }
-.story-hero__copy { --story-hero-title-size: clamp(3.1rem, 4.45vw, 4.55rem); position: relative; z-index: 30; width: 100%; max-width: 650px; padding-right: 0; margin-left: clamp(20px, 2.5vw, 44px); overflow: visible; }
+.story-hero__copy { --story-hero-title-size: clamp(3.1rem, 4.35vw, 4.55rem); position: relative; z-index: 30; width: auto; min-width: 0; max-width: 650px; padding-right: 0; margin-left: clamp(20px, 2.5vw, 44px); overflow: visible; }
 .story-hero__brand { display: inline-flex; align-items: center; gap: .22em; margin: 0 0 .3em; color: var(--story-ink); font-size: var(--story-hero-title-size); font-weight: 760; letter-spacing: -.025em; line-height: 1; white-space: nowrap; }
 .story-hero__brand img { display: block; width: .82em; height: .82em; border-radius: .2em; }
 .story-hero__brand strong { color: var(--story-blue); font: inherit; }
-body[data-page="home"] .story-hero h1 { width: 100%; max-width: none; margin: 0 0 24px; overflow: visible; color: var(--story-ink); font-size: var(--story-hero-title-size); line-height: 1.02; letter-spacing: -.047em; text-wrap: nowrap; }
+body[data-page="home"] .story-hero h1 { width: 100%; max-width: none; margin: 0 0 24px; overflow: visible; color: var(--story-ink); font-size: var(--story-hero-title-size); line-height: 1.02; letter-spacing: -.047em; text-wrap: balance; }
 body[data-page="home"] .story-hero__lead,
 body[data-page="home"] .story-hero__highlight { display: block; width: max-content; max-width: none; padding: 0; margin: 0; white-space: nowrap; }
-body[data-page="home"] .story-hero__highlight { padding: .015em .14em .075em .24em; margin-top: .08em; margin-left: -.24em; border-radius: .09em; background: var(--story-blue); color: #fff; box-shadow: none; }
+body[data-page="home"] .story-hero__highlight { padding: .015em .2em .075em; margin-top: .08em; margin-left: 0; border-radius: .09em; background: var(--story-blue); color: #fff; box-shadow: none; }
+body[data-page="home"] .story-hero__lead,
+body[data-page="home"] .story-hero__highlight { max-width: 100%; white-space: normal; text-wrap: balance; box-sizing: border-box; }
 body[data-page="home"] .story-hero__copy > p { max-width: 35ch; margin: 0 0 30px; color: var(--story-copy); font-size: clamp(1.08rem, 1.3vw, 1.24rem); line-height: 1.5; }
 .story-hero .story-hero__app-store { display: inline-flex; min-width: 198px; min-height: 62px; gap: 10px; padding: 9px 20px; border: 0; border-radius: 12px; background: #07182a; color: #fff; box-shadow: none; cursor: pointer; transition: background 160ms ease, transform 160ms var(--story-ease); }
 .story-hero .story-hero__app-store svg { width: 28px; height: 28px; }
@@ -555,6 +557,7 @@ html.story-motion-ready [data-story-reveal="hero-visual"].is-visible .story-hero
   .client-story__explanation p { font-size: .95rem; }
   .product-proof__layout { gap: 20px; }
   body[data-page="home"] .product-proof h2 { max-width: 15ch; font-size: clamp(2.48rem, 11vw, 3.1rem); }
+  body[data-page="home"] .product-proof h2 span { white-space: normal; }
   body[data-page="home"] .product-proof__copy > p { font-size: 1rem; }
   .product-proof__proofs { margin-top: 30px; }
   .product-proof__proofs > div { padding-right: 14px; }
@@ -590,7 +593,7 @@ html.story-motion-ready [data-story-reveal="hero-visual"].is-visible .story-hero
   .payment-growth__visual > img { left: 50%; width: min(134%, 600px); }
   .story-trust { min-height: 100svh; padding-block: 72px; }
   .story-trust__intro h2 { max-width: none; font-size: clamp(2.05rem, 8.8vw, 2.85rem); line-height: .95; }
-  .story-trust__intro h2 span, .story-trust__intro h2 em { white-space: nowrap; }
+  .story-trust__intro h2 span, .story-trust__intro h2 em { white-space: normal; }
   body[data-page="home"] .story-trust__intro p { max-width: 34ch; font-size: 1rem; }
   .story-trust__bento { display: grid; grid-template-columns: none; grid-template-rows: minmax(500px, auto); grid-auto-flow: column; grid-auto-columns: min(84vw, 340px); min-height: 0; height: auto; margin: 36px -16px 0; padding: 0 16px 20px; gap: 14px; overflow-x: auto; overflow-y: visible; overscroll-behavior-inline: contain; scroll-padding-inline: 16px; scroll-snap-type: x mandatory; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
   .story-trust__bento::-webkit-scrollbar { display: none; }
