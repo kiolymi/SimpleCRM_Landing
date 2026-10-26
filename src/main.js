@@ -1,5 +1,5 @@
 import { addPageArtwork } from './components/page-art.js?v=remove-releases2';
-import { createSiteShell } from './components/site-shell.js?v=client-value1';
+import { createSiteShell } from './components/site-shell.js?v=header-fixed4';
 import { createHomePage } from './components/home-sections.js?v=client-value1';
 import { createAboutPage, createArticleLayout, createContentHubPage, createFaqPage, createPricingPage, createPrivacyPage, createSearchPage, createSupportPage } from './components/content-pages.js?v=client-value1';
 import { pageMeta } from './data/site.js?v=client-value1';
@@ -51,7 +51,7 @@ document.querySelectorAll('link[rel="stylesheet"][href*="styles/"]').forEach(lin
 });
 const headerStyles = document.createElement('link');
 headerStyles.rel = 'stylesheet';
-headerStyles.href = new URL('../styles/header-unified.css?v=header-unified2', import.meta.url).href;
+headerStyles.href = new URL('../styles/header-unified.css?v=header-fixed4', import.meta.url).href;
 document.head.append(headerStyles);
 const appStoreBadgeStyles = document.createElement('link');
 appStoreBadgeStyles.rel = 'stylesheet';

@@ -44,7 +44,7 @@ try {
         await page.screenshot({path: path.join(output, `${width}-${route.replace(/[^a-z]/g, '') || 'home'}.png`)});
       }
       if (route === '/' && width === 1440) {
-        for (const id of ['recognition', 'payments-and-growth', 'work-without-routine', 'start']) {
+        for (const id of ['recognition', 'payments-and-growth', 'start']) {
           await page.locator('#' + id).screenshot({path: path.join(output, `${width}-${id}.png`)});
         }
       }

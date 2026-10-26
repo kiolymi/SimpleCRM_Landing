@@ -8,6 +8,11 @@ export function createSiteShell(mainContent) {
   shell.className = 'site-shell';
   const header = createHeader();
   shell.append(header, mainContent, createFooter());
+  // Keep content below the fixed header, including safe areas and resized text.
+  const syncHeaderHeight = () => {
+    shell.style.setProperty('--site-header-height', `${header.getBoundingClientRect().height}px`);
+  };
+  new ResizeObserver(syncHeaderHeight).observe(header);
   wireMobileSafeArea(header);
   return shell;
 }

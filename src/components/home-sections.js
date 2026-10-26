@@ -190,7 +190,6 @@ export function createHomePage() {
     createClientStory(),
     createProductProof(),
     createPaymentGrowthSection(),
-    createTrustSection(),
     createReviewsSection(),
     createStartSection(),
   );
@@ -596,52 +595,6 @@ function createPaymentGrowthSection() {
   return section;
 }
 
-function createTrustSection() {
-  const section = document.createElement('section');
-  section.id = 'work-without-routine';
-  section.className = 'story-trust';
-  section.setAttribute('aria-labelledby', 'story-trust-title');
-  section.innerHTML = `
-    <div class="story-trust__wash story-trust__wash--blue" aria-hidden="true"></div>
-    <div class="story-trust__wash story-trust__wash--pink" aria-hidden="true"></div>
-    <div class="container story-trust__layout">
-      <header class="story-trust__intro" data-story-reveal>
-        <h2 id="story-trust-title"><span>Клиенту удобно.</span><em>Вам — меньше забот.</em></h2>
-        <p>Клиент получает напоминания и открывает ссылки без установки CRM. Вы ведёте встречи, повторные контакты и оплаты в одном приложении.</p>
-      </header>
-      <div class="story-trust__bento" data-story-reveal="cluster" role="region" aria-label="Преимущества. Проведите влево, чтобы посмотреть следующие карточки" tabindex="0">
-        <article class="story-trust__card story-trust__card--session">
-          <img src="${assetUrl('editorial/trust-planning-still-life.png')}" alt="Планировщик, календарь и карточки этапов работы с клиентом" width="1536" height="1024" loading="lazy">
-          <div class="story-trust__photo-shade" aria-hidden="true"></div>
-          <div class="story-trust__card-copy">
-            <h3>Встреча не забудется</h3>
-            <p>Simple CRM заранее напомнит клиенту о встрече. Вам не нужно писать каждому накануне.</p>
-          </div>
-        </article>
-        <article class="story-trust__card story-trust__card--client">
-          <div class="story-trust__context-visual" aria-hidden="true">
-            <span class="story-trust__context-line"></span>
-            <span class="story-trust__context-note story-trust__context-note--one"><i></i><b></b><b></b></span>
-            <span class="story-trust__context-note story-trust__context-note--two"><i></i><b></b><b></b></span>
-            <span class="story-trust__context-note story-trust__context-note--three"><i></i><b></b><b></b></span>
-          </div>
-          <div class="story-trust__card-copy">
-            <h3>Клиенту — привычный канал</h3>
-            <p>Напоминания приходят в Telegram, MAX или по SMS. Важное сообщение не требует установки ещё одного приложения.</p>
-          </div>
-        </article>
-        <article class="story-trust__card story-trust__card--flow">
-          <img class="story-trust__flow-art" src="${assetUrl('editorial/trust-client-journey.png')}" alt="Абстрактный маршрут от документов и встречи к выполненному действию" width="1536" height="1024" loading="eager" decoding="async" fetchpriority="low">
-          <div class="story-trust__flow-shade" aria-hidden="true"></div>
-          <div class="story-trust__card-copy">
-            <h3>Повод вернуться</h3>
-            <p>После перерыва CRM напомнит о повторной записи. Клиент сможет вернуться, когда ему удобно.</p>
-          </div>
-        </article>
-      </div>
-    </div>`;
-  return section;
-}
 
 function createReviewsSection() {
   const section = document.createElement('section');

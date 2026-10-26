@@ -3,12 +3,20 @@
  * The home page only inverts the palette; dimensions and spacing stay shared.
  */
 body[data-page] .site-header {
-  position: relative;
+  position: fixed !important;
+  top: 0;
+  right: 0;
+  left: 0;
   z-index: 90;
   border-bottom: 1px solid #d5e1ed;
   background: #edf4fa;
   color: #111827;
   box-shadow: 0 1px 0 rgb(15 23 42 / 2%);
+}
+
+body[data-page] .site-shell { padding-top: var(--site-header-height, 73px); }
+@media (min-width: 1240px) {
+  body[data-page] .site-shell { padding-top: var(--site-header-height, 95px); }
 }
 
 body[data-page] .site-header__inner {
@@ -113,7 +121,6 @@ body[data-page="home"] .site-header .menu-toggle { color: #fff; }
 
 @media (max-width: 1023px) {
   body[data-page] .site-header {
-    position: sticky;
     top: 0;
     padding-top: env(safe-area-inset-top, 0px);
   }
